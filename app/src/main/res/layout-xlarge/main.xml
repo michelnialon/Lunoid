@@ -39,14 +39,23 @@
             android:textColor="#FFFF00"
             android:textSize="20sp" />
        <TextView
-            android:id="@+id/textLever"
+        android:id="@+id/textLever"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="05:29"
+        android:textColor="#FFFF00"
+        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/textPct"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"          
-            android:layout_alignParentLeft="true"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="05:29"
-            android:textColor="#FFFF00"
-            android:textSize="20sp" />
+            android:text="53%"
+            android:textColor="#d3d5d6"
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true" />
         <TextView
             android:id="@+id/TextView01"
             android:layout_width="wrap_content"
