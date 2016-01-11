@@ -133,13 +133,6 @@ public class Lunoid extends Activity
 					int resId = getResources().getIdentifier(ecl3, "drawable", getPackageName());
 					Log.d("resid", Integer.toString(resId));
 					imgLune.setImageResource(resId);
-					/*
-					int ph = R.drawable.lune000 + Integer.parseInt(mapPhase.get(dateString));
-					if (ph > R.drawable.lune029)
-						ph = ph - R.drawable.lune029 + R.drawable.lune000;
-					
-					imgLune.setImageResource(ph);
-					*/
 				}
 				else
 				{
@@ -474,26 +467,11 @@ public class Lunoid extends Activity
 		@Override  
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) 
 		{  
-//			int mYear;
-//			int mMonth;
-//			int mDay;
-			//Date today = Calendar.getInstance().getTime();
 			Calendar c= Calendar.getInstance();
 			c.set(datePicker1.getYear(), datePicker1.getMonth(), datePicker1.getDayOfMonth());
 
-	//		mYear = c.get(Calendar.YEAR);
-		//	mMonth = c.get(Calendar.MONTH);
-			//mDay = c.get(Calendar.DAY_OF_MONTH);
-			/*
-             Log.d("d",
-                     (new StringBuilder()
-                             // Month is 0 based so add 1
-                             .append(mMonth + 1).append("-")
-                             .append(mDay).append("-")
-                             .append(mYear).append(" ")).toString());
-			 */
-			//Log.d("d",e1.toString());  
-			//Log.d("e2",e2.toString());  
+			//Log.d("d",e1.toString());
+			//Log.d("e2",e2.toString());
 			Float f1 = e1.getX();
 			//Log.d("e1x",f1.toString());
 			Float f2 = e2.getX();
@@ -529,7 +507,6 @@ public class Lunoid extends Activity
 	{  // After a pause OR at startup
 		super.onResume();
 
-		//datePicker1.updateDate(datePicker1.getYear(), datePicker1.getMonth(), datePicker1.getDayOfMonth());
 		// afficher la date du jour au (re)démarrage
 		listener.onDateChanged(datePicker1, datePicker1.getYear(), datePicker1.getMonth(), datePicker1.getDayOfMonth());
 	}
