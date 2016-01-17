@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="400dp"
-    android:layout_height="600dp"
-    android:layout_gravity="center"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:orientation="vertical"
-    android:background="@drawable/roundcorner"
-    android:padding="5dp"
-    >
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:stretchColumns="1" >
 
 <!-- Moon  	-->
 
     <RelativeLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_weight="0.2"
         android:background="#000000"
         android:orientation="horizontal"
@@ -82,47 +77,42 @@
 	    android:background="#565252"
         android:orientation="horizontal" 
         android:id="@+id/linearLayout4" 
-        android:layout_width="398dp" 
-        android:layout_gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_width="wrap_content" 
         
         android:layout_height="wrap_content">
 
     	<TextView
     	    android:id="@+id/textCroissant"
+    	    android:layout_width="match_parent"
     	    android:layout_height="wrap_content"
-    	    android:layout_width="0dp"
-    	    android:layout_weight="0.5"
-    	    android:gravity="center_vertical|center_horizontal"
     	    android:text="@string/croissant"
     	    android:textColor="#FFFF00"
+    	    android:layout_weight="0.5"
+    	    android:gravity="center_vertical|center_horizontal"
     	    android:textSize="20sp" />
 
     	<TextView
     	    android:id="@+id/textDecroissant"
+    	    android:layout_width="match_parent"
     	    android:layout_height="wrap_content"
-    	    android:layout_width="0dp"
-    	    android:layout_weight="0.5"
-    	    android:gravity="center_vertical|center_horizontal"
     	    android:text="@string/decroissant"
     	    android:textColor="#666666"
+    	    android:layout_weight="0.5"
+    	    android:gravity="center_vertical|center_horizontal"
     	    android:textSize="20sp" />
-
     </LinearLayout>
     
     <!-- espace -->
-
     <LinearLayout
         android:id="@+id/linearLayout50"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/textvide4"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
@@ -134,42 +124,37 @@
 	    android:background="#565252"
         android:orientation="horizontal" 
         android:id="@+id/linearLayout5" 
-        android:layout_width="398dp" 
+        android:layout_width="wrap_content" 
         android:layout_height="wrap_content">
-
-    	<TextView
-    	    android:id="@+id/textMontant"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
+    	<TextView android:text="@string/montant" 
+    	    android:id="@+id/textMontant" 
+    	    android:layout_width="match_parent" 
+    	    android:layout_height="wrap_content"  
     	    android:layout_weight="0.5"
-    	    android:gravity="center_vertical|center_horizontal"
-    	    android:text="@string/montant"
     	    android:textColor="#666666"
+    	    android:gravity="center_vertical|center_horizontal" 
     	    android:textSize="20sp" />
-
     	<TextView
     	    android:id="@+id/textDescendant"
-    	    android:layout_width="wrap_content"
+    	    android:layout_width="match_parent"
     	    android:layout_height="wrap_content"
     	    android:layout_weight="0.5"
+    	    android:textColor="#FFFF00"
     	    android:gravity="center_vertical|center_horizontal"
     	    android:text="@string/descendant"
-    	    android:textColor="#FFFF00"
     	    android:textSize="20sp" />
-
     </LinearLayout>
     <!-- espace -->
-
     <LinearLayout
         android:id="@+id/linearLayout51"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/textvide"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
@@ -180,12 +165,12 @@
 	    android:background="#565252"
         android:orientation="horizontal" 
         android:id="@+id/linearLayout7" 
-        android:layout_width="398dp" 
+        android:layout_width="wrap_content" 
         android:layout_height="wrap_content">
 
     	<TextView
     	    android:id="@+id/textFeuilles"
-    	    android:layout_width="96dp"
+    	    android:layout_width="match_parent"
     	    android:layout_height="wrap_content"
     	    android:layout_weight="0.25"
     	    android:gravity="center_horizontal|center_vertical"
@@ -195,63 +180,61 @@
 
     	<TextView
     	    android:id="@+id/textFruits"
-    	    android:layout_width="96dp"
+    	    android:layout_width="match_parent"
     	    android:layout_height="wrap_content"
-    	    android:layout_weight="0.25"
     	    android:gravity="center_horizontal|center_vertical"
     	    android:text="@string/fruits"
     	    android:textColor="#666666"
+    	    android:layout_weight="0.25"
     	    android:textSize="18sp" />
 
     	<TextView
     	    android:id="@+id/textRacines"
-    	    android:layout_width="96dp"
+    	    android:layout_width="match_parent"
     	    android:layout_height="wrap_content"
-    	    android:layout_weight="0.25"
     	    android:gravity="center_horizontal|center_vertical"
     	    android:text="@string/racines"
     	    android:textColor="#666666"
+    	    android:layout_weight="0.25"
     	    android:textSize="18sp" />
 
     	<TextView
     	    android:id="@+id/textFleurs"
-    	    android:layout_width="96dp"
+    	    android:layout_width="match_parent"
     	    android:layout_height="wrap_content"
     	    android:layout_weight="0.25"
     	    android:gravity="center_horizontal|center_vertical"
     	    android:text="@string/fleurs"
     	    android:textColor="#FFFF00"
     	    android:textSize="18sp" />
+
     </LinearLayout>
         <!-- espace -->
-
     <LinearLayout
         android:id="@+id/linearLayout52"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/textvide2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
             android:textSize="3sp" />
     </LinearLayout>
     <!-- Perigee/Apogee/Noeud -->
-
 	<LinearLayout
 	    android:id="@+id/linearLayout3"
-	    android:layout_width="wrap_content"
+	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:background="#565252"
 	    android:orientation="horizontal" >
-
 		<LinearLayout
 		    android:id="@+id/linearLayout31"
-		    android:layout_width="133dp"
+		    android:layout_width="96dp"
 		    android:layout_height="wrap_content"
 		    android:background="#565252"
 		    android:layout_weight="0.33"
@@ -263,7 +246,7 @@
 			        android:gravity="center_vertical|center_horizontal"
 			        android:text="@string/perigee"
 			        android:textColor="#666666"
-			        android:textSize="18sp" />
+			        android:textSize="14sp" />
 			    <TextView
 			        android:id="@+id/textPerigeeHour"
 			        android:layout_width="match_parent"
@@ -271,11 +254,11 @@
 			        android:gravity="center_vertical|center_horizontal"
 			        android:text="88:88"
 			        android:textColor="#666666"
-			        android:textSize="18sp" />
+			        android:textSize="14sp" />
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/linearLayout32"
-		    android:layout_width="133dp"
+		    android:layout_width="96dp"
 		    android:layout_height="wrap_content"
 		    android:background="#565252"
 		    android:layout_weight="0.33"
@@ -287,7 +270,7 @@
 		        android:text="@string/apogee"
 		        android:textColor="#666666"
 		        android:gravity="center_vertical|center_horizontal"
-		        android:textSize="18sp" />
+		        android:textSize="14sp" />
 		    <TextView
 			        android:id="@+id/textApogeeHour"
 			        android:layout_width="match_parent"
@@ -295,11 +278,11 @@
 			        android:gravity="center_vertical|center_horizontal"
 			        android:text="88:88"
 			        android:textColor="#666666"
-			        android:textSize="18sp" />
+			        android:textSize="14sp" />
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/linearLayout33"
-		    android:layout_width="133dp"
+		    android:layout_width="96dp"
 		    android:layout_height="wrap_content"
 		    android:background="#565252"
 		    android:layout_weight="0.33"
@@ -311,7 +294,7 @@
 	    	    android:gravity="center_horizontal|center_vertical"
 	    	    android:text="@string/noeudlunaire"
 	    	    android:textColor="#FF0000"
-	    	    android:textSize="18sp" />
+	    	    android:textSize="14sp" />
 		    <TextView
 			        android:id="@+id/textNoeudHour"
 			        android:layout_width="match_parent"
@@ -319,76 +302,54 @@
 			        android:gravity="center_vertical|center_horizontal"
 			        android:text="88:88"
 			        android:textColor="#666666"
-			        android:textSize="18sp" />
+			        android:textSize="14sp" />
 		</LinearLayout>
 	</LinearLayout>
-	
-	<!-- espace -->
+	    <!-- espace -->
     <LinearLayout
         android:id="@+id/linearLayout53"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/textvide3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
             android:textSize="3sp" />
     </LinearLayout>
-<!-- Aujourdhui -->
 <LinearLayout
-    android:id="@+id/linearLayout531"
-    android:layout_width="398dp"
-    android:layout_height="wrap_content"
-    android:background="#000000"
-    android:orientation="horizontal" >
-
-    <TextView
-        android:id="@+id/TextJour"
-        android:layout_width="398dp"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:gravity="center_horizontal"
-        android:text=""
-        android:textColor="#FFFF00"
-        android:layout_centerInParent="true"
-        android:textSize="16sp" />
-</LinearLayout>
-<LinearLayout
-        android:id="@+id/linearLayout54"
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayout531"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#000000"
         android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textvide5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="3sp" />
-    </LinearLayout>
-    <!-- DatePicker -->
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="398dp"
+    <TextView
+        android:id="@+id/TextJour"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
+        android:gravity="center_horizontal"
+        android:text=""
+        android:textColor="#FFFF00"               
+       	android:clickable="true"
+        android:textSize="20sp" />
+</LinearLayout>
+    <!-- Date -->
+    <LinearLayout
+        android:orientation="horizontal" 
+        android:id="@+id/linearLayout2" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content">
         <DatePicker
             android:id="@+id/datePicker1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:datePickerMode="spinner"
-            android:spinnersShown="true"
-            />
-
+            android:spinnersShown="true" />
     </LinearLayout>
 <!-- Quitter 
     <Button
@@ -398,4 +359,4 @@
         android:text="@string/quitter" >
 	</Button>
 	-->
-</LinearLayout>
+</TableLayout>
