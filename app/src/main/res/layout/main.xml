@@ -43,6 +43,15 @@
             android:textColor="#FFFF00"
             android:textSize="20sp" />
         <TextView
+            android:id="@+id/textPct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="53%"
+            android:textColor="#d3d5d6"
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true" />
+        <TextView
             android:id="@+id/TextView01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -237,7 +246,7 @@
 			        android:gravity="center_vertical|center_horizontal"
 			        android:text="@string/perigee"
 			        android:textColor="#666666"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 			    <TextView
 			        android:id="@+id/textPerigeeHour"
 			        android:layout_width="match_parent"
@@ -245,7 +254,7 @@
 			        android:gravity="center_vertical|center_horizontal"
 			        android:text="88:88"
 			        android:textColor="#666666"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/linearLayout32"
@@ -261,7 +270,7 @@
 		        android:text="@string/apogee"
 		        android:textColor="#666666"
 		        android:gravity="center_vertical|center_horizontal"
-		        android:textSize="14sp" />
+		        android:textSize="16sp" />
 		    <TextView
 			        android:id="@+id/textApogeeHour"
 			        android:layout_width="match_parent"
@@ -269,7 +278,7 @@
 			        android:gravity="center_vertical|center_horizontal"
 			        android:text="88:88"
 			        android:textColor="#666666"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 		</LinearLayout>
 		<LinearLayout
 		    android:id="@+id/linearLayout33"
@@ -285,7 +294,7 @@
 	    	    android:gravity="center_horizontal|center_vertical"
 	    	    android:text="@string/noeudlunaire"
 	    	    android:textColor="#FF0000"
-	    	    android:textSize="14sp" />
+	    	    android:textSize="16sp" />
 		    <TextView
 			        android:id="@+id/textNoeudHour"
 			        android:layout_width="match_parent"
@@ -293,7 +302,7 @@
 			        android:gravity="center_vertical|center_horizontal"
 			        android:text="88:88"
 			        android:textColor="#666666"
-			        android:textSize="14sp" />
+			        android:textSize="16sp" />
 		</LinearLayout>
 	</LinearLayout>
 	    <!-- espace -->
