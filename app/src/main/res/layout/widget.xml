@@ -84,40 +84,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center">
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/layout8"
+        <TextView
+            android:id="@+id/descevt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <TextView
-                android:id="@+id/noeud"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                android:textColor="#aff2ea"
-                android:textSize="16sp"
-                android:text="N-"
-                android:typeface="monospace" />
-            <TextView
-                android:id="@+id/apogee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                android:textSize="16sp"
-                android:textColor="#aff2ea"
-                android:text="A"
-                android:typeface="monospace" />
-            <TextView
-                android:id="@+id/perigee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="0dp"
-                android:textSize="16sp"
-                android:textColor="#aff2ea"
-                android:text="P"
-                android:typeface="monospace" />
-        </LinearLayout>
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:textColor="#aff2ea"
+            android:text="-----"
+            android:typeface="monospace"
+            android:shadowColor="#aff2ea"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1.5"/>
             <TextView
                 android:id="@+id/heureevt"
                 android:layout_width="wrap_content"
@@ -127,6 +106,10 @@
                 android:textColor="#aff2ea"
                 android:layout_marginTop="8dp"
                 android:text="--:--"
-                android:typeface="monospace" />
+                android:typeface="monospace"
+                android:shadowColor="#aff2ea"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:shadowRadius="1.5"/>
     </LinearLayout>
 </LinearLayout>
