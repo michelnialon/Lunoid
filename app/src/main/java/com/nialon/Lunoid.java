@@ -182,19 +182,19 @@ public class Lunoid extends Activity
                     textPerigeeHour.setText(!mapPerigee.get(dateString).equals("0") ? (mapPerigee.get(dateString).equals("88:88")? "88:88" : heurelocale(mapPerigee.get(dateString),date1,lh)) : "88:88");
 
                     textNoeudHour.setTextColor(!mapNoeud.get(dateString).equals("0") ? Color.MAGENTA : Color.LTGRAY);
-                    textNoeudHour.setText(!mapNoeud.get(dateString).equals("0") ? (mapNoeud.get(dateString).equals("88:88")? "88:88" : heurelocale(mapNoeud.get(dateString),date1,lh)) : "88:88");
+                    textNoeudHour.setText(!mapNoeud.get(dateString).equals("0") ? (mapNoeud.get(dateString).equals("88:88")? "88:88" : heurelocale(mapNoeud.get(dateString).substring(0,5),date1,lh)) : "88:88");
                 }
                 catch (Exception e)
                 {
 
                 }
                 // Montant/Descendant
-                textMontant.setTextColor(mapMontant.get(dateString).equals("1") ? Color.YELLOW : Color.LTGRAY);
-                textDescendant.setTextColor(mapMontant.get(dateString).equals("0") ? Color.YELLOW : Color.LTGRAY);
+                textMontant.setTextColor(mapMontant.get(dateString).equals("1") ? Color.YELLOW : mapMontant.get(dateString).equals("2") ? Color.YELLOW : Color.LTGRAY);
+                textDescendant.setTextColor(mapMontant.get(dateString).equals("0") ? Color.YELLOW : mapMontant.get(dateString).equals("2") ? Color.YELLOW :Color.LTGRAY);
 
                 // Croissant/Decroissant
-                textCroissant.setTextColor(mapCroissant.get(dateString).equals("1") ? Color.YELLOW : Color.LTGRAY);
-                textDecroissant.setTextColor(mapCroissant.get(dateString).equals("0") ? Color.YELLOW : Color.LTGRAY);
+                textCroissant.setTextColor(mapCroissant.get(dateString).equals("1") ? Color.YELLOW : mapCroissant.get(dateString).equals("2") ? Color.YELLOW : Color.LTGRAY);
+                textDecroissant.setTextColor(mapCroissant.get(dateString).equals("0") ? Color.YELLOW : mapCroissant.get(dateString).equals("2") ? Color.YELLOW : Color.LTGRAY);
             }
             else
             {
@@ -591,7 +591,7 @@ public class Lunoid extends Activity
                 ds = sdf.format(c.getTime());
                 td = c.getTime();
             }
-            while ((td.compareTo(dateFin) <0) && (!(m.get(ds).length()==5)));
+            while ((td.compareTo(dateFin) <0) && (!(m.get(ds).length()>=5)));
         }
         else
         {
