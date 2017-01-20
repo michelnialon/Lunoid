@@ -57,6 +57,7 @@ public class Lunoid extends Activity
     private Date dateFin;
     private GestureDetector mGestureDetector;
     private static Boolean lh;
+    public final static String EXTRA_MESSAGE = "com.nialon.Lunoid.MESSAGE";
 
     static Map<String, String> mapLever = new HashMap<String, String>();
     static Map<String, String> mapCoucher = new HashMap<String, String>();
@@ -176,13 +177,13 @@ public class Lunoid extends Activity
                 try
                 {
                     textApogeeHour.setTextColor(!mapApogee.get(dateString).equals("0") ? Color.MAGENTA : Color.LTGRAY);
-                    textApogeeHour.setText(!mapApogee.get(dateString).equals("0") ? (mapApogee.get(dateString).equals("88:88")? "88:88" : heurelocale(mapApogee.get(dateString),date1,lh)) : "88:88");
+                    textApogeeHour.setText(!mapApogee.get(dateString).equals("0") ? (mapApogee.get(dateString).equals("88:88")? "--:--" : heurelocale(mapApogee.get(dateString),date1,lh)) : "--:--");
 
                     textPerigeeHour.setTextColor(!mapPerigee.get(dateString).equals("0") ? Color.MAGENTA : Color.LTGRAY);
-                    textPerigeeHour.setText(!mapPerigee.get(dateString).equals("0") ? (mapPerigee.get(dateString).equals("88:88")? "88:88" : heurelocale(mapPerigee.get(dateString),date1,lh)) : "88:88");
+                    textPerigeeHour.setText(!mapPerigee.get(dateString).equals("0") ? (mapPerigee.get(dateString).equals("88:88")? "--:--" : heurelocale(mapPerigee.get(dateString),date1,lh)) : "--:--");
 
                     textNoeudHour.setTextColor(!mapNoeud.get(dateString).equals("0") ? Color.MAGENTA : Color.LTGRAY);
-                    textNoeudHour.setText(!mapNoeud.get(dateString).equals("0") ? (mapNoeud.get(dateString).equals("88:88")? "88:88" : heurelocale(mapNoeud.get(dateString).substring(0,5),date1,lh)) : "88:88");
+                    textNoeudHour.setText(!mapNoeud.get(dateString).equals("0") ? (mapNoeud.get(dateString).equals("88:88")? "--:--" : heurelocale(mapNoeud.get(dateString).substring(0,5),date1,lh)) : "--:--");
                 }
                 catch (Exception e)
                 {
@@ -330,7 +331,7 @@ public class Lunoid extends Activity
         dateDebut.setYear(2012 - 1900);
         dateFin.setDate(1);   // au 31/12/2013
         dateFin.setMonth(0);
-        dateFin.setYear(2017 - 1900);
+        dateFin.setYear(2018 - 1900);
 
         sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy");
@@ -503,7 +504,9 @@ public class Lunoid extends Activity
             //Log.d("e1x",f1.toString());
             Float f2 = e2.getX();
             //Log.d("e2x",f2.toString());
-            if (f1>f2)
+            Float f3 = e1.getY();
+            Float f4 = e2.getY();
+            if (f1>f2+60)
             {
                 c.add(Calendar.DATE, 1);
                 Log.d("y:",Integer.toString(c.get(Calendar.YEAR)));
@@ -512,7 +515,7 @@ public class Lunoid extends Activity
                 datePicker1.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
                 //        	  Toast.makeText(getApplicationContext(), "plus", Toast.LENGTH_SHORT).show();
             }
-            if (f2>f1)
+            else if (f2>f1+60)
             {
                 c.add(Calendar.DATE, -1);
                 Log.d("y:",Integer.toString(c.get(Calendar.YEAR)));
@@ -520,6 +523,10 @@ public class Lunoid extends Activity
                 Log.d("d:",Integer.toString(c.get(Calendar.DAY_OF_MONTH)));
                 datePicker1.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
                 //       	  Toast.makeText(getApplicationContext(), "moins", Toast.LENGTH_SHORT).show();
+            }
+            else if (f3>f4+60 || f4>f3+60)
+            {
+                DisplayInfosDuMois(datePicker1.getYear(), datePicker1.getMonth());
             }
             return true;
         }
@@ -610,42 +617,77 @@ public class Lunoid extends Activity
     }
     private static String heurelocale(String s, Date d, boolean lh)
     {
-        if (s.equals("--:--"))
+        if (s == null)
         {
-            return s;
+            return "--:--";
+        }
+        else {
+            if (s.equals("--:--")) {
+                return s;
+            } else {
+                if (lh) {
+                    int nboffset;
+
+                    d.setHours(Integer.valueOf(s.substring(0, 2)));
+                    d.setMinutes(Integer.valueOf(s.substring(3, 5)));
+                    nboffset = TimeZone.getDefault().getOffset(d.getTime()) / 1000 / 3600;
+                    //nboffset = TimeZone.getTimeZone("Europe/Paris").getOffset(d.getTime())/1000/3600;
+                    //Log.d("d",d.toString());
+                    //Log.d("nb",String.valueOf(nboffset));
+                    String s1;
+                    String s2;
+
+                    Calendar cal = Calendar.getInstance();
+                    cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(s.substring(0, 2)));
+                    cal.set(Calendar.MINUTE, Integer.valueOf(s.substring(3, 5)));
+
+                    cal.add(Calendar.HOUR_OF_DAY, nboffset);
+                    s1 = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
+                    s1 = (s1.length() == 1 ? "0" + s1 : s1);
+                    s2 = String.valueOf(cal.get(Calendar.MINUTE));
+                    s2 = (s2.length() == 1 ? "0" + s2 : s2);
+                    return s1 + ":" + s2;
+                } else
+                    return s;
+            }
+        }
+    }
+    private void DisplayInfosDuMois(int year, int month)
+    {
+        Intent intent;
+        intent = new Intent(this, ConseilsDuMois.class);
+        String message;
+        Log.d("y", Integer.toString(year));
+        Log.d("m", Integer.toString(month));
+        if ((year >= 2016) && (year <=2016)) {
+            if ((month == 2)) {
+                message = "mars"  + Integer.toString(year);
+            } else if ((month == 3)) {
+                message = "avril"  + Integer.toString(year);
+            } else if ((month == 4)) {
+                message = "mai"  + Integer.toString(year);
+            } else if ((month == 5)) {
+                message = "juin"  + Integer.toString(year);
+            } else if ((month == 6)) {
+                message = "juillet"  + Integer.toString(year);
+            } else if ((month == 7)) {
+                message = "aout"  + Integer.toString(year);
+            }
+            else {
+                message = "nodata";
+            }
         }
         else
         {
-            if (lh)
-            {
-                int nboffset;
-
-                d.setHours(Integer.valueOf(s.substring(0, 2)));
-                d.setMinutes(Integer.valueOf(s.substring(3, 5)));
-                nboffset = TimeZone.getDefault().getOffset(d.getTime())/1000/3600;
-                //nboffset = TimeZone.getTimeZone("Europe/Paris").getOffset(d.getTime())/1000/3600;
-                //Log.d("d",d.toString());
-                //Log.d("nb",String.valueOf(nboffset));
-                String s1;
-                String s2;
-
-                Calendar cal = Calendar.getInstance();
-                cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(s.substring(0, 2)));
-                cal.set(Calendar.MINUTE, Integer.valueOf(s.substring(3, 5)));
-
-                cal.add(Calendar.HOUR_OF_DAY, nboffset);
-                s1 = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
-                s1 = (s1.length()==1 ? "0" + s1 : s1);
-                s2 = String.valueOf(cal.get(Calendar.MINUTE));
-                s2 = (s2.length()==1 ? "0" + s2 : s2);
-                return s1 + ":" + s2;
-            }
-            else
-                return s;
+            message = "nodata";
         }
+        Log.d("m", message);
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
     private void read_data()
     {
+        Date date1;
         Log.d("read_data", "begin");
         Resources myRes = getResources();
         InputStream lundata = myRes.openRawResource(R.raw.datalune);
@@ -660,6 +702,8 @@ public class Lunoid extends Activity
             {
                 //Log.d("Line",line);
                 separated = line.split(";");
+                //date1 = new Date(separated[0]);
+                //Log.d("Date :", date1.toString());
                 //textLever.setText(separated[1]);
                 mapLever.put(separated[0],separated[1]);
                 mapCoucher.put(separated[0],separated[2]);
