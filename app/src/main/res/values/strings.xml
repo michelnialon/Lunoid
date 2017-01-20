@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Moon calendar 2016</string>
+    <string name="app_descr">Moon calendar 2017</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
     <string name="noeudlunaire">Node</string>
@@ -19,7 +19,7 @@
     <string name="PL">PL </string>
     <string name="DQ">DQ </string>
     <string name="desc">Moon</string>
-    <string name="vide"/>
+    <string name="vide" />
     <string name="nodata">&lt;&lt;No data&gt;&gt;</string>
     <string name="apropos">About</string>
     <string name="lever">Rise</string>
