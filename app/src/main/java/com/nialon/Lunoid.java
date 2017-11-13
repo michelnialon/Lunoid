@@ -331,7 +331,7 @@ public class Lunoid extends Activity
         dateDebut.setYear(2012 - 1900);
         dateFin.setDate(1);   // au 31/12/2013
         dateFin.setMonth(0);
-        dateFin.setYear(2018 - 1900);
+        dateFin.setYear(2019 - 1900);
 
         sdf = new SimpleDateFormat("dd/MM/yyyy");
         sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy");
@@ -659,7 +659,7 @@ public class Lunoid extends Activity
         String message;
         Log.d("y", Integer.toString(year));
         Log.d("m", Integer.toString(month));
-        if ((year >= 2016) && (year <=2016)) {
+        if ((year >= 2016) && (year <=2017)) {
             if ((month == 2)) {
                 message = "mars"  + Integer.toString(year);
             } else if ((month == 3)) {

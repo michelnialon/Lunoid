@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.nialon"
-    android:versionCode="49"
-    android:versionName="7.1a">
+    android:versionCode="52"
+    android:versionName="8.1a">
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="23" />
@@ -14,7 +15,8 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/nlune100ft"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".Lunoid"
             android:label="@string/app_name">

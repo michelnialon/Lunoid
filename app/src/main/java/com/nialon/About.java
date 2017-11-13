@@ -29,7 +29,7 @@ public class About extends Activity
 		textDate = (TextView) findViewById(R.id.textDate);
 		textTitre.setText("LUNOID");
 		textAuth.setText("Michel Nialon");
-		textDate.setText("20/01/2017");
+		textDate.setText("28/12/2017");
 		
 		// Pour enlever la barre de titre :
 //		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
