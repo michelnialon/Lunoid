@@ -29,7 +29,7 @@ public class About extends Activity
 		textDate = (TextView) findViewById(R.id.textDate);
 		textTitre.setText("LUNOID");
 		textAuth.setText("Michel Nialon");
-		textDate.setText("28/12/2017");
+		textDate.setText("26/02/2019");
 		
 		// Pour enlever la barre de titre :
 //		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -58,7 +58,7 @@ public class About extends Activity
 	    
 	    //Bouton OK, pas utilisé
 	    closeButton = (Button)this.findViewById(R.id.buttonOK);
-		  this.closeButton.setOnClickListener(new OnClickListener() 
+	    this.closeButton.setOnClickListener(new OnClickListener()
 		  {
 		    @Override
 		    public void onClick(View v) 
