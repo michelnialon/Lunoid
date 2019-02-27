@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Mond Kalender 2018</string>
+    <string name="app_descr">Mond Kalender 2019</string>
     <string name="apogee">Erdferne</string>
     <string name="perigee">Erdnähe</string>
     <string name="noeudlunaire">Knoten</string>
@@ -53,7 +53,7 @@
     <string name="info26">Gibbous Mond</string>
     <string name="info27">Der Mond is gibbous wenn mehr als die Hälfte sichtbar ist.</string>
     <string name="info28">Rote Mond</string>
-    <string name="info29">Rote Mond ist die erste Lunation nach Ostern, zwischen 10. April und 10. Mai für 2013.</string>
+    <string name="info29">Rote Mond ist die erste Lunation nach Ostern, zwischen 5. April und 5. Mai für 2019.</string>
     <string name="info30">Wenn Sie ein Blatttag, Wurzeltag&#8230; suchen wollen, klicken Sie bitte auf entschprenchend Text.</string>
     <string name="info31">Räte</string>
     <string name="info32">Während aufsteigender Mond säen.</string>
