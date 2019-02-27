@@ -15,8 +15,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-//todo: utiliser stringbuilder.append
-
 public class ConseilsDuMois extends Activity
 {
     private static String htmltxt;
@@ -32,7 +30,7 @@ public class ConseilsDuMois extends Activity
             super.onCreate(savedInstanceState);
             setContentView(R.layout.conseilsdumois);
             //Toast.makeText(getApplicationContext(), "Veuillez patienter..", Toast.LENGTH_SHORT).show();
-            t =(TextView) findViewById(R.id.infosmois);
+            t = findViewById(R.id.infosmois);
 
             //myTextView.setText(Html.fromHtml("<h2>Title</h2><br><p>Description here</p>"));
             Resources myRes = getResources();
@@ -59,13 +57,14 @@ public class ConseilsDuMois extends Activity
                     BufferedReader buffreader = new BufferedReader(inputreader);
                     Log.d("message", message);
                     String line;
-                    String linetot = "";
+                    StringBuilder linetot = new StringBuilder();
+
                     while ((line = buffreader.readLine()) != null)
                     {
-                        linetot += line;
+                        linetot.append(line);
                         Log.d("line", line);
                     }
-                    htmltxt = linetot;
+                    htmltxt = linetot.toString();
                     /*
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         t.setText(Html.fromHtml(htmltxt, Html.FROM_HTML_MODE_COMPACT));
@@ -180,11 +179,14 @@ public class ConseilsDuMois extends Activity
             BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open(s)));
 
             String st;
+            StringBuilder linetot = new StringBuilder();
             while ((st = br.readLine()) != null)
             {
                 System.out.println(st);
-                htmltxt = htmltxt + "\n" + st;
+                linetot.append("\n");
+                linetot.append(st);
             }
+            htmltxt = linetot.toString();
         }
         catch (Exception e)
         {
