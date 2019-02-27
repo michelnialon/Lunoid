@@ -19,9 +19,9 @@
         android:layout_width="wrap_content"
         android:layout_height="0dip"
         android:layout_weight="0.20"
-        android:background="#000000"
+        android:background="@drawable/ciel_etoiles"
         android:orientation="horizontal"
-        android:padding="10sp" >
+        android:padding="10sp">
 
         <ImageView
             android:id="@+id/imageLune"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:contentDescription="@string/desc"
-            android:src="@drawable/lune024" />
+            android:src="@drawable/lune024"/>
 
         <TextView
             android:id="@+id/textCoucher"
@@ -38,7 +38,7 @@
             android:layout_alignParentRight="true"
             android:text="21:43"
             android:textColor="#FFFF00"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/textLever"
@@ -48,15 +48,17 @@
             android:layout_alignParentTop="true"
             android:text="05:29"
             android:textColor="#FFFF00"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
+
         <TextView
             android:id="@+id/TextView01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/textLever"
             android:text="@string/lever"
             android:textColor="#C0C0C0"
-            android:layout_below="@+id/textLever"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
+
         <TextView
             android:id="@+id/TextView02"
             android:layout_width="wrap_content"
@@ -65,253 +67,386 @@
             android:layout_alignParentRight="true"
             android:text="@string/coucher"
             android:textColor="#C0C0C0"
-            android:textSize="18sp" />
-        <!--  
-<TextView
-            android:id="@+id/TextJour"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/textPct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageLune"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="-"
-            android:textColor="#FFFF00"         
-       		android:clickable="true"
-            android:textSize="22sp" />
-     -->   
+            android:layout_marginTop="209dp"
+            android:text="53%"
+            android:textColor="#d3d5d6"
+            android:textSize="16sp"/>
 
     </RelativeLayout>
-
-<TextView
-    android:id="@+id/TextJour"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
-    android:text="-"
-    android:textColor="#FFFF00"
-    android:background="#000000"
-    android:textSize="16sp" />
     
 </LinearLayout>
 
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:background="#222222"
-    android:baselineAligned="false"
-    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#222222"
+        android:baselineAligned="false"
+        android:orientation="vertical">
 
-    <!-- espace -->
-<TextView
+        <!-- espace -->
+        <TextView
             android:id="@+id/textvide2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
-            android:textSize="3sp" />
+            android:textSize="3sp"/>
 
-    <!-- croissant/decroissant -->
+        <!-- croissant/decroissant -->
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#565252"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textCroissant"
+        <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/croissant"
-            android:textColor="#FFFF00"
-            android:textSize="18sp" />
+            android:background="#565252"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textCroissant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/croissant"
+                android:textColor="#FFFF00"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/textDecroissant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/decroissant"
+                android:textColor="#666666"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!-- espace -->
         <TextView
-            android:id="@+id/textDecroissant"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/decroissant"
-            android:textColor="#666666"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <!-- espace -->
-<TextView
             android:id="@+id/textvide4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            
+
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
-            android:textSize="3sp" />
+            android:textSize="3sp"/>
 
-    <!-- montant/descendant -->
+        <!-- montant/descendant -->
 
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#565252"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textMontant"
+        <LinearLayout
+            android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/montant"
-            android:textColor="#666666"
-            android:textSize="18sp" />
+            android:background="#565252"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textMontant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/montant"
+                android:textColor="#666666"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/textDescendant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/descendant"
+                android:textColor="#FFFF00"
+                android:textSize="18sp"/>
+        </LinearLayout>
+        <!-- espace -->
         <TextView
-            android:id="@+id/textDescendant"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/descendant"
-            android:textColor="#FFFF00"
-            android:textSize="18sp" />
-    </LinearLayout>
-    <!-- espace -->
-<TextView
             android:id="@+id/textvide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
-            android:textSize="3sp" />
+            android:textSize="3sp"/>
 
-    <!-- feuilles/fleurs/fruits/racines -->
-
-    <LinearLayout
-        android:id="@+id/linearLayout7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#565252"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textFeuilles"
+        <!-- feuilles/fleurs/fruits/racines images-->
+        <LinearLayout
+            android:id="@+id/linearLayout70"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/feuilles"
-            android:textColor="#666666"
-            android:textSize="14sp" />
+            android:background="#565252"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textFruits"
+            <ImageView
+                android:id="@+id/imageFeuille"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="0.25"
+                android:baselineAligned="false"
+                android:src="@drawable/feuille30x30_grey"/>
+
+            <ImageView
+                android:id="@+id/imageFruit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="0.25"
+                android:baselineAligned="false"
+                android:src="@drawable/fruit30x30_grey"/>
+
+            <ImageView
+                android:id="@+id/imageRacine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="0.25"
+                android:baselineAligned="false"
+                android:src="@drawable/racine30x30_grey"/>
+
+            <ImageView
+                android:id="@+id/imageFleur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="0.25"
+                android:baselineAligned="false"
+                android:src="@drawable/fleur30x30_grey"/>
+        </LinearLayout>
+        <!-- feuilles/fleurs/fruits/racines textes-->
+        <LinearLayout
+            android:id="@+id/linearLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/fruits"
-            android:textColor="#666666"
-            android:textSize="14sp" />
+            android:background="#565252"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textRacines"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/racines"
-            android:textColor="#666666"
-            android:textSize="14sp" />
+            <TextView
+                android:id="@+id/textFeuilles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/feuilles"
+                android:textColor="#666666"
+                android:textSize="12sp"/>
 
+            <TextView
+                android:id="@+id/textFruits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/fruits"
+                android:textColor="#666666"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/textRacines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/racines"
+                android:textColor="#666666"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/textFleurs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/fleurs"
+                android:textColor="#FFFF00"
+                android:textSize="12sp"/>
+        </LinearLayout>
+        <!-- espace -->
         <TextView
-            android:id="@+id/textFleurs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/fleurs"
-            android:textColor="#FFFF00"
-            android:textSize="14sp" />
-    </LinearLayout>
-    <!-- espace -->
-<TextView
             android:id="@+id/textvide21"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
-            android:textSize="3sp" />
+            android:textSize="3sp"/>
 
-    <!-- Perigee/Apogee/Noeud -->
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#565252"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textPerigee"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_weight="0.1"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/perigee"
-            android:textColor="#666666"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textApogee"
+        <!-- Perigee/Apogee/Noeud -->
+        <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/apogee"
-            android:textColor="#666666"
-            android:textSize="16sp" />
+            android:background="#565252"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:id="@+id/linearLayout31"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+                android:background="#565252"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textPerigeeHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="88:88"
+                    android:textColor="#666666"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/textPerigee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/perigee"
+                    android:textColor="#666666"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout32"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+                android:background="#565252"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textApogeeHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="88:88"
+                    android:textColor="#666666"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/textApogee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="@string/apogee"
+                    android:textColor="#666666"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout33"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.33"
+                android:background="#565252"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textNoeudHour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:text="88:88"
+                    android:textColor="#666666"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/textNoeud"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/noeudlunaire"
+                    android:textColor="#FF0000"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <!-- espace -->
         <TextView
-            android:id="@+id/textNoeud"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.1"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="@string/noeudlunaire"
-            android:textColor="#FF0000"
-            android:textSize="16sp" />
-    </LinearLayout>
-    <!-- espace -->
-<TextView
             android:id="@+id/textvide22"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
-            android:textSize="3sp" />
+            android:textSize="3sp"/>
 
-<LinearLayout
-    android:id="@+id/linearLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
-
-        <DatePicker
-            android:id="@+id/datePicker1"
+        <TextView
+            android:id="@+id/TextJour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#000000"
+            android:onClick="datePicker"
             android:gravity="center_horizontal"
-            android:datePickerMode="spinner"
-            android:spinnersShown="true"
-            />
-    </LinearLayout>
+            android:text="Dimanche 17 Février 2019"
+            android:textColor="#FFFF00"
+            android:textSize="20sp"/>
 
+        <TextView
+            android:id="@+id/textvide22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/vide"
+            android:textSize="3sp"/>
 
-    <!--
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal">
+
+            <DatePicker
+                android:id="@+id/datePicker1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:datePickerMode="spinner"
+                android:gravity="center_horizontal"
+                android:spinnersShown="true"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout34"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <com.google.android.gms.ads.doubleclick.PublisherAdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/publisherAdView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-4468029712209847/4219671648">
+            </com.google.android.gms.ads.doubleclick.PublisherAdView>
+        </LinearLayout>
+        <!--
      Quitter 
     <Button
         android:id="@+id/btnClose"
@@ -320,7 +455,7 @@
         android:text="@string/quitter" >
 	</Button>
     -->
-</LinearLayout>
+    </LinearLayout>
 
 <!-- Moon  	-->
 
