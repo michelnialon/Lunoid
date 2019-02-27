@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Calendrier lunaire 2018</string>
+    <string name="app_descr">Calendrier lunaire 2019</string>
     <string name="apogee">APOGEE</string>
     <string name="perigee">PERIGEE</string>
     <string name="noeudlunaire">NOEUD</string>
@@ -31,13 +31,13 @@
     <string name="info4">Lune croissante/décroissante</string>
     <string name="info5">La lune est croissante quand la partie visible est de plus en plus importante d’un jour à l’autre.</string>
     <string name="info6">Apogée</string>
-    <string name="info7">La lune est à son apogée quand elle est au plus loin de la terre, à une distance de 406700 km.</string>
+    <string name="info7">La lune est à son apogée quand elle est au plus loin de la terre, à une distance moyenne de 406700 km.</string>
     <string name="info8">Périgée</string>
-    <string name="info9">La lune est au périgée quand elle est le plus près de la Terre, à une distance de 356500 km.</string>
+    <string name="info9">La lune est au périgée quand elle est le plus près de la Terre, à une distance moyenne de 356500 km.</string>
     <string name="info10">Nœud</string>
     <string name="info11">Un nœud correspond au moment où la lune coupe le plan de rotation de la Terre autour du Soleil. Le nœud est soit descendant quand la Lune est en période descendante ou montant quand la Lune est montante.</string>
     <string name="info12">Jours néfastes</string>
-    <string name="info13">L\'apogée, périgée, les nœuds lunaires montants ou descendants correspondent à des périodes néfastes pour les cultures et où il faut s’abstenir de tous travaux, au moins dans la période située entre 5 heures avant et 5 heures après l\'événement. Ils sont indiqués en rouge.</string>
+    <string name="info13">L\'apogée, périgée, les nœuds lunaires montants ou descendants correspondent à des périodes néfastes pour les cultures et où il faut s’abstenir de tous travaux, au moins dans la période située entre 5 heures avant et 5 heures après l\'événement.</string>
     <string name="info14">Jours fleurs</string>
     <string name="info15">Période à privilégier pour la culture des légumes fleurs : chou-fleur, artichaut, brocoli. Les jours fleurs correspondent au passage de la lune devant une constellation en affinité avec l\'élément Air, à savoir Gémeaux, Balance ou Verseau.</string>
     <string name="info16">Jours fruits</string>
@@ -53,7 +53,7 @@
     <string name="info26">Lune gibbeuse</string>
     <string name="info27">La lune est gibbeuse lorsque la partie visible est plus importante que la partie non visible. Cela correspond donc, en lune croissante, à la période entre le premier quartier et la pleine lune, et en lune décroissante, à la période entre la pleine lune et le dernier quartier.</string>
     <string name="info28">Lune rousse</string>
-    <string name="info29">La lune rousse est la première lunaison (entre deux nouvelles lunes) après Pâques. Pour 2017, c\'est la période entre le 26 avril et le 25 mai. C\'est une période où les risques de gelée sont importants pour les jeunes pousses non protégées, les nuits sans nuages.</string>
+    <string name="info29">La lune rousse est la première lunaison (entre deux nouvelles lunes) après Pâques. Pour 2019, c\'est la période entre le 5 avril et le 5 mai. C\'est une période où les risques de gelée sont importants pour les jeunes pousses non protégées, les nuits sans nuages.</string>
     <string name="info30">Pour rechercher un type de jour particulier, montant, croissant, fleurs&#8230;, tapoter une fois son libellé.</string>
     <string name="info31">Conseils</string>
     <string name="info32">Semer en lune montante. Tondre et tailler en lune descendante. Greffer en lune montante.</string>
@@ -61,9 +61,9 @@
     <string name="info34">Planter et repiquer en lune descendante.</string>
     <string name="info35">Faire les travaux du sol, enfouir les engrais et les amendements en lune descendante.</string>
     <string name="info36">Prélever les boutures en lune descendante.</string>
-    <string name="info37">Récolter les légumes racines et bulbes en lune descendante.    PS. Merci à Isabelle pour son aide et le contrôle scrupuleux des données</string>
+    <string name="info37">Récolter les légumes racines et bulbes en lune descendante. </string>
     <string name="info38">Lune bleue</string>
-    <string name="info39">On appelle lune bleue la deuxième pleine lune survenant dans le même mois.</string>
+    <string name="info39">On appelle lune bleue la deuxième pleine lune survenant dans le même mois. Il y a eu une lune bleue en 2018, le 31 janvier.</string>
     <string name="infos">Infos</string>
     <string name="notfound">Non trouvé</string>
     <string name="params">Paramètres</string>
