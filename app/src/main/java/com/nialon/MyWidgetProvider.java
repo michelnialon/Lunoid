@@ -226,7 +226,9 @@ public class MyWidgetProvider extends AppWidgetProvider
                 mapNoeud.put(separated[0],separated[7]);
                 mapMontant.put(separated[0],separated[9]);
             }
-        } catch (IOException e) {}
+        } catch (IOException e) {
+            Log.e("Lunoid", "exception", e);
+        }
     }
     private static String heurelocale(String s, Date d, boolean lh)
     {
