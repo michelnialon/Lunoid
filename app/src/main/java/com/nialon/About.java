@@ -3,39 +3,37 @@ package com.nialon;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Gravity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
  
 public class About extends Activity
 {
 	TextView textTitre;
-	TextView textVer;
 	TextView textAuth;
 	TextView textDate;
-	private Button closeButton;
-	
+
 	public void onCreate(Bundle savedInstanceState) 
 	{
+		Button closeButton;
+        // Pour enlever la barre de titre :
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.about);
 		
-		textTitre = (TextView) findViewById(R.id.textTitre);
-		textAuth = (TextView) findViewById(R.id.textAuth);
-		textDate = (TextView) findViewById(R.id.textDate);
-		textTitre.setText("LUNOID");
-		textAuth.setText("Michel Nialon");
-		textDate.setText("26/02/2019");
+		textTitre = findViewById(R.id.textTitre);
+		textAuth = findViewById(R.id.textAuth);
+		textDate =  findViewById(R.id.textDate);
+		textTitre.setText(getString(R.string.app_name));
+		textAuth.setText(getString(R.string.app_author));
+		textDate.setText(getString(R.string.app_date));
 		
-		// Pour enlever la barre de titre :
-//		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
-		/** Format title */
+		/* Format title */
         /*
         TextView title = (TextView) findViewById(android.R.id.title);
         title.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
@@ -53,12 +51,12 @@ public class About extends Activity
 	    {
 	        e.printStackTrace();
 	    }
-	    TextView tv = (TextView) findViewById(R.id.textVer);
+	    TextView tv = findViewById(R.id.textVer);
 	    tv.setText(versionName);
 	    
 	    //Bouton OK, pas utilisé
-	    closeButton = (Button)this.findViewById(R.id.buttonOK);
-	    this.closeButton.setOnClickListener(new OnClickListener()
+	    closeButton = this.findViewById(R.id.buttonOK);
+	    closeButton.setOnClickListener(new OnClickListener()
 		  {
 		    @Override
 		    public void onClick(View v) 
