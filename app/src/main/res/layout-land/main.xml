@@ -406,7 +406,7 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:id="@+id/textvide22"
+            android:id="@+id/textvide220"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
