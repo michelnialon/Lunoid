@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayout2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    android:padding="5dp" >
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/linearLayout2"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:background="#000000"
+              android:orientation="vertical"
+              android:padding="5dp">
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="200dp"
-        android:layout_height="57dp"
+        android:layout_width="151dp"
+        android:layout_height="142dp"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="0dp"
         android:contentDescription="@string/desc"
-        android:src="@drawable/lunoid_logo" />
+        android:src="@drawable/lunoid256black"/>
 
     <TextView
         android:id="@+id/textDescr"
@@ -22,8 +25,8 @@
         android:layout_gravity="center_horizontal"
         android:paddingTop="5dp"
         android:text="@string/app_descr"
-        android:textColor="#CCCCCC00"
-        android:textSize="20sp" />
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/textTitre"
@@ -33,7 +36,7 @@
         android:paddingTop="5dp"
         android:text="Large Text"
         android:textColor="#FFFFFF00"
-        android:textSize="24sp" />
+        android:textSize="24sp"/>
 
     <TextView
         android:id="@+id/textVer"
@@ -42,8 +45,8 @@
         android:layout_gravity="center_horizontal"
         android:paddingTop="5dp"
         android:text="Version 2.6"
-        android:textColor="#CCCCCC00"
-        android:textSize="20sp" />
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/textDate"
@@ -52,25 +55,25 @@
         android:layout_gravity="center_horizontal"
         android:paddingTop="5dp"
         android:text="30/03/2013"
-        android:textColor="#CCCCCC00"
-        android:textSize="18sp" />
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/textAuth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="5dp"
         android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:text="Michel Nialon"
-        android:textColor="#CCCCCC00"
-        android:textSize="16sp" />
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="16sp"/>
 
     <Button
         android:id="@+id/buttonOK"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
-        android:text="@string/ok" />
+        android:text="@string/ok"/>
 
 </LinearLayout>
