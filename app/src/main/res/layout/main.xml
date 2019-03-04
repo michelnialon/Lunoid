@@ -421,7 +421,7 @@
 			android:calendarViewShown="false"
 			android:datePickerMode="spinner"
 			android:descendantFocusability="blocksDescendants"
-			android:endYear="2019"
+			android:endYear="2020"
 			android:fadeScrollbars="false"
 			android:fitsSystemWindows="false"
 			android:focusableInTouchMode="false"
