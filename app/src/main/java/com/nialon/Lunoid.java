@@ -1,5 +1,33 @@
 package com.nialon;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.DatePicker;
+import android.widget.DatePicker.OnDateChangedListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
+import com.google.android.gms.ads.doubleclick.PublisherAdView;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,43 +42,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.media.Image;
-import android.net.Uri;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
-import android.text.Layout;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.GestureDetector;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.DatePicker;
-import android.widget.DatePicker.OnDateChangedListener;
-import android.widget.ImageView;
-
-import android.widget.ScrollView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.view.MotionEvent;
-
-import android.os.Build;
-
 // ads
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
-import com.google.android.gms.ads.doubleclick.PublisherAdView;
-
-import static android.icu.lang.UCharacter.toLowerCase;
 
 
 // TODO : widget : fait
@@ -72,22 +64,22 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private static Boolean lh;
     public final static String EXTRA_MESSAGE = "com.nialon.Lunoid.MESSAGE";
     // ads
-    private InterstitialAd mInterstitialAd;
+    //private InterstitialAd mInterstitialAd;
 
-    static Map<String, String> mapLever = new HashMap<String, String>();
-    static Map<String, String> mapCoucher = new HashMap<String, String>();
-    Map<String, String> mapPhase = new HashMap<String, String>();
-    Map<String, String> mapJour = new HashMap<String, String>();
-    Map<String, String> mapApogee = new HashMap<String, String>();
-    Map<String, String> mapPerigee = new HashMap<String, String>();
-    Map<String, String> mapNoeud = new HashMap<String, String>();
-    Map<String, String> mapComment = new HashMap<String, String>();
-    Map<String, String> mapCroissant = new HashMap<String, String>();
-    Map<String, String> mapMontant = new HashMap<String, String>();
-    Map<String, String> mapQuartier= new HashMap<String, String>();
-    Map<String, String> mapSigne= new HashMap<String, String>();
-    Map<String, String> mapConseil= new HashMap<String, String>();
-    Map<String, String> mapEclair= new HashMap<String, String>();
+    static Map<String, String> mapLever = new HashMap<>();
+    static Map<String, String> mapCoucher = new HashMap<>();
+    Map<String, String> mapPhase = new HashMap<>();
+    Map<String, String> mapJour = new HashMap<>();
+    Map<String, String> mapApogee = new HashMap<>();
+    Map<String, String> mapPerigee = new HashMap<>();
+    Map<String, String> mapNoeud = new HashMap<>();
+    Map<String, String> mapComment = new HashMap<>();
+    Map<String, String> mapCroissant = new HashMap<>();
+    Map<String, String> mapMontant = new HashMap<>();
+   // Map<String, String> mapQuartier= new HashMap<>();
+    Map<String, String> mapSigne= new HashMap<>();
+    Map<String, String> mapConseil= new HashMap<>();
+    Map<String, String> mapEclair= new HashMap<>();
 
     TextView textLever;
     TextView textCoucher;
@@ -113,7 +105,6 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     ImageView imageFruit;
     ImageView imageRacine;
     ImageView imageFleur;
-    Layout lay;
 
     public void onDateChange(int year, int monthOfYear, int dayOfMonth)
     {
@@ -148,7 +139,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     String ecl2 = "lune0";
                     String ecl3;
                     int ph = Integer.parseInt(mapPhase.get(dateString));
-                    ecl3 = ecl2.concat(String.format("%02d", ph));
+                    ecl3 = ecl2.concat(String.format(Locale.getDefault(),"%02d", ph));
                     Log.d("ecl3", ecl3);
                     resId = getResources().getIdentifier(ecl3, "drawable", getPackageName());
                     Log.d("resid", Integer.toString(resId));
@@ -316,7 +307,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             }
         */
         // ads banner
-        PublisherAdView mPublisherAdView = (PublisherAdView) findViewById(R.id.publisherAdView);
+        PublisherAdView mPublisherAdView = findViewById(R.id.publisherAdView);
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
         mPublisherAdView.setAdSizes(AdSize.BANNER);
         //mPublisherAdView.setAdUnitId("ca-app-pub-4468029712209847/4219671648"); // prod ( à mettre dans le manifest )
@@ -344,37 +335,37 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         else {
             Log.d("Screen size : ", "Unknown");
         }
-        /** Format title */
-        TextView title = (TextView) findViewById(android.R.id.title);
+        /* Format title */
+        //TextView title =  findViewById(android.R.id.title);
         //title.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
         //title.setTextColor(Color.YELLOW);
         //title.setTextSize(20);
 
-        /** Get the id of views */
-        datePicker1 = (DatePicker)findViewById(R.id.datePicker1);
-        textLever = (TextView) findViewById(R.id.textLever);
-        textCoucher = (TextView) findViewById(R.id.textCoucher);
-        textFruits = (TextView) findViewById(R.id.textFruits);
-        textFleurs = (TextView) findViewById(R.id.textFleurs);
-        textFeuilles = (TextView) findViewById(R.id.textFeuilles);
-        textRacines = (TextView) findViewById(R.id.textRacines);
-        textApogee = (TextView) findViewById(R.id.textApogee);
-        textPerigee = (TextView) findViewById(R.id.textPerigee);
-        textPerigeeHour = (TextView) findViewById(R.id.textPerigeeHour);
-        textApogeeHour = (TextView) findViewById(R.id.textApogeeHour);
-        textNoeudHour = (TextView) findViewById(R.id.textNoeudHour);
-        textNoeud = (TextView) findViewById(R.id.textNoeud);
-        textCroissant = (TextView) findViewById(R.id.textCroissant);
-        textDecroissant = (TextView) findViewById(R.id.textDecroissant);
-        textMontant = (TextView) findViewById(R.id.textMontant);
-        textDescendant = (TextView) findViewById(R.id.textDescendant);
-        textJour = (TextView) findViewById(R.id.TextJour);
-        textPct = (TextView) findViewById(R.id.textPct);
-        imgLune = (ImageView)findViewById(R.id.imageLune);
-        imageFeuille = (ImageView)findViewById(R.id.imageFeuille);
-        imageFleur = (ImageView) findViewById(R.id.imageFleur);
-        imageFruit = (ImageView) findViewById(R.id.imageFruit);
-        imageRacine = (ImageView) findViewById(R.id.imageRacine);
+        /* Get the id of views */
+        datePicker1 = findViewById(R.id.datePicker1);
+        textLever = findViewById(R.id.textLever);
+        textCoucher = findViewById(R.id.textCoucher);
+        textFruits = findViewById(R.id.textFruits);
+        textFleurs = findViewById(R.id.textFleurs);
+        textFeuilles = findViewById(R.id.textFeuilles);
+        textRacines = findViewById(R.id.textRacines);
+        textApogee = findViewById(R.id.textApogee);
+        textPerigee =  findViewById(R.id.textPerigee);
+        textPerigeeHour =  findViewById(R.id.textPerigeeHour);
+        textApogeeHour = findViewById(R.id.textApogeeHour);
+        textNoeudHour =  findViewById(R.id.textNoeudHour);
+        textNoeud =  findViewById(R.id.textNoeud);
+        textCroissant =  findViewById(R.id.textCroissant);
+        textDecroissant = findViewById(R.id.textDecroissant);
+        textMontant =  findViewById(R.id.textMontant);
+        textDescendant = findViewById(R.id.textDescendant);
+        textJour = findViewById(R.id.TextJour);
+        textPct = findViewById(R.id.textPct);
+        imgLune = findViewById(R.id.imageLune);
+        imageFeuille = findViewById(R.id.imageFeuille);
+        imageFleur = findViewById(R.id.imageFleur);
+        imageFruit = findViewById(R.id.imageFruit);
+        imageRacine = findViewById(R.id.imageRacine);
 
         // Affichage ou non de l'heure de perigée suivant les parametres
         if (!prefs.getBoolean("perigeetime", false))
@@ -415,7 +406,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             }
         }
 
-        /** read data from csv text file */
+        /* read data from csv text file */
         read_data();
 
         dateDebut = new Date();
@@ -427,18 +418,16 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         dateFin.setMonth(0);
         dateFin.setYear(2020 - 1900);
 
-        sdf = new SimpleDateFormat("dd/MM/yyyy");
-        sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy");
+        sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault());
 
         date1= new Date(datePicker1.getYear()-1900, datePicker1.getMonth(), datePicker1.getDayOfMonth());
 
         datePicker1.init(datePicker1.getYear(), datePicker1.getMonth(), datePicker1.getDayOfMonth(),	listener);
-        // HoneyComb = 3
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-        {
-            datePicker1.setCalendarViewShown(false);
-            datePicker1.setSpinnersShown(true);
-        }
+
+        datePicker1.setCalendarViewShown(false);
+        datePicker1.setSpinnersShown(true);
+
 
         // ads
         /* show ad interstitial */
@@ -799,7 +788,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
 //        layout.setBackgroundColor(Color.BLACK);
         intent = new Intent(this, ConseilsDuMois.class);
         String message = "";
-        String message2= "";
+        String message2;
         String tableauMois[] = {"janvier", "fevrier", "mars" , "avril","mai", "juin", "juillet" , "aout", "septembre", "octobre", "novembre" , "decembre"};
 
         Log.d("y", Integer.toString(year));
@@ -937,7 +926,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         }
         if (message2.equals("0"))
         {
-            Toast.makeText(getApplicationContext(), "Pas de données pour ce jour", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         }
 
     }
