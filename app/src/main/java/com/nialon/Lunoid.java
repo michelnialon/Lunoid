@@ -713,6 +713,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     {
         String ds;
         Date td;
+
+        Log.d("nextj", C);
+        Log.d("datefin", dateFin.toString());
         Calendar c= Calendar.getInstance();
         //c.set(today.getYear(), today.getMonth(), today.getDate());
         c.set(datePicker1.getYear(), datePicker1.getMonth(), datePicker1.getDayOfMonth());
@@ -744,9 +747,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             while ((td.compareTo(dateFin) <0) && (!m.get(ds).equals(C)));
         }
         if (td.compareTo(dateFin) <0)
+        {
+            Log.d("1", c.toString());
             datePicker1.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-        else
+        }
+        else {
             Toast.makeText(getApplicationContext(), R.string.notfound, Toast.LENGTH_SHORT).show();
+        }
     }
     private static String heurelocale(String s, Date d, boolean lh)
     {
@@ -936,7 +943,6 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     }
     private void read_data()
     {
-        Date date1;
         Log.d("read_data", "begin");
         Resources myRes = getResources();
         InputStream lundata = myRes.openRawResource(R.raw.datalune);
@@ -981,37 +987,23 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
           return heurelocale(mapCoucher.get(dateString),date1,lh);
     }
 
-    /**
-     * This callback method, call DatePickerFragment class,
-     * DatePickerFragment class returns calendar view.
-     * @param view
-     */
     public void datePicker(View view)
     {
 
         DatePickerFragment fragment = new DatePickerFragment();
         fragment.show(getSupportFragmentManager(), "date");
     }
-    /**
-     * To receive a callback when the user sets the date.
-     * @param view
-     * @param year
-     * @param month
-     * @param day
-     */
+
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day)
     {
         Calendar cal = new GregorianCalendar(year, month, day);
+        Log.d("onDateSet", "");
         setDate(cal);
         onDateChange(year, month, day);
         datePicker1.updateDate(year, month, day);
     }
 
-    /**
-     * To set date on TextView
-     * @param calendar
-     */
     private void setDate(final Calendar calendar)
     {
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
