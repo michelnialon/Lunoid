@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
+    <string name="app_author">Michel Nialon</string>
+    <string name="app_date">02/03/2019</string>
     <string name="app_descr">Moon calendar 2019</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
