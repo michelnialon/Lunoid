@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.nialon"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 26
     }
 
