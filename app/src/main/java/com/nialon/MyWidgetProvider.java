@@ -129,6 +129,12 @@ public class MyWidgetProvider extends AppWidgetProvider
                 }
                 // montant / descendant
                 Log.d("montant ", mapMontant.get(dateString));
+                /*
+                switch (mapMontant.get(dateString))
+                {
+                    case "0":
+                }
+                 */
                 if (mapMontant.get(dateString).equals("0"))
                 {
                     remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechedescendante);
