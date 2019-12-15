@@ -19,13 +19,13 @@
         android:orientation="horizontal"
         android:padding="10sp">
 
-        <ImageView
-            android:id="@+id/imageLune"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:contentDescription="@string/desc"
-            android:src="@drawable/lune024"/>
+		<ImageView
+			android:id="@+id/imageLune"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:contentDescription="@string/desc"
+			android:src="@drawable/nlune13" />
 
         <TextView
             android:id="@+id/textCoucher"

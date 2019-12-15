@@ -1,9 +1,8 @@
-<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois d'Août quand la lune est descendante, en jour fleurs ?</font></h1>
+<h1><font color = #ffffff face="sans-serif-light">Que faire au mois d'Août quand la lune est descendante, en jour fleurs ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
+<h3><font color = #a9a9a9 face="sans-serif-light">
 * Repiquez les fleurs vivaces.<br/>
 * Repiquez les brocolis et les choux-fleurs.<br/>
 * Plantez les iris et les bulbes d'automne, crocus, ...<br/>
 * Divisez la pivoine.<br/>
-* Repiquez les pensées.<br/>
+* Repiquez les pensées.<br/></font></h3>

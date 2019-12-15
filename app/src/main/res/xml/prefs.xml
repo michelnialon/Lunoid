@@ -19,5 +19,9 @@
      android:key="perigeetime"
      android:summary="@string/heuredetail"
      android:title="@string/heureperigee" />
+  <CheckBoxPreference
+      android:key="infosmois"
+      android:summary="@string/infosmois"
+      android:title="@string/infosmoistitre" />
  </PreferenceCategory>
 </PreferenceScreen>

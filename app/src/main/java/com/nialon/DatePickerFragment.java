@@ -23,7 +23,7 @@ public class DatePickerFragment
         dateFin = new Date();
         dateFin.setDate(31);
         dateFin.setMonth(11);
-        dateFin.setYear(2019 - 1900);
+        dateFin.setYear(2020 - 1900);
 
         // Use the current date as the default date in the picker
         final Calendar c = Calendar.getInstance();

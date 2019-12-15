@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">¡Hola Mundo, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Calendario lunar 2019</string>
+    <string name="app_descr">Calendario lunar 2020</string>
     <string name="apogee">APOGEO</string>
     <string name="perigee">PERIGEO</string>
     <string name="noeudlunaire">NODO</string>
@@ -75,4 +75,6 @@
     <string name="heuredetail">Con o sin hora</string>
     <string name="localeGMT">Hora local u hora UTC</string>
     <string name="don">Hacer una donación</string>
+    <string name="infosmois">Mostrar información para el mes completo</string>
+    <string name="infosmoistitre">Información para el mes completo</string>
 </resources>

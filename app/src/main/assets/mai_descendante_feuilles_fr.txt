@@ -1,5 +1,4 @@
-<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois de Mai quand la lune est descendante, en jour feuilles ?</font></h1>
+<h1><font color = #ffffff face="sans-serif-light">Que faire au mois de Mai quand la lune est descendante, en jour feuilles ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
-* Plantez les aromatiques, thym, ciboulette, ... et les choux.<br/>
+<h3><font color = #a9a9a9 face="sans-serif-light">
+* Plantez les aromatiques, thym, ciboulette, ... et les choux.<br/></font></h3>

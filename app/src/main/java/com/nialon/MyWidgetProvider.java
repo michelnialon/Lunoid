@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 import java.util.TimeZone;
@@ -48,7 +49,7 @@ public class MyWidgetProvider extends AppWidgetProvider
 		Log.d("widget","onupdate");
 		try
         {
-            sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             date1 = Calendar.getInstance().getTime();
             dateString = sdf.format(date1);
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -71,7 +72,7 @@ public class MyWidgetProvider extends AppWidgetProvider
                     String ecl2 = "lune0";
                     String ecl3;
                     int ph = Integer.parseInt(mapPhase.get(dateString));
-                    ecl3 = ecl2.concat(String.format("%02d", ph));
+                    ecl3 = ecl2.concat(String.format(Locale.getDefault(), "%02d", ph));
                     Log.d("ecl3", ecl3);
                     int resId = context.getResources().getIdentifier(ecl3, "drawable", context.getPackageName());
                     Log.d("resid", Integer.toString(resId));
@@ -129,12 +130,23 @@ public class MyWidgetProvider extends AppWidgetProvider
                 }
                 // montant / descendant
                 Log.d("montant ", mapMontant.get(dateString));
-                /*
+
                 switch (mapMontant.get(dateString))
                 {
                     case "0":
+                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechedescendante);
+                    break;
+
+                    case "1":
+                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechemontante);
+                    break;
+
+                    case "2":
+                    case "3":
+                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechemontantedescendante);
+                    break;
                 }
-                 */
+/*
                 if (mapMontant.get(dateString).equals("0"))
                 {
                     remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechedescendante);
@@ -147,6 +159,7 @@ public class MyWidgetProvider extends AppWidgetProvider
                 {
                     remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechemontantedescendante);
                 }
+*/
                 Log.d("jour ", mapJour.get(dateString));
                 if (mapJour.get(dateString).contains("Feuilles"))
                 {

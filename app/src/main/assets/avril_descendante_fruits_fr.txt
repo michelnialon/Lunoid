@@ -1,6 +1,5 @@
-<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois d'Avril quand la lune est descendante, en jour fruits ?</font></h1>
+<h1><font color = #ffffff face="sans-serif-light">Que faire au mois d'Avril quand la lune est descendante, en jour fruits ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
+<h3><font color = #a9a9a9 face="sans-serif-light">
 * Plantez les arbustes fruitiers, fraisiers, framboisiers, myrtilliers...<br/>
-* Taillez les rosiers.<br/>
+* Taillez les rosiers.<br/></font></h3>

@@ -3,8 +3,8 @@
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
     <string name="app_author">Michel Nialon</string>
-    <string name="app_date">02/03/2019</string>
-    <string name="app_descr">Moon calendar 2019</string>
+    <string name="app_date">10/12/2019</string>
+    <string name="app_descr">Moon calendar 2020</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
     <string name="noeudlunaire">Node</string>
@@ -77,4 +77,6 @@
     <string name="heuredetail">With/without hour</string>
     <string name="localeGMT">Local time or UTC</string>
     <string name="don">Make a donation</string>
+    <string name="infosmois">Show information for the full month</string>
+    <string name="infosmoistitre">Info for the full month</string>
 </resources>

@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Calendrier lunaire 2019</string>
+    <string name="app_descr">Calendrier lunaire 2020</string>
     <string name="apogee">APOGEE</string>
     <string name="perigee">PERIGEE</string>
     <string name="noeudlunaire">NOEUD</string>
@@ -53,7 +53,7 @@
     <string name="info26">Lune gibbeuse</string>
     <string name="info27">La lune est gibbeuse lorsque la partie visible est plus importante que la partie non visible. Cela correspond donc, en lune croissante, à la période entre le premier quartier et la pleine lune, et en lune décroissante, à la période entre la pleine lune et le dernier quartier.</string>
     <string name="info28">Lune rousse</string>
-    <string name="info29">La lune rousse est la première lunaison (entre deux nouvelles lunes) après Pâques. Pour 2019, c\'est la période entre le 5 avril et le 5 mai. C\'est une période où les risques de gelée sont importants pour les jeunes pousses non protégées, les nuits sans nuages.</string>
+    <string name="info29">La lune rousse est la première lunaison (entre deux nouvelles lunes) après Pâques. Pour 2020, c\'est la période entre le 23 avril et le 22 mai. C\'est une période où les risques de gelée sont importants pour les jeunes pousses non protégées, les nuits sans nuages.</string>
     <string name="info30">Pour rechercher un type de jour particulier, montant, croissant, fleurs&#8230;, tapoter une fois son libellé.</string>
     <string name="info31">Conseils</string>
     <string name="info32">Semer en lune montante. Tondre et tailler en lune descendante. Greffer en lune montante.</string>
@@ -75,4 +75,6 @@
     <string name="heuredetail">Avec ou sans l\'heure</string>
     <string name="localeGMT">Heure locale ou heure UTC</string>
     <string name="don">Faire un don</string>
+    <string name="infosmois">Afficher les informations pour le mois complet</string>
+    <string name="infosmoistitre">Informations pour le mois complet</string>
 </resources>

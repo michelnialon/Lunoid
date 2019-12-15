@@ -1,5 +1,4 @@
-<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois d'Août quand la lune est montante, en jour racines ?</font></h1>
+<h1><font color = #ffffff face="sans-serif-light">Que faire au mois d'Août quand la lune est montante, en jour racines ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
-* Semez radis d'hiver, betteraves, navets et carottes.<br/>
+<h3><font color = #a9a9a9 face="sans-serif-light">
+* Semez radis d'hiver, betteraves, navets et carottes.<br/></font></h3>

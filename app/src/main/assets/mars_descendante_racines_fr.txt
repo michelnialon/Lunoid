@@ -1,7 +1,6 @@
-<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois de Mars quand la lune est descendante, en jour racines ?</font></h1>
+<h1><font color = #ffffff face="sans-serif-light">Que faire au mois de Mars quand la lune est descendante, en jour racines ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
+<h3><font color = #a9a9a9 face="sans-serif-light">
 * Plantez ails, oignons, échalottes, pommes de terre, topinambours.<br/>
 * Repiquez les poireaux.<br/>
 </font>

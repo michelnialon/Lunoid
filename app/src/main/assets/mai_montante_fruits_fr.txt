@@ -1,6 +1,5 @@
-<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois de Mai quand la lune est montante, en jour fruits ?</font></h1>
+<h1><font color = #ffffff face="sans-serif-light">Que faire au mois de Mai quand la lune est montante, en jour fruits ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
+<h3><font color = #a9a9a9 face="sans-serif-light">
 * Semez les courgettes, concombres, cornichons, haricots, pois ridés.<br/>
-* Semez les haricots, les pois ridés et le maïs.<br/>
+* Semez les haricots, les pois ridés et le maïs.<br/></font></h3>

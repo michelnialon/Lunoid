@@ -1,5 +1,4 @@
-<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois de Juillet quand la lune est descendante, en jour fruits ?</font></h1>
+<h1><font color = #ffffff face="sans-serif-light">Que faire au mois de Juillet quand la lune est descendante, en jour fruits ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
-* Plantez les fraisiers<br/>
+<h3><font color = #a9a9a9 face="sans-serif-light">
+* Plantez les fraisiers<br/></font></h3>

@@ -13,6 +13,8 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
+import android.view.Gravity;
+import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,13 +44,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
-// ads
-
-
-// TODO : widget : fait
-// TODO : possibilité de sauvegarder un mémo par jour
-// TODO : pub : fait
 // TODO : signes du zodiaque
+// todo : partager
+// todo : contact
+// todo : évaluer l'application
 
 public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateSetListener
 {
@@ -57,12 +56,17 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private SimpleDateFormat sdf2;
     static String dateString;
     String dateString2 ;
-    private static Date date1;
+    static Date date1;
     private Date dateDebut;
     private Date dateFin;
     private GestureDetector mGestureDetector;
     private static Boolean lh;
+    private static Boolean sifm;
     public final static String EXTRA_MESSAGE = "com.nialon.Lunoid.MESSAGE";
+    private static String htmltxt;
+    StringBuilder linetot = new StringBuilder();
+    String tableauMois[] = {"janvier", "fevrier", "mars" , "avril","mai", "juin", "juillet" , "aout", "septembre", "octobre", "novembre" , "decembre"};
+
     // ads
     //private InterstitialAd mInterstitialAd;
 
@@ -105,6 +109,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     ImageView imageFruit;
     ImageView imageRacine;
     ImageView imageFleur;
+    String InfosStr;
 
     public void onDateChange(int year, int monthOfYear, int dayOfMonth)
     {
@@ -226,6 +231,29 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             // Croissant/Decroissant
             textCroissant.setTextColor(mapCroissant.get(dateString).equals("1") ? Color.YELLOW : mapCroissant.get(dateString).equals("2") ? Color.YELLOW : Color.LTGRAY);
             textDecroissant.setTextColor(mapCroissant.get(dateString).equals("0") ? Color.YELLOW : mapCroissant.get(dateString).equals("2") ? Color.YELLOW : Color.LTGRAY);
+            InfosStr = "";
+            if (!mapComment.get(dateString).equals("")) {
+                InfosStr += mapComment.get(dateString);
+                if (mapEclair.get(dateString).equals("100")) {
+                    InfosStr += "\nPleine Lune";
+                }
+                if (mapEclair.get(dateString).equals("0")) {
+                    InfosStr += "\nNouvelle Lune";
+                }
+            }
+            else {
+                if (mapEclair.get(dateString).equals("100")) {
+                    InfosStr = "Pleine Lune";
+                }
+                if (mapEclair.get(dateString).equals("0")) {
+                    InfosStr = "Nouvelle Lune";
+                }
+            }
+            if (!InfosStr.equals("")) {
+                Toast InfosToast = Toast.makeText(getApplicationContext(), InfosStr, Toast.LENGTH_SHORT);
+                InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+                InfosToast.show();
+            }
         }
         else
         {
@@ -289,6 +317,14 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        /* to remove */
+/*
+        Locale locale = new Locale("fr");
+        Locale.setDefault(locale);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        config.locale = locale;
+*/
+        /* to remove */
         setContentView(R.layout.main);
         //setContentView(R.layout.main2);
 
@@ -318,6 +354,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         //SharedPreferences prefs = this.getSharedPreferences("com.nialon",Context.MODE_PRIVATE);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         lh = prefs.getBoolean("timezone", false);
+        sifm = prefs.getBoolean("infosmois", false);
 
         //Determine screen size
         if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
@@ -414,9 +451,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         dateDebut.setDate(1); // du 01/05/2012
         dateDebut.setMonth(4);
         dateDebut.setYear(2012 - 1900);
-        dateFin.setDate(1);   // au 31/12/2013
+        dateFin.setDate(1);   //
         dateFin.setMonth(0);
-        dateFin.setYear(2020 - 1900);
+        dateFin.setYear(2021 - 1900);
 
         sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault());
@@ -691,10 +728,20 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             intent = new Intent(this, PrefsActivity.class);
             startActivity(intent);
             return true;
+        /*
         case R.id.item4:
             intent = new Intent(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U6CX3ZNDSYFMQ")));
             startActivity(intent);
             return true;
+         */
+
+
+        case R.id.item5:
+            intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("market://details?id=com.nialon"));
+            startActivity(intent);
+            return true;
+
         }
         return false;
     }
@@ -784,19 +831,18 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private void DisplayInfosDuMois(int year, int month)
     {
         Intent intent;
-//        ScrollView layout = (ScrollView) findViewById(R.layout.conseilsdumois);
-//        layout.setBackgroundColor(Color.BLACK);
         intent = new Intent(this, ConseilsDuMois.class);
         String message = "";
-        String message2;
-        String tableauMois[] = {"janvier", "fevrier", "mars" , "avril","mai", "juin", "juillet" , "aout", "septembre", "octobre", "novembre" , "decembre"};
+        String type_message;
 
-        Log.d("y", Integer.toString(year));
-        Log.d("m", Integer.toString(month));
+        Log.d("DisplayInfosDuMois", Integer.toString(month) + "/" + Integer.toString(year));
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        linetot.setLength(0);
         if ((year >= 2016) && (year <=2018))
         {
-            message2 = "1";
+            type_message = "1";
             if ((month == 2)) {
                 message = "mars"  + Integer.toString(year);
             } else if ((month == 3)) {
@@ -813,122 +859,306 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             else
             {
                 message = "Pas d'informations pour cette période";
-                message2 = "0";
+                type_message = "0";
             }
-            if (message2.equals("1"))
+            if (type_message.equals("1"))
             {
                 Log.d("message", message);
                 intent.putExtra(EXTRA_MESSAGE, message);
-                intent.putExtra("type_message", message2);
+                intent.putExtra("type_message", type_message);
                 startActivity(intent);
             }
         }
         else if (year >= 2019)
         {
-            String hs12;
-            String ht12;
             String m1;
-            String s1;
-            String s2;
-            String t1;
-            String t2;
 
-            if (month >= 2 && month <= 7)
+            if (month >= 2 && month <= 8)
             {
-                hs12 = "";
-                s1 = "";
-                s2 = "";
                 m1 = tableauMois[month];
-                Log.d("montant", mapMontant.get(dateString).toLowerCase());
-                Log.d("jour", mapJour.get(dateString).toLowerCase());
-                Log.d("taille", Integer.toString(mapMontant.get(dateString).toLowerCase().length()));
-               // Log.d("sub", mapMontant.get(dateString).toLowerCase().substring(0,13));
-                if (mapMontant.get(dateString).substring(0,1).equals("0"))
+                sifm = prefs.getBoolean("infosmois", false);
+                if (sifm)
                 {
-                    s1 = "descendante";
-                    s2 = "";
-                }
-                if (mapMontant.get(dateString).substring(0,1).equals("1"))
-                {
-                    s1 = "montante";
-                    s2 = "";
-                }
-                if (mapMontant.get(dateString).substring(0,1).equals("2"))
-                {
-                    s1 = "montante";
-                    s2 = "descendante";
-                    hs12 = mapMontant.get(dateString).substring(2,7);
-                }
-                if (mapMontant.get(dateString).substring(0,1).equals("3"))
-                {
-                    s1 = "descendante";
-                    s2 = "montante";
-                    hs12 = mapMontant.get(dateString).substring(2,7);
-                }
-                if (mapJour.get(dateString).length() >= 15 &&  (mapJour.get(dateString)).toLowerCase().substring(0,15).equals("feuilles/fruits"))
-                {
-                    t1 = "feuilles";
-                    t2 =  "fruits";
-                    ht12 = mapJour.get(dateString).substring(15,21);
-                }
-                else if (mapJour.get(dateString).length() >= 14 && (mapJour.get(dateString)).toLowerCase().substring(0,14).equals("fruits/racines"))
-                {
-                    t1 = "fruits";
-                    t2 = "racines";
-                    ht12 = mapJour.get(dateString).substring(14,20);
-                }
-                else if (mapJour.get(dateString).length() >= 14 && (mapJour.get(dateString)).toLowerCase().substring(0,14).equals("racines/fleurs"))
-                {
-                    t1 = "racines";
-                    t2 = "fleurs";
-                    ht12 = mapJour.get(dateString).substring(14,20);
-                }
-                else if (mapJour.get(dateString).length() >= 15 && (mapJour.get(dateString)).toLowerCase().substring(0,15).equals("fleurs/feuilles"))
-                {
-                    t1 = "fleurs";
-                    t2 = "feuilles";
-                    ht12 = mapJour.get(dateString).substring(15,21);
+                    BuildConseilMois(month, year);
                 }
                 else
                 {
-                    t1 = mapJour.get(dateString).toLowerCase();
-                    t2 = "";
-                    ht12 = "";
+                    BuildConseilJour(dateString, date1, m1, dateString2);
                 }
-                message2 = "2";
-                message += tableauMois[month] + "_";
-                message += mapMontant.get(dateString).equals("1") ? "montante_" : "descendante_";
-                message += (mapJour.get(dateString)).toLowerCase();
-                message += "_fr.txt";
-                Log.d("message", message);
-                intent.putExtra(EXTRA_MESSAGE, message);
-                intent.putExtra("hs12", hs12);
-                intent.putExtra("ht12", ht12);
-                intent.putExtra("m1", m1);
-                intent.putExtra("s1", s1);
-                intent.putExtra("s2", s2);
-                intent.putExtra("t1", t1);
-                intent.putExtra("t2", t2);
-                intent.putExtra("type_message", message2);
+
+                type_message = "2";
+                intent.putExtra("type_message", type_message);
+                intent.putExtra("htmltxt", htmltxt);
 
                 startActivity(intent);
             }
             else
             {
                 message = "Pas d'informations pour cette période";
-                message2 = "0";
+                type_message = "0";
             }
         }
         else
         {
             message = "Pas d'informations pour cette période";
-            message2 = "0";
+            type_message = "0";
         }
-        if (message2.equals("0"))
+        if (type_message.equals("0"))
         {
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
         }
+    }
+    private void BuildConseilMois(int month, int year)
+    {
+        Calendar cal = new GregorianCalendar(year, month, 1);
+        int nbdays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        Date d1 = new Date();
+        String m;
+        String ds;
+        String ds2;
 
+        cal.set(Calendar.MONTH, month);
+        cal.set(Calendar.YEAR, year);
+
+        m = tableauMois[month];
+
+        for (Integer d=1; d<= nbdays; d++)
+        {
+            cal.set(Calendar.DAY_OF_MONTH, d);
+            d1.setTime(cal.getTimeInMillis());
+            ds = sdf.format(d1);
+            ds2 = sdf2.format(d1);
+            BuildConseilJour(ds, d1, m, ds2);
+            Log.d("d", d.toString());
+        }
+    }
+    private void BuildConseilJour(String ds, Date date1, String m1 , String ds2)
+    {
+        String hs12="";
+        String ht12;
+        String s1="";
+        String s2="";
+        String t1;
+        String t2;
+
+        addText("<font color = #ffff00 face=\"sans-serif-light\">" + ds2 + "</font>");
+
+        Log.d("BuildConseilJour", ds);
+        if (mapMontant.get(ds).substring(0,1).equals("0"))
+        {
+            s1 = "descendante";
+            s2 = "";
+        }
+        if (mapMontant.get(ds).substring(0,1).equals("1"))
+        {
+            s1 = "montante";
+            s2 = "";
+        }
+        if (mapMontant.get(ds).substring(0,1).equals("2"))
+        {
+            s1 = "montante";
+            s2 = "descendante";
+            hs12 = mapMontant.get(ds).substring(2,7);
+        }
+        if (mapMontant.get(ds).substring(0,1).equals("3"))
+        {
+            s1 = "descendante";
+            s2 = "montante";
+            hs12 = mapMontant.get(ds).substring(2,7);
+        }
+        if (mapJour.get(ds).length() >= 15 &&  (mapJour.get(ds)).toLowerCase().substring(0,15).equals("feuilles/fruits"))
+        {
+            t1 = "feuilles";
+            t2 =  "fruits";
+            ht12 = mapJour.get(ds).substring(15,21);
+        }
+        else if (mapJour.get(ds).length() >= 14 && (mapJour.get(ds)).toLowerCase().substring(0,14).equals("fruits/racines"))
+        {
+            t1 = "fruits";
+            t2 = "racines";
+            ht12 = mapJour.get(ds).substring(14,20);
+        }
+        else if (mapJour.get(ds).length() >= 14 && (mapJour.get(ds)).toLowerCase().substring(0,14).equals("racines/fleurs"))
+        {
+            t1 = "racines";
+            t2 = "fleurs";
+            ht12 = mapJour.get(ds).substring(14,20);
+        }
+        else if (mapJour.get(ds).length() >= 15 && (mapJour.get(ds)).toLowerCase().substring(0,15).equals("fleurs/feuilles"))
+        {
+            t1 = "fleurs";
+            t2 = "feuilles";
+            ht12 = mapJour.get(ds).substring(15,21);
+        }
+        else
+        {
+            t1 = mapJour.get(ds).toLowerCase();
+            t2 = "";
+            ht12 = "";
+        }
+        BuildHTMLJour( s1,  s2,  t1,  t2,  m1,  ht12,  hs12, ds2);
+
+        testApogee(date1, ds);
+        testPerigee(date1, ds);
+        testNoeud(date1, ds);
+        addText("************");
+        htmltxt = linetot.toString();
+    }
+    private void testApogee(Date d1, String ds)
+    {
+        if (!mapApogee.get(ds).equals("0"))
+        {
+            String apogeelocal = heurelocale(mapApogee.get(ds),d1 ,lh);
+            addText("<font color=#ff0000>Apogée à " +apogeelocal);
+            Integer h1 = Integer.parseInt(apogeelocal.substring(0,2));
+            if (apogeelocal.compareTo("05:00") < 0)
+            {
+                h1 +=5;
+                addText(" -> Ne pas jardiner avant " + h1.toString() + "h"  + "</font>");
+            }
+            else if ((apogeelocal.compareTo("19:00") < 0))
+            {
+                h1 -= 5;
+                addText(" -> Ne pas jardiner entre " + h1.toString() + "h et " + ((Integer)(h1+10)).toString() + "h </font>");
+            }
+            else if ((apogeelocal.compareTo("19:00") >= 0))
+            {
+                h1 -= 5;
+                addText(" -> Ne pas jardiner après " + h1.toString() + "h </font>");
+            }
+        }
+    }
+    private void testPerigee(Date d1, String ds)
+    {
+        if (!mapPerigee.get(ds).equals("0"))
+        {
+            String perigeelocal = heurelocale(mapPerigee.get(ds),d1 ,lh);
+            addText("<font color=#ff0000>Périgée à " + perigeelocal);
+            Integer h1 = Integer.parseInt(perigeelocal.substring(0,2));
+            if (perigeelocal.compareTo("05:00") < 0)
+            {
+                h1 +=5;
+                addText(" -> Ne pas jardiner avant " + h1.toString() + "h"  + "</font>");
+            }
+            else if ((perigeelocal.compareTo("19:00") < 0))
+            {
+                h1 -= 5;
+                addText(" -> Ne pas jardiner entre " + h1.toString() + "h et " + ((Integer)(h1+10)).toString() + "h </font>");
+            }
+            else if ((perigeelocal.compareTo("19:00") >= 0))
+            {
+                h1 -= 5;
+                addText(" -> Ne pas jardiner après " + h1.toString() + "h </font>");
+            }
+        }
+    }
+    private void testNoeud(Date d1, String ds)
+    {
+        Log.d("testnoeud", ds);
+        if (!mapNoeud.get(ds).equals("0"))
+        {
+            String noeudlocal = heurelocale(mapNoeud.get(ds),d1 ,lh);
+            addText("<font color=#ff0000>Nœud à " + noeudlocal);
+            Integer h1 = Integer.parseInt(noeudlocal.substring(0,2));
+            if (noeudlocal.compareTo("05:00") < 0)
+            {
+                h1 +=5;
+                addText(" -> Ne pas jardiner avant " + h1.toString() + "h"  + "</font>");
+            }
+            else if ((noeudlocal.compareTo("19:00") < 0))
+            {
+                h1 -= 5;
+                addText(" -> Ne pas jardiner entre " + h1.toString() + "h et " + ((Integer)(h1+10)).toString() + "h </font>");
+            }
+            else if ((noeudlocal.compareTo("19:00") >= 0))
+            {
+                h1 -= 5;
+                addText(" -> Ne pas jardiner après " + h1.toString() + "h </font>");
+            }
+        }
+    }
+    private void BuildHTMLJour(String s1, String s2, String t1, String t2, String m1, String ht12, String hs12, String jour)
+    {
+        Log.d("BuildHTMLJour", s1);
+
+        Log.d("d",  "<font color = #ffff00 face=\"sans-serif-light\">Date:" + jour + "</font>");
+        if (!s1.equals("") && s2.equals(""))
+        {
+            if (!t1.equals("") && t2.equals(""))
+            {
+                addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_fr.txt");
+            }
+            if (!t1.equals("") && !t2.equals(""))
+            {
+                addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_fr.txt");
+                addText("<font color=#ffff00>" + ht12 + "</font>");
+                addTextFromFile(m1 + "_" + s1 + "_" + t2 + "_fr.txt");
+            }
+        }
+        if (!s1.equals("") && !s2.equals(""))
+        {
+            if (!t1.equals("") && t2.equals(""))
+            {
+                addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_fr.txt");
+                addText("<font color=#ffff00>" +  hs12 + "</font>" );
+                addTextFromFile(m1 + "_" + s2 + "_" + t1 + "_fr.txt");
+            }
+            if (!t1.equals("") && !t2.equals(""))
+            {
+                if (hs12.compareTo(ht12) < 0)
+                {
+                    addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_fr.txt");
+                    addText("<font color=#ffff00>" +  hs12 + "</font>" );
+                    addTextFromFile(m1 + "_" + s2 + "_" + t1 + "_fr.txt");
+                    System.out.println(m1 + "_" + s2 + "_" + t1 + "_fr.txt");
+                    addText("<font color=#ffff00>" +  ht12  + "</font>");
+                    addTextFromFile(m1 + "_" + s2 + "_" + t2 + "_fr.txt");
+                }
+                if (hs12.compareTo(ht12) > 0)
+                {
+                    addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_fr.txt");
+                    addText( "<font color=#ffff00>" +  ht12 + "</font>");
+                    addTextFromFile(m1 + "_" + s1 + "_" + t2 + "_fr.txt");
+                    addText("<font color=#ffff00>" +  hs12 + "</font>" );
+                    addTextFromFile(m1 + "_" + s2 + "_" + t2 + "_fr.txt");
+                }
+                if (hs12.compareTo(ht12) == 0)
+                {
+                    addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_fr.txt");
+                    addText( "<font color=#ffff00>" +  hs12 + "</font>");
+                    addTextFromFile(m1 + "_" + s2 + "_" + t2 + "_fr.txt");
+                }
+            }
+        }
+    }
+    private void addTextFromFile(String s)
+    {
+        Log.d("addTextFromFile", s);
+
+        try
+        {
+            BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open(s)));
+
+            String st;
+
+            while ((st = br.readLine()) != null)
+            {
+                System.out.println(st);
+                linetot.append("\n");
+                linetot.append(st);
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("Something went wrong.");
+        }
+    }
+
+    private  void addText(String s)
+    {
+        Log.d("addText ", s);
+        linetot.append("<br/>");
+        linetot.append(s);
     }
     private void read_data()
     {

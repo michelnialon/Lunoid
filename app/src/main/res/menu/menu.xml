@@ -1,10 +1,13 @@
 
-    <menu xmlns:android="http://schemas.android.com/apk/res/android">
-        <item android:id="@+id/item1" 
-            android:icon="@android:drawable/ic_menu_info_details"
+    <menu xmlns:tools="http://schemas.android.com/tools"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/item1"
+            android:icon="@android:drawable/ic_dialog_info"
             android:title="@string/apropos">
         </item>
-        <item android:id="@+id/item2" 
+        <item
+            android:id="@+id/item2"
             android:icon="@android:drawable/ic_menu_help"
             android:title="@string/infos">
         </item>
@@ -12,8 +15,14 @@
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/params">
         </item>
+        <!--
         <item android:id="@+id/item4" 
             android:icon="@android:drawable/ic_menu_share"
             android:title="@string/don">
+        </item>
+                    -->
+        <item android:id="@+id/item5"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="Google Play">
         </item>
     </menu>

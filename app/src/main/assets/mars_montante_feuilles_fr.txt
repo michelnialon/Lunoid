@@ -1,5 +1,4 @@
-﻿<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois de Mars quand la lune est montante, en jour feuilles ?</font></h1>
+﻿<h1><font color = #ffffff face="sans-serif-light">Que faire au mois de Mars quand la lune est montante, en jour feuilles ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
-* Semez épinards de printemps, oseille, persil, choux, choux de bruxelles, laitue.<br/>
+<h3><font color = #a9a9a9 face="sans-serif-light">
+* Semez épinards de printemps, oseille, persil, choux, choux de bruxelles, laitue.<br/></font></h3>

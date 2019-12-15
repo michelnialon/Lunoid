@@ -1,5 +1,4 @@
-<h1><font color = #ffff00 face="sans-serif-light">Que faire au mois d'Avril quand la lune est montante, en jour feuilles ?</font></h1>
+<h1><font color = #ffffff face="sans-serif-light">Que faire au mois d'Avril quand la lune est montante, en jour feuilles ?</font></h1>
 <br/>
-<h3>
-<font color = #ffff00 face="sans-serif-light">
-* Semez épinards, oseille, persil, choux, choux de bruxelles, salades.<br/>
+<h3><font color = #a9a9a9 face="sans-serif-light">
+* Semez épinards, oseille, persil, choux, choux de bruxelles, salades.<br/></font></h3>
