@@ -79,4 +79,9 @@
     <string name="don">Make a donation</string>
     <string name="infosmois">Show information for the full month</string>
     <string name="infosmoistitre">Info for the full month</string>
+    <string name="app_email">mnialon@gmail.com</string>
+    <string name="share">Share this application</string>
+    <string name="check_version">Check if a new version is available</string>
+    <string name="comment">Send a comment or suggestion</string>
+    <string name="display_advices">Display the advices for the day</string>
 </resources>

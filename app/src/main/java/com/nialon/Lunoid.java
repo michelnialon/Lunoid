@@ -46,8 +46,11 @@ import java.util.TimeZone;
 
 // TODO : signes du zodiaque
 // todo : partager
-// todo : contact
+// todo : envoyer un commentaire
 // todo : évaluer l'application
+// todo : vérifier nouvelle version
+
+
 
 public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateSetListener
 {
@@ -742,6 +745,34 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             startActivity(intent);
             return true;
 
+        case R.id.item6:
+        intent = new Intent(android.content.Intent.ACTION_SEND);
+        intent.setType("text/html");
+        //share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+        // Add data to the intent, the receiving app will decide
+        // what to do with it.
+        intent.putExtra(Intent.EXTRA_SUBJECT,  getResources().getString(R.string.app_name));
+        intent.putExtra(Intent.EXTRA_TEXT, "Cette application pourrait t'intéresser : Lunoid sur google play");
+        intent.putExtra(Intent.EXTRA_HTML_TEXT, "Cette application pourrait t'intéresser : Lunoid sur google play" );
+
+        startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
+
+        case R.id.item7:
+            intent = new Intent(android.content.Intent.ACTION_SEND);
+            intent.setType("text/html");
+            //share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+            // Add data to the intent, the receiving app will decide
+            // what to do with it.
+            intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
+            intent.putExtra(Intent.EXTRA_TEXT, "Cette application pourrait t'intéresser : Lunoid sur google play");
+            intent.putExtra(Intent.EXTRA_HTML_TEXT, "Cette application pourrait t'intéresser : Lunoid sur google play" );
+            intent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { "mnialon@gmail.com" });
+
+            startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
+        case R.id.item8:
+            DisplayInfosDuMois(datePicker1.getYear(), datePicker1.getMonth());
         }
         return false;
     }

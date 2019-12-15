@@ -77,4 +77,8 @@
     <string name="don">Hacer una donación</string>
     <string name="infosmois">Mostrar información para el mes completo</string>
     <string name="infosmoistitre">Información para el mes completo</string>
+    <string name="check_version">Verificar si hay una nueva versión</string>
+    <string name="comment">Contacte con el desarrollador</string>
+    <string name="share">Compartir esta aplicación</string>
+    <string name="display_advices">Ver consejos para el día/mes</string>
 </resources>

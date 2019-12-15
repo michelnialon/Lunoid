@@ -78,4 +78,8 @@
     <string name="don">Spende</string>
     <string name="infosmois">" Informationen für den ganzen Monat anzeigen"</string>
     <string name="infosmoistitre">" Informationen für den ganzen Monat"</string>
+    <string name="check_version">Neue Version überprüfen</string>
+    <string name="comment">Kontaktieren Sie den Entwickler</string>
+    <string name="share">Diese Anwendung teilen</string>
+    <string name="display_advices">Tipps für den Tag/Monat anzeigen</string>
 </resources>
