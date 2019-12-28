@@ -49,6 +49,7 @@ public class MyWidgetProvider extends AppWidgetProvider
 		Log.d("widget","onupdate");
 		try
         {
+            Log.d("widget", "init");
             sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             date1 = Calendar.getInstance().getTime();
             dateString = sdf.format(date1);
@@ -97,12 +98,17 @@ public class MyWidgetProvider extends AppWidgetProvider
                 }
                 // ANDPNA :apogee
                 Log.d("apogee ", mapApogee.get(dateString));
-                remoteViews.setTextViewText(R.id.heureevt, "--:--");
+                remoteViews.setTextViewText(R.id.heureevt, "88:88");
                 remoteViews.setTextViewText(R.id.descevt, "-----");
+                remoteViews.setTextColor(R.id.heureevt, Color.rgb(96,96,96));
+                remoteViews.setTextColor(R.id.descevt, Color.rgb(96,96,96));
+
                 if (!mapApogee.get(dateString).equals("0"))
                 {
                     remoteViews.setTextViewText(R.id.descevt, "A----");
                     remoteViews.setTextViewText(R.id.heureevt, heurelocale(mapApogee.get(dateString),date1,lh));
+                    remoteViews.setTextColor(R.id.heureevt, Color.RED);
+                    remoteViews.setTextColor(R.id.descevt, Color.RED);
                 }
                 else {
                     // perigee
@@ -111,6 +117,8 @@ public class MyWidgetProvider extends AppWidgetProvider
                     {
                         remoteViews.setTextViewText(R.id.descevt, "---P-");
                         remoteViews.setTextViewText(R.id.heureevt, heurelocale(mapPerigee.get(dateString),date1,lh));
+                        remoteViews.setTextColor(R.id.heureevt, Color.RED);
+                        remoteViews.setTextColor(R.id.descevt, Color.RED);
                     } else
                     {
                         // noeud
@@ -119,11 +127,17 @@ public class MyWidgetProvider extends AppWidgetProvider
                             remoteViews.setTextViewText(R.id.descevt, "-----");
                         } else if (mapNoeud.get(dateString).equals("88:88")) {
                             remoteViews.setTextViewText(R.id.descevt, "-N---");
+                            remoteViews.setTextColor(R.id.heureevt, Color.RED);
+                            remoteViews.setTextColor(R.id.descevt, Color.RED);
                         } else if (mapNoeud.get(dateString).substring(5, 6).equals("+")) {
                             remoteViews.setTextViewText(R.id.descevt, "---NA");
+                            remoteViews.setTextColor(R.id.heureevt, Color.RED);
+                            remoteViews.setTextColor(R.id.descevt, Color.RED);
                             remoteViews.setTextViewText(R.id.heureevt, heurelocale(mapNoeud.get(dateString).substring(0, 5), date1, lh));
                         } else if (mapNoeud.get(dateString).substring(5, 6).equals("-")) {
                             remoteViews.setTextViewText(R.id.descevt, "-ND--");
+                            remoteViews.setTextColor(R.id.heureevt, Color.RED);
+                            remoteViews.setTextColor(R.id.descevt, Color.RED);
                             remoteViews.setTextViewText(R.id.heureevt, heurelocale(mapNoeud.get(dateString).substring(0, 5), date1, lh));
                         }
                     }
@@ -168,7 +182,7 @@ public class MyWidgetProvider extends AppWidgetProvider
                         remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.feuillefruit84x84);
                     }
                     else {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.feuille84x84);
+                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.feuille30x30);
                     }
 
                 }
@@ -180,7 +194,7 @@ public class MyWidgetProvider extends AppWidgetProvider
                     }
                     else
                     {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.pomme84x84);
+                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.fruit30x30);
                     }
                 }
                 else if (mapJour.get(dateString).contains("Racines"))
@@ -191,7 +205,7 @@ public class MyWidgetProvider extends AppWidgetProvider
                     }
                     else
                     {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.racine84x84);
+                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.racine30x30);
                     }
                 }
                 else if (mapJour.get(dateString).contains("Fleurs"))
@@ -202,7 +216,7 @@ public class MyWidgetProvider extends AppWidgetProvider
                     }
                     else
                     {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.fleur84x84);
+                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.fleur30x30);
                     }
                 }
 

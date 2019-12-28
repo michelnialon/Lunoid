@@ -10,11 +10,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
+import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.Gravity;
-import android.view.InflateException;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -69,6 +69,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private static String htmltxt;
     StringBuilder linetot = new StringBuilder();
     String tableauMois[] = {"janvier", "fevrier", "mars" , "avril","mai", "juin", "juillet" , "aout", "septembre", "octobre", "novembre" , "decembre"};
+    private Menu _menu = null;
 
     // ads
     //private InterstitialAd mInterstitialAd;
@@ -184,10 +185,10 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             }
 
             // Fruits/Fleurs/Feuilles/Racines
-            textFeuilles.setTextColor(mapJour.get(dateString).contains("Feuilles") ? Color.YELLOW : Color.LTGRAY);
-            textFleurs.setTextColor(mapJour.get(dateString).contains("Fleurs") ? Color.YELLOW : Color.LTGRAY);
-            textFruits.setTextColor(mapJour.get(dateString).contains("Fruits") ? Color.YELLOW : Color.LTGRAY);
-            textRacines.setTextColor(mapJour.get(dateString).contains("Racines") ? Color.YELLOW : Color.LTGRAY);
+            textFeuilles.setTextColor(mapJour.get(dateString).contains("Feuilles") ? Color.YELLOW : Color.rgb(120,120,120));
+            textFleurs.setTextColor(mapJour.get(dateString).contains("Fleurs") ? Color.YELLOW : Color.rgb(120,120,120));
+            textFruits.setTextColor(mapJour.get(dateString).contains("Fruits") ? Color.YELLOW : Color.rgb(120,120,120));
+            textRacines.setTextColor(mapJour.get(dateString).contains("Racines") ? Color.YELLOW : Color.rgb(120,120,120));
             resId = getResources().getIdentifier(mapJour.get(dateString).contains("Racines") ? "racine30x30" : "racine30x30_grey", "drawable", getPackageName());
             imageRacine.setImageResource(resId);
             resId = getResources().getIdentifier(mapJour.get(dateString).contains("Fleurs") ? "fleur30x30" : "fleur30x30_grey", "drawable", getPackageName());
@@ -198,19 +199,19 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             imageFruit.setImageResource(resId);
 
             // Apogee/Perigee/Noeud
-            textApogee.setTextColor(!mapApogee.get(dateString).equals("0") ? Color.RED : Color.LTGRAY);
-            textPerigee.setTextColor(!mapPerigee.get(dateString).equals("0") ? Color.RED : Color.LTGRAY);
-            textNoeud.setTextColor(!mapNoeud.get(dateString).equals("0") ? Color.RED : Color.LTGRAY);
+            textApogee.setTextColor(!mapApogee.get(dateString).equals("0") ? Color.RED : Color.rgb(120,120,120));
+            textPerigee.setTextColor(!mapPerigee.get(dateString).equals("0") ? Color.RED : Color.rgb(120,120,120));
+            textNoeud.setTextColor(!mapNoeud.get(dateString).equals("0") ? Color.RED : Color.rgb(120,120,120));
 
             try
             {
-                textApogeeHour.setTextColor(!mapApogee.get(dateString).equals("0") ? Color.RED : Color.LTGRAY);
+                textApogeeHour.setTextColor(!mapApogee.get(dateString).equals("0") ? Color.RED : Color.rgb(120,120,120));
                 textApogeeHour.setText(!mapApogee.get(dateString).equals("0") ? (mapApogee.get(dateString).equals("88:88")? "--:--" : heurelocale(mapApogee.get(dateString),date1,lh)) : "--:--");
 
-                textPerigeeHour.setTextColor(!mapPerigee.get(dateString).equals("0") ? Color.RED : Color.LTGRAY);
+                textPerigeeHour.setTextColor(!mapPerigee.get(dateString).equals("0") ? Color.RED : Color.rgb(120,120,120));
                 textPerigeeHour.setText(!mapPerigee.get(dateString).equals("0") ? (mapPerigee.get(dateString).equals("88:88")? "--:--" : heurelocale(mapPerigee.get(dateString),date1,lh)) : "--:--");
 
-                textNoeudHour.setTextColor(!mapNoeud.get(dateString).equals("0") ? Color.RED : Color.LTGRAY);
+                textNoeudHour.setTextColor(!mapNoeud.get(dateString).equals("0") ? Color.RED : Color.rgb(120,120,120));
                 textNoeudHour.setText(!mapNoeud.get(dateString).equals("0") ? (mapNoeud.get(dateString).equals("88:88")? "--:--" : heurelocale(mapNoeud.get(dateString).substring(0,5),date1,lh)) : "--:--");
             }
             catch (Exception e)
@@ -222,18 +223,18 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 textMontant.setTextColor(Color.YELLOW);
             }
             else {
-                textMontant.setTextColor(Color.LTGRAY);
+                textMontant.setTextColor(Color.rgb(120,120,120));
             }
             if (mapMontant.get(dateString).equals("0") || mapMontant.get(dateString).startsWith("2") || mapMontant.get(dateString).startsWith("3")) {
                 textDescendant.setTextColor(Color.YELLOW);
             }
             else {
-                textDescendant.setTextColor(Color.LTGRAY);
+                textDescendant.setTextColor(Color.rgb(120,120,120));
             }
 
             // Croissant/Decroissant
-            textCroissant.setTextColor(mapCroissant.get(dateString).equals("1") ? Color.YELLOW : mapCroissant.get(dateString).equals("2") ? Color.YELLOW : Color.LTGRAY);
-            textDecroissant.setTextColor(mapCroissant.get(dateString).equals("0") ? Color.YELLOW : mapCroissant.get(dateString).equals("2") ? Color.YELLOW : Color.LTGRAY);
+            textCroissant.setTextColor(mapCroissant.get(dateString).equals("1") ? Color.YELLOW : mapCroissant.get(dateString).equals("2") ? Color.YELLOW : Color.rgb(120,120,120));
+            textDecroissant.setTextColor(mapCroissant.get(dateString).equals("0") ? Color.YELLOW : mapCroissant.get(dateString).equals("2") ? Color.YELLOW : Color.rgb(120,120,120));
             InfosStr = "";
             if (!mapComment.get(dateString).equals("")) {
                 InfosStr += mapComment.get(dateString);
@@ -257,6 +258,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
                 InfosToast.show();
             }
+            ShowHideInfosMenu(year, monthOfYear, getMenu());
+
         }
         else
         {
@@ -349,7 +352,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         PublisherAdView mPublisherAdView = findViewById(R.id.publisherAdView);
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
         mPublisherAdView.setAdSizes(AdSize.BANNER);
-        //mPublisherAdView.setAdUnitId("ca-app-pub-4468029712209847/4219671648"); // prod ( à mettre dans le manifest )
+        //mPublisherAdView.setAdUnitId("ca-app-pub-4468029712209847/4219671648"); // prod ( à mettre dans le layout main )
         //mPublisherAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); // test
         mPublisherAdView.loadAd(adRequest);
 
@@ -623,7 +626,6 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         });
 
         mGestureDetector = new GestureDetector(this, new LearnGestureListener());
-
     }  // onCreate
     class LearnGestureListener extends GestureDetector.SimpleOnGestureListener
     {
@@ -711,6 +713,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
+        _menu = menu;
+        ShowHideInfosMenu(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), _menu);
         return true;
     }
     // gestion des menus
@@ -738,41 +742,41 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             return true;
          */
 
-
-        case R.id.item5:
+        case R.id.item5: // lien sur google play
             intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse("market://details?id=com.nialon"));
             startActivity(intent);
             return true;
 
-        case R.id.item6:
+        case R.id.item6: // partager
         intent = new Intent(android.content.Intent.ACTION_SEND);
-        intent.setType("text/html");
-        //share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-
-        // Add data to the intent, the receiving app will decide
-        // what to do with it.
+        intent.setType("message/rfc822");
         intent.putExtra(Intent.EXTRA_SUBJECT,  getResources().getString(R.string.app_name));
-        intent.putExtra(Intent.EXTRA_TEXT, "Cette application pourrait t'intéresser : Lunoid sur google play");
-        intent.putExtra(Intent.EXTRA_HTML_TEXT, "Cette application pourrait t'intéresser : Lunoid sur google play" );
 
+        intent.putExtra(Intent.EXTRA_TEXT,
+                Html.fromHtml(new StringBuilder()
+                        .append("<html><head></head><body>")
+                        .append("<p>Cette application devrait t'intéresser.</p>")
+                        .append("<p>(Pour jardiner en fonction de la lune)</p>")
+                        .append("<p>https://play.google.com/store/apps/details?id=com.nialon></p>")
+                        .append("<p>https://www.facebook.com/LunoidApp></p>")
+                        .append("</body></html>")
+                        .toString())
+        );
         startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
+        return true;
 
-        case R.id.item7:
+        case R.id.item7: // contacter le développeur
             intent = new Intent(android.content.Intent.ACTION_SEND);
             intent.setType("text/html");
-            //share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-
-            // Add data to the intent, the receiving app will decide
-            // what to do with it.
             intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
-            intent.putExtra(Intent.EXTRA_TEXT, "Cette application pourrait t'intéresser : Lunoid sur google play");
-            intent.putExtra(Intent.EXTRA_HTML_TEXT, "Cette application pourrait t'intéresser : Lunoid sur google play" );
             intent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { "mnialon@gmail.com" });
-
             startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
+            return true;
+
         case R.id.item8:
             DisplayInfosDuMois(datePicker1.getYear(), datePicker1.getMonth());
+            return true;
         }
         return false;
     }
@@ -889,7 +893,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             }
             else
             {
-                message = "Pas d'informations pour cette période";
+                message = "Pas d'informations pour cette période. Les conseils de plantation ne sont disponibles que pour les mois de Mars à Août.";
                 type_message = "0";
             }
             if (type_message.equals("1"))
@@ -925,18 +929,21 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             }
             else
             {
-                message = "Pas d'informations pour cette période";
+                message = "Pas d'informations pour cette période. Les conseils de plantation ne sont disponibles que pour les mois de Mars à Septembre.";
                 type_message = "0";
             }
         }
         else
         {
-            message = "Pas d'informations pour cette période";
+            message = "Pas d'informations pour cette période. Les conseils de plantation ne sont disponibles qu'à partir de 2016";
             type_message = "0";
         }
+
         if (type_message.equals("0"))
         {
-            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            Toast InfosToast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+            InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+            InfosToast.show();
         }
     }
     private void BuildConseilMois(int month, int year)
@@ -1259,6 +1266,29 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG);
 
         ((TextView) findViewById(R.id.TextJour)).setText(dateFormat.format(calendar.getTime()));
+    }
+
+    private Menu getMenu()
+    {
+        //use it like this
+        return _menu;
+    }
+    private void ShowHideInfosMenu(int y, int mo, Menu me)
+    {
+        MenuItem item;
+        try {
+            item = me.findItem(R.id.item8);
+
+            if (y >= 2019 && (mo >= 2 && mo <= 8)) {
+                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+            } else {
+                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 
 } // Lunoid

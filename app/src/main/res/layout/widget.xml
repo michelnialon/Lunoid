@@ -6,14 +6,15 @@
     android:background="@drawable/roundcornerblack"
     android:orientation="horizontal"
     android:padding="0dp">
-        <ImageView
-            android:id="@+id/imageLuneWidget"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:contentDescription="@string/desc"
-            android:src="@drawable/nlune24" />
+
+    <ImageView
+        android:id="@+id/imageLuneWidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_weight="1"
+        android:contentDescription="@string/desc"
+        android:src="@drawable/nlune24" />
 
         <LinearLayout
             android:id="@+id/layout2"
@@ -27,33 +28,23 @@
 
             <TextView
                 android:id="@+id/lever"
-                style="@android:style/TextAppearance.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:shadowColor="#aff2ea"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="1.5"
                 android:text="--:--"
                 android:textColor="#aff2ea"
-                android:textSize="12sp"
+                android:textSize="14dp"
                 android:typeface="monospace" />
 
             <TextView
                 android:id="@+id/coucher"
-                style="@android:style/TextAppearance.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center_horizontal"
-                android:shadowColor="#aff2ea"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="1.5"
                 android:text="--:--"
                 android:textColor="#aff2ea"
-                android:textSize="12sp"
+                android:textSize="14dp"
                 android:typeface="monospace" />
         </LinearLayout>
 
@@ -73,15 +64,17 @@
 
             <ImageView
                 android:id="@+id/imageJour1"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:src="@drawable/racine84x84" />
 
             <ImageView
                 android:id="@+id/flechemontdesc"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginTop="2dp"
+                android:layout_weight="1"
                 android:src="@drawable/flechemontante" />
         </LinearLayout>
 
@@ -99,13 +92,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:shadowColor="#aff2ea"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="1.5"
-                android:text="-----"
-                android:textColor="#aff2ea"
-                android:textSize="10sp"
+                android:text="ANDPNA"
+                android:textColor="#606060"
+                android:textSize="12sp"
                 android:typeface="monospace" />
 
             <TextView
@@ -114,13 +103,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:shadowColor="#aff2ea"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="1.5"
                 android:text="--:--"
-                android:textColor="#aff2ea"
-                android:textSize="10sp"
+                android:textColor="#606060"
+                android:textSize="12sp"
                 android:typeface="monospace" />
         </LinearLayout>
 </LinearLayout>

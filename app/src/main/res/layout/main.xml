@@ -9,7 +9,10 @@
     android:stretchColumns="1" >
 
 <!-- Moon  	-->
-
+	<!-- android:layout_alignParentTop="true"
+               android:layout_centerHorizontal="true"
+                           android:textColor="#d3d5d6"
+                           -->
     <RelativeLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
@@ -51,11 +54,11 @@
             android:id="@+id/textPct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
+			android:layout_centerInParent="true"
             android:text="53%"
-            android:textColor="#d3d5d6"
-            android:textSize="16sp"/>
+            android:textColor="#ffff00"
+			android:textStyle="bold"
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/TextView01"
