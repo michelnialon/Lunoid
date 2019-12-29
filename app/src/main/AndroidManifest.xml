@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nialon"
-    android:versionCode="72"
-    android:versionName="20.0g">
+    android:versionCode="73"
+    android:versionName="20.0h">
 
 
     <uses-feature

@@ -3,7 +3,7 @@
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
     <string name="app_author">Michel Nialon</string>
-    <string name="app_date">10/12/2019</string>
+    <string name="app_date">29/12/2019</string>
     <string name="app_descr">Moon calendar 2020</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>

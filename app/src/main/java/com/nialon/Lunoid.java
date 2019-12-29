@@ -758,8 +758,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                         .append("<html><head></head><body>")
                         .append("<p>Cette application devrait t'intéresser.</p>")
                         .append("<p>(Pour jardiner en fonction de la lune)</p>")
-                        .append("<p>https://play.google.com/store/apps/details?id=com.nialon></p>")
-                        .append("<p>https://www.facebook.com/LunoidApp></p>")
+                        .append("<p>https://play.google.com/store/apps/details?id=com.nialon</p>")
+                        .append("<p>https://www.facebook.com/LunoidApp</p>")
                         .append("</body></html>")
                         .toString())
         );

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			 xmlns:app="http://schemas.android.com/apk/res-auto"
-			 xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:layout_gravity="center"
-             android:background="@drawable/roundcorner">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/background_dark">
 
     <LinearLayout
-        android:background="@android:color/background_dark"
+        android:layout_width="400dp"
+        android:layout_height="600dp"
         android:layout_margin="150dp"
+        android:background="@drawable/roundcorner"
         android:orientation="vertical">
         <!-- Moon  	-->
+
         <RelativeLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
@@ -27,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:contentDescription="@string/desc"
-                android:src="@drawable/lune024"/>
+                android:src="@drawable/nlune13" />
 
             <TextView
                 android:id="@+id/textCoucher"
@@ -37,7 +40,7 @@
                 android:layout_alignParentRight="true"
                 android:text="21:43"
                 android:textColor="#FFFF00"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textLever"
@@ -47,17 +50,17 @@
                 android:layout_alignParentTop="true"
                 android:text="05:29"
                 android:textColor="#FFFF00"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textPct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
                 android:text="53%"
-                android:textColor="#d3d5d6"
-                android:textSize="16sp"/>
+                android:textColor="#ffff00"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/TextView01"
@@ -66,7 +69,7 @@
                 android:layout_below="@+id/textLever"
                 android:text="@string/lever"
                 android:textColor="#C0C0C0"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/TextView02"
@@ -76,7 +79,7 @@
                 android:layout_alignParentRight="true"
                 android:text="@string/coucher"
                 android:textColor="#C0C0C0"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </RelativeLayout>
 
@@ -98,7 +101,7 @@
                 android:paddingBottom="5dp"
                 android:text="dimanche 20 janvier 2019"
                 android:textColor="#FFFF00"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
         </LinearLayout>
         <!-- espace -->
@@ -115,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/vide"
-                android:textSize="3sp"/>
+                android:textSize="3sp" />
         </LinearLayout>
         <!-- croissant/decroissant -->
         <LinearLayout
@@ -134,7 +137,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/croissant"
                 android:textColor="#FFFF00"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textDecroissant"
@@ -144,7 +147,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/decroissant"
                 android:textColor="#666666"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
         </LinearLayout>
 
         <!-- espace -->
@@ -161,7 +164,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/vide"
-                android:textSize="3sp"/>
+                android:textSize="3sp" />
         </LinearLayout>
 
         <!-- montant/descendant -->
@@ -180,7 +183,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/montant"
                 android:textColor="#666666"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textDescendant"
@@ -190,7 +193,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/descendant"
                 android:textColor="#FFFF00"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
         </LinearLayout>
         <!-- espace -->
         <LinearLayout
@@ -206,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/vide"
-                android:textSize="3sp"/>
+                android:textSize="3sp" />
         </LinearLayout>
         <!-- feuilles/fleurs/fruits/racines images-->
         <LinearLayout
@@ -226,7 +229,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/feuille30x30_grey"/>
+                android:src="@drawable/feuille30x30_grey" />
 
             <ImageView
                 android:id="@+id/imageFruit"
@@ -238,7 +241,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/fruit30x30_grey"/>
+                android:src="@drawable/fruit30x30_grey" />
 
             <ImageView
                 android:id="@+id/imageRacine"
@@ -250,7 +253,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/racine30x30_grey"/>
+                android:src="@drawable/racine30x30_grey" />
 
             <ImageView
                 android:id="@+id/imageFleur"
@@ -262,7 +265,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:src="@drawable/fleur30x30_grey"/>
+                android:src="@drawable/fleur30x30_grey" />
         </LinearLayout>
         <!-- feuilles/fleurs/fruits/racines textes-->
         <LinearLayout
@@ -280,7 +283,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/feuilles"
                 android:textColor="#666666"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textFruits"
@@ -290,7 +293,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/fruits"
                 android:textColor="#666666"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textRacines"
@@ -300,7 +303,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/racines"
                 android:textColor="#666666"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textFleurs"
@@ -310,7 +313,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/fleurs"
                 android:textColor="#FFFF00"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
         </LinearLayout>
         <!-- espace -->
         <LinearLayout
@@ -326,7 +329,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/vide"
-                android:textSize="3sp"/>
+                android:textSize="3sp" />
         </LinearLayout>
         <!-- Perigee/Apogee/Noeud -->
         <LinearLayout
@@ -351,7 +354,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="88:88"
                     android:textColor="#666666"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/textPerigee"
@@ -360,7 +363,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="@string/perigee"
                     android:textColor="#666666"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -378,7 +381,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="88:88"
                     android:textColor="#666666"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/textApogee"
@@ -387,7 +390,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="@string/apogee"
                     android:textColor="#666666"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -405,7 +408,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="88:88"
                     android:textColor="#666666"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/textNoeud"
@@ -414,7 +417,7 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/noeudlunaire"
                     android:textColor="#FF0000"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -430,21 +433,16 @@
                 android:id="@+id/datePicker1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/background_light"
-                android:calendarViewShown="false"
                 android:datePickerMode="spinner"
                 android:descendantFocusability="blocksDescendants"
-                android:endYear="2019"
-                android:fadeScrollbars="false"
-                android:fitsSystemWindows="false"
-                android:focusableInTouchMode="false"
+                android:endYear="2020"
                 android:gravity="center_horizontal"
                 android:scaleY="0.6"
                 android:scrollbars="none"
                 android:soundEffectsEnabled="true"
                 android:spinnersShown="true"
                 android:splitMotionEvents="false"
-                android:startYear="2012"/>
+                android:startYear="2012" />
         </LinearLayout>
         <!-- espace -->
         <LinearLayout
@@ -460,7 +458,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/vide"
-                android:textSize="3sp"/>
+                android:textSize="3sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -470,16 +468,13 @@
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <com.google.android.gms.ads.doubleclick.PublisherAdView
-                xmlns:ads="http://schemas.android.com/apk/res-auto"
+            <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/publisherAdView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-4468029712209847/4219671648"
-                >
-            </com.google.android.gms.ads.doubleclick.PublisherAdView>
+                ads:adUnitId="ca-app-pub-4468029712209847/4219671648"></com.google.android.gms.ads.doubleclick.PublisherAdView>
         </LinearLayout>
         <!-- Quitter
     <Button
