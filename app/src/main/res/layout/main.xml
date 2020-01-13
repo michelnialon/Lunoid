@@ -102,50 +102,50 @@
 
     </LinearLayout>
     <!-- espace -->
-    <LinearLayout
-        android:id="@+id/linearLayout53"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#000000"
-        android:orientation="horizontal" >
+	<LinearLayout
+		android:id="@+id/linearLayout53"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="#000000"
+		android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textvide3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="3sp" />
-    </LinearLayout>
+		<TextView
+			android:id="@+id/textvide3"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="@string/vide"
+			android:textSize="3sp" />
+	</LinearLayout>
     <!-- croissant/decroissant -->
-	<LinearLayout 
-	    android:background="#565252"
-        android:orientation="horizontal" 
-        android:id="@+id/linearLayout4" 
-        android:layout_width="wrap_content" 
-        
-        android:layout_height="wrap_content">
+	<LinearLayout
+		android:id="@+id/linearLayout4"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/roundcorner_light"
 
-    	<TextView
-    	    android:id="@+id/textCroissant"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-    	    android:text="@string/croissant"
-    	    android:textColor="#FFFF00"
-    	    android:layout_weight="0.5"
-    	    android:gravity="center_vertical|center_horizontal"
-    	    android:textSize="20sp" />
+		android:orientation="horizontal">
 
-    	<TextView
-    	    android:id="@+id/textDecroissant"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-    	    android:text="@string/decroissant"
-    	    android:textColor="#666666"
-    	    android:layout_weight="0.5"
-    	    android:gravity="center_vertical|center_horizontal"
-    	    android:textSize="20sp" />
-    </LinearLayout>
+		<TextView
+			android:id="@+id/textCroissant"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.5"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="@string/croissant"
+			android:textColor="#FFFF00"
+			android:textSize="20sp" />
+
+		<TextView
+			android:id="@+id/textDecroissant"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.5"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="@string/decroissant"
+			android:textColor="#666666"
+			android:textSize="20sp" />
+	</LinearLayout>
     
     <!-- espace -->
     <LinearLayout
@@ -165,30 +165,33 @@
     </LinearLayout>
 
     <!-- montant/descendant -->
-	<LinearLayout 
-	    android:background="#565252"
-        android:orientation="horizontal" 
-        android:id="@+id/linearLayout5" 
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content">
-    	<TextView android:text="@string/montant" 
-    	    android:id="@+id/textMontant" 
-    	    android:layout_width="match_parent" 
-    	    android:layout_height="wrap_content"  
-    	    android:layout_weight="0.5"
-    	    android:textColor="#666666"
-    	    android:gravity="center_vertical|center_horizontal" 
-    	    android:textSize="20sp" />
-    	<TextView
-    	    android:id="@+id/textDescendant"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-    	    android:layout_weight="0.5"
-    	    android:textColor="#FFFF00"
-    	    android:gravity="center_vertical|center_horizontal"
-    	    android:text="@string/descendant"
-    	    android:textSize="20sp" />
-    </LinearLayout>
+	<LinearLayout
+		android:id="@+id/linearLayout5"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/roundcorner_light"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/textMontant"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.5"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="@string/montant"
+			android:textColor="#666666"
+			android:textSize="20sp" />
+
+		<TextView
+			android:id="@+id/textDescendant"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.5"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="@string/descendant"
+			android:textColor="#FFFF00"
+			android:textSize="20sp" />
+	</LinearLayout>
     <!-- espace -->
     <LinearLayout
         android:id="@+id/linearLayout51"
@@ -205,13 +208,102 @@
             android:text="@string/vide"
             android:textSize="3sp" />
     </LinearLayout>
+	<!-- Perigee/Apogee/Noeud -->
+	<LinearLayout
+		android:id="@+id/linearLayout3"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/roundcorner_light"
+		android:orientation="horizontal">
+
+		<LinearLayout
+			android:id="@+id/linearLayout31"
+			android:layout_width="96dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.33"
+			android:background="#000000"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textPerigeeHour"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical|center_horizontal"
+				android:text="88:88"
+				android:textColor="#666666"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/textPerigee"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical|center_horizontal"
+				android:text="@string/perigee"
+				android:textColor="#666666"
+				android:textSize="12sp" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/linearLayout32"
+			android:layout_width="96dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.33"
+			android:background="#000000"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textApogeeHour"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical|center_horizontal"
+				android:text="88:88"
+				android:textColor="#666666"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/textApogee"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical|center_horizontal"
+				android:text="@string/apogee"
+				android:textColor="#666666"
+				android:textSize="12sp" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/linearLayout33"
+			android:layout_width="96dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="0.33"
+			android:background="#000000"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textNoeudHour"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_vertical|center_horizontal"
+				android:text="88:88"
+				android:textColor="#666666"
+				android:textSize="20sp" />
+
+			<TextView
+				android:id="@+id/textNoeud"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal|center_vertical"
+				android:text="@string/noeudlunaire"
+				android:textColor="#FF0000"
+				android:textSize="12sp" />
+		</LinearLayout>
+	</LinearLayout>
     <!-- feuilles/fleurs/fruits/racines images-->
-    <LinearLayout
-        android:id="@+id/linearLayout70"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#565252"
-        android:orientation="horizontal">
+	<LinearLayout
+		android:id="@+id/linearLayout70"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="2dp"
+		android:orientation="horizontal">
 
 		<ImageView
 			android:id="@+id/imageFeuille"
@@ -223,7 +315,7 @@
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="0dp"
 			android:layout_weight="1"
-			android:src="@drawable/feuille30x30_grey"/>
+			android:src="@drawable/feuille30x30_grey" />
 
 		<ImageView
 			android:id="@+id/imageFruit"
@@ -235,7 +327,7 @@
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="0dp"
 			android:layout_weight="1"
-			android:src="@drawable/fruit30x30_grey"/>
+			android:src="@drawable/fruit30x30_grey" />
 
 		<ImageView
 			android:id="@+id/imageRacine"
@@ -247,7 +339,7 @@
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="0dp"
 			android:layout_weight="1"
-			android:src="@drawable/racine30x30_grey"/>
+			android:src="@drawable/racine30x30_grey" />
 
 		<ImageView
 			android:id="@+id/imageFleur"
@@ -259,11 +351,11 @@
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="2dp"
 			android:layout_weight="1"
-			android:src="@drawable/fleur30x30_grey"/>
-    </LinearLayout>
+			android:src="@drawable/fleur30x30_grey" />
+	</LinearLayout>
     <!-- feuilles/fleurs/fruits/racines textes-->
 	<LinearLayout 
-	    android:background="#565252"
+	    android:background="#000000"
         android:orientation="horizontal" 
         android:id="@+id/linearLayout7" 
         android:layout_width="wrap_content" 
@@ -325,95 +417,14 @@
             android:text="@string/vide"
             android:textSize="3sp" />
     </LinearLayout>
-    <!-- Perigee/Apogee/Noeud -->
+
+
+	<!-- espace -->
 	<LinearLayout
-	    android:id="@+id/linearLayout3"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:background="#565252"
-	    android:orientation="horizontal" >
-		<LinearLayout
-		    android:id="@+id/linearLayout31"
-		    android:layout_width="96dp"
-		    android:layout_height="wrap_content"
-		    android:background="#565252"
-		    android:layout_weight="0.33"
-		    android:orientation="vertical" >
-			    <TextView
-			        android:id="@+id/textPerigeeHour"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:gravity="center_vertical|center_horizontal"
-			        android:text="88:88"
-			        android:textColor="#666666"
-			        android:textSize="20sp" />
-			<TextView
-				android:id="@+id/textPerigee"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center_vertical|center_horizontal"
-				android:text="@string/perigee"
-				android:textColor="#666666"
-				android:textSize="12sp" />
-		</LinearLayout>
-		<LinearLayout
-		    android:id="@+id/linearLayout32"
-		    android:layout_width="96dp"
-		    android:layout_height="wrap_content"
-		    android:background="#565252"
-		    android:layout_weight="0.33"
-		    android:orientation="vertical" >
-		    <TextView
-			        android:id="@+id/textApogeeHour"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:gravity="center_vertical|center_horizontal"
-			        android:text="88:88"
-			        android:textColor="#666666"
-			        android:textSize="20sp" />
-			<TextView
-				android:id="@+id/textApogee"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/apogee"
-				android:textColor="#666666"
-				android:gravity="center_vertical|center_horizontal"
-				android:textSize="12sp" />
-		</LinearLayout>
-		<LinearLayout
-		    android:id="@+id/linearLayout33"
-		    android:layout_width="96dp"
-		    android:layout_height="wrap_content"
-		    android:background="#565252"
-		    android:layout_weight="0.33"
-		    android:orientation="vertical" >
-
-			<TextView
-				android:id="@+id/textNoeudHour"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center_vertical|center_horizontal"
-				android:text="88:88"
-				android:textColor="#666666"
-				android:textSize="20sp"/>
-
-			<TextView
-				android:id="@+id/textNoeud"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center_horizontal|center_vertical"
-				android:text="@string/noeudlunaire"
-				android:textColor="#FF0000"
-				android:textSize="12sp"/>
-		</LinearLayout>
-	</LinearLayout>
-
-    <!-- Date -->
-
-	<LinearLayout
-		android:id="@+id/linearLayout2"
+		android:id="@+id/linearLayout510"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
+		android:background="#000000"
 		android:orientation="horizontal">
 
 		<DatePicker
@@ -434,40 +445,32 @@
 			android:soundEffectsEnabled="true"
 			android:spinnersShown="true"
 			android:splitMotionEvents="false"
-			android:startYear="2012"/>
-	</LinearLayout>
-	<!-- espace -->
-    <LinearLayout
-        android:id="@+id/linearLayout510"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#000000"
-        android:orientation="horizontal" >
+			android:startYear="2012" />
 
-        <TextView
-            android:id="@+id/textvide5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="3sp" />
-    </LinearLayout>
+		<TextView
+			android:id="@+id/textvide5"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical|center_horizontal"
+			android:text="@string/vide"
+			android:textSize="3sp" />
+	</LinearLayout>
 
 	<LinearLayout
 		android:id="@+id/linearLayout34"
 		android:layout_width="match_parent"
 		android:layout_height="50dp"
-        android:gravity="center_horizontal"
-		android:orientation="horizontal">
-        <com.google.android.gms.ads.doubleclick.PublisherAdView
-		xmlns:ads="http://schemas.android.com/apk/res-auto"
-		android:id="@+id/publisherAdView"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
 		android:gravity="center_horizontal"
-		ads:adUnitId="ca-app-pub-4468029712209847/4219671648"
-		ads:adSize="BANNER">
-        </com.google.android.gms.ads.doubleclick.PublisherAdView>
+		android:orientation="horizontal">
+
+		<com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+			android:id="@+id/publisherAdView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			ads:adSize="BANNER"
+			ads:adUnitId="ca-app-pub-4468029712209847/4219671648"></com.google.android.gms.ads.doubleclick.PublisherAdView>
 	</LinearLayout>
 <!-- Quitter
     <Button

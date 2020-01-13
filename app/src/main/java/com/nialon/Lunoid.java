@@ -908,7 +908,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         {
             String m1;
 
-            if (month >= 2 && month <= 8)
+            if (month >= 0 && month <= 11)
             {
                 m1 = tableauMois[month];
                 sifm = prefs.getBoolean("infosmois", false);
@@ -1092,27 +1092,33 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     }
     private void testNoeud(Date d1, String ds)
     {
-        Log.d("testnoeud", ds);
-        if (!mapNoeud.get(ds).equals("0"))
+        try {
+            Log.d("testnoeud", ds);
+            if (!mapNoeud.get(ds).equals("0")) {
+                String noeudlocal = heurelocale(mapNoeud.get(ds), d1, lh);
+                if (mapNoeud.get(ds).substring(5,6).equals("+")) {
+                    addText("<font color=#ff0000>Nœud ascendant à " + noeudlocal);
+                }
+                else
+                {
+                    addText("<font color=#ff0000>Nœud descendant à " + noeudlocal);
+                }
+                Integer h1 = Integer.parseInt(noeudlocal.substring(0, 2));
+                if (noeudlocal.compareTo("05:00") < 0) {
+                    h1 += 5;
+                    addText(" -> Ne pas jardiner avant " + h1.toString() + "h" + "</font>");
+                } else if ((noeudlocal.compareTo("19:00") < 0)) {
+                    h1 -= 5;
+                    addText(" -> Ne pas jardiner entre " + h1.toString() + "h et " + ((Integer) (h1 + 10)).toString() + "h </font>");
+                } else if ((noeudlocal.compareTo("19:00") >= 0)) {
+                    h1 -= 5;
+                    addText(" -> Ne pas jardiner après " + h1.toString() + "h </font>");
+                }
+            }
+        }
+        catch (Exception e)
         {
-            String noeudlocal = heurelocale(mapNoeud.get(ds),d1 ,lh);
-            addText("<font color=#ff0000>Nœud à " + noeudlocal);
-            Integer h1 = Integer.parseInt(noeudlocal.substring(0,2));
-            if (noeudlocal.compareTo("05:00") < 0)
-            {
-                h1 +=5;
-                addText(" -> Ne pas jardiner avant " + h1.toString() + "h"  + "</font>");
-            }
-            else if ((noeudlocal.compareTo("19:00") < 0))
-            {
-                h1 -= 5;
-                addText(" -> Ne pas jardiner entre " + h1.toString() + "h et " + ((Integer)(h1+10)).toString() + "h </font>");
-            }
-            else if ((noeudlocal.compareTo("19:00") >= 0))
-            {
-                h1 -= 5;
-                addText(" -> Ne pas jardiner après " + h1.toString() + "h </font>");
-            }
+            Log.e("testNoeud", e.toString());
         }
     }
     private void BuildHTMLJour(String s1, String s2, String t1, String t2, String m1, String ht12, String hs12, String jour)
@@ -1279,8 +1285,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         try {
             item = me.findItem(R.id.item8);
 
-            if (y >= 2019 && (mo >= 2 && mo <= 8)) {
-                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+            if (y >= 2019 && (mo >= 0 && mo <= 11)) {
+                //item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM);
             } else {
                 item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
             }
