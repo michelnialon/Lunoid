@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nialon"
-    android:versionCode="73"
-    android:versionName="20.0h">
-
+    android:versionCode="75"
+    android:versionName="20.1b">
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -24,21 +23,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".About" />
-        <activity android:name=".infos" />
-        <activity android:name=".ConseilsDuMois" />
-        <activity android:name=".PrefsActivity" />
+        <activity android:name=".About"  android:parentActivityName=".Lunoid"/>
+        <activity android:name=".infos"  android:parentActivityName=".Lunoid" />
+        <activity android:name=".ConseilsDuMois"  android:parentActivityName=".Lunoid" />
+        <activity android:name=".PrefsActivity" android:parentActivityName=".Lunoid"/>
 
         <receiver android:name=".MyWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
+
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
-            android:value="true"/>
+            android:value="true" />
     </application>
+
 </manifest>

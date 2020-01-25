@@ -18,12 +18,7 @@ public class DatePickerFragment
     @NonNull
     public Dialog onCreateDialog( Bundle savedInstanceState)
     {
-        Date dateFin;
-
-        dateFin = new Date();
-        dateFin.setDate(31);
-        dateFin.setMonth(11);
-        dateFin.setYear(2020 - 1900);
+        Date dateDebutFin;
 
         // Use the current date as the default date in the picker
         final Calendar c = Calendar.getInstance();
@@ -33,11 +28,15 @@ public class DatePickerFragment
 
         // Create a new instance of DatePickerDialog and return it
         DatePickerDialog dialog = new DatePickerDialog(getActivity(),android.R.style.Theme_Holo_Dialog, (DatePickerDialog.OnDateSetListener)getActivity(), year, month, day);
-        dialog.getDatePicker().setMaxDate(dateFin.getTime());
-        dateFin.setDate(1);
-        dateFin.setMonth(4);
-        dateFin.setYear(2012 - 1900);
-        dialog.getDatePicker().setMinDate(dateFin.getTime());
+        dateDebutFin = new Date();
+        dateDebutFin.setDate(31);
+        dateDebutFin.setMonth(11);
+        dateDebutFin.setYear(2020 - 1900);
+        dialog.getDatePicker().setMaxDate(dateDebutFin.getTime());
+        dateDebutFin.setDate(1);
+        dateDebutFin.setMonth(4);
+        dateDebutFin.setYear(2012 - 1900);
+        dialog.getDatePicker().setMinDate(dateDebutFin.getTime());
 
         return dialog;
     }

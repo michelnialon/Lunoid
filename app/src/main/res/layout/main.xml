@@ -60,6 +60,16 @@
 			android:textStyle="bold"
             android:textSize="18sp"/>
 
+		<ImageView
+			android:id="@+id/imgNote"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_centerHorizontal="true"
+			android:clickable="true"
+			android:onClick="editNote"
+			android:src="@android:drawable/ic_menu_edit" />
+
         <TextView
             android:id="@+id/TextView01"
             android:layout_width="wrap_content"
@@ -315,7 +325,7 @@
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="0dp"
 			android:layout_weight="1"
-			android:src="@drawable/feuille30x30_grey" />
+			android:src="@drawable/salad30_on" />
 
 		<ImageView
 			android:id="@+id/imageFruit"
@@ -327,7 +337,7 @@
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="0dp"
 			android:layout_weight="1"
-			android:src="@drawable/fruit30x30_grey" />
+			android:src="@drawable/apple30_on" />
 
 		<ImageView
 			android:id="@+id/imageRacine"
@@ -339,7 +349,7 @@
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="0dp"
 			android:layout_weight="1"
-			android:src="@drawable/racine30x30_grey" />
+			android:src="@drawable/carrot30_off" />
 
 		<ImageView
 			android:id="@+id/imageFleur"
@@ -351,7 +361,7 @@
 			android:layout_marginTop="2dp"
 			android:layout_marginBottom="2dp"
 			android:layout_weight="1"
-			android:src="@drawable/fleur30x30_grey" />
+			android:src="@drawable/flower30_on" />
 	</LinearLayout>
     <!-- feuilles/fleurs/fruits/racines textes-->
 	<LinearLayout 

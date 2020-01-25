@@ -14,9 +14,9 @@
         android:layout_width="151dp"
         android:layout_height="142dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="20dp"
         android:contentDescription="@string/desc"
-        android:src="@drawable/lunoid256black"/>
+        android:src="@drawable/lunoid256black" />
 
     <TextView
         android:id="@+id/textDescr"
@@ -25,7 +25,7 @@
         android:layout_gravity="center_horizontal"
         android:paddingTop="5dp"
         android:text="@string/app_descr"
-        android:textColor="@android:color/holo_orange_light"
+        android:textColor="#FFFF00"
         android:textSize="20sp"/>
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_gravity="center_horizontal"
         android:paddingTop="5dp"
         android:text="Version 2.6"
-        android:textColor="@android:color/holo_orange_light"
+        android:textColor="#FFFF00"
         android:textSize="20sp"/>
 
     <TextView
@@ -55,7 +55,7 @@
         android:layout_gravity="center_horizontal"
         android:paddingTop="5dp"
         android:text="30/03/2013"
-        android:textColor="@android:color/holo_orange_light"
+        android:textColor="#FFFF00"
         android:textSize="18sp"/>
 
     <TextView
@@ -66,7 +66,7 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:text="Michel Nialon"
-        android:textColor="@android:color/holo_orange_light"
+        android:textColor="#FFFF00"
         android:textSize="16sp"/>
 
     <Button

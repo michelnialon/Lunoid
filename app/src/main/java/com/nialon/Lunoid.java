@@ -1,12 +1,18 @@
 package com.nialon;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
@@ -22,7 +28,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -114,6 +122,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     ImageView imageRacine;
     ImageView imageFleur;
     String InfosStr;
+    ImageView imageNote;
 
     public void onDateChange(int year, int monthOfYear, int dayOfMonth)
     {
@@ -141,6 +150,17 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             textLever.setText(heurelocale(mapLever.get(dateString),date1,lh));
 
             textJour.setText(dateString2);
+
+            SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
+            String str1 = sp.getString(dateString, "");
+            if (!str1.equals(""))
+            {
+                imageNote.setAlpha(1.0f);
+            }
+            else
+            {
+                imageNote.setAlpha(0.5f);
+            }
 
             String ecl = mapEclair.get(dateString);
             try {
@@ -189,13 +209,14 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             textFleurs.setTextColor(mapJour.get(dateString).contains("Fleurs") ? Color.YELLOW : Color.rgb(120,120,120));
             textFruits.setTextColor(mapJour.get(dateString).contains("Fruits") ? Color.YELLOW : Color.rgb(120,120,120));
             textRacines.setTextColor(mapJour.get(dateString).contains("Racines") ? Color.YELLOW : Color.rgb(120,120,120));
-            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Racines") ? "racine30x30" : "racine30x30_grey", "drawable", getPackageName());
+//            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Racines") ? "racine30x30" : "racine30x30_grey", "drawable", getPackageName());
+            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Racines") ? "carrot30_on" : "carrot30_off", "drawable", getPackageName());
             imageRacine.setImageResource(resId);
-            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Fleurs") ? "fleur30x30" : "fleur30x30_grey", "drawable", getPackageName());
+            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Fleurs") ? "flower30_on" : "flower30_off", "drawable", getPackageName());
             imageFleur.setImageResource(resId);
-            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Feuilles") ? "feuille30x30" : "feuille30x30_grey", "drawable", getPackageName());
+            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Feuilles") ? "salad30_on" : "salad30_off", "drawable", getPackageName());
             imageFeuille.setImageResource(resId);
-            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Fruits") ? "fruit30x30" : "fruit30x30_grey", "drawable", getPackageName());
+            resId = getResources().getIdentifier(mapJour.get(dateString).contains("Fruits") ? "apple30_on" : "apple30_off", "drawable", getPackageName());
             imageFruit.setImageResource(resId);
 
             // Apogee/Perigee/Noeud
@@ -409,6 +430,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         imageFleur = findViewById(R.id.imageFleur);
         imageFruit = findViewById(R.id.imageFruit);
         imageRacine = findViewById(R.id.imageRacine);
+        imageNote = findViewById(R.id.imgNote);
 
         // Affichage ou non de l'heure de perigée suivant les parametres
         if (!prefs.getBoolean("perigeetime", false))
@@ -721,6 +743,15 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     public boolean onOptionsItemSelected(MenuItem item)
     {
         Intent intent;
+        String AppVersion="";
+
+        try
+        {
+            PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+            AppVersion = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
         switch (item.getItemId())
         {
         case R.id.item1:
@@ -771,6 +802,16 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             intent.setType("text/html");
             intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
             intent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { "mnialon@gmail.com" });
+            intent.putExtra(Intent.EXTRA_TEXT,
+                    Html.fromHtml(new StringBuilder()
+                            .append("<html><head></head><body>")
+                            .append("<p>---</p>")
+                            .append("<p>Version Application : " + AppVersion + "</p>")
+                            .append("<p>Android Version : " + Build.VERSION.SDK_INT + " (" + Build.VERSION.RELEASE + ")</p>")
+                            .append("<p>Device Type : " + Build.MANUFACTURER + " (" + Build.MODEL + ")</p>")
+                            .append("</body></html>")
+                            .toString())
+            );
             startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
             return true;
 
@@ -1052,17 +1093,17 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             if (apogeelocal.compareTo("05:00") < 0)
             {
                 h1 +=5;
-                addText(" -> Ne pas jardiner avant " + h1.toString() + "h"  + "</font>");
+                addText(" -> " + getString(R.string.nepasjardineravant) + " " + h1.toString() + "h"  + "</font>");
             }
             else if ((apogeelocal.compareTo("19:00") < 0))
             {
                 h1 -= 5;
-                addText(" -> Ne pas jardiner entre " + h1.toString() + "h et " + ((Integer)(h1+10)).toString() + "h </font>");
+                addText(" -> " + getString(R.string.nepasjardinerentre) + " "+ h1.toString() + "h et " + ((Integer)(h1+10)).toString() + "h </font>");
             }
             else if ((apogeelocal.compareTo("19:00") >= 0))
             {
                 h1 -= 5;
-                addText(" -> Ne pas jardiner après " + h1.toString() + "h </font>");
+                addText(" -> " + getString(R.string.nepasjardinerapres) + " " + h1.toString() + "h </font>");
             }
         }
     }
@@ -1076,17 +1117,17 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             if (perigeelocal.compareTo("05:00") < 0)
             {
                 h1 +=5;
-                addText(" -> Ne pas jardiner avant " + h1.toString() + "h"  + "</font>");
+                addText(" -> " + getString(R.string.nepasjardineravant) + " " + h1.toString() + "h"  + "</font>");
             }
             else if ((perigeelocal.compareTo("19:00") < 0))
             {
                 h1 -= 5;
-                addText(" -> Ne pas jardiner entre " + h1.toString() + "h et " + ((Integer)(h1+10)).toString() + "h </font>");
+                addText(" -> " + getString(R.string.nepasjardinerentre) + " " + h1.toString() + "h et " + ((Integer)(h1+10)).toString() + "h </font>");
             }
             else if ((perigeelocal.compareTo("19:00") >= 0))
             {
                 h1 -= 5;
-                addText(" -> Ne pas jardiner après " + h1.toString() + "h </font>");
+                addText(" -> " + getString(R.string.nepasjardinerapres) + " " + h1.toString() + "h </font>");
             }
         }
     }
@@ -1106,13 +1147,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 Integer h1 = Integer.parseInt(noeudlocal.substring(0, 2));
                 if (noeudlocal.compareTo("05:00") < 0) {
                     h1 += 5;
-                    addText(" -> Ne pas jardiner avant " + h1.toString() + "h" + "</font>");
+                    addText(" -> " + getString(R.string.nepasjardineravant) + " " + h1.toString() + "h" + "</font>");
                 } else if ((noeudlocal.compareTo("19:00") < 0)) {
                     h1 -= 5;
-                    addText(" -> Ne pas jardiner entre " + h1.toString() + "h et " + ((Integer) (h1 + 10)).toString() + "h </font>");
+                    addText(" -> " + getString(R.string.nepasjardinerentre) + " " + h1.toString() + "h et " + ((Integer) (h1 + 10)).toString() + "h </font>");
                 } else if ((noeudlocal.compareTo("19:00") >= 0)) {
                     h1 -= 5;
-                    addText(" -> Ne pas jardiner après " + h1.toString() + "h </font>");
+                    addText(" -> " + getString(R.string.nepasjardinerapres) + " " + h1.toString() + "h </font>");
                 }
             }
         }
@@ -1256,6 +1297,46 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         DatePickerFragment fragment = new DatePickerFragment();
         fragment.show(getSupportFragmentManager(), "date");
     }
+    public void editNote(View view)
+    {
+        SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
+        String str1 = sp.getString(dateString, "");
+        try {
+            View root = RelativeLayout.inflate(this, R.layout.editnote, null);
+            final EditText e1 = (EditText) root.findViewById(R.id.editText);
+            e1.setText(str1);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(getString(R.string.notedu) + " " + dateString + " :");
+            builder.setView(root);
+            builder.setPositiveButton(R.string.sauvegarder, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
+                    SharedPreferences.Editor sedt = sp.edit();
+                    sedt.putString(dateString, e1.getText().toString());
+                    sedt.commit();
+                    imageNote.setAlpha(1.0f);
+                    Toast InfosToast = Toast.makeText(getApplicationContext(), R.string.notesauvegardee, Toast.LENGTH_SHORT);
+                    InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+                    InfosToast.show();
+                    // Do something
+                }
+            });
+            builder.setNegativeButton(R.string.annuler, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast InfosToast = Toast.makeText(getApplicationContext(), R.string.notenonsauvegardee, Toast.LENGTH_SHORT);
+                    InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+                    InfosToast.show();
+                    // Do something
+                }
+            });
+            builder.show();
+        } catch (Exception e) {
+            Log.e("Lunoid", "exception", e);
+        }
+    }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int day)
@@ -1294,7 +1375,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         }
         catch (Exception e)
         {
-
+            Log.e("Lunoid", "exception", e);
         }
     }
 

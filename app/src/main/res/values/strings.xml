@@ -3,7 +3,7 @@
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
     <string name="app_author">Michel Nialon</string>
-    <string name="app_date">29/12/2019</string>
+    <string name="app_date">23/01/2020</string>
     <string name="app_descr">Moon calendar 2020</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
@@ -84,4 +84,13 @@
     <string name="check_version">Check if a new version is available</string>
     <string name="comment">Send a comment or suggestion</string>
     <string name="display_advices">Display the advices for the day</string>
+    <string name="title_activity_edit_note">editNote</string>
+    <string name="notedu">Note du</string>
+    <string name="sauvegarder">Sauvegarder</string>
+    <string name="notesauvegardee">La note a été sauvegardée</string>
+    <string name="annuler">Annuler</string>
+    <string name="notenonsauvegardee">La note n\'a pas été sauvegardée</string>
+    <string name="nepasjardineravant">Ne pas jardiner avant</string>
+    <string name="nepasjardinerapres">Ne pas jardiner après</string>
+    <string name="nepasjardinerentre">Ne pas jardiner entre</string>
 </resources>
