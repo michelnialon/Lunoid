@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="F:\StudioProjects\Lunoid\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6d1f9acfdb2b188eb624d329ab54399ea03e0767">
+        <dex dex="F:\StudioProjects\Lunoid\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_ef8fc9ad79d032db02397119513a965cf9f080ce\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\StudioProjects\Lunoid\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7b9b3629b604b28f88940301a9c74f4d84bf7d7e">
+        <dex dex="F:\StudioProjects\Lunoid\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_ee2155edcc4e692947aa2970b9e6042b365e129c\classes.dex" />
+    </item>
+
+</items>
