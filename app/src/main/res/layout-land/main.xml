@@ -434,9 +434,9 @@
                 android:id="@+id/datePicker1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:datePickerMode="spinner"
-                android:gravity="center_horizontal"
-                android:spinnersShown="true" />
+                android:calendarViewShown="false"
+                android:clickable="false"
+                android:datePickerMode="spinner" />
         </LinearLayout>
 
         <LinearLayout

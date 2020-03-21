@@ -441,21 +441,9 @@
 			android:id="@+id/datePicker1"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:background="@android:color/background_light"
+			android:clickable="false"
 			android:calendarViewShown="false"
-			android:datePickerMode="spinner"
-			android:descendantFocusability="blocksDescendants"
-			android:endYear="2020"
-			android:fadeScrollbars="false"
-			android:fitsSystemWindows="false"
-			android:focusableInTouchMode="false"
-			android:gravity="center_horizontal"
-			android:scaleY="0.6"
-			android:scrollbars="none"
-			android:soundEffectsEnabled="true"
-			android:spinnersShown="true"
-			android:splitMotionEvents="false"
-			android:startYear="2012" />
+			android:datePickerMode="spinner" />
 
 		<TextView
 			android:id="@+id/textvide5"

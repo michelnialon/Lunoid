@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ImageView;
@@ -44,7 +45,30 @@ public class MyWidgetProvider extends AppWidgetProvider
     static Boolean lh;
 
     @Override
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        Log.d("widget", "onupdate");
+        ComponentName thisWidget = new ComponentName(context, MyWidgetProvider.class);
+        int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+        for (int widgetId : allWidgetIds) {
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget2);
+            Intent intent = new Intent(context, MyWidgetProvider.class);
+            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            remoteViews.setOnClickPendingIntent(R.id.lever, pendingIntent);
+            remoteViews.setOnClickPendingIntent(R.id.coucher, pendingIntent);
+            remoteViews.setOnClickPendingIntent(R.id.imageLune, pendingIntent);
+            appWidgetManager.updateAppWidget(widgetId, remoteViews);
+        }
+    }
+
+    @Override
+    public void onEnabled(Context context) {
+        super.onEnabled(context);
+        Log.d("widget", "onEnabled");
+
+    }
+	public void onUpdate2(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
     {
 		Log.d("widget","onupdate");
 		try
@@ -63,10 +87,9 @@ public class MyWidgetProvider extends AppWidgetProvider
 		    int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 		    for (int widgetId : allWidgetIds)
 		    {
-		        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget);
+		        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget2);
 		        // Set the text
-		        remoteViews.setTextViewText(R.id.lever, heurelocale(mapLever.get(dateString), date1, lh));
-			    remoteViews.setTextViewText(R.id.coucher, heurelocale(mapCoucher.get(dateString), date1, lh));
+
                 String ecl = mapEclair.get(dateString);
                 if (ecl.equals("-"))
                 {
@@ -95,7 +118,47 @@ public class MyWidgetProvider extends AppWidgetProvider
                     int resId = context.getResources().getIdentifier(ecl3, "drawable", context.getPackageName());
                     Log.d("resid", Integer.toString(resId));
                     remoteViews.setImageViewResource(R.id.imageLuneWidget, resId);
+                    remoteViews.setTextViewText(R.id.textPct,ecl.concat(" %"));
                 }
+
+                remoteViews.setTextViewText(R.id.lever, heurelocale(mapLever.get(dateString), date1, lh));
+                remoteViews.setTextViewText(R.id.coucher, heurelocale(mapCoucher.get(dateString), date1, lh));
+                Log.d("jour ", mapJour.get(dateString));
+                if (mapJour.get(dateString).contains("Feuilles")) {
+                    remoteViews.setImageViewResource(R.id.imageFeuille, R.drawable.salad30_on);
+                }
+                else
+                {
+                    remoteViews.setImageViewResource(R.id.imageFeuille, R.drawable.salad30_off);
+                }
+
+                if (mapJour.get(dateString).contains(" Fruits"))
+                {
+                    remoteViews.setImageViewResource(R.id.imageFruit, R.drawable.apple30_on);
+                }
+                else {
+                    remoteViews.setImageViewResource(R.id.imageFruit, R.drawable.apple30_off);
+                }
+
+                if (mapJour.get(dateString).contains(" Racines"))
+                {
+                    remoteViews.setImageViewResource(R.id.imageRacine, R.drawable.carrot30_on);
+                }
+                else
+                {
+                    remoteViews.setImageViewResource(R.id.imageRacine, R.drawable.carrot30_off);
+                }
+                if (mapJour.get(dateString).contains(" Fleurs"))
+                {
+                    remoteViews.setImageViewResource(R.id.imageFleur, R.drawable.flower30_on);
+                }
+                else
+                {
+                    remoteViews.setImageViewResource(R.id.imageFleur, R.drawable.flower30_off);
+                }
+
+
+                /*
                 // ANDPNA :apogee
                 Log.d("apogee ", mapApogee.get(dateString));
                 remoteViews.setTextViewText(R.id.heureevt, "88:88");
@@ -160,65 +223,21 @@ public class MyWidgetProvider extends AppWidgetProvider
                     remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechemontantedescendante);
                     break;
                 }
-/*
-                if (mapMontant.get(dateString).equals("0"))
-                {
-                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechedescendante);
-                }
-                else if (mapMontant.get(dateString).equals("1"))
-                {
-                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechemontante);
-                }
-                else if (mapMontant.get(dateString).equals("2"))
-                {
-                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechemontantedescendante);
-                }
-*/
-                Log.d("jour ", mapJour.get(dateString));
-                if (mapJour.get(dateString).contains("Feuilles"))
-                {
-                    if (mapJour.get(dateString).contains(" Fruits"))
-                    {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.feuillefruit84x84);
-                    }
-                    else {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.feuille30x30);
-                    }
+                */
 
-                }
-                else if (mapJour.get(dateString).contains("Fruits"))
-                {
-                    if (mapJour.get(dateString).contains(" Racines"))
-                    {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.pommeracine84x84);
-                    }
-                    else
-                    {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.fruit30x30);
-                    }
-                }
-                else if (mapJour.get(dateString).contains("Racines"))
-                {
-                    if (mapJour.get(dateString).contains(" Fleurs"))
-                    {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.racinefleur84x84);
-                    }
-                    else
-                    {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.racine30x30);
-                    }
-                }
-                else if (mapJour.get(dateString).contains("Fleurs"))
-                {
-                    if (mapJour.get(dateString).contains(" Feuilles"))
-                    {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.fleurfeuille84x84);
-                    }
-                    else
-                    {
-                        remoteViews.setImageViewResource(R.id.imageJour1, R.drawable.fleur30x30);
-                    }
-                }
+//                if (mapMontant.get(dateString).equals("0"))
+//                {
+//                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechedescendante);
+//                }
+//                else if (mapMontant.get(dateString).equals("1"))
+//                {
+//                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechemontante);
+//                }
+//                else if (mapMontant.get(dateString).equals("2"))
+//                {
+//                    remoteViews.setImageViewResource(R.id.flechemontdesc, R.drawable.flechemontantedescendante);
+//                }
+/*
 
 		        // Register an onClickListener
 		        Intent intent = new Intent(context, MyWidgetProvider.class);
@@ -229,6 +248,7 @@ public class MyWidgetProvider extends AppWidgetProvider
 		        remoteViews.setOnClickPendingIntent(R.id.coucher, pendingIntent);
                 remoteViews.setOnClickPendingIntent(R.id.imageLune, pendingIntent);
 		        appWidgetManager.updateAppWidget(widgetId, remoteViews);
+		        */
 		    }
 	       } catch (Exception e) {Log.d("Exception1 :" , e.toString());}
     }

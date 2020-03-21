@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:shape="rectangle" >
-    <solid android:color="#000000"/>
+    android:shape="rectangle"
+    android:background="@drawable/ciel_etoiles">
     <corners android:radius="5dp"/>
+    <gradient
+        android:angle="45"
+        android:endColor="#000058"
+        android:startColor="#0000be"
+        android:type="linear" />
 </shape>

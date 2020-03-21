@@ -442,16 +442,9 @@
                 android:id="@+id/datePicker1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:datePickerMode="spinner"
-                android:descendantFocusability="blocksDescendants"
-                android:endYear="2020"
-                android:gravity="center_horizontal"
-                android:scaleY="0.6"
-                android:scrollbars="none"
-                android:soundEffectsEnabled="true"
-                android:spinnersShown="true"
-                android:splitMotionEvents="false"
-                android:startYear="2012" />
+                android:calendarViewShown="false"
+                android:clickable="false"
+                android:datePickerMode="spinner" />
         </LinearLayout>
         <!-- espace -->
         <LinearLayout

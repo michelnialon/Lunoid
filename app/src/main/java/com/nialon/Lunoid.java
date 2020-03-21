@@ -279,7 +279,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
                 InfosToast.show();
             }
-            ShowHideInfosMenu(year, monthOfYear, getMenu());
+            if (getMenu() != null) {
+                ShowHideInfosMenu(year, monthOfYear, getMenu());
+            }
 
         }
         else

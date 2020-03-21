@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nialon"
-    android:versionCode="75"
-    android:versionName="20.1b">
+    android:versionCode="76"
+    android:versionName="20.1c">
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -28,16 +28,38 @@
         <activity android:name=".ConseilsDuMois"  android:parentActivityName=".Lunoid" />
         <activity android:name=".PrefsActivity" android:parentActivityName=".Lunoid"/>
 
-        <receiver android:name=".MyWidgetProvider">
+        <receiver android:name=".WidgetProvider1Cell">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info" />
+                android:resource="@xml/widget1cell_info" />
         </receiver>
-
+        <receiver android:name=".WidgetProvider2Cell">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget2cell_info" />
+        </receiver>
+        <receiver android:name=".WidgetProvider3Cell">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget3cell_info" />
+        </receiver>
+        <receiver android:name=".WidgetProvider4Cell">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget4cell_info" />
+        </receiver>
         <meta-data
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
