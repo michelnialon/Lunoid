@@ -1,19 +1,16 @@
 package com.nialon;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class PrefsActivity extends PreferenceActivity
+public class PrefsActivity extends AppCompatActivity
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 	   super.onCreate(savedInstanceState);
 //	   super.getListView().setBackgroundColor(Color.BLACK);
-	   addPreferencesFromResource(R.xml.prefs);
+	   //addPreferencesFromResource(R.xml.prefs);
+	   getSupportFragmentManager().beginTransaction().replace(android.R.id.content, new PrefsFragment()).commit();
 	}
 }

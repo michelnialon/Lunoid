@@ -2,13 +2,13 @@ package com.nialon;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
-import java.util.Date;
 
 import java.util.Calendar;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 
 public class DatePickerFragment
         extends DialogFragment
@@ -18,8 +18,6 @@ public class DatePickerFragment
     @NonNull
     public Dialog onCreateDialog( Bundle savedInstanceState)
     {
-        Date dateDebutFin;
-
         // Use the current date as the default date in the picker
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
@@ -27,17 +25,13 @@ public class DatePickerFragment
         int day = c.get(Calendar.DAY_OF_MONTH);
 
         // Create a new instance of DatePickerDialog and return it
-        DatePickerDialog dialog = new DatePickerDialog(getActivity(),android.R.style.Theme_Holo_Dialog, (DatePickerDialog.OnDateSetListener)getActivity(), year, month, day);
-        dateDebutFin = new Date();
-        dateDebutFin.setDate(31);
-        dateDebutFin.setMonth(11);
-        dateDebutFin.setYear(2020 - 1900);
-        dialog.getDatePicker().setMaxDate(dateDebutFin.getTime());
-        dateDebutFin.setDate(1);
-        dateDebutFin.setMonth(4);
-        dateDebutFin.setYear(2012 - 1900);
-        dialog.getDatePicker().setMinDate(dateDebutFin.getTime());
+        DatePickerDialog dialog = new DatePickerDialog(getActivity(),android.R.style.Theme_DeviceDefault_Dialog, (DatePickerDialog.OnDateSetListener)getActivity(), year, month, day);
 
+        c.set(2020,11,31);
+        dialog.getDatePicker().setMaxDate(c.getTimeInMillis());
+
+        c.set(2012,4,1);
+        dialog.getDatePicker().setMinDate(c.getTimeInMillis());
         return dialog;
     }
 

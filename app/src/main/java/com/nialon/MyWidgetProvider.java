@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Random;
 import java.util.TimeZone;
 
 import android.app.PendingIntent;
@@ -20,11 +19,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.ImageView;
 import android.widget.RemoteViews;
 public class MyWidgetProvider extends AppWidgetProvider
 {
@@ -50,7 +46,7 @@ public class MyWidgetProvider extends AppWidgetProvider
         ComponentName thisWidget = new ComponentName(context, MyWidgetProvider.class);
         int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
         for (int widgetId : allWidgetIds) {
-            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget2);
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget2sav);
             Intent intent = new Intent(context, MyWidgetProvider.class);
             intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
@@ -87,7 +83,7 @@ public class MyWidgetProvider extends AppWidgetProvider
 		    int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 		    for (int widgetId : allWidgetIds)
 		    {
-		        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget2);
+		        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget2sav);
 		        // Set the text
 
                 String ecl = mapEclair.get(dateString);

@@ -26,7 +26,7 @@
         <activity android:name=".About"  android:parentActivityName=".Lunoid"/>
         <activity android:name=".infos"  android:parentActivityName=".Lunoid" />
         <activity android:name=".ConseilsDuMois"  android:parentActivityName=".Lunoid" />
-        <activity android:name=".PrefsActivity" android:parentActivityName=".Lunoid"/>
+        <activity android:name=".PrefsActivity" android:parentActivityName=".Lunoid" android:theme="@style/Theme.AppCompat.Dialog.Alert" />
 
         <receiver android:name=".WidgetProvider1Cell">
             <intent-filter>

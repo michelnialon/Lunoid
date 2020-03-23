@@ -26,12 +26,8 @@ android {
         }
     }
 }
-/*
-dependencies {
-    compile 'com.google.android.gms:play-services-ads:11.6.0'
-}*/
-
 dependencies {
     implementation 'com.google.android.gms:play-services-ads:19.0.1'
+    implementation 'androidx.preference:preference:1.1.0'
 
 }

@@ -1,6 +1,5 @@
 package com.nialon;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -15,7 +14,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
 import android.text.Html;
 import android.util.Log;
 import android.util.TypedValue;
@@ -52,6 +50,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
+import androidx.fragment.app.FragmentActivity;
+
 // TODO : signes du zodiaque
 // todo : partager
 // todo : envoyer un commentaire
@@ -76,7 +76,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     public final static String EXTRA_MESSAGE = "com.nialon.Lunoid.MESSAGE";
     private static String htmltxt;
     StringBuilder linetot = new StringBuilder();
-    String tableauMois[] = {"janvier", "fevrier", "mars" , "avril","mai", "juin", "juillet" , "aout", "septembre", "octobre", "novembre" , "decembre"};
+    String[] tableauMois = {"janvier", "fevrier", "mars" , "avril","mai", "juin", "juillet" , "aout", "septembre", "octobre", "novembre" , "decembre"};
     private Menu _menu = null;
 
     // ads
@@ -139,11 +139,11 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         Log.d("dayofmonth", Integer.toString(dayOfMonth));
         Log.d("monthofyear", Integer.toString(monthOfYear));
         Log.d("year", Integer.toString(year));
-
+        dateString2 = sdf2.format(date1);
         if (date1.compareTo(dateDebut) >= 0 &&	date1.compareTo(dateFin) <=0)
         {
             dateString = sdf.format(date1);
-            dateString2 = sdf2.format(date1);
+
             Log.d("datestring",dateString);
             Log.d("datestring2",dateString2);
             textCoucher.setText(heurelocale(mapCoucher.get(dateString),date1,lh));
@@ -288,7 +288,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         {
             textLever.setText("--:--");
             textCoucher.setText("--:--");
-            textJour.setText(R.string.nodata);
+            textJour.setText(dateString2);
             textFeuilles.setTextColor(Color.LTGRAY);
             textFleurs.setTextColor(Color.LTGRAY);
             textFruits.setTextColor(Color.LTGRAY);
@@ -483,7 +483,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         dateDebut.setYear(2012 - 1900);
         dateFin.setDate(1);   //
         dateFin.setMonth(0);
-        dateFin.setYear(2021 - 1900);
+        dateFin.setYear(2020 + 1 - 1900);
 
         sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault());
