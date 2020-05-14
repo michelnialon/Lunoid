@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
  <PreferenceCategory
    android:summary="@string/fuseau"
    android:title="@string/fuseau" >
@@ -23,5 +24,12 @@
       android:key="infosmois"
       android:summary="@string/infosmois"
       android:title="@string/infosmoistitre" />
+  <ListPreference
+      app:key="lnginfos"
+      app:title="@string/lng_infos"
+      app:useSimpleSummaryProvider="true"
+      app:entries="@array/lng_entries"
+      app:entryValues="@array/lng_values"
+      app:dialogTitle="@string/lng_infos_choice"/>
  </PreferenceCategory>
 </PreferenceScreen>

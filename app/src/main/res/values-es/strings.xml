@@ -81,4 +81,20 @@
     <string name="comment">Contacte con el desarrollador</string>
     <string name="share">Compartir esta aplicación</string>
     <string name="display_advices">Ver consejos para el día/mes</string>
+    <string name="lng_infos">Idioma para la información</string>
+    <string name="lng_infos_choice">Elija el idioma</string>
+    <string name="noeudascendanta">Nodo ascendente en</string>
+    <string name="noeuddescendanta">Nodo descendente en</string>
+    <string name="title_activity_edit_note">Introduzca una nota...</string>
+    <string name="perigeea">Perigeo en</string>
+    <string name="apogeea">Apogeo en</string>
+    <string name="sauvegarder">Guardar</string>
+    <string name="notesauvegardee">La nota ha sido guardada</string>
+    <string name="notedu">Nota de</string>
+    <string name="annuler">Cancelar</string>
+    <string name="notenonsauvegardee">La nota no ha sido guardada</string>
+    <string name="nepasjardineravant">No hagas el jardín antes</string>
+    <string name="nepasjardinerapres">No hagas el jardín después de</string>
+    <string name="nepasjardinerentre">No hagas jardinería entre</string>
+    <string name="sharemessage">Esta Android aplicación debería interesarte. (Para cultivar según la luna)</string>
 </resources>

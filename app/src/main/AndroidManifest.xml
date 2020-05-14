@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nialon"
-    android:versionCode="76"
-    android:versionName="20.1c">
+    android:versionCode="78"
+    android:versionName="20.2b">
 
     <uses-feature
         android:name="android.hardware.touchscreen"

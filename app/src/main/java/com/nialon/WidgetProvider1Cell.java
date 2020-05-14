@@ -128,37 +128,4 @@ public class WidgetProvider1Cell extends AppWidgetProvider {
         }
         Log.d("ReadData", "end");
     }
-    private static String heurelocale(String s, Date d, boolean lh)
-    {
-        if (s.equals("--:--"))
-        {
-            return s;
-        }
-        else
-        {
-            if (lh)
-            {
-                int nboffset;
-
-                d.setHours(Integer.valueOf(s.substring(0, 2)));
-                d.setMinutes(Integer.valueOf(s.substring(3, 5)));
-                nboffset = TimeZone.getDefault().getOffset(d.getTime())/1000/3600;
-                String s1;
-                String s2;
-
-                Calendar cal = Calendar.getInstance();
-                cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(s.substring(0, 2)));
-                cal.set(Calendar.MINUTE, Integer.valueOf(s.substring(3, 5)));
-
-                cal.add(Calendar.HOUR_OF_DAY, nboffset);
-                s1 = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
-                s1 = (s1.length()==1 ? "0" + s1 : s1);
-                s2 = String.valueOf(cal.get(Calendar.MINUTE));
-                s2 = (s2.length()==1 ? "0" + s2 : s2);
-                return s1 + ":" + s2;
-            }
-            else
-                return s;
-        }
-    }
 }

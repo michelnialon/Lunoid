@@ -64,7 +64,6 @@
     <string name="info37">Wurzelpflanzen während absteigender Mond ernten.</string>
     <string name="info38">Blue moon</string>
     <string name="info39">Blue moon ist die zweite Vollmond in das selbe monat.</string>
-    
     <string name="infos">Info</string>
     <string name="notfound">Nicht gefunden</string>
     <string name="params">Einstellungen</string>
@@ -82,4 +81,20 @@
     <string name="comment">Kontaktieren Sie den Entwickler</string>
     <string name="share">Diese Anwendung teilen</string>
     <string name="display_advices">Tipps für den Tag/Monat anzeigen</string>
+    <string name="lng_infos">Sprache für Informationen</string>
+    <string name="lng_infos_choice">Wählen Sie die Sprache</string>
+    <string name="noeudascendanta">Aufsteigender Knoten bei</string>
+    <string name="noeuddescendanta">Aufsteigender Knoten bei</string>
+    <string name="title_activity_edit_note">Eine Notiz eingeben</string>
+    <string name="perigeea">Erdnähe bei</string>
+    <string name="apogeea">Erdferne bei</string>
+    <string name="sauvegarder">Speichern</string>
+    <string name="notesauvegardee">Die Notiz wurde gespeichert</string>
+    <string name="notedu">Anmerkung von</string>
+    <string name="annuler">Abbrechen</string>
+    <string name="notenonsauvegardee">Die Notiz wurde nicht gespeichert</string>
+    <string name="nepasjardineravant">Gärtnern Sie nicht vor</string>
+    <string name="nepasjardinerapres">Gärtnern Sie nicht nach</string>
+    <string name="nepasjardinerentre">Gärtnern Sie nicht zwischen</string>
+    <string name="sharemessage">Diese Android-App sollte Sie interessieren. (Nach dem Mond gärtnern)</string>
 </resources>

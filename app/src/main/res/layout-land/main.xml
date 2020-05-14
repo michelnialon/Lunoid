@@ -15,6 +15,7 @@
         android:baselineAligned="false"
         android:orientation="vertical">
 
+        <!-- Moon  	-->
         <RelativeLayout
             android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
@@ -75,7 +76,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="209dp"
                 android:text="53%"
                 android:textColor="#ffff00"
                 android:textSize="18sp"
@@ -91,7 +91,21 @@
                 android:src="@android:drawable/ic_menu_edit" />
 
         </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout34"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
+            <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/publisherAdView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-4468029712209847/4219671648"></com.google.android.gms.ads.doubleclick.PublisherAdView>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -109,7 +123,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
-            android:textSize="3sp" />
+            android:textSize="5sp" />
 
         <!-- croissant/decroissant -->
 
@@ -117,7 +131,7 @@
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@drawable/roundcorner_nopadding"
             android:orientation="horizontal">
 
             <TextView
@@ -128,8 +142,16 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/croissant"
                 android:textColor="#FFFF00"
-                android:textSize="18sp" />
-
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/textHCD"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="00:00"
+                android:textColor="#666666"
+                android:rotation="0"
+                android:textSize="14sp" />
             <TextView
                 android:id="@+id/textDecroissant"
                 android:layout_width="match_parent"
@@ -138,7 +160,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/decroissant"
                 android:textColor="#666666"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
         </LinearLayout>
 
         <!-- espace -->
@@ -147,10 +169,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
-            android:textSize="3sp" />
+            android:textSize="5sp" />
 
         <!-- montant/descendant -->
 
@@ -158,7 +179,7 @@
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@drawable/roundcorner_nopadding"
             android:orientation="horizontal">
 
             <TextView
@@ -169,8 +190,16 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/montant"
                 android:textColor="#666666"
-                android:textSize="18sp" />
-
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/textHMD"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="00:00"
+                android:textColor="#666666"
+                android:rotation="0"
+                android:textSize="14sp" />
             <TextView
                 android:id="@+id/textDescendant"
                 android:layout_width="match_parent"
@@ -179,7 +208,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/descendant"
                 android:textColor="#FFFF00"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
         </LinearLayout>
         <!-- espace -->
         <TextView
@@ -188,13 +217,140 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/vide"
-            android:textSize="3sp" />
+            android:textSize="5sp" />
+
+        <!-- feuilles/fleurs/fruits/racines images-->
+        <TextView
+            android:id="@+id/textvide40"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/vide"
+            android:textSize="5sp" />
+        <LinearLayout
+            android:id="@+id/linearLayout70"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageFeuille"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="0.25"
+                android:baselineAligned="false"
+                android:src="@drawable/salad30_on" />
+
+            <ImageView
+                android:id="@+id/imageFruit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="0.25"
+                android:baselineAligned="false"
+                android:src="@drawable/apple30_off" />
+
+            <ImageView
+                android:id="@+id/imageRacine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="0dp"
+                android:layout_weight="0.25"
+                android:baselineAligned="false"
+                android:src="@drawable/carrot30_on" />
+
+            <ImageView
+                android:id="@+id/imageFleur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="0.25"
+                android:baselineAligned="false"
+                android:src="@drawable/flower30_on" />
+        </LinearLayout>
+        <!-- feuilles/fleurs/fruits/racines textes-->
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textFeuilles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/feuilles"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textFruits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/fruits"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textRacines"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/racines"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textFleurs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/fleurs"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+        </LinearLayout>
+        <!-- espace -->
+        <TextView
+            android:id="@+id/textvide21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/vide"
+            android:textSize="5sp" />
         <!-- Perigee/Apogee/Noeud -->
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:padding="3sp"
+            android:background="@drawable/roundcorner_nopadding"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -221,7 +377,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="@string/perigee"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -248,7 +404,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="@string/apogee"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -275,126 +431,9 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/noeudlunaire"
                     android:textColor="#FF0000"
-                    android:textSize="12sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
         </LinearLayout>
-        <!-- feuilles/fleurs/fruits/racines images-->
-        <LinearLayout
-            android:id="@+id/linearLayout70"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#000000"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageFeuille"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="0dp"
-                android:layout_weight="0.25"
-                android:baselineAligned="false"
-                android:src="@drawable/feuille30x30_grey" />
-
-            <ImageView
-                android:id="@+id/imageFruit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="0dp"
-                android:layout_weight="0.25"
-                android:baselineAligned="false"
-                android:src="@drawable/fruit30x30_grey" />
-
-            <ImageView
-                android:id="@+id/imageRacine"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="0dp"
-                android:layout_weight="0.25"
-                android:baselineAligned="false"
-                android:src="@drawable/racine30x30_grey" />
-
-            <ImageView
-                android:id="@+id/imageFleur"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="0.25"
-                android:baselineAligned="false"
-                android:src="@drawable/fleur30x30_grey" />
-        </LinearLayout>
-        <!-- feuilles/fleurs/fruits/racines textes-->
-        <LinearLayout
-            android:id="@+id/linearLayout7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#000000"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textFeuilles"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/feuilles"
-                android:textColor="#666666"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/textFruits"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/fruits"
-                android:textColor="#666666"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/textRacines"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/racines"
-                android:textColor="#666666"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/textFleurs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/fleurs"
-                android:textColor="#FFFF00"
-                android:textSize="12sp" />
-        </LinearLayout>
-        <!-- espace -->
-        <TextView
-            android:id="@+id/textvide21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="3sp" />
-
 
         <!-- espace -->
         <TextView
@@ -408,9 +447,9 @@
         <TextView
             android:id="@+id/TextJour"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#000000"
-            android:gravity="center_horizontal"
+            android:gravity="center_horizontal|center_vertical"
             android:onClick="datePicker"
             android:text="Dimanche 17 Février 2019"
             android:textColor="#FFFF00"
@@ -439,21 +478,7 @@
                 android:datePickerMode="spinner" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayout34"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
 
-            <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/publisherAdView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-4468029712209847/4219671648"></com.google.android.gms.ads.doubleclick.PublisherAdView>
-        </LinearLayout>
         <!--
      Quitter 
     <Button

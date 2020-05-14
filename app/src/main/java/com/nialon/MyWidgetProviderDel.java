@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -17,12 +16,10 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
-public class MyWidgetProvider extends AppWidgetProvider
+public class MyWidgetProviderDel extends AppWidgetProvider
 {
 
     static Map<String, String> mapLever = new HashMap<>();
@@ -43,11 +40,11 @@ public class MyWidgetProvider extends AppWidgetProvider
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d("widget", "onupdate");
-        ComponentName thisWidget = new ComponentName(context, MyWidgetProvider.class);
+        ComponentName thisWidget = new ComponentName(context, MyWidgetProviderDel.class);
         int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
         for (int widgetId : allWidgetIds) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget2sav);
-            Intent intent = new Intent(context, MyWidgetProvider.class);
+            Intent intent = new Intent(context, MyWidgetProviderDel.class);
             intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
             PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -64,6 +61,7 @@ public class MyWidgetProvider extends AppWidgetProvider
         Log.d("widget", "onEnabled");
 
     }
+    /*
 	public void onUpdate2(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
     {
 		Log.d("widget","onupdate");
@@ -244,10 +242,11 @@ public class MyWidgetProvider extends AppWidgetProvider
 		        remoteViews.setOnClickPendingIntent(R.id.coucher, pendingIntent);
                 remoteViews.setOnClickPendingIntent(R.id.imageLune, pendingIntent);
 		        appWidgetManager.updateAppWidget(widgetId, remoteViews);
-		        */
+
 		    }
 	       } catch (Exception e) {Log.d("Exception1 :" , e.toString());}
     }
+    */
     private void ReadData(Context ctxt)
     {
         Log.d("ReadData", "begin");
@@ -291,15 +290,15 @@ public class MyWidgetProvider extends AppWidgetProvider
             {
                 int nboffset;
 
-                d.setHours(Integer.valueOf(s.substring(0, 2)));
-                d.setMinutes(Integer.valueOf(s.substring(3, 5)));
+                d.setHours(Integer.parseInt(s.substring(0, 2)));
+                d.setMinutes(Integer.parseInt(s.substring(3, 5)));
                 nboffset = TimeZone.getDefault().getOffset(d.getTime())/1000/3600;
                 String s1;
                 String s2;
 
                 Calendar cal = Calendar.getInstance();
-                cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(s.substring(0, 2)));
-                cal.set(Calendar.MINUTE, Integer.valueOf(s.substring(3, 5)));
+                cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(s.substring(0, 2)));
+                cal.set(Calendar.MINUTE, Integer.parseInt(s.substring(3, 5)));
 
                 cal.add(Calendar.HOUR_OF_DAY, nboffset);
                 s1 = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));

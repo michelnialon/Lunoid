@@ -81,4 +81,20 @@
     <string name="share">Partager l\'application</string>
     <string name="comment">Contacter le développeur</string>
     <string name="display_advices">Afficher les conseils du jour/mois</string>
+    <string name="lng_infos">Langue pour les informations</string>
+    <string name="lng_infos_choice">Choisissez la langue</string>
+    <string name="notedu">Note du</string>
+    <string name="sauvegarder">Sauvegarder</string>
+    <string name="notesauvegardee">La note a été sauvegardée</string>
+    <string name="annuler">Annuler</string>
+    <string name="notenonsauvegardee">La note n\'a pas été sauvegardée</string>
+    <string name="nepasjardineravant">Ne pas jardiner avant</string>
+    <string name="nepasjardinerapres">Ne pas jardiner après</string>
+    <string name="nepasjardinerentre">Ne pas jardiner entre</string>
+    <string name="noeudascendanta">Nœud ascendant à</string>
+    <string name="title_activity_edit_note">Saisir une note</string>
+    <string name="noeuddescendanta">Nœud descendant à</string>
+    <string name="perigeea">Périgée à</string>
+    <string name="apogeea">Apogée à</string>
+    <string name="sharemessage">Cette application Android devrait t\'intéresser. (Pour jardiner en fonction de la lune)</string>
 </resources>

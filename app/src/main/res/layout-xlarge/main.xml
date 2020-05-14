@@ -5,16 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@android:color/background_dark">
+    android:background="@drawable/ciel_etoiles">
 
     <LinearLayout
         android:layout_width="400dp"
-        android:layout_height="600dp"
-        android:layout_margin="150dp"
+        android:layout_height="700dp"
+        android:layout_marginHorizontal="200dp"
+        android:layout_marginVertical="180dp"
         android:background="@drawable/roundcorner"
         android:orientation="vertical">
-        <!-- Moon  	-->
 
+        <!-- Moon  	-->
         <RelativeLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
@@ -134,8 +135,7 @@
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
-
+            android:background="@drawable/roundcorner_nopadding"
             android:orientation="horizontal">
 
             <TextView
@@ -147,7 +147,15 @@
                 android:text="@string/croissant"
                 android:textColor="#FFFF00"
                 android:textSize="20sp" />
-
+            <TextView
+                android:id="@+id/textHCD"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="00:00"
+                android:textColor="#666666"
+                android:rotation="0"
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/textDecroissant"
                 android:layout_width="match_parent"
@@ -181,7 +189,7 @@
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@drawable/roundcorner_nopadding"
             android:orientation="horizontal">
 
             <TextView
@@ -193,7 +201,15 @@
                 android:text="@string/montant"
                 android:textColor="#666666"
                 android:textSize="20sp" />
-
+            <TextView
+                android:id="@+id/textHMD"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="00:00"
+                android:textColor="#666666"
+                android:rotation="0"
+                android:textSize="12sp" />
             <TextView
                 android:id="@+id/textDescendant"
                 android:layout_width="match_parent"
@@ -238,7 +254,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/feuille30x30_grey" />
+                android:src="@drawable/salad30_on" />
 
             <ImageView
                 android:id="@+id/imageFruit"
@@ -250,7 +266,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/fruit30x30_grey" />
+                android:src="@drawable/apple30_on" />
 
             <ImageView
                 android:id="@+id/imageRacine"
@@ -262,7 +278,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="0dp"
                 android:layout_weight="1"
-                android:src="@drawable/racine30x30_grey" />
+                android:src="@drawable/carrot30_on" />
 
             <ImageView
                 android:id="@+id/imageFleur"
@@ -274,7 +290,7 @@
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
                 android:layout_weight="1"
-                android:src="@drawable/fleur30x30_grey" />
+                android:src="@drawable/flower30_off" />
         </LinearLayout>
         <!-- feuilles/fleurs/fruits/racines textes-->
         <LinearLayout
@@ -345,7 +361,7 @@
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@drawable/roundcorner_nopadding"
             android:orientation="horizontal">
 
             <LinearLayout

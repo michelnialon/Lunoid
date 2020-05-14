@@ -143,19 +143,21 @@ public class WidgetProvider2Cell extends AppWidgetProvider {
         {
             if (lh)
             {
-                int nboffset;
+                int nboffsetCal;
+                Calendar cal1 = Calendar.getInstance();
+                cal1.setTime(d);
+                cal1.set(Calendar.HOUR_OF_DAY, Integer.parseInt(s.substring(0, 2)));
+                cal1.set(Calendar.MINUTE, Integer.parseInt(s.substring(3, 5)));
+                nboffsetCal = TimeZone.getDefault().getOffset(cal1.getTime().getTime()) / 1000 / 3600;
 
-                d.setHours(Integer.valueOf(s.substring(0, 2)));
-                d.setMinutes(Integer.valueOf(s.substring(3, 5)));
-                nboffset = TimeZone.getDefault().getOffset(d.getTime())/1000/3600;
                 String s1;
                 String s2;
 
                 Calendar cal = Calendar.getInstance();
-                cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(s.substring(0, 2)));
-                cal.set(Calendar.MINUTE, Integer.valueOf(s.substring(3, 5)));
+                cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(s.substring(0, 2)));
+                cal.set(Calendar.MINUTE, Integer.parseInt(s.substring(3, 5)));
 
-                cal.add(Calendar.HOUR_OF_DAY, nboffset);
+                cal.add(Calendar.HOUR_OF_DAY, nboffsetCal);
                 s1 = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
                 s1 = (s1.length()==1 ? "0" + s1 : s1);
                 s2 = String.valueOf(cal.get(Calendar.MINUTE));

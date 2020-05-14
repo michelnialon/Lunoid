@@ -2,8 +2,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_author">Michel Nialon</string>
-    <string name="app_date">23/01/2020</string>
+    <string name="app_author" translatable="false">Michel Nialon</string>
+    <string name="app_date" translatable="false">07/05/2020</string>
     <string name="app_descr">Moon calendar 2020</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
@@ -79,18 +79,26 @@
     <string name="don">Make a donation</string>
     <string name="infosmois">Show information for the full month</string>
     <string name="infosmoistitre">Info for the full month</string>
-    <string name="app_email">mnialon@gmail.com</string>
+    <string name="app_email" translatable="false">mnialon@gmail.com</string>
     <string name="share">Share this application</string>
     <string name="check_version">Check if a new version is available</string>
     <string name="comment">Send a comment or suggestion</string>
     <string name="display_advices">Display the advices for the day</string>
-    <string name="title_activity_edit_note">editNote</string>
-    <string name="notedu">Note du</string>
-    <string name="sauvegarder">Sauvegarder</string>
-    <string name="notesauvegardee">La note a été sauvegardée</string>
-    <string name="annuler">Annuler</string>
-    <string name="notenonsauvegardee">La note n\'a pas été sauvegardée</string>
-    <string name="nepasjardineravant">Ne pas jardiner avant</string>
-    <string name="nepasjardinerapres">Ne pas jardiner après</string>
-    <string name="nepasjardinerentre">Ne pas jardiner entre</string>
+    <string name="title_activity_edit_note">Edit Note</string>
+    <string name="notedu">Note for</string>
+    <string name="sauvegarder">Save</string>
+    <string name="notesauvegardee">The note has been saved</string>
+    <string name="annuler">Cancel</string>
+    <string name="notenonsauvegardee">The not has not been saved</string>
+    <string name="nepasjardineravant">Do not work before</string>
+    <string name="nepasjardinerapres">Do not work after</string>
+    <string name="nepasjardinerentre">Do not work between</string>
+    <string name="lng_infos">Language for the information</string>
+    <string name="lng_infos_choice">Select the language</string>
+    <string name="noeudascendanta">Ascending node at</string>
+    <string name="noeuddescendanta">Descending node at</string>
+    <string name="perigeea">Perigee at</string>
+    <string name="apogeea">Apogee at</string>
+    <string name="h0" translatable="false">00:00</string>
+    <string name="sharemessage">You will like this Android application (Gardening according to the moon)</string>
 </resources>
