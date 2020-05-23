@@ -101,4 +101,7 @@
     <string name="apogeea">Apogee at</string>
     <string name="h0" translatable="false">00:00</string>
     <string name="sharemessage">You will like this Android application (Gardening according to the moon)</string>
+    <string name="rappel">Reminder</string>
+    <string name="setreminder">Schedule a reminder</string>
+    <string name="notesupprimee">The note has been deleted</string>
 </resources>

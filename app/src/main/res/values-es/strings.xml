@@ -97,4 +97,7 @@
     <string name="nepasjardinerapres">No hagas el jardín después de</string>
     <string name="nepasjardinerentre">No hagas jardinería entre</string>
     <string name="sharemessage">Esta Android aplicación debería interesarte. (Para cultivar según la luna)</string>
+    <string name="rappel">Recordatorio</string>
+    <string name="setreminder">añadir notificación</string>
+    <string name="notesupprimee">La nota ha sido borrada</string>
 </resources>

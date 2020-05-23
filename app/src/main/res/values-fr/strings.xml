@@ -97,4 +97,7 @@
     <string name="perigeea">Périgée à</string>
     <string name="apogeea">Apogée à</string>
     <string name="sharemessage">Cette application Android devrait t\'intéresser. (Pour jardiner en fonction de la lune)</string>
+    <string name="rappel">Rappel</string>
+    <string name="setreminder">Ajouter une notification</string>
+    <string name="notesupprimee">La  note a été supprimée</string>
 </resources>

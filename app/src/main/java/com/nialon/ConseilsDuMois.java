@@ -76,7 +76,7 @@ public class ConseilsDuMois extends Activity
                 if (type_message.equals("2"))
                 {
                     t.setBackgroundColor(Color.BLACK);
-                    htmltxt += "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>";
+                    htmltxt += "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>";
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     t.setText(Html.fromHtml(htmltxt, Html.FROM_HTML_MODE_COMPACT));

@@ -68,6 +68,9 @@
 			android:layout_centerHorizontal="true"
 			android:clickable="true"
 			android:onClick="editNote"
+            android:paddingTop="5dp"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
 			android:src="@android:drawable/ic_menu_edit" />
 
         <TextView

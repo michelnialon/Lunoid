@@ -29,6 +29,7 @@ import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,8 +50,15 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import androidx.fragment.app.FragmentActivity;
+import androidx.work.Data;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+
+import static java.lang.Math.abs;
 
 // TODO : signes du zodiaque
 // todo : partager : fait
@@ -64,11 +72,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     /** Called when the activity is first created. */
     private SimpleDateFormat sdf;
     private SimpleDateFormat sdf2;
-    static String dateString;
-    String dateString2 ;
+    static String dateString;  // 16/05/2020
+    String dateString2;        // Saturday 16 May 2020
     static Date date1;
     private Date dateDebut;
     private Date dateFin;
+    private Calendar today = Calendar.getInstance();
+    private Calendar selday = Calendar.getInstance();
     private GestureDetector mGestureDetector;
     private static Boolean lh;
     private static Boolean sifm;
@@ -140,6 +150,11 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             cc.set(Calendar.YEAR, year);
 
             date1.setTime(cc.getTimeInMillis());
+            selday.setTimeInMillis(date1.getTime());
+            selday.set(Calendar.HOUR, 0);
+            selday.set(Calendar.MINUTE, 0);
+            selday.set(Calendar.SECOND, 0);
+
             Log.d("dayofmonth", Integer.toString(dayOfMonth));
             Log.d("monthofyear", Integer.toString(monthOfYear));
             Log.d("year", Integer.toString(year));
@@ -160,8 +175,10 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 String str1 = sp.getString(dateString, "");
                 if (!str1.equals("")) {
                     imageNote.setAlpha(1.0f);
+                    imageNote.setColorFilter(Color.YELLOW);
                 } else {
                     imageNote.setAlpha(0.5f);
+                    imageNote.clearColorFilter();
                 }
 
                 String ecl = mapEclair.get(dateString);
@@ -361,6 +378,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     {
         super.onCreate(savedInstanceState);
 
+        Log.d("OnCreate", "");
         /*
         * pour changer le format de date
          */
@@ -717,37 +735,39 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
         {
             Calendar c= Calendar.getInstance();
-            c.set(datePicker1.getYear(), datePicker1.getMonth(), datePicker1.getDayOfMonth());
 
-            //Log.d("d",e1.toString());
-            //Log.d("e2",e2.toString());
+            Log.d("e1", e1.toString());
+            Log.d("e2", e2.toString());
             float f1 = e1.getX();
             //Log.d("e1x",f1.toString());
             float f2 = e2.getX();
             //Log.d("e2x",f2.toString());
             float f3 = e1.getY();
             float f4 = e2.getY();
-            if (f1>f2+60)
+            if (f1 > f2 + 60 && (f1 - f2) > abs(f3 - f4))
             {
+                c.set(datePicker1.getYear(), datePicker1.getMonth(), datePicker1.getDayOfMonth());
                 c.add(Calendar.DATE, 1);
                 Log.d("y:",Integer.toString(c.get(Calendar.YEAR)));
                 Log.d("m:",Integer.toString(c.get(Calendar.MONTH)));
                 Log.d("d:",Integer.toString(c.get(Calendar.DAY_OF_MONTH)));
                 datePicker1.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-                //        	  Toast.makeText(getApplicationContext(), "plus", Toast.LENGTH_SHORT).show();
             }
-            else if (f2>f1+60)
+            if (f2 > f1 + 60 && (f2 - f1) > abs(f3 - f4))
             {
+                c.set(datePicker1.getYear(), datePicker1.getMonth(), datePicker1.getDayOfMonth());
                 c.add(Calendar.DATE, -1);
                 Log.d("y:",Integer.toString(c.get(Calendar.YEAR)));
                 Log.d("m:",Integer.toString(c.get(Calendar.MONTH)));
                 Log.d("d:",Integer.toString(c.get(Calendar.DAY_OF_MONTH)));
                 datePicker1.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-                //       	  Toast.makeText(getApplicationContext(), "moins", Toast.LENGTH_SHORT).show();
             }
-            else if (f3>f4+60 || f4>f3+60)
+            if ((f3 > (f4 + 60)) && ((f3 - f4) > abs(f1 - f2)))
             {
                 DisplayInfosDuMois(datePicker1.getYear(), datePicker1.getMonth());
+            }
+            if ((f4 > (f3 + 60)) && ((f4 - f3) > abs(f1 - f2))) {
+                datePicker1.updateDate(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
             }
             return true;
         }
@@ -840,6 +860,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                             "<p>Version Application : " + AppVersion + "</p>" +
                             "<p>Android Version : " + Build.VERSION.SDK_INT + " (" + Build.VERSION.RELEASE + ")</p>" +
                             "<p>Device Type : " + Build.MANUFACTURER + " (" + Build.MODEL + ")</p>" +
+                            "<p>Density : " + getResources().getDisplayMetrics().densityDpi + "</p>" +
+                            "<p>Height : " + getResources().getDisplayMetrics().heightPixels + "</p>" +
+                            "<p>Width : " + getResources().getDisplayMetrics().widthPixels + "</p>" +
                             "</body></html>")
             );
             startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
@@ -1347,11 +1370,30 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     public void editNote(View view)
     {
         SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
+        Map<String, ?> allEntries = sp.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
+        }
         String str1 = sp.getString(dateString, "");
+        SharedPreferences spNotif = getSharedPreferences("myNotif", MODE_PRIVATE);
+        final String str1Notif = spNotif.getString(dateString, "");
+        Log.d("editNote", "start");
         try {
             View root = RelativeLayout.inflate(this, R.layout.editnote, null);
             final EditText e1 = root.findViewById(R.id.editText);
+            final Switch sw1 = root.findViewById(R.id.switch1);
             e1.setText(str1);
+            Log.d("str1notif", str1Notif);
+            if (!str1Notif.equals("0") && !str1Notif.equals("")) {
+                sw1.setChecked(true);
+            } else {
+                sw1.setChecked(false);
+            }
+            if (today.getTime().before(selday.getTime())) {
+                sw1.setEnabled(true);
+            } else {
+                sw1.setEnabled(false);
+            }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.notedu) + " " + dateString + " :");
@@ -1360,11 +1402,38 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
+                    UUID uuid;
                     SharedPreferences.Editor sedt = sp.edit();
                     sedt.putString(dateString, e1.getText().toString());
                     sedt.apply();
-                    imageNote.setAlpha(1.0f);
-                    Toast InfosToast = Toast.makeText(getApplicationContext(), R.string.notesauvegardee, Toast.LENGTH_SHORT);
+                    if (!e1.getText().toString().equals("")) {
+                        imageNote.setAlpha(1.0f);
+                        imageNote.setColorFilter(Color.YELLOW);
+                    } else {
+                        imageNote.setAlpha(0.5f);
+                        imageNote.clearColorFilter();
+                    }
+
+                    SharedPreferences spNotif = getSharedPreferences("myNotif", MODE_PRIVATE);
+                    SharedPreferences.Editor sedtNotif = spNotif.edit();
+                    if (sw1.isChecked() && sw1.isEnabled() && !e1.getText().toString().equals("")) {
+                        uuid = scheduleNotification(e1.getText().toString());
+                        Log.d("uuid", uuid.toString());
+                        sedtNotif.putString(dateString, uuid.toString());
+                    } else {
+                        if (!str1Notif.equals("0") && !str1Notif.equals("")) {
+                            Log.d("Cancel", str1Notif);
+                            WorkManager.getInstance(getApplicationContext()).cancelWorkById(UUID.fromString(str1Notif));
+                        }
+                        sedtNotif.putString(dateString, "0");
+                    }
+                    sedtNotif.apply();
+                    Toast InfosToast;
+                    if (e1.getText().toString().equals("")) {
+                        InfosToast = Toast.makeText(getApplicationContext(), R.string.notesupprimee, Toast.LENGTH_SHORT);
+                    } else {
+                        InfosToast = Toast.makeText(getApplicationContext(), R.string.notesauvegardee, Toast.LENGTH_SHORT);
+                    }
                     InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
                     InfosToast.show();
                     // Do something
@@ -1424,6 +1493,49 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         {
             Log.e("Lunoid", "exception", e);
         }
+    }
+
+    /*
+    private void createNotificationChannel()
+    {
+        // Create the NotificationChannel, but only on API 26+ because
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            CharSequence name = "Notification channel";
+            String description = "Channel description";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("Channel_Id", name, importance);
+            channel.setDescription(description);
+
+            // Register the channel with the system
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+     */
+    public UUID scheduleNotification(String txtNotif) {
+        long currentTime;
+        Calendar cal1 = Calendar.getInstance();
+        currentTime = cal1.getTimeInMillis();
+        cal1.setTime(date1);
+        cal1.set(Calendar.HOUR_OF_DAY, 8);
+        cal1.set(Calendar.MINUTE, 0);
+        long specificTimeToTrigger = cal1.getTimeInMillis();
+        long delayToPass = (specificTimeToTrigger - currentTime) / 1000 / 60;
+
+        Log.d("Schedule Notification", txtNotif + " " + delayToPass);
+        //Toast.makeText(getApplicationContext(), "schedule "+ " " + delayToPass.toString(), Toast.LENGTH_LONG).show();
+        Data.Builder dataNotif = new Data.Builder();
+        dataNotif.putString("textNotif", txtNotif);
+        OneTimeWorkRequest notificationWork =
+                new OneTimeWorkRequest.Builder(NotificationWorker.class)
+                        .setInputData(dataNotif.build())
+                        .setInitialDelay(delayToPass, TimeUnit.MINUTES)
+                        .build();
+
+        WorkManager.getInstance(this).enqueue(notificationWork);
+
+        return notificationWork.getId();
     }
 } // Lunoid
 
