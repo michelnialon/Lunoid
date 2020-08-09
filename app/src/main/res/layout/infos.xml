@@ -26,27 +26,91 @@
         android:layout_height="wrap_content" android:textColor="#ffff00"  android:textSize="18sp"/>
     <TextView android:id="@+id/editText5" android:layout_width="match_parent" android:text="@string/info5"
         android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
-    <TextView android:id="@+id/editText6" android:layout_width="match_parent" android:text="@string/info6"
-        android:layout_height="wrap_content" android:textColor="#FFFF00"  android:textSize="18sp"/>
-    <TextView android:id="@+id/editText7" android:layout_width="match_parent" android:text="@string/info7"
-        android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
-    <TextView android:id="@+id/editText8" android:layout_width="match_parent" android:text="@string/info8"
-        android:layout_height="wrap_content" android:textColor="#FFFF00"  android:textSize="18sp"/>
-    <TextView android:id="@+id/editText9" android:layout_width="match_parent" android:text="@string/info9"
-        android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
-    <TextView android:id="@+id/editText10" android:layout_width="match_parent" android:text="@string/info10"
-        android:layout_height="wrap_content" android:textColor="#FFFF00"  android:textSize="18sp"/>
-    <TextView android:id="@+id/editText11" android:layout_width="match_parent" android:text="@string/info11"
-        android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
-    <TextView android:id="@+id/editText12" android:layout_width="match_parent" android:text="@string/info12"
-        android:layout_height="wrap_content" android:textColor="#FFFF00"  android:textSize="18sp"/>
-    <TextView android:id="@+id/editText13" android:layout_width="match_parent" android:text="@string/info13"
-        android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
-    <TextView android:id="@+id/editText14" android:layout_width="match_parent" android:text="@string/info14"
-        android:layout_height="wrap_content" android:textColor="#FFFF00"  android:textSize="18sp"/>
-    <TextView android:id="@+id/editText15" android:layout_width="match_parent" android:text="@string/info15"
-        android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
-    <TextView android:id="@+id/editText16" android:layout_width="match_parent" android:text="@string/info16"
+
+    <TextView
+        android:id="@+id/editText6"
+        android:layout_width="match_parent"
+        android:text="@string/info6"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFF00"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/editText7"
+        android:layout_width="match_parent"
+        android:text="@string/info7"
+        android:layout_height="wrap_content"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/editText8"
+        android:layout_width="match_parent"
+        android:text="@string/info8"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFF00"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/editText9"
+        android:layout_width="match_parent"
+        android:text="@string/info9"
+        android:layout_height="wrap_content"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/editText10"
+        android:layout_width="match_parent"
+        android:text="@string/info10"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFF00"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/editText11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info11"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/editText12"
+        android:layout_width="match_parent"
+        android:text="@string/info12"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFF00"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/editText13"
+        android:layout_width="match_parent"
+        android:text="@string/info13"
+        android:layout_height="wrap_content"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/editText14"
+        android:layout_width="match_parent"
+        android:text="@string/info14"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFF00"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/editText15"
+        android:layout_width="match_parent"
+        android:text="@string/info15"
+        android:layout_height="wrap_content"
+        android:textColor="#A9A9A9"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/editText16"
+        android:layout_width="match_parent"
+        android:text="@string/info16"
         android:layout_height="wrap_content" android:textColor="#FFFF00"  android:textSize="18sp"/>
     <TextView android:id="@+id/editText17" android:layout_width="match_parent" android:text="@string/info17"
         android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
@@ -58,9 +122,15 @@
         android:layout_height="wrap_content" android:textColor="#FFFF00"  android:textSize="18sp"/>
     <TextView android:id="@+id/editText21" android:layout_width="match_parent" android:text="@string/info21"
         android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
-    
-    <TextView android:id="@+id/editText26" android:layout_width="match_parent" android:text="@string/info26"
-        android:layout_height="wrap_content" android:textColor="#FFFF00"  android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/editText26"
+        android:layout_width="match_parent"
+        android:text="@string/info26"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFF00"
+        android:textSize="18sp"
+        android:justificationMode="inter_word" />
     <TextView android:id="@+id/editText27" android:layout_width="match_parent" android:text="@string/info27"
         android:layout_height="wrap_content" android:textColor="#A9A9A9"  android:textSize="16sp"/>
     <TextView android:id="@+id/editText28" android:layout_width="match_parent" android:text="@string/info28"
