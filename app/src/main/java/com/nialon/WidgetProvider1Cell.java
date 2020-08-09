@@ -79,7 +79,6 @@ public class WidgetProvider1Cell extends AppWidgetProvider {
                 Intent launchActivity = new Intent(context, Lunoid.class);
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, 0);
                 remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
-                ;
                 appWidgetManager.updateAppWidget(widgetId, remoteViews);
             }
         } catch (Exception e) {Log.d("Exception1 :" , e.toString());}
