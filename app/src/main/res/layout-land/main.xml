@@ -7,6 +7,7 @@
     android:baselineAligned="true"
     android:orientation="horizontal" >
 
+    <!-- Gauche -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,7 +18,7 @@
 
         <!-- Moon  	-->
         <RelativeLayout
-            android:id="@+id/linearLayout1"
+            android:id="@+id/linearLayoutHaut"
             android:layout_width="wrap_content"
             android:layout_height="0dip"
             android:layout_weight="0.20"
@@ -91,8 +92,10 @@
                 android:src="@android:drawable/ic_menu_edit" />
 
         </RelativeLayout>
+
+        <!-- Pub -->
         <LinearLayout
-            android:id="@+id/linearLayout34"
+            android:id="@+id/linearLayoutAd"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_horizontal"
@@ -108,6 +111,7 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!-- Droite -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -116,22 +120,13 @@
         android:baselineAligned="false"
         android:orientation="vertical">
 
-        <!-- espace -->
-        <TextView
-            android:id="@+id/textvide2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="5sp" />
-
         <!-- croissant/decroissant -->
-
         <LinearLayout
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/roundcorner_nopadding"
+            android:paddingTop="3sp"
             android:orientation="horizontal">
 
             <TextView
@@ -163,23 +158,13 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
-        <!-- espace -->
-        <TextView
-            android:id="@+id/textvide4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="5sp" />
-
         <!-- montant/descendant -->
-
         <LinearLayout
             android:id="@+id/linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/roundcorner_nopadding"
+            android:layout_marginTop="3sp"
             android:orientation="horizontal">
 
             <TextView
@@ -210,25 +195,8 @@
                 android:textColor="#FFFF00"
                 android:textSize="20sp" />
         </LinearLayout>
-        <!-- espace -->
-        <TextView
-            android:id="@+id/textvide"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="5sp" />
 
         <!-- feuilles/fleurs/fruits/racines images-->
-        <TextView
-            android:id="@+id/textvide40"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="5sp" />
         <LinearLayout
             android:id="@+id/linearLayout70"
             android:layout_width="match_parent"
@@ -288,9 +256,10 @@
                 android:baselineAligned="false"
                 android:src="@drawable/flower30_on" />
         </LinearLayout>
+
         <!-- feuilles/fleurs/fruits/racines textes-->
         <LinearLayout
-            android:id="@+id/linearLayout7"
+            android:id="@+id/linearLayoutTypeJourText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#000000"
@@ -336,17 +305,10 @@
                 android:textColor="#666666"
                 android:textSize="14sp" />
         </LinearLayout>
-        <!-- espace -->
-        <TextView
-            android:id="@+id/textvide21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="5sp" />
+
         <!-- Perigee/Apogee/Noeud -->
         <LinearLayout
-            android:id="@+id/linearLayout3"
+            android:id="@+id/linearEvts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="3sp"
@@ -435,63 +397,26 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- espace -->
-        <TextView
-            android:id="@+id/textvide22"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="3sp" />
-
-        <TextView
-            android:id="@+id/TextJour"
+        <!-- Date jour -->
+        <LinearLayout
+            android:id="@+id/linearLayoutdateJour"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#000000"
-            android:gravity="center_horizontal|center_vertical"
-            android:onClick="datePicker"
-            android:text="Dimanche 17 Février 2019"
-            android:textColor="#FFFF00"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/textvide220"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="@string/vide"
-            android:textSize="3sp" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:orientation="horizontal">
 
-            <DatePicker
-                android:id="@+id/datePicker1"
+            <TextView
+                android:id="@+id/TextJour"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:clickable="false"
-                android:datePickerMode="spinner" />
+                android:layout_height="match_parent"
+                android:background="#000000"
+                android:gravity="center_horizontal|center_vertical"
+                android:onClick="datePicker"
+                android:text="Dimanche 17 Février 2019"
+                android:textColor="#FFFF00"
+                android:textSize="20sp" />
         </LinearLayout>
-
-
-        <!--
-     Quitter 
-    <Button
-        android:id="@+id/btnClose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/quitter" >
-	</Button>
-    -->
     </LinearLayout>
-
-<!-- Moon  	-->
-
-
-
 </LinearLayout>
