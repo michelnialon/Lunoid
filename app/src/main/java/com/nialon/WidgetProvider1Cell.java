@@ -1,15 +1,16 @@
 package com.nialon;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +21,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 
 public class WidgetProvider1Cell extends AppWidgetProvider {
     static Map<String, String> mapLever = new HashMap<>();
@@ -60,38 +60,27 @@ public class WidgetProvider1Cell extends AppWidgetProvider {
             ReadData(context);
             ComponentName thisWidget = new ComponentName(context, WidgetProvider1Cell.class);
             int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
-            for (int widgetId : allWidgetIds)
-            {
+            for (int widgetId : allWidgetIds) {
                 Log.d("widget ", Integer.toString(widgetId));
                 RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget1cell);
                 String ecl = mapEclair.get(dateString);
-                if (ecl.equals("-"))
-                {
-                    String ecl2 = "lune0";
-                    String ecl3;
-                    int ph = Integer.parseInt(mapPhase.get(dateString));
-                    ecl3 = ecl2.concat(String.format(Locale.getDefault(), "%02d", ph));
-                    Log.d("ecl3", ecl3);
-                    int resId = context.getResources().getIdentifier(ecl3, "drawable", context.getPackageName());
-                    Log.d("resid", Integer.toString(resId));
-                    remoteViews.setImageViewResource(R.id.imageLuneWidget, resId);
+                String ecl2 = "nlune";
+                String ecl3;
+                if (mapCroissant.get(dateString).equals("0")) {
+                    ecl3 = ecl2.concat(ecl);
+                } else {
+                    ecl3 = ecl2.concat("_").concat(ecl);
                 }
-                else
-                {
-                    String ecl2 = "nlune";
-                    String ecl3;
-                    if (mapCroissant.get(dateString).equals("0")) {
-                        ecl3 = ecl2.concat(ecl);
-                    } else {
-                        ecl3 = ecl2.concat("_").concat(ecl);
-                    }
-                    Log.d("ecl3", ecl3);
-                    int resId = context.getResources().getIdentifier(ecl3, "drawable", context.getPackageName());
-                    Log.d("resid", Integer.toString(resId));
-                    remoteViews.setImageViewResource(R.id.imageLuneWidget, resId);
-                    remoteViews.setTextViewText(R.id.textPct, ecl.concat(" %"));
-                    appWidgetManager.updateAppWidget(widgetId, remoteViews);
-                }
+                Log.d("ecl3", ecl3);
+                int resId = context.getResources().getIdentifier(ecl3, "drawable", context.getPackageName());
+                Log.d("resid", Integer.toString(resId));
+                remoteViews.setImageViewResource(R.id.imageLuneWidget, resId);
+                remoteViews.setTextViewText(R.id.textPct, ecl.concat(" %"));
+                Intent launchActivity = new Intent(context, Lunoid.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, 0);
+                remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
+                ;
+                appWidgetManager.updateAppWidget(widgetId, remoteViews);
             }
         } catch (Exception e) {Log.d("Exception1 :" , e.toString());}
     }
@@ -111,16 +100,16 @@ public class WidgetProvider1Cell extends AppWidgetProvider {
             {
                 //Log.d("Line",line);
                 separated = line.split(";");
-                mapLever.put(separated[0],separated[1]);
-                mapCoucher.put(separated[0],separated[2]);
-                mapPhase.put(separated[0],separated[3]);
-                mapJour.put(separated[0],separated[4]);
-                mapEclair.put(separated[0],separated[13]);
-                mapCroissant.put(separated[0],separated[10]);
-                mapApogee.put(separated[0],separated[5]);
-                mapPerigee.put(separated[0],separated[6]);
-                mapNoeud.put(separated[0],separated[7]);
-                mapMontant.put(separated[0],separated[9]);
+                mapLever.put(separated[0], separated[1]);
+                mapCoucher.put(separated[0], separated[2]);
+                mapPhase.put(separated[0], separated[3]);
+                mapJour.put(separated[0], separated[4]);
+                mapApogee.put(separated[0], separated[5]);
+                mapPerigee.put(separated[0], separated[6]);
+                mapNoeud.put(separated[0], separated[7]);
+                mapMontant.put(separated[0], separated[9]);
+                mapCroissant.put(separated[0], separated[10]);
+                mapEclair.put(separated[0], separated[13]);
             }
         } catch (IOException e)
         {

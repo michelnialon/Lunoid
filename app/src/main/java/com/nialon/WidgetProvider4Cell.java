@@ -1,9 +1,11 @@
 package com.nialon;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -36,8 +38,8 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
     static Map<String, String> mapJour = new HashMap<>();
     static SimpleDateFormat sdf;
     static String dateString;
-    static Date date1;
     static Boolean lh;
+    static Boolean hemispheresud;
 
     @Override
     public void onEnabled(Context context) {
@@ -52,57 +54,42 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
         try
         {
             sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-            date1 = Calendar.getInstance().getTime();
-            dateString = sdf.format(date1);
+            dateString = sdf.format(Calendar.getInstance().getTime());
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             lh = prefs.getBoolean("timezone", false);
+            hemispheresud = prefs.getBoolean("hemisphere", false);
             //dateString="06/03/2020";
             Log.d("datestring", dateString);
 
             ReadData(context);
             ComponentName thisWidget = new ComponentName(context, WidgetProvider4Cell.class);
             int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
-            for (int widgetId : allWidgetIds)
-            {
+            for (int widgetId : allWidgetIds) {
                 Log.d("widget ", Integer.toString(widgetId));
                 RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget4cell);
                 String ecl = mapEclair.get(dateString);
-                if (ecl.equals("-"))
-                {
-                    String ecl2 = "lune0";
-                    String ecl3;
-                    int ph = Integer.parseInt(mapPhase.get(dateString));
-                    ecl3 = ecl2.concat(String.format(Locale.getDefault(), "%02d", ph));
-                    Log.d("ecl3", ecl3);
-                    int resId = context.getResources().getIdentifier(ecl3, "drawable", context.getPackageName());
-                    Log.d("resid", Integer.toString(resId));
-                    remoteViews.setImageViewResource(R.id.imageLuneWidget, resId);
+                String ecl2 = "nlune";
+                String ecl3;
+                if (mapCroissant.get(dateString).equals("0")) {
+                    ecl3 = ecl2.concat(ecl);
+                } else {
+                    ecl3 = ecl2.concat("_").concat(ecl);
                 }
-                else {
-                    String ecl2 = "nlune";
-                    String ecl3;
-                    if (mapCroissant.get(dateString).equals("0")) {
-                        ecl3 = ecl2.concat(ecl);
-                    } else {
-                        ecl3 = ecl2.concat("_").concat(ecl);
-                    }
-                    Log.d("ecl3", ecl3);
-                    int resId = context.getResources().getIdentifier(ecl3, "drawable", context.getPackageName());
-                    Log.d("resid", Integer.toString(resId));
-                    // image lune
-                    remoteViews.setImageViewResource(R.id.imageLuneWidget, resId);
-                    // pourcentage
-                    remoteViews.setTextViewText(R.id.textPct, ecl.concat(" %"));
-                    // heures lever coucher
-                    remoteViews.setTextViewText(R.id.lever, heurelocale(mapLever.get(dateString), date1, lh));
-                    remoteViews.setTextViewText(R.id.coucher, heurelocale(mapCoucher.get(dateString), date1, lh));
-                }
+                Log.d("ecl3", ecl3);
+                int resId = context.getResources().getIdentifier(ecl3, "drawable", context.getPackageName());
+                Log.d("resid", Integer.toString(resId));
+                // image lune
+                remoteViews.setImageViewResource(R.id.imageLuneWidget, resId);
+                // pourcentage
+                remoteViews.setTextViewText(R.id.textPct, ecl.concat(" %"));
+                // heures lever coucher
+                remoteViews.setTextViewText(R.id.lever, heurelocale(mapLever.get(dateString), lh));
+                remoteViews.setTextViewText(R.id.coucher, heurelocale(mapCoucher.get(dateString), lh));
+
                 // feuille/fruit/racine/fleur
                 if (mapJour.get(dateString).contains("Feuilles")) {
                     remoteViews.setImageViewResource(R.id.imageFeuille, R.drawable.salad30_on);
-                }
-                else
-                {
+                } else {
                     remoteViews.setImageViewResource(R.id.imageFeuille, R.drawable.salad30_off);
                 }
 
@@ -162,14 +149,14 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
                 if (!mapApogee.get(dateString).equals("0"))
                 {
                     remoteViews.setTextViewText(R.id.evtdesc, "Apogée");
-                    remoteViews.setTextViewText(R.id.evthour, heurelocale(mapApogee.get(dateString), date1, lh));
+                    remoteViews.setTextViewText(R.id.evthour, heurelocale(mapApogee.get(dateString), lh));
                     remoteViews.setTextColor(R.id.evtdesc, Color.RED);
                     remoteViews.setTextColor(R.id.evthour, Color.RED);
                 }
                 else if (!mapPerigee.get(dateString).equals("0"))
                 {
                     remoteViews.setTextViewText(R.id.evtdesc, "Perigée");
-                    remoteViews.setTextViewText(R.id.evthour, heurelocale(mapPerigee.get(dateString), date1, lh));
+                    remoteViews.setTextViewText(R.id.evthour, heurelocale(mapPerigee.get(dateString), lh));
                     remoteViews.setTextColor(R.id.evtdesc, Color.RED);
                     remoteViews.setTextColor(R.id.evthour, Color.RED);
                 }
@@ -182,16 +169,19 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
                     else if (mapNoeud.get(dateString).substring(5, 6).equals("-")) {
                         remoteViews.setTextViewText(R.id.evtdesc, "NœudD");
                     }
-                    remoteViews.setTextViewText(R.id.evthour, heurelocale(mapNoeud.get(dateString).substring(0, 5), date1, lh));
+                    remoteViews.setTextViewText(R.id.evthour, heurelocale(mapNoeud.get(dateString).substring(0, 5), lh));
                     remoteViews.setTextColor(R.id.evtdesc, Color.RED);
                     remoteViews.setTextColor(R.id.evthour, Color.RED);
-                }
-                else {
+                } else {
                     remoteViews.setTextViewText(R.id.evtdesc, "");
                     remoteViews.setTextViewText(R.id.evthour, "");
                     remoteViews.setTextColor(R.id.evtdesc, Color.LTGRAY);
                     remoteViews.setTextColor(R.id.evthour, Color.LTGRAY);
                 }
+                // launch activity
+                Intent launchActivity = new Intent(context, Lunoid.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, 0);
+                remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
 
                 // update the widget
                 appWidgetManager.updateAppWidget(widgetId, remoteViews);
@@ -210,40 +200,45 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
         String[] separated;
         try
         {
-            while (( line = buffreader.readLine()) != null)
-            {
+            while (( line = buffreader.readLine()) != null) {
                 //Log.d("Line",line);
                 separated = line.split(";");
-                mapLever.put(separated[0],separated[1]);
-                mapCoucher.put(separated[0],separated[2]);
-                mapPhase.put(separated[0],separated[3]);
-                mapJour.put(separated[0],separated[4]);
-                mapEclair.put(separated[0],separated[13]);
-                mapCroissant.put(separated[0],separated[10]);
-                mapApogee.put(separated[0],separated[5]);
-                mapPerigee.put(separated[0],separated[6]);
-                mapNoeud.put(separated[0],separated[7]);
-                mapMontant.put(separated[0],separated[9]);
+                StringBuilder separated9 = new StringBuilder(separated[9]);
+                if (hemispheresud) {
+                    if (separated9.charAt(0) == '0') {
+                        separated9.setCharAt(0, '1');
+                    } else if (separated9.charAt(0) == '1') {
+                        separated9.setCharAt(0, '0');
+                    } else if (separated9.charAt(0) == '2') {
+                        separated9.setCharAt(0, '3');
+                    } else if (separated9.charAt(0) == '3') {
+                        separated9.setCharAt(0, '2');
+                    }
+                }
+                mapLever.put(separated[0], separated[1]);
+                mapCoucher.put(separated[0], separated[2]);
+                mapPhase.put(separated[0], separated[3]);
+                mapJour.put(separated[0], separated[4]);
+                mapApogee.put(separated[0], separated[5]);
+                mapPerigee.put(separated[0], separated[6]);
+                mapNoeud.put(separated[0], separated[7]);
+                mapMontant.put(separated[0], separated9.toString());
+                mapCroissant.put(separated[0], separated[10]);
+                mapEclair.put(separated[0], separated[13]);
             }
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             Log.e("Lunoid", "exception", e);
         }
         Log.d("ReadData", "end");
     }
-    private static String heurelocale(String s, Date d, boolean lh)
-    {
-        if (s.equals("--:--"))
-        {
+
+    private static String heurelocale(String s, boolean lh) {
+        if (s.equals("--:--")) {
             return s;
-        }
-        else
-        {
-            if (lh)
-            {
+        } else {
+            if (lh) {
                 int nboffsetCal;
                 Calendar cal1 = Calendar.getInstance();
-                cal1.setTime(d);
                 cal1.set(Calendar.HOUR_OF_DAY, Integer.parseInt(s.substring(0, 2)));
                 cal1.set(Calendar.MINUTE, Integer.parseInt(s.substring(3, 5)));
                 nboffsetCal = TimeZone.getDefault().getOffset(cal1.getTime().getTime()) / 1000 / 3600;
