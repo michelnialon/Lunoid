@@ -47,8 +47,8 @@
     <string name="info20">Jours feuilles</string>
     <string name="info21">Période à privilégier pour la culture des légumes feuilles : salade, oseille, persil. Les jours feuilles correspondent au passage de la lune devant une constellation en affinité avec l\'élément Eau, à savoir Cancer, Scorpion ou Poissons.</string>
     <string name="info22">Fonctionnement</string>
-    <string name="info23">Avancer d’un jour en faisant glisser le doigt de droite à gauche au niveau de la Lune, et reculer d’un jour en allant de gauche à droite.</string>
-    <string name="info24">Pour revenir à aujourd\'hui en deux clicks. cliquer sur le champ avec la date, puis OK.</string>
+    <string name="info23">Avancer d’un jour en balayant l’écran de droite à gauche au niveau de la Lune, et reculer d’un jour en allant de gauche à droite.</string>
+    <string name="info24">Pour revenir à aujourd\'hui, balayer l’écran de haut en bas ou cliquer sur le champ avec la date, puis OK.</string>
     <string name="info25">Les heures sont affichées en heure UTC universelle ou locale suivant paramétrage. En heure universelle, il convient d’ajouter, pour la France, une heure en hiver et deux heures en été.</string>
     <string name="info26">Lune gibbeuse</string>
     <string name="info27">La lune est gibbeuse lorsque la partie visible est plus importante que la partie non visible. Cela correspond donc, en lune croissante, à la période entre le premier quartier et la pleine lune, et en lune décroissante, à la période entre la pleine lune et le dernier quartier.</string>
@@ -100,4 +100,6 @@
     <string name="rappel">Rappel</string>
     <string name="setreminder">Ajouter une notification</string>
     <string name="notesupprimee">La  note a été supprimée</string>
+    <string name="hemititle">Hémisphère sud</string>
+    <string name="hemisummary">Pour inverser le sens montant/descendant</string>
 </resources>

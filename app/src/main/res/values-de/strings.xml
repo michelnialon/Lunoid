@@ -100,4 +100,6 @@
     <string name="rappel">Erinnerung</string>
     <string name="setreminder">Benachrichtigung hinzufügen</string>
     <string name="notesupprimee">Die Notiz wurde gelöscht</string>
+    <string name="hemititle">Südhalbkugel</string>
+    <string name="hemisummary">Umzukehren absteigen/aufsteigen</string>
 </resources>

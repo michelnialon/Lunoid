@@ -3,7 +3,7 @@
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
     <string name="app_author" translatable="false">Michel Nialon</string>
-    <string name="app_date" translatable="false">07/05/2020</string>
+    <string name="app_date" translatable="false">23/05/2020</string>
     <string name="app_descr">Moon calendar 2020</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
@@ -89,7 +89,7 @@
     <string name="sauvegarder">Save</string>
     <string name="notesauvegardee">The note has been saved</string>
     <string name="annuler">Cancel</string>
-    <string name="notenonsauvegardee">The not has not been saved</string>
+    <string name="notenonsauvegardee">The note has not been saved</string>
     <string name="nepasjardineravant">Do not work before</string>
     <string name="nepasjardinerapres">Do not work after</string>
     <string name="nepasjardinerentre">Do not work between</string>
@@ -104,4 +104,6 @@
     <string name="rappel">Reminder</string>
     <string name="setreminder">Schedule a reminder</string>
     <string name="notesupprimee">The note has been deleted</string>
+    <string name="hemititle">South hemisphere</string>
+    <string name="hemisummary">To invert ascending/descending</string>
 </resources>

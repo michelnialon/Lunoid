@@ -100,4 +100,6 @@
     <string name="rappel">Recordatorio</string>
     <string name="setreminder">añadir notificación</string>
     <string name="notesupprimee">La nota ha sido borrada</string>
+    <string name="hemititle">hemisferio sur</string>
+    <string name="hemisummary">Para invertir ascendente/descendente</string>
 </resources>
