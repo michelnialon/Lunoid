@@ -4,9 +4,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.app.DatePickerDialog;
 import android.widget.DatePicker;
-
 import java.util.Calendar;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
@@ -27,10 +25,10 @@ public class DatePickerFragment
         // Create a new instance of DatePickerDialog and return it
         DatePickerDialog dialog = new DatePickerDialog(getActivity(),android.R.style.Theme_DeviceDefault_Dialog, (DatePickerDialog.OnDateSetListener)getActivity(), year, month, day);
 
-        c.set(2020,11,31);
+        c.set(Lunoid.calMax.get(Calendar.YEAR), Lunoid.calMax.get(Calendar.MONTH), Lunoid.calMax.get(Calendar.DAY_OF_MONTH));
         dialog.getDatePicker().setMaxDate(c.getTimeInMillis());
 
-        c.set(2012,4,1);
+        c.set(Lunoid.calMin.get(Calendar.YEAR), Lunoid.calMin.get(Calendar.MONTH), Lunoid.calMin.get(Calendar.DAY_OF_MONTH));
         dialog.getDatePicker().setMinDate(c.getTimeInMillis());
         return dialog;
     }
