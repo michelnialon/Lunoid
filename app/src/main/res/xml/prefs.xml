@@ -30,6 +30,10 @@
       app:useSimpleSummaryProvider="true"
       app:entries="@array/lng_entries"
       app:entryValues="@array/lng_values"
-      app:dialogTitle="@string/lng_infos_choice"/>
+      app:dialogTitle="@string/lng_infos_choice" />
+  <CheckBoxPreference
+      android:key="hemisphere"
+      android:summary="@string/hemisummary"
+      android:title="@string/hemititle" />
  </PreferenceCategory>
 </PreferenceScreen>
