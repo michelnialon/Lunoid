@@ -815,7 +815,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             startActivity(intent);
             return true;
         case R.id.item2:
-            intent = new Intent(this, infos.class);
+            intent = new Intent(this, Infos.class);
             startActivity(intent);
             return true;
         case R.id.item3:
