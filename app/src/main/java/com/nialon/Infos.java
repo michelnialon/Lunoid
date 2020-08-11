@@ -7,7 +7,7 @@ import android.webkit.WebView;
 
 import java.util.Locale;
 
-public class infos extends Activity {
+public class Infos extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		// Pour enlever la barre de titre :
 		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
