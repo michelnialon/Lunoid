@@ -102,4 +102,5 @@
     <string name="notesupprimee">La  note a été supprimée</string>
     <string name="hemititle">Hémisphère sud</string>
     <string name="hemisummary">Pour inverser le sens montant/descendant</string>
+    <string name="listNotes">Liste des notes</string>
 </resources>

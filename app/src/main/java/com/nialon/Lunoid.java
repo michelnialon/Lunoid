@@ -50,6 +50,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
@@ -132,9 +133,12 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     TextView textHCD;
     String InfosStr;
     ImageView imageNote;
+    TextView textFeuillesChg;
+    TextView textRacinesChg;
+    TextView textFleursChg;
+    TextView textFruitsChg;
 
-    public void onDateChange(int year, int monthOfYear, int dayOfMonth)
-    {
+    public void onDateChange(int year, int monthOfYear, int dayOfMonth) {
         int resId;
 
         try {
@@ -195,7 +199,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                         resId = getResources().getIdentifier(ecl3, "drawable", getPackageName());
                         Log.d("resid", Integer.toString(resId));
                         imgLune.setImageResource(resId);
-                        if (dateString2.equals("mercredi 31 janvier 2018")) {
+                        //if (dateString2.equals("mercredi 31 janvier 2018") || dateString2.equals("samedi 31 octobre 2020")) {
+                        if (mapComment.get(dateString).contains("Lune bleue")) {
                             Log.d("d", "lune bleue");
                             resId = getResources().getIdentifier("nlune100bleue", "drawable", getPackageName());
                             imgLune.setImageResource(resId);
@@ -222,6 +227,38 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 imageFeuille.setImageResource(resId);
                 resId = getResources().getIdentifier(mapJour.get(dateString).contains("Fruits") ? "apple30_on" : "apple30_off", "drawable", getPackageName());
                 imageFruit.setImageResource(resId);
+                textFeuillesChg.setTextColor(Color.rgb(120, 120, 120));
+                textFruitsChg.setTextColor(Color.rgb(120, 120, 120));
+                textRacinesChg.setTextColor(Color.rgb(120, 120, 120));
+                textFleursChg.setTextColor(Color.rgb(120, 120, 120));
+                textFeuillesChg.setText("");
+                textFruitsChg.setText("");
+                textRacinesChg.setText("");
+                textFleursChg.setText("");
+
+                if (mapJour.get(dateString).length() >= 15 && (mapJour.get(dateString)).toLowerCase().substring(0, 15).equals("feuilles/fruits")) {
+                    textFeuillesChg.setText("<" + heurelocale(mapJour.get(dateString).substring(16, 21), selday, lh));
+                    textFruitsChg.setText(">" + heurelocale(mapJour.get(dateString).substring(16, 21), selday, lh));
+                    textFeuillesChg.setTextColor(Color.YELLOW);
+                    textFruitsChg.setTextColor(Color.YELLOW);
+                } else if (mapJour.get(dateString).length() >= 14 && (mapJour.get(dateString)).toLowerCase().substring(0, 14).equals("fruits/racines")) {
+                    textFruitsChg.setText("<" + heurelocale(mapJour.get(dateString).substring(15, 20), selday, lh));
+                    textRacinesChg.setText(">" + heurelocale(mapJour.get(dateString).substring(15, 20), selday, lh));
+                    textFruitsChg.setTextColor(Color.YELLOW);
+                    textRacinesChg.setTextColor(Color.YELLOW);
+                } else if (mapJour.get(dateString).length() >= 14 && (mapJour.get(dateString)).toLowerCase().substring(0, 14).equals("racines/fleurs")) {
+                    textRacinesChg.setText("<" + heurelocale(mapJour.get(dateString).substring(15, 20), selday, lh));
+                    textFleursChg.setText(">" + heurelocale(mapJour.get(dateString).substring(15, 20), selday, lh));
+                    textRacinesChg.setTextColor(Color.YELLOW);
+                    textFleursChg.setTextColor(Color.YELLOW);
+                } else if (mapJour.get(dateString).length() >= 15 && (mapJour.get(dateString)).toLowerCase().substring(0, 15).equals("fleurs/feuilles")) {
+                    textFleursChg.setText("<" + heurelocale(mapJour.get(dateString).substring(16, 21), selday, lh));
+                    textFeuillesChg.setText(">" + heurelocale(mapJour.get(dateString).substring(16, 21), selday, lh));
+                    textFleursChg.setTextColor(Color.YELLOW);
+                    textFeuillesChg.setTextColor(Color.YELLOW);
+                } else {
+
+                }
 
                 // Apogee/Perigee/Noeud
                 textApogee.setTextColor(!mapApogee.get(dateString).equals("0") ? Color.RED : Color.rgb(120, 120, 120));
@@ -451,15 +488,17 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         imageNote = findViewById(R.id.imgNote);
         textHMD = findViewById(R.id.textHMD);
         textHCD = findViewById(R.id.textHCD);
+        textFeuillesChg = findViewById(R.id.textFeuillesChg);
+        textRacinesChg = findViewById(R.id.textRacinesChg);
+        textFleursChg = findViewById(R.id.textFleursChg);
+        textFruitsChg = findViewById(R.id.textFruitsChg);
+
         // Affichage ou non de l'heure de perigée suivant les parametres
-        if (!prefs.getBoolean("perigeetime", false))
-        {
-            try
-            {
+        if (!prefs.getBoolean("perigeetime", false)) {
+            try {
                 textPerigeeHour.setHeight(0);
                 textPerigee.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-            }
-            catch (Exception e)
+            } catch (Exception e)
             {
                 Log.e("Lunoid", "exception", e);
             }
@@ -786,23 +825,22 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         // afficher la date du jour au (re)démarrage
         onDateChange(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
     }
+
     // creation des menus
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         _menu = menu;
         ShowHideInfosMenu(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), _menu);
         return true;
     }
-    // gestion des menus
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        Intent intent;
-        String AppVersion="";
 
-        try
-        {
+    // gestion des menus
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        String AppVersion = "";
+
+        try {
             PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
             AppVersion = pInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
@@ -871,6 +909,10 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
 
             case R.id.item8:
                 DisplayInfosDuMois(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH));
+                return true;
+
+            case R.id.item9:
+                DisplayAllNotes();
                 return true;
         }
         return false;
@@ -992,18 +1034,30 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     s2 = String.valueOf(cal.get(Calendar.MINUTE));
                     s2 = (s2.length() == 1 ? "0" + s2 : s2);
                     return s1 + ":" + s2;
-                } else return s.substring(0,5);
+                } else return s.substring(0, 5);
             }
         }
     }
-    private void DisplayInfosDuMois(int year, int month)
-    {
+
+    private void DisplayAllNotes() {
+
+        Intent intent;
+
+        try {
+            intent = new Intent(this, DisplayNotes.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void DisplayInfosDuMois(int year, int month) {
         Intent intent;
         intent = new Intent(this, ConseilsDuMois.class);
         String message = "";
         String type_message;
 
-        Log.d("DisplayInfosDuMois", (month+1) + "/" + year);
+        Log.d("DisplayInfosDuMois", (month + 1) + "/" + year);
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         //SharedPreferences prefs = getSharedPreferences("com.nialon", MODE_PRIVATE);
@@ -1388,13 +1442,10 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         DatePickerFragment fragment = new DatePickerFragment();
         fragment.show(getSupportFragmentManager(), "date");
     }
-    public void editNote(View view)
-    {
+    public void editNote(View view) {
         SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
-        Map<String, ?> allEntries = sp.getAll();
-        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-            Log.d("map values", entry.getKey() + ": " + entry.getValue().toString());
-        }
+        //Map<String, ?> allEntries = sp.getAll();
+
         String str1 = sp.getString(dateString, "");
         SharedPreferences spNotif = getSharedPreferences("myNotif", MODE_PRIVATE);
         final String str1Notif = spNotif.getString(dateString, "");
@@ -1552,4 +1603,3 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         return isRunningTest.get();
     }
 } // Lunoid
-

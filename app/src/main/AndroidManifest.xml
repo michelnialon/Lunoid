@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nialon"
-    android:versionCode="83"
-    android:versionName="20.3a">
+    android:versionCode="85"
+    android:versionName="20.4b">
 
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -25,10 +25,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".About"  android:parentActivityName=".Lunoid"/>
-        <activity android:name=".infos"  android:parentActivityName=".Lunoid" />
-        <activity android:name=".ConseilsDuMois"  android:parentActivityName=".Lunoid" />
-        <activity android:name=".PrefsActivity" android:parentActivityName=".Lunoid" android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".About"
+            android:parentActivityName=".Lunoid" />
+        <activity
+            android:name=".DisplayNotes"
+            android:parentActivityName=".Lunoid" />
+        <activity
+            android:name=".Infos"
+            android:parentActivityName=".Lunoid" />
+        <activity
+            android:name=".ConseilsDuMois"
+            android:parentActivityName=".Lunoid" />
+        <activity
+            android:name=".PrefsActivity"
+            android:parentActivityName=".Lunoid"
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
 
         <receiver android:name=".WidgetProvider1Cell">
             <intent-filter>

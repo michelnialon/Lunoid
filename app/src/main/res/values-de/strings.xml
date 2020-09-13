@@ -102,4 +102,5 @@
     <string name="notesupprimee">Die Notiz wurde gelöscht</string>
     <string name="hemititle">Südhalbkugel</string>
     <string name="hemisummary">Umzukehren absteigen/aufsteigen</string>
+    <string name="listNotes" translatable="false">Liste der Notizen</string>
 </resources>
