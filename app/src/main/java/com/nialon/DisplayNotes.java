@@ -60,7 +60,9 @@ public class DisplayNotes extends Activity {
             // put sorted list into map again
             Map<String, String> sortedMap = new LinkedHashMap<>();
             for (Map.Entry<String, ?> it : list) {
-                sortedMap.put(it.getKey(), it.getValue().toString());
+                if (!it.getValue().equals("")) {
+                    sortedMap.put(it.getKey(), it.getValue().toString());
+                }
             }
             int i = 0;
             String str1;
