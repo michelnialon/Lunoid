@@ -53,6 +53,7 @@ public class WidgetProvider2Cell extends AppWidgetProvider {
             dateString = sdf.format(Calendar.getInstance().getTime());
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             lh = prefs.getBoolean("timezone", false);
+            lh = true;
             Log.d("datestring", dateString);
 
             ReadData(context);

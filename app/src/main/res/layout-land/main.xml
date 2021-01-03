@@ -126,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/roundcorner_nopadding"
-            android:paddingTop="3sp"
+            android:paddingTop="4sp"
             android:orientation="horizontal">
 
             <TextView
@@ -185,6 +185,7 @@
                 android:textColor="#666666"
                 android:rotation="0"
                 android:textSize="14sp" />
+
             <TextView
                 android:id="@+id/textDescendant"
                 android:layout_width="match_parent"
@@ -196,6 +197,351 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/linearLayoutSignesZodiaque"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="#000000"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSignesFeuille"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imagePis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/pisc_off" />
+
+                <ImageView
+                    android:id="@+id/imageSco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/sco" />
+
+                <ImageView
+                    android:id="@+id/imageCan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/can_off" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSignesFruit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8sp"
+                android:layout_marginRight="8sp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageSag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/sag" />
+
+                <ImageView
+                    android:id="@+id/imageLeo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/leo_off" />
+
+                <ImageView
+                    android:id="@+id/imageAri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/arie" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSignesRacine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8sp"
+                android:layout_marginRight="8sp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageCap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/cap_off" />
+
+                <ImageView
+                    android:id="@+id/imageVir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/vir_off" />
+
+                <ImageView
+                    android:id="@+id/imageTau"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/tau" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSignesFleur"
+                android:layout_width="match_parent"
+                android:layout_height="20sp"
+                android:layout_marginLeft="8sp"
+                android:layout_marginRight="8sp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageAqu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/aqu_off" />
+
+                <ImageView
+                    android:id="@+id/imageLib"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/lib_off" />
+
+                <ImageView
+                    android:id="@+id/imageGem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:onClick="onClickConstellation"
+                    android:src="@drawable/gem" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutTextesZodiaque"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:background="#000000"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTextesFeuille"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textPis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Poi"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textSco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Sco"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textCan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Can"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTextesFruit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8sp"
+                android:layout_marginRight="8sp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textSag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Sag"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textLeo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Lio"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textBel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Bel"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTextesRacine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8sp"
+                android:layout_marginRight="8sp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textCap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Cap"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textVie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Vie"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textTau"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Tau"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutTextesFleur"
+                android:layout_width="match_parent"
+                android:layout_height="20sp"
+                android:layout_marginLeft="8sp"
+                android:layout_marginRight="8sp"
+                android:layout_weight="1"
+                android:background="#000000"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textVer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Ver"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textBal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Bal"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textGem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Gem"
+                    android:textColor="#666666"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
         <!-- feuilles/fleurs/fruits/racines images-->
         <LinearLayout
             android:id="@+id/linearLayout70"
@@ -358,7 +704,7 @@
             android:id="@+id/linearEvts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="3sp"
+            android:padding="4sp"
             android:background="@drawable/roundcorner_nopadding"
             android:orientation="horizontal">
 
@@ -368,6 +714,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.33"
                 android:background="#000000"
+
                 android:orientation="vertical">
 
                 <TextView

@@ -2,10 +2,10 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Calendrier lunaire 2020</string>
+    <string name="app_descr">Calendrier lunaire 2021</string>
     <string name="apogee">APOGEE</string>
     <string name="perigee">PERIGEE</string>
-    <string name="noeudlunaire">NOEUD</string>
+    <string name="noeudlunaire">NŒUD</string>
     <string name="fleurs">FLEURS</string>
     <string name="fruits">FRUITS</string>
     <string name="racines">RACINES</string>
@@ -101,6 +101,27 @@
     <string name="setreminder">Ajouter une notification</string>
     <string name="notesupprimee">La  note a été supprimée</string>
     <string name="hemititle">Hémisphère sud</string>
-    <string name="hemisummary">Pour inverser le sens montant/descendant</string>
+    <string name="hemisummary">Pour inverser le sens montant/descendant. (L\'application doit être redémarrée si cette valeur est changée)</string>
     <string name="listNotes">Liste des notes</string>
+    <string name="position">Position</string>
+    <string name="latitude">Latitude</string>
+    <string name="review">Longitude</string>
+    <string name="pardefaut">Position par défaut France - Centre</string>
+    <string name="longitude">Longitude</string>
+    <string name="Pisces">Poissons</string>
+    <string name="Scorpio">Scorpion</string>
+    <string name="Cancer">Cancer</string>
+    <string name="Sagittarius">Sagittaire</string>
+    <string name="Leo">Lion</string>
+    <string name="Aries">Bélier</string>
+    <string name="Capricorn">Capricorne</string>
+    <string name="Virgo">Vierge</string>
+    <string name="Taurus">Taureau</string>
+    <string name="Aquarius">Verseau</string>
+    <string name="Gemini">Gémeaux</string>
+    <string name="Libra">Balance</string>
+    <string name="dispzodiac">Afficher les signes du zodiaque</string>
+    <string name="icons">Icônes</string>
+    <string name="texts">Textes</string>
+    <string name="informations">Informations</string>
 </resources>

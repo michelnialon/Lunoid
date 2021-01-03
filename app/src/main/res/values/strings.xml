@@ -3,8 +3,8 @@
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
     <string name="app_author" translatable="false">Michel Nialon</string>
-    <string name="app_date" translatable="false">13/09/2020</string>
-    <string name="app_descr">Moon calendar 2020</string>
+    <string name="app_date" translatable="false">25/12/2020</string>
+    <string name="app_descr">Moon calendar 2021</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
     <string name="noeudlunaire">Node</string>
@@ -105,6 +105,27 @@
     <string name="setreminder">Schedule a reminder</string>
     <string name="notesupprimee">The note has been deleted</string>
     <string name="hemititle">South hemisphere</string>
-    <string name="hemisummary">To invert ascending/descending</string>
+    <string name="hemisummary">To invert ascending/descending. (Application needs to be restarted when changed)</string>
     <string name="listNotes" translatable="false">List of notes</string>
+    <string name="review">Review</string>
+    <string name="position">Position</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="pardefaut">Standard (France-Center)</string>
+    <string name="Pisces">Pisces</string>
+    <string name="Scorpio">Scorpio</string>
+    <string name="Cancer">Cancer</string>
+    <string name="Sagittarius">Sagittariuis</string>
+    <string name="Leo">Leo</string>
+    <string name="Aries">Aries</string>
+    <string name="Capricorn">Capricorn</string>
+    <string name="Virgo">Virgo</string>
+    <string name="Taurus">Taurus</string>
+    <string name="Aquarius">Aquarius</string>
+    <string name="Gemini">Gemini</string>
+    <string name="Libra">Libra</string>
+    <string name="dispzodiac">Display zodiac signs</string>
+    <string name="icons">Icons</string>
+    <string name="texts">Texts</string>
+    <string name="informations">Informations</string>
 </resources>

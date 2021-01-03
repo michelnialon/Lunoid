@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
  
@@ -46,23 +44,15 @@ public class About extends Activity
 	    try 
 	    {
 	        packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-	        versionName = "v " + packageInfo.versionName;
-	    } catch (NameNotFoundException e) 
-	    {
-	        e.printStackTrace();
-	    }
-	    TextView tv = findViewById(R.id.textVer);
-	    tv.setText(versionName);
-	    
-	    //Bouton OK, pas utilisé
-	    closeButton = this.findViewById(R.id.buttonOK);
-	    closeButton.setOnClickListener(new OnClickListener()
-		  {
-		    @Override
-		    public void onClick(View v) 
-		    {
-		      finish();
-		    }
-		  });
-	}
+            versionName = "v " + packageInfo.versionName;
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        TextView tv = findViewById(R.id.textVer);
+        tv.setText(versionName);
+
+        //Bouton OK, pas utilisé
+        closeButton = this.findViewById(R.id.buttonOK);
+        closeButton.setOnClickListener(v -> finish());
+    }
 }

@@ -9,8 +9,8 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginHorizontal="160dp"
-        android:layout_marginVertical="300dp"
+        android:layout_marginHorizontal="140dp"
+        android:layout_marginVertical="250dp"
         android:background="@drawable/roundcorner"
         android:padding="20dp">
 

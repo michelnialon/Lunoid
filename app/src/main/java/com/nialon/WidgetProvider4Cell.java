@@ -14,11 +14,11 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -35,10 +35,12 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
     static Map<String, String> mapNoeud = new HashMap<>();
     static Map<String, String> mapMontant = new HashMap<>();
     static Map<String, String> mapJour = new HashMap<>();
+    static Map<String, String> mapSigne = new HashMap<>();
     static SimpleDateFormat sdf;
     static String dateString;
     static Boolean lh;
     static Boolean hemispheresud;
+    private Calendar d2021;
 
     @Override
     public void onEnabled(Context context) {
@@ -50,15 +52,22 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
     {
         Log.d("widget1cell", "onupdate");
-        try
-        {
+        try {
             sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             dateString = sdf.format(Calendar.getInstance().getTime());
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             lh = prefs.getBoolean("timezone", false);
+            lh = true;
             hemispheresud = prefs.getBoolean("hemisphere", false);
             //dateString="06/03/2020";
             Log.d("datestring", dateString);
+            d2021 = Calendar.getInstance();
+            d2021.set(Calendar.DAY_OF_MONTH, 1);
+            d2021.set(Calendar.MONTH, 0);
+            d2021.set(Calendar.YEAR, 2021);
+            d2021.set(Calendar.HOUR, 0);
+            d2021.set(Calendar.MINUTE, 0);
+            d2021.set(Calendar.SECOND, 0);
 
             ReadData(context);
             ComponentName thisWidget = new ComponentName(context, WidgetProvider4Cell.class);
@@ -147,28 +156,28 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
 
                 if (!mapApogee.get(dateString).equals("0"))
                 {
-                    remoteViews.setTextViewText(R.id.evtdesc, "Apogée");
+                    remoteViews.setTextViewText(R.id.evtdesc, context.getResources().getString(R.string.apogee));
                     remoteViews.setTextViewText(R.id.evthour, heurelocale(mapApogee.get(dateString), lh));
                     remoteViews.setTextColor(R.id.evtdesc, Color.RED);
                     remoteViews.setTextColor(R.id.evthour, Color.RED);
                 }
                 else if (!mapPerigee.get(dateString).equals("0"))
                 {
-                    remoteViews.setTextViewText(R.id.evtdesc, "Perigée");
+                    remoteViews.setTextViewText(R.id.evtdesc, context.getResources().getString(R.string.perigee));
                     remoteViews.setTextViewText(R.id.evthour, heurelocale(mapPerigee.get(dateString), lh));
                     remoteViews.setTextColor(R.id.evtdesc, Color.RED);
                     remoteViews.setTextColor(R.id.evthour, Color.RED);
                 }
-                else if (!mapNoeud.get(dateString).equals("0"))
-                {
-                    Log.d("Noeud",mapNoeud.get(dateString));
-                    if (mapNoeud.get(dateString).substring(5, 6).equals("+")) {
-                        remoteViews.setTextViewText(R.id.evtdesc, "NœudA");
+                else if (!mapNoeud.get(dateString).equals("0")) {
+                    Log.d("Noeud", mapNoeud.get(dateString));
+                    remoteViews.setTextViewText(R.id.evtdesc, context.getResources().getString(R.string.noeudlunaire));
+                    String temp = heurelocale(mapNoeud.get(dateString).substring(0, 5), lh);
+                    if (mapNoeud.get(dateString).startsWith("+", 5)) {
+                        temp += "/";
+                    } else if (mapNoeud.get(dateString).startsWith("-", 5)) {
+                        temp += "\\";
                     }
-                    else if (mapNoeud.get(dateString).substring(5, 6).equals("-")) {
-                        remoteViews.setTextViewText(R.id.evtdesc, "NœudD");
-                    }
-                    remoteViews.setTextViewText(R.id.evthour, heurelocale(mapNoeud.get(dateString).substring(0, 5), lh));
+                    remoteViews.setTextViewText(R.id.evthour, temp);
                     remoteViews.setTextColor(R.id.evtdesc, Color.RED);
                     remoteViews.setTextColor(R.id.evthour, Color.RED);
                 } else {
@@ -187,8 +196,9 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
             }
         } catch (Exception e) {Log.d("Exception1 :" , e.toString());}
     }
-    private void ReadData(Context ctxt)
-    {
+    private void ReadData(Context ctxt) {
+        Date d;
+
         Log.d("ReadData", "begin");
         Resources myRes = ctxt.getResources();
         InputStream lundata = myRes.openRawResource(R.raw.datalune);
@@ -197,9 +207,8 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
         BufferedReader buffreader = new BufferedReader(inputreader);
         String line;
         String[] separated;
-        try
-        {
-            while (( line = buffreader.readLine()) != null) {
+        try {
+            while ((line = buffreader.readLine()) != null) {
                 //Log.d("Line",line);
                 separated = line.split(";");
                 StringBuilder separated9 = new StringBuilder(separated[9]);
@@ -214,18 +223,40 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
                         separated9.setCharAt(0, '2');
                     }
                 }
+                d = sdf.parse(separated[0]);
+                if (d.compareTo(d2021.getTime()) >= 0) {
+                    String temp = separated[11];
+                    temp = temp.replace("Bel", "Fruits");
+                    temp = temp.replace("Lio", "Fruits");
+                    temp = temp.replace("Sag", "Fruits");
+                    temp = temp.replace("Tau", "Racines");
+                    temp = temp.replace("Vie", "Racines");
+                    temp = temp.replace("Cap", "Racines");
+                    temp = temp.replace("Gem", "Fleurs");
+                    temp = temp.replace("Bal", "Fleurs");
+                    temp = temp.replace("Ver", "Fleurs");
+                    temp = temp.replace("Poi", "Feuilles");
+                    temp = temp.replace("Can", "Feuilles");
+                    temp = temp.replace("Sco", "Feuilles");
+                    mapJour.put(separated[0], temp);
+                    Log.d("jour", temp);
+                } else {
+                    mapJour.put(separated[0], separated[4]);
+                }
+
                 mapLever.put(separated[0], separated[1]);
                 mapCoucher.put(separated[0], separated[2]);
                 mapPhase.put(separated[0], separated[3]);
-                mapJour.put(separated[0], separated[4]);
+                // mapJour.put(separated[0], separated[4]);
                 mapApogee.put(separated[0], separated[5]);
                 mapPerigee.put(separated[0], separated[6]);
                 mapNoeud.put(separated[0], separated[7]);
                 mapMontant.put(separated[0], separated9.toString());
                 mapCroissant.put(separated[0], separated[10]);
+                mapSigne.put(separated[0], separated[11]);
                 mapEclair.put(separated[0], separated[13]);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             Log.e("Lunoid", "exception", e);
         }
         Log.d("ReadData", "end");

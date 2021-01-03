@@ -2,38 +2,45 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
  <PreferenceCategory
-   android:summary="@string/fuseau"
    android:title="@string/fuseau" >
-  <CheckBoxPreference
-     android:key="timezone"
-     android:summary="@string/localeGMT"
-     android:title="@string/fuseaufrance" />
   <CheckBoxPreference
      android:key="nodetime"
      android:summary="@string/heuredetail"
-     android:title="@string/heurenoeud" />
-  <CheckBoxPreference
-     android:key="apogeetime"
-     android:summary="@string/heuredetail"
-     android:title="@string/heureapogee" />
-  <CheckBoxPreference
-     android:key="perigeetime"
-     android:summary="@string/heuredetail"
-     android:title="@string/heureperigee" />
-  <CheckBoxPreference
-      android:key="infosmois"
-      android:summary="@string/infosmois"
-      android:title="@string/infosmoistitre" />
-  <ListPreference
-      app:key="lnginfos"
-      app:title="@string/lng_infos"
-      app:useSimpleSummaryProvider="true"
-      app:entries="@array/lng_entries"
-      app:entryValues="@array/lng_values"
-      app:dialogTitle="@string/lng_infos_choice" />
-  <CheckBoxPreference
-      android:key="hemisphere"
-      android:summary="@string/hemisummary"
-      android:title="@string/hemititle" />
+      android:title="@string/heurenoeud" />
+     <CheckBoxPreference
+         android:key="apogeetime"
+         android:summary="@string/heuredetail"
+         android:title="@string/heureapogee" />
+     <CheckBoxPreference
+         android:key="perigeetime"
+         android:summary="@string/heuredetail"
+         android:title="@string/heureperigee" />
+     <CheckBoxPreference
+         android:key="displayzodiac"
+         android:summary="@string/icons"
+         android:title="@string/dispzodiac" />
+     <CheckBoxPreference
+         android:key="displayzodiactext"
+         android:summary="@string/texts"
+         android:title="@string/dispzodiac" />
  </PreferenceCategory>
+    <PreferenceCategory android:title="@string/informations">
+        <CheckBoxPreference
+            android:key="infosmois"
+            android:summary="@string/infosmois"
+            android:title="@string/infosmoistitre" />
+        <ListPreference
+            app:key="lnginfos"
+            app:title="@string/lng_infos"
+            app:useSimpleSummaryProvider="true"
+            app:entries="@array/lng_entries"
+            app:entryValues="@array/lng_values"
+            app:dialogTitle="@string/lng_infos_choice" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/position">
+        <CheckBoxPreference
+            android:key="hemisphere"
+            android:summary="@string/hemisummary"
+            android:title="@string/hemititle" />
+    </PreferenceCategory>
 </PreferenceScreen>

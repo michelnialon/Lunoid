@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Mond Kalender 2020</string>
+    <string name="app_descr">Mond Kalender 2021</string>
     <string name="apogee">Erdferne</string>
     <string name="perigee">Erdnähe</string>
     <string name="noeudlunaire">Knoten</string>
@@ -101,6 +101,22 @@
     <string name="setreminder">Benachrichtigung hinzufügen</string>
     <string name="notesupprimee">Die Notiz wurde gelöscht</string>
     <string name="hemititle">Südhalbkugel</string>
-    <string name="hemisummary">Umzukehren absteigen/aufsteigen</string>
+    <string name="hemisummary">Umzukehren absteigen/aufsteigen. (Anwendung muss neu gestartet werden, wenn geändert)</string>
     <string name="listNotes" translatable="false">Liste der Notizen</string>
+    <string name="Libra">Waage</string>
+    <string name="Gemini">Zwillinge</string>
+    <string name="Aquarius">Wassermann</string>
+    <string name="Taurus">Stier</string>
+    <string name="Virgo">Jungfrau</string>
+    <string name="Capricorn">Steinbock</string>
+    <string name="Aries">Widder</string>
+    <string name="Leo">Löwe</string>
+    <string name="Sagittarius">Schütze</string>
+    <string name="Cancer">Krebs</string>
+    <string name="Scorpio">Skorpion</string>
+    <string name="Pisces">Fische</string>
+    <string name="informations">Informationen</string>
+    <string name="dispzodiac">Anzeige der Tierkreiszeichen</string>
+    <string name="icons">Ikonen</string>
+    <string name="texts">Texte</string>
 </resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "554809954773",
+    "firebase_url": "https://lunoid.firebaseio.com",
+    "project_id": "lunoid",
+    "storage_bucket": "lunoid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554809954773:android:9822e390af24ac88932d5c",
+        "android_client_info": {
+          "package_name": "com.nialon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554809954773-vhbs6t87t79u7u28uvla7hqbjguojtm9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd_4InzghbZttIKw91e1-Fa9d3RXu4MNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554809954773-vhbs6t87t79u7u28uvla7hqbjguojtm9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

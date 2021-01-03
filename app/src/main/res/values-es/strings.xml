@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">¡Hola Mundo, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Calendario lunar 2020</string>
+    <string name="app_descr">Calendario lunar 2021</string>
     <string name="apogee">APOGEO</string>
     <string name="perigee">PERIGEO</string>
     <string name="noeudlunaire">NODO</string>
@@ -101,6 +101,22 @@
     <string name="setreminder">añadir notificación</string>
     <string name="notesupprimee">La nota ha sido borrada</string>
     <string name="hemititle">hemisferio sur</string>
-    <string name="hemisummary">Para invertir ascendente/descendente</string>
+    <string name="hemisummary">Para invertir ascendente/descendente. (La aplicación debe ser reiniciada cuando se cambie)</string>
     <string name="listNotes" translatable="false">Lista de notas</string>
+    <string name="Pisces">Piscis</string>
+    <string name="Scorpio">Escorpio</string>
+    <string name="Cancer">Cáncer</string>
+    <string name="Sagittarius">Sagitario</string>
+    <string name="Leo">Leo</string>
+    <string name="Aries">Aries</string>
+    <string name="Capricorn">Capricornio</string>
+    <string name="Virgo">Virgo</string>
+    <string name="Taurus">Tauro</string>
+    <string name="Aquarius">Tauro</string>
+    <string name="Gemini">Géminis</string>
+    <string name="Libra">Libra</string>
+    <string name="informations">información</string>
+    <string name="dispzodiac">Mostrar los signos del zodíaco</string>
+    <string name="icons">Iconos</string>
+    <string name="texts">Texto</string>
 </resources>

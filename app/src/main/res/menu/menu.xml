@@ -5,22 +5,22 @@
         android:id="@+id/item1"
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="@string/apropos"
-        app:showAsAction="never"></item>
+        app:showAsAction="never" />
     <item
         android:id="@+id/item8"
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="@string/display_advices"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item2"
         android:icon="@android:drawable/ic_menu_help"
         android:title="@string/infos"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item3"
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="@string/params"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom" />
     <!--
     <item android:id="@+id/item4"
         android:icon="@android:drawable/ic_menu_share"
@@ -31,20 +31,20 @@
         android:id="@+id/item5"
         android:icon="@android:drawable/ic_dialog_info"
         android:title="@string/check_version"
-        app:showAsAction="never"></item>
+        app:showAsAction="never" />
     <item
         android:id="@+id/item9"
         android:title="@string/listNotes"
-        app:showAsAction="never"></item>
+        app:showAsAction="never" />
     <item
         android:id="@+id/item6"
         android:icon="@android:drawable/ic_menu_share"
         android:title="@string/share"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/item7"
         android:icon="@android:drawable/ic_menu_send"
         android:title="@string/comment"
-        app:showAsAction="ifRoom"></item>
+        app:showAsAction="ifRoom" />
 
     </menu>

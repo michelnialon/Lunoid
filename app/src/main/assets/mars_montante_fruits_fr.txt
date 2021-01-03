@@ -1,7 +1,6 @@
 <h1><font color = #ffffff face="sans-serif-light">Que faire au mois de Mars quand la lune est montante, en jour fruits ?</font></h1>
 <br/>
 <h3><font color = #a9a9a9 face="sans-serif-light">
-* Greffez les arbres fruitiers.<br/>
-* Semez les fèves et les pois ronds.<br/>
-* Semez les concombres, cornichons, tomates, melons, à l'intérieur.<br/>
-* Greffez les arbres fruitiers en fente et incrustation.<br/></font></h3>
+* Semer les fèves et les pois ronds.<br/>
+* Semer les concombres, cornichons, tomates, melons, à l'intérieur.<br/>
+* Greffer les arbres fruitiers en fente et incrustation.<br/></font></h3>

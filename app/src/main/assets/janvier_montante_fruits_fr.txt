@@ -2,4 +2,5 @@
 <br/>
 <h3><font color = #a9a9a9 face="sans-serif-light">
 * Prélever les greffons.<br/>
-* Semer les fèves.<br/></font></h3>
+* Semer les fèves.<br/>
+</font></h3>

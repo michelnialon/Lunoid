@@ -2,5 +2,7 @@
 <br/>
 <h3><font color = #a9a9a9 face="sans-serif-light">
 * Repiquez les aubergines.<br/>
-* Repiquez les courgettes et melons.<br/></font></h3>
+* Repiquez les courgettes et melons.<br/>
+* Taillez les cerisiers après la récolte.<br/>
+</font></h3>
 
