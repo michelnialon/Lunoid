@@ -37,6 +37,10 @@
         android:title="@string/listNotes"
         app:showAsAction="never" />
     <item
+        android:id="@+id/item10"
+        android:title="@string/saveNotes"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/item6"
         android:icon="@android:drawable/ic_menu_share"
         android:title="@string/share"
@@ -47,4 +51,4 @@
         android:title="@string/comment"
         app:showAsAction="ifRoom" />
 
-    </menu>
+</menu>

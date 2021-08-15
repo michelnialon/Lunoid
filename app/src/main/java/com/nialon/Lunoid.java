@@ -1,8 +1,8 @@
 package com.nialon;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -10,15 +10,16 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.Menu;
@@ -35,17 +36,29 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
-import com.google.android.gms.ads.doubleclick.PublisherAdView;
+import com.google.android.gms.ads.admanager.AdManagerAdRequest;
+import com.google.android.gms.ads.admanager.AdManagerAdView;
+
+import org.shredzone.commons.suncalc.MoonTimes;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
@@ -53,20 +66,31 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
+
 import static java.lang.Math.abs;
 
-// TODO : signes du zodiaque : fait
+// todo : signes du zodiaque : fait
 // todo : partager : fait
 // todo : envoyer un commentaire : fait
 // todo : évaluer l'application : fait
 // todo : vérifier nouvelle version : fait
 // todo : prendre des notes : fait
+// todo : partager par sms
+// todo : éditer une note depuis la liste
+// todo : option pour enlever la pub
+// todo : choix du lieu pour calcul heure lever/coucher
 
+
+@SuppressWarnings("ConstantConditions")
 public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateSetListener {
     /**
      * Called when the activity is first created.
@@ -75,7 +99,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private SimpleDateFormat sdf2;
     static String dateString;  // 16/05/2020
     String dateString2;        // Saturday 16 May 2020
-    private Calendar today = Calendar.getInstance();
+    private final Calendar today = Calendar.getInstance();
     static Calendar selday = Calendar.getInstance();
     static Calendar calMax;
     static Calendar calMin;
@@ -90,11 +114,11 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private Menu _menu = null;
     String temp;
     private static AtomicBoolean isRunningTest;
-    private int ScreenSize;
-    //private ReviewManager reviewmanager;
-    //private ReviewInfo reviewInfo;
-    private Typeface m_Typeface;
     private Calendar d2021;
+    XPath xpath = XPathFactory.newInstance().newXPath();
+    private AdManagerAdView adManagerAdView;
+    private SharedPreferences AppPrefs;
+    boolean Cityfound = false;
 
     // ads
     //private InterstitialAd mInterstitialAd;
@@ -170,12 +194,45 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     TextView textSco;
 
 
+    @SuppressLint("SetTextI18n")
     public void onDateChange(int year, int monthOfYear, int dayOfMonth) {
         int resId;
+        SimpleDateFormat fmt = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        double latitude = 47.23, longitude = 6.02;
+        Node node;
+        String xmlexpr;
 
         try {
             Log.d("Lunoid", "onDateChange");
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            String city = prefs.getString("ville", "Paris");
+            InputSource inputSource = new InputSource(getResources().openRawResource(R.raw.locations));
+            xmlexpr = "/cities/city[name=\"" + city + "\"]/lat";
+            Log.d("xmlexpr", xmlexpr);
+            node = (Node) xpath.evaluate(xmlexpr, inputSource, XPathConstants.NODE);
+            Cityfound = false;
+            if (node != null) {
+                latitude = Double.parseDouble(node.getTextContent());
+                xmlexpr = "/cities/city[name=\"" + city + "\"]/lon";
+                InputSource inputSource2 = new InputSource(getResources().openRawResource(R.raw.locations));
+                node = (Node) xpath.evaluate(xmlexpr, inputSource2, XPathConstants.NODE);
+                if (node != null) {
+                    longitude = Double.parseDouble(node.getTextContent());
+                    Cityfound = true;
+                }
+            }
+
+            //fmt.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+            //fmt.setTimeZone(TimeZone.getTimeZone("Indian/Antananarivo"));
+            // todo : remove
+            //fmt.setTimeZone(TimeZone.getTimeZone("Pacific/Noumea"));
+            //fmt.setTimeZone(TimeZone.getTimeZone("America/Guadeloupe"));
+            //fmt.setTimeZone(TimeZone.getTimeZone("Africa/Casablanca"));
+            //fmt.setTimeZone(TimeZone.getTimeZone("Europe/Vienna"));
+
+            //latitude = 48.85;
+            //longitude = 2.35;
+
             //Log.d("moonrisetime", astro.moonRiseTime(48.0, 2.0, year, monthOfYear+1, dayOfMonth));
             //Log.d("moonsettime", astro.moonSetTime(48.0, 2.0, year, monthOfYear+1, dayOfMonth));
 
@@ -206,12 +263,37 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 } else {
                     ltextzodiaque.setVisibility(View.GONE);
                 }
-                if (true) {
+                // .timezone("Europe/Paris")
+                // https://fr.tutiempo.net/abidjan.html?donnees=calendrier
+                // https://www.sunrise-and-sunset.com/fr/moon/allemagne/berlin
+
+                if (Cityfound) {
+                    Date mtS;
+                    Date mtR;
+                    MoonTimes moonTimes = MoonTimes.compute().at(latitude, longitude).on(year, monthOfYear + 1, dayOfMonth).execute();
+                    // todo : remove
+                    //MoonTimes moonTimes = MoonTimes.compute().at(latitude, longitude).on(year,monthOfYear+1,dayOfMonth).timezone("Africa/Casablanca").execute();
+
+                    mtR = moonTimes.getRise();
+                    mtS = moonTimes.getSet();
+
+                    if (mtR != null) {
+                        textLever.setText(fmt.format(mtR));
+                    } else {
+                        textLever.setText("--:--");
+                    }
+                    if (mtS != null) {
+                        textCoucher.setText(fmt.format(mtS));
+                    } else {
+                        textCoucher.setText("--:--");
+                    }
+
+
+                } else {
+                    //textCoucher.setText(heurelocale(astro.moonSetTime(48.0, 2.0, year, monthOfYear + 1, dayOfMonth), selday, lh));
+                    //textLever.setText(heurelocale(astro.moonRiseTime(48.0, 2.0, year, monthOfYear + 1, dayOfMonth), selday, lh));
                     textCoucher.setText(heurelocale(mapCoucher.get(dateString), selday, lh));
                     textLever.setText(heurelocale(mapLever.get(dateString), selday, lh));
-                } else {
-                    textCoucher.setText(heurelocale(astro.moonSetTime(48.0, 2.0, year, monthOfYear + 1, dayOfMonth), selday, lh));
-                    textLever.setText(heurelocale(astro.moonRiseTime(48.0, 2.0, year, monthOfYear + 1, dayOfMonth), selday, lh));
                 }
                 textJour.setText(dateString2);
 
@@ -287,28 +369,26 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 textRacinesChg.setText("");
                 textFleursChg.setText("");
 
-                if (mapJour.get(dateString).length() >= 15 && (mapJour.get(dateString)).toLowerCase().substring(0, 15).equals("feuilles/fruits")) {
+                if (mapJour.get(dateString).length() >= 15 && (mapJour.get(dateString)).toLowerCase().startsWith("feuilles/fruits")) {
                     textFeuillesChg.setText("<" + heurelocale(mapJour.get(dateString).substring(16, 21), selday, lh));
                     textFruitsChg.setText(">" + heurelocale(mapJour.get(dateString).substring(16, 21), selday, lh));
                     textFeuillesChg.setTextColor(Color.YELLOW);
                     textFruitsChg.setTextColor(Color.YELLOW);
-                } else if (mapJour.get(dateString).length() >= 14 && (mapJour.get(dateString)).toLowerCase().substring(0, 14).equals("fruits/racines")) {
+                } else if (mapJour.get(dateString).length() >= 14 && (mapJour.get(dateString)).toLowerCase().startsWith("fruits/racines")) {
                     textFruitsChg.setText("<" + heurelocale(mapJour.get(dateString).substring(15, 20), selday, lh));
                     textRacinesChg.setText(">" + heurelocale(mapJour.get(dateString).substring(15, 20), selday, lh));
                     textFruitsChg.setTextColor(Color.YELLOW);
                     textRacinesChg.setTextColor(Color.YELLOW);
-                } else if (mapJour.get(dateString).length() >= 14 && (mapJour.get(dateString)).toLowerCase().substring(0, 14).equals("racines/fleurs")) {
+                } else if (mapJour.get(dateString).length() >= 14 && (mapJour.get(dateString)).toLowerCase().startsWith("racines/fleurs")) {
                     textRacinesChg.setText("<" + heurelocale(mapJour.get(dateString).substring(15, 20), selday, lh));
                     textFleursChg.setText(">" + heurelocale(mapJour.get(dateString).substring(15, 20), selday, lh));
                     textRacinesChg.setTextColor(Color.YELLOW);
                     textFleursChg.setTextColor(Color.YELLOW);
-                } else if (mapJour.get(dateString).length() >= 15 && (mapJour.get(dateString)).toLowerCase().substring(0, 15).equals("fleurs/feuilles")) {
+                } else if (mapJour.get(dateString).length() >= 15 && (mapJour.get(dateString)).toLowerCase().startsWith("fleurs/feuilles")) {
                     textFleursChg.setText("<" + heurelocale(mapJour.get(dateString).substring(16, 21), selday, lh));
                     textFeuillesChg.setText(">" + heurelocale(mapJour.get(dateString).substring(16, 21), selday, lh));
                     textFleursChg.setTextColor(Color.YELLOW);
                     textFeuillesChg.setTextColor(Color.YELLOW);
-                } else {
-
                 }
                 // signe zodiacale
                 Log.d("sign", mapSigne.get(dateString));
@@ -478,10 +558,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     Log.e("Lunoid", "exception", e);
                 }
                 textNoeud.setTextColor(Color.LTGRAY);
+                Toast InfosToast;
+                InfosToast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.pleaseUpgrade), Toast.LENGTH_LONG);
+
+                InfosToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                InfosToast.show();
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e("Lunoid", "exception", e);
         }
     }
@@ -507,14 +590,18 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
          * pour changer le format de date
          */
 
+        // todo : remove
         /*
         Locale locale = new Locale("fr");
         Locale.setDefault(locale);
         Configuration config = getBaseContext().getResources().getConfiguration();
         config.locale = locale;
-         */
+        */
+        /* **/
         sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault());
+
+        AppPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         // todo : remove
         //sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
 
@@ -535,12 +622,23 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             }
         */
         // ads banner
+        /*
         PublisherAdView mPublisherAdView = findViewById(R.id.publisherAdView);
         PublisherAdRequest adRequest = new PublisherAdRequest.Builder().build();
         mPublisherAdView.setAdSizes(AdSize.BANNER);
         //mPublisherAdView.setAdUnitId("ca-app-pub-4468029712209847/4219671648"); // prod ( à mettre dans le layout main )
         //mPublisherAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); // test
         mPublisherAdView.loadAd(adRequest);
+         */
+        adManagerAdView = findViewById(R.id.adView);
+        //adManagerAdView.setAdSizes(AdSize.SMART_BANNER);
+        AdSize adSize = getAdSize();
+        adManagerAdView.setAdSizes(adSize);
+        //adManagerAdView.setAdUnitId("ca-app-pub-4468029712209847/4219671648");  // prod
+        //adManagerAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");  // test
+
+        // Start loading the ad.
+        adManagerAdView.loadAd(new AdManagerAdRequest.Builder().build());
 
         //final Context context = getApplicationContext();
         //SharedPreferences prefs = this.getSharedPreferences("com.nialon",Context.MODE_PRIVATE);
@@ -568,30 +666,31 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
          */
 
         //Determine screen size
+        int screenSize;
         if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
             Log.d("Screen size : ", "Extra Large");
-            ScreenSize = 4;
+            screenSize = 4;
         } else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
             Log.d("Screen size : ", "Large");
-            ScreenSize = 3;
-        }
-        else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+            screenSize = 3;
+        } else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
             Log.d("Screen size : ", "Normal");
-            ScreenSize = 2;
-        }
-        else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            screenSize = 2;
+        } else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL) {
             Log.d("Screen size : ", "Small");
-            ScreenSize = 1;
+            screenSize = 1;
         } else {
             Log.d("Screen size : ", "Unknown");
-            ScreenSize = 0;
+            screenSize = 0;
         }
         /* Format title */
         //TextView title =  findViewById(android.R.id.title);
         //title.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
         //title.setTextColor(Color.YELLOW);
         //title.setTextSize(20);
-        m_Typeface = Typeface.createFromAsset(this.getAssets(), "led_counter-7.ttf");
+        //private ReviewManager reviewmanager;
+        //private ReviewInfo reviewInfo;
+        Typeface m_Typeface = Typeface.createFromAsset(this.getAssets(), "led_counter-7.ttf");
         //m_Typeface = Typeface.createFromAsset(this.getAssets(), "LED.Font.ttf");
 
         /* Get the id of views */
@@ -668,59 +767,58 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         // Affichage ou non de l'heure de perigée suivant les parametres
         if (!prefs.getBoolean("perigeetime", false)) {
             try {
-                textPerigeeHour.setHeight(0);
-                textPerigee.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+                //textPerigeeHour.setHeight(0);
+                textPerigeeHour.setVisibility(View.GONE);
+                textPerigee.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
             } catch (Exception e) {
                 Log.e("Lunoid", "exception", e);
             }
 
         }
-        if (!prefs.getBoolean("apogeetime", false))
-        {
-            try
-            {
-                textApogeeHour.setHeight(0);
-                textApogee.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
-            }
-            catch (Exception e)
-            {
+        if (!prefs.getBoolean("apogeetime", false)) {
+            try {
+                //textApogeeHour.setHeight(0);
+                textApogeeHour.setVisibility(View.GONE);
+                textApogee.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
+            } catch (Exception e) {
                 Log.e("Lunoid", "exception", e);
             }
         }
         if (!prefs.getBoolean("nodetime", false)) {
             try {
-                textNoeudHour.setHeight(0);
-                textNoeud.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+                //textNoeudHour.setHeight(0);
+                textNoeudHour.setVisibility(View.GONE);
+                textNoeud.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
             } catch (Exception e) {
                 Log.e("Lunoid", "exception", e);
             }
         }
 
-        if (ScreenSize > 3) {
-            textCroissant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26.f);
-            textDecroissant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26.f);
-            textDescendant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26.f);
-            textMontant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26.f);
+        if (screenSize > 3) {
+            textCroissant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 26.f);
+            textDecroissant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 26.f);
+            textDescendant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 26.f);
+            textMontant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 26.f);
         }
-        if (ScreenSize == 3) {
-            textCroissant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24.f);
-            textDecroissant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24.f);
-            textDescendant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24.f);
-            textMontant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24.f);
+        if (screenSize == 3) {
+            textCroissant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24.f);
+            textDecroissant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24.f);
+            textDescendant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24.f);
+            textMontant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24.f);
         }
-        if (ScreenSize == 2) {
-            textCroissant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20.f);
-            textDecroissant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20.f);
-            textDescendant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20.f);
-            textMontant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20.f);
+        if (screenSize == 2) {
+            textCroissant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20.f);
+            textDecroissant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20.f);
+            textDescendant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20.f);
+            textMontant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20.f);
         }
-        if (ScreenSize == 1) {
-            textCroissant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16.f);
-            textDecroissant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16.f);
-            textDescendant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16.f);
-            textMontant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16.f);
+        if (screenSize == 1) {
+            textCroissant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16.f);
+            textDecroissant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16.f);
+            textDescendant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16.f);
+            textMontant.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16.f);
         }
-        if (ScreenSize >= 2) {
+        if (screenSize >= 2) {
             ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) imageNote.getLayoutParams();
             marginParams.setMargins(0, 20, 0, 0);
         }
@@ -743,7 +841,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         calMax.set(Calendar.HOUR_OF_DAY, 23);
         calMax.set(Calendar.MINUTE, 59);
 
-        Calendar calendar = Calendar.getInstance();
+        //Calendar calendar = Calendar.getInstance();
         /*
         selday.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
         selday.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
@@ -765,204 +863,91 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     Log.d("TAG", "The interstitial wasn't loaded yet.");
                 }
         */
-        textFruits.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJType(mapJour, "Fruits");
-            }
-        });
-        imageFruit.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJType(mapJour, "Fruits");
-            }
-        });
-        textFeuilles.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJType(mapJour, "Feuilles");
-            }
-        });
-        imageFeuille.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJType(mapJour, "Feuilles");
-            }
-        });
-        textRacines.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJType(mapJour, "Racines");
-            }
-        });
-        imageRacine.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJType(mapJour, "Racines");
-            }
-        });
-        textFleurs.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJType(mapJour, "Fleurs");
-            }
-        });
-        imageFleur.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJType(mapJour, "Fleurs");
-            }
-        });
-        textApogee.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJAPN(mapApogee);
-            }
-        });
-        textPerigee.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJAPN(mapPerigee);
-            }
-        });
-        textNoeud.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJAPN(mapNoeud);
-            }
-        });
-        imgLune.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                DisplayInfosDuMois(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH));
-            }
-        });
-        try
-        {
-            textApogeeHour.setOnClickListener(new View.OnClickListener()
-            {
-                public void onClick(View v)
-                {
-                    nextJAPN(mapApogee);
-                }
-            });
-            textPerigeeHour.setOnClickListener(new View.OnClickListener()
-            {
-                public void onClick(View v)
-                {
-                    nextJAPN(mapPerigee);
-                }
-            });
-            textNoeudHour.setOnClickListener(new View.OnClickListener()
-            {
-                public void onClick(View v)
-                {
-                    nextJAPN(mapNoeud);
-                }
-            });
-        }
-        catch (Exception e)
-        {
+        textFruits.setOnClickListener(v -> nextJType(mapJour, "Fruits"));
+        imageFruit.setOnClickListener(v -> nextJType(mapJour, "Fruits"));
+        textFeuilles.setOnClickListener(v -> nextJType(mapJour, "Feuilles"));
+        imageFeuille.setOnClickListener(v -> nextJType(mapJour, "Feuilles"));
+        textRacines.setOnClickListener(v -> nextJType(mapJour, "Racines"));
+        imageRacine.setOnClickListener(v -> nextJType(mapJour, "Racines"));
+        textFleurs.setOnClickListener(v -> nextJType(mapJour, "Fleurs"));
+        imageFleur.setOnClickListener(v -> nextJType(mapJour, "Fleurs"));
+        textApogee.setOnClickListener(v -> nextJAPN(mapApogee));
+        textPerigee.setOnClickListener(v -> nextJAPN(mapPerigee));
+        textNoeud.setOnClickListener(v -> nextJAPN(mapNoeud));
+        imgLune.setOnClickListener(v -> DisplayInfosDuMois(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH)));
+        try {
+            textApogeeHour.setOnClickListener(v -> nextJAPN(mapApogee));
+            textPerigeeHour.setOnClickListener(v -> nextJAPN(mapPerigee));
+            textNoeudHour.setOnClickListener(v -> nextJAPN(mapNoeud));
+        } catch (Exception e) {
             Log.e("Lunoid", "exception", e);
         }
 
-        textCroissant.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJSens(mapCroissant, "1");
-            }
-        });
-        textDecroissant.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJSens(mapCroissant, "0");
-            }
-        });
-        textMontant.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-            {
-                nextJSens(mapMontant, "1");
-            }
-        });
-        textDescendant.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                nextJSens(mapMontant, "0");
-            }
-        });
+        textCroissant.setOnClickListener(v -> nextJSens(mapCroissant, "1"));
+        textDecroissant.setOnClickListener(v -> nextJSens(mapCroissant, "0"));
+        textMontant.setOnClickListener(v -> nextJSens(mapMontant, "1"));
+        textDescendant.setOnClickListener(v -> nextJSens(mapMontant, "0"));
 
         mGestureDetector = new GestureDetector(this, new LearnGestureListener());
     }  // onCreate
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig) {
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         setContentView(R.layout.main);
         onDateChange(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
         Log.d("On", "ConfigurationChanged");
 
         // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+       /* if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
 
         }
 
+       else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+
+        }*/
+
+    }
+
+    public void onClickRiseSet(View v) {
+        //  + " " + TimeZone.getDefault().getID()
+        Toast InfosToast;
+        if (Cityfound) {
+            InfosToast = Toast.makeText(getApplicationContext(), AppPrefs.getString("ville", "Paris"), Toast.LENGTH_SHORT);
+        } else {
+            InfosToast = Toast.makeText(getApplicationContext(), "Paris", Toast.LENGTH_SHORT);
+        }
+        InfosToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+        InfosToast.show();
     }
 
     public void onClickConstellation(View v) {
         String ConstellationName = "Unknown";
-        switch (v.getId()) {
-            case R.id.imagePis:
-                ConstellationName = getResources().getString(R.string.Aquarius);
-                break;
-            case R.id.imageSco:
-                ConstellationName = getResources().getString(R.string.Scorpio);
-                break;
-            case R.id.imageCan:
-                ConstellationName = getResources().getString(R.string.Cancer);
-                break;
-            case R.id.imageSag:
-                ConstellationName = getResources().getString(R.string.Sagittarius);
-                break;
-            case R.id.imageLeo:
-                ConstellationName = getResources().getString(R.string.Leo);
-                break;
-            case R.id.imageAri:
-                ConstellationName = getResources().getString(R.string.Aries);
-                break;
-            case R.id.imageCap:
-                ConstellationName = getResources().getString(R.string.Capricorn);
-                break;
-            case R.id.imageVir:
-                ConstellationName = getResources().getString(R.string.Virgo);
-                break;
-            case R.id.imageTau:
-                ConstellationName = getResources().getString(R.string.Taurus);
-                break;
-            case R.id.imageAqu:
-                ConstellationName = getResources().getString(R.string.Aquarius);
-                break;
-            case R.id.imageLib:
-                ConstellationName = getResources().getString(R.string.Libra);
-                break;
-            case R.id.imageGem:
-                ConstellationName = getResources().getString(R.string.Gemini);
-                break;
+        int id = v.getId();
+        if (id == R.id.imagePis) {
+            ConstellationName = getResources().getString(R.string.Pisces);
+        } else if (id == R.id.imageSco) {
+            ConstellationName = getResources().getString(R.string.Scorpio);
+        } else if (id == R.id.imageCan) {
+            ConstellationName = getResources().getString(R.string.Cancer);
+        } else if (id == R.id.imageSag) {
+            ConstellationName = getResources().getString(R.string.Sagittarius);
+        } else if (id == R.id.imageLeo) {
+            ConstellationName = getResources().getString(R.string.Leo);
+        } else if (id == R.id.imageAri) {
+            ConstellationName = getResources().getString(R.string.Aries);
+        } else if (id == R.id.imageCap) {
+            ConstellationName = getResources().getString(R.string.Capricorn);
+        } else if (id == R.id.imageVir) {
+            ConstellationName = getResources().getString(R.string.Virgo);
+        } else if (id == R.id.imageTau) {
+            ConstellationName = getResources().getString(R.string.Taurus);
+        } else if (id == R.id.imageAqu) {
+            ConstellationName = getResources().getString(R.string.Aquarius);
+        } else if (id == R.id.imageLib) {
+            ConstellationName = getResources().getString(R.string.Libra);
+        } else if (id == R.id.imageGem) {
+            ConstellationName = getResources().getString(R.string.Gemini);
         }
         Toast InfosToast = Toast.makeText(getApplicationContext(), ConstellationName, Toast.LENGTH_SHORT);
         InfosToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
@@ -977,29 +962,29 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         }
 
         @Override
-        public void onShowPress(MotionEvent ev)
-        {
+        public void onShowPress(MotionEvent ev) {
             //Log.d("onShowPress",ev.toString());
         }
+
         @Override
-        public void onLongPress(MotionEvent ev)
-        {
+        public void onLongPress(MotionEvent ev) {
             //Log.d("onLongPress",ev.toString());
         }
+
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             //Log.d("onScroll",e1.toString());
             return true;
         }
+
         @Override
-        public boolean onDown(MotionEvent ev)
-        {
+        public boolean onDown(MotionEvent ev) {
             //Log.d("onDownd",ev.toString());
             return true;
         }
+
         @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
-        {
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             Calendar c = Calendar.getInstance();
             boolean datechanged = false;
 
@@ -1047,18 +1032,37 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             return true;
         }
     }
+
     @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
+    public boolean onTouchEvent(MotionEvent event) {
         return mGestureDetector.onTouchEvent(event);
     }
+
     @Override
-    public void onResume()
-    {  // After a pause OR at startup
+    public void onResume() {  // After a pause OR at startup
         super.onResume();
 
         // afficher la date du jour au (re)démarrage
         onDateChange(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
+
+        // Resume the AdManagerAdView.
+        adManagerAdView.resume();
+    }
+
+    @Override
+    public void onPause() {
+        // Pause the AdManagerAdView.
+        adManagerAdView.pause();
+
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        // Destroy the AdManagerAdView.
+        adManagerAdView.destroy();
+
+        super.onDestroy();
     }
 
     // creation des menus
@@ -1081,17 +1085,16 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        switch (item.getItemId())
-        {
-        case R.id.item1:
+        int id = item.getItemId();
+        if (id == R.id.item1) {
             intent = new Intent(this, About.class);
             startActivity(intent);
             return true;
-        case R.id.item2:
+        } else if (id == R.id.item2) {
             intent = new Intent(this, Infos.class);
             startActivity(intent);
             return true;
-        case R.id.item3:
+        } else if (id == R.id.item3) {
             intent = new Intent(this, PrefsActivity.class);
             startActivity(intent);
             return true;
@@ -1101,61 +1104,105 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             startActivity(intent);
             return true;
          */
-
-        case R.id.item5: // lien sur google play
+        } else if (id == R.id.item5) { // lien sur google play
             intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("market://details?id=com.nialon"));
+            //intent.setData(Uri.parse("market://details?id=com.nialon"));
+            intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.nialon"));
+            intent.setPackage("com.android.vending");
             startActivity(intent);
             return true;
-
-        case R.id.item6: // partager
-        intent = new Intent(android.content.Intent.ACTION_SEND);
-        intent.setType("message/rfc822");
-        intent.putExtra(Intent.EXTRA_SUBJECT,  getResources().getString(R.string.app_name));
-
-        intent.putExtra(Intent.EXTRA_TEXT,
-                Html.fromHtml("<html><head></head><body>" +
-                        "<p>" + getResources().getString(R.string.sharemessage) + "</p>" +
-                        "<p>https://play.google.com/store/apps/details?id=com.nialon</p>" +
-                        "<p>https://www.facebook.com/LunoidApp</p>" +
-                        "</body></html>")
-        );
-        startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
-        return true;
-
-        case R.id.item7: // contacter le développeur
-            intent = new Intent(android.content.Intent.ACTION_SEND);
-            intent.setType("text/html");
+        } else if (id == R.id.item6) { // partager
+            intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("message/rfc822");
             intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
-            intent.putExtra(android.content.Intent.EXTRA_EMAIL,new String[] { "mnialon@gmail.com" });
+
             intent.putExtra(Intent.EXTRA_TEXT,
                     Html.fromHtml("<html><head></head><body>" +
-                            "<p>---</p>" +
-                            "<p>Version Application : " + AppVersion + "</p>" +
-                            "<p>Android Version : " + Build.VERSION.SDK_INT + " (" + Build.VERSION.RELEASE + ")</p>" +
-                            "<p>Device Type : " + Build.MANUFACTURER + " (" + Build.MODEL + ")</p>" +
-                            "<p>Density : " + getResources().getDisplayMetrics().densityDpi + "</p>" +
-                            "<p>Height : " + getResources().getDisplayMetrics().heightPixels + "</p>" +
-                            "<p>Width : " + getResources().getDisplayMetrics().widthPixels + "</p>" +
+                            "<p>" + getResources().getString(R.string.sharemessage) + "</p>" +
+                            "<p>https://play.google.com/store/apps/details?id=com.nialon</p>" +
+                            "<p>https://www.facebook.com/LunoidApp</p>" +
                             "</body></html>")
             );
             startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
             return true;
-
-            case R.id.item8:
-                DisplayInfosDuMois(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH));
-                return true;
-
-            case R.id.item9:
-                DisplayAllNotes();
-                return true;
+        } else if (id == R.id.item7) { // contacter le développeur
+            intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/html");
+            intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"mnialon@gmail.com"});
+            intent.putExtra(Intent.EXTRA_TEXT,
+                    Html.fromHtml("<html><head></head><body>" +
+                            "---<br />" +
+                            "Version Application : " + AppVersion + "<br />" +
+                            "Android Version : " + Build.VERSION.SDK_INT + " (" + Build.VERSION.RELEASE + ")<br />" +
+                            "Device Type : " + Build.MANUFACTURER + " (" + Build.MODEL + ")<br />" +
+                            "Density : " + getResources().getDisplayMetrics().densityDpi + "<br />" +
+                            "Height : " + getResources().getDisplayMetrics().heightPixels + "<br />" +
+                            "Width : " + getResources().getDisplayMetrics().widthPixels + "<br />" +
+                            "City : " + AppPrefs.getString("city", "Paris") + "<br />" +
+                            "Timezone : " + TimeZone.getDefault().getID() + "<br />" +
+                            "DST : " + TimeZone.getDefault().getDSTSavings() + "<br />" +
+                            "---<br />" +
+                            "</body></html>")
+            );
+            startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
+            return true;
+        } else if (id == R.id.item8) {
+            DisplayInfosDuMois(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH));
+            return true;
+        } else if (id == R.id.item9) {
+            DisplayAllNotes();
+            return true;
 /*
             case R.id.item10:
                 Log.w("menu", "item10");
                 ManageReview();
                 return true;
  */
+        } else if (id == R.id.item10) {
+            SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
+            SimpleDateFormat sdfx = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/html");
+            //intent.putExtra(Intent.EXTRA_MIME_TYPES, "text/html");
+            intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name) + " - " + getResources().getString(R.string.listNotes));
+            Map<String, ?> allEntries = sp.getAll();
+            List<Map.Entry<String, ?>> list = new LinkedList<>(allEntries.entrySet());
+            // sort list based on comparator
+            Collections.sort(list, (Comparator<Object>) (o1, o2) -> {
+                int ret = 0;
+                try {
+                    Date d1 = sdfx.parse(o1.toString());
+                    Date d2 = sdfx.parse(o2.toString());
+                    assert d1 != null;
+                    ret = d1.compareTo(d2);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return ret;
+            });
+            // put sorted list into map again
+            Map<String, String> sortedMap = new LinkedHashMap<>();
+            for (Map.Entry<String, ?> it : list) {
+                if (!it.getValue().equals("")) {
+                    sortedMap.put(it.getKey(), it.getValue().toString());
+                }
+            }
+            StringBuilder htmlNotes = new StringBuilder("<html><head></head><body>");
+            for (LinkedHashMap.Entry<String, ?> entry : sortedMap.entrySet()) {
+                String dNote = entry.getKey();
+                String tNote = entry.getValue().toString();
+                htmlNotes.append("   ").append(dNote).append("    ").append(tNote).append("<br/>");
+
+            }
+            htmlNotes.append("</body></html>");
+            intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(htmlNotes.toString()));
+            intent.putExtra(Intent.EXTRA_HTML_TEXT, Html.fromHtml(htmlNotes.toString()));
+
+            startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name) + " - " + getResources().getString(R.string.listNotes)));
+            return true;
         }
+
         return false;
     }
 
@@ -1322,8 +1369,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         //SharedPreferences prefs = getSharedPreferences("com.nialon", MODE_PRIVATE);
 
         linetot.setLength(0);
-        if ((year >= 2016) && (year <= 2018))
-        {
+        if ((year >= 2016) && (year <= 2018)) {
             type_message = "1";
             if ((month == 2)) {
                 message = "mars"  + year;
@@ -1337,34 +1383,25 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 message = "juillet"  + year;
             } else if ((month == 7)) {
                 message = "aout"  + year;
-            }
-            else
-            {
+            } else {
                 message = "Pas d'informations pour cette période. Les conseils de plantation ne sont disponibles que pour les mois de Mars à Août.";
                 type_message = "0";
             }
-            if (type_message.equals("1"))
-            {
+            if (type_message.equals("1")) {
                 Log.d("message", message);
                 intent.putExtra(EXTRA_MESSAGE, message);
                 intent.putExtra("type_message", type_message);
                 startActivity(intent);
             }
-        }
-        else if (year >= 2019)
-        {
+        } else if (year >= 2019) {
             String m1;
 
-            if (month >= 0 && month <= 11)
-            {
+            if (month >= 0 && month <= 11) {
                 m1 = tableauMois[month];
                 sifm = prefs.getBoolean("infosmois", false);
-                if (sifm)
-                {
+                if (sifm) {
                     BuildConseilMois(month, year);
-                }
-                else
-                {
+                } else {
                     BuildConseilJour(dateString, m1, dateString2);
                 }
 
@@ -1373,28 +1410,23 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 intent.putExtra("htmltxt", htmltxt);
 
                 startActivity(intent);
-            }
-            else
-            {
+            } else {
                 message = "Pas d'informations pour cette période. Les conseils de plantation ne sont disponibles que pour les mois de Mars à Septembre.";
                 type_message = "0";
             }
-        }
-        else
-        {
+        } else {
             message = "Pas d'informations pour cette période. Les conseils de plantation ne sont disponibles qu'à partir de 2016";
             type_message = "0";
         }
 
-        if (type_message.equals("0"))
-        {
+        if (type_message.equals("0")) {
             Toast InfosToast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
             InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
             InfosToast.show();
         }
     }
-    private void BuildConseilMois(int month, int year)
-    {
+
+    private void BuildConseilMois(int month, int year) {
         Calendar cal = new GregorianCalendar(year, month, 1);
         int nbdays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
         Date d1 = new Date();
@@ -1427,49 +1459,38 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
 
         addText("<font color = #ffff00 face=\"sans-serif-light\">" + ds2 + "</font>");
 
-       // Log.d("BuildConseilJour", ds);
-        if (mapMontant.get(ds).substring(0,1).equals("0"))
-        {
+        // Log.d("BuildConseilJour", ds);
+        if (mapMontant.get(ds).startsWith("0")) {
             s1 = "descendante";
             s2 = "";
         }
-        if (mapMontant.get(ds).substring(0,1).equals("1"))
-        {
+        if (mapMontant.get(ds).startsWith("1")) {
             s1 = "montante";
             s2 = "";
         }
-        if (mapMontant.get(ds).substring(0,1).equals("2"))
-        {
+        if (mapMontant.get(ds).startsWith("2")) {
             s1 = "montante";
             s2 = "descendante";
-            hs12 = heurelocale(mapMontant.get(ds).substring(2, 7),selday,lh);
+            hs12 = heurelocale(mapMontant.get(ds).substring(2, 7), selday, lh);
         }
-        if (mapMontant.get(ds).substring(0,1).equals("3"))
-        {
+        if (mapMontant.get(ds).startsWith("3")) {
             s1 = "descendante";
             s2 = "montante";
             hs12 = heurelocale(mapMontant.get(ds).substring(2, 7), selday, lh);
         }
-        if (mapJour.get(ds).length() >= 15 &&  (mapJour.get(ds)).toLowerCase().substring(0,15).equals("feuilles/fruits"))
-        {
+        if (mapJour.get(ds).length() >= 15 && (mapJour.get(ds)).toLowerCase().startsWith("feuilles/fruits")) {
             t1 = "feuilles";
             t2 = "fruits";
-            ht12 = heurelocale(mapJour.get(ds).substring(16, 21),selday,lh);
-        }
-        else if (mapJour.get(ds).length() >= 14 && (mapJour.get(ds)).toLowerCase().substring(0,14).equals("fruits/racines"))
-        {
+            ht12 = heurelocale(mapJour.get(ds).substring(16, 21), selday, lh);
+        } else if (mapJour.get(ds).length() >= 14 && (mapJour.get(ds)).toLowerCase().startsWith("fruits/racines")) {
             t1 = "fruits";
             t2 = "racines";
-            ht12 = heurelocale(mapJour.get(ds).substring(15, 20),selday,lh);
-        }
-        else if (mapJour.get(ds).length() >= 14 && (mapJour.get(ds)).toLowerCase().substring(0,14).equals("racines/fleurs"))
-        {
+            ht12 = heurelocale(mapJour.get(ds).substring(15, 20), selday, lh);
+        } else if (mapJour.get(ds).length() >= 14 && (mapJour.get(ds)).toLowerCase().startsWith("racines/fleurs")) {
             t1 = "racines";
             t2 = "fleurs";
-            ht12 = heurelocale(mapJour.get(ds).substring(15, 20),selday,lh);
-        }
-        else if (mapJour.get(ds).length() >= 15 && (mapJour.get(ds)).toLowerCase().substring(0,15).equals("fleurs/feuilles"))
-        {
+            ht12 = heurelocale(mapJour.get(ds).substring(15, 20), selday, lh);
+        } else if (mapJour.get(ds).length() >= 15 && (mapJour.get(ds)).toLowerCase().startsWith("fleurs/feuilles")) {
             t1 = "fleurs";
             t2 = "feuilles";
             ht12 = heurelocale(mapJour.get(ds).substring(16, 21), selday, lh);
@@ -1514,8 +1535,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             if (perigeelocal.compareTo("05:00") < 0) {
                 h1 += 5;
                 addText(" -> " + getString(R.string.nepasjardineravant) + " " + String.format(Locale.getDefault(), "%02d:%2s", h1, perigeelocal.substring(3, 5)) + "</font>");
-            }
-            else if ((perigeelocal.compareTo("19:00") < 0)) {
+            } else if ((perigeelocal.compareTo("19:00") < 0)) {
                 h1 -= 5;
                 addText(" -> " + getString(R.string.nepasjardinerentre) + " " + String.format(Locale.getDefault(), "%02d:%2s", h1, perigeelocal.substring(3, 5)) + " - " + String.format(Locale.getDefault(), "%02d:%2s", h1 + 10, perigeelocal.substring(3, 5)) + "</font>");
             } else if ((perigeelocal.compareTo("19:00") >= 0)) {
@@ -1531,10 +1551,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             if (!mapNoeud.get(ds).equals("0")) {
                 String noeudlocal = heurelocale(mapNoeud.get(ds), d1, lh);
                 Log.d("noeudlocal", noeudlocal);
-                if (mapNoeud.get(ds).substring(5, 6).equals("+")) {
+                if (mapNoeud.get(ds).startsWith("+", 5)) {
                     addText("<font color=#ff0000>" + getString(R.string.noeudascendanta) + " " + noeudlocal);
-                } else
-                {
+                } else {
                     addText("<font color=#ff0000>" + getString(R.string.noeuddescendanta) + " " + noeudlocal);
 
                 }
@@ -1550,12 +1569,11 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     addText(" -> " + getString(R.string.nepasjardinerapres) + " " + String.format(Locale.getDefault(),"%02d:%2s", h1, noeudlocal.substring(3,5)) + "</font>");
                 }
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e("testNoeud", e.toString());
         }
     }
+
     private void BuildHTMLJour(String s1, String s2, String t1, String t2, String m1, String ht12, String hs12) {
         //Log.d("BuildHTMLJour", s1);
         String lg;
@@ -1578,18 +1596,14 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 addTextFromFile(m1 + "_" + s1 + "_" + t2 + "_" + lg + ".txt");
             }
         }
-        if (!s1.equals("") && !s2.equals(""))
-        {
-            if (!t1.equals("") && t2.equals(""))
-            {
+        if (!s1.equals("") && !s2.equals("")) {
+            if (!t1.equals("") && t2.equals("")) {
                 addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_" + lg + ".txt");
                 addText("<font color=#ffff00>" +  hs12 + "</font>" );
                 addTextFromFile(m1 + "_" + s2 + "_" + t1 + "_" + lg + ".txt");
             }
-            if (!t1.equals("") && !t2.equals(""))
-            {
-                if (hs12.compareTo(ht12) < 0)
-                {
+            if (!t1.equals("") && !t2.equals("")) {
+                if (hs12.compareTo(ht12) < 0) {
                     addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_" + lg + ".txt");
                     addText("<font color=#ffff00>" +  hs12 + "</font>" );
                     addTextFromFile(m1 + "_" + s2 + "_" + t1 + "_" + lg + ".txt");
@@ -1597,16 +1611,14 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     addText("<font color=#ffff00>" +  ht12  + "</font>");
                     addTextFromFile(m1 + "_" + s2 + "_" + t2 + "_" + lg + ".txt");
                 }
-                if (hs12.compareTo(ht12) > 0)
-                {
+                if (hs12.compareTo(ht12) > 0) {
                     addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_" + lg + ".txt");
                     addText( "<font color=#ffff00>" +  ht12 + "</font>");
                     addTextFromFile(m1 + "_" + s1 + "_" + t2 + "_" + lg + ".txt");
                     addText("<font color=#ffff00>" +  hs12 + "</font>" );
                     addTextFromFile(m1 + "_" + s2 + "_" + t2 + "_" + lg + ".txt");
                 }
-                if (hs12.compareTo(ht12) == 0)
-                {
+                if (hs12.compareTo(ht12) == 0) {
                     addTextFromFile(m1 + "_" + s1 + "_" + t1 + "_" + lg + ".txt");
                     addText( "<font color=#ffff00>" +  hs12 + "</font>");
                     addTextFromFile(m1 + "_" + s2 + "_" + t2 + "_" + lg + ".txt");
@@ -1614,35 +1626,31 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             }
         }
     }
-    private void addTextFromFile(String s)
-    {
+
+    private void addTextFromFile(String s) {
         //Log.d("addTextFromFile", s);
 
-        try
-        {
+        try {
             BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open(s)));
 
             String st;
 
-            while ((st = br.readLine()) != null)
-            {
+            while ((st = br.readLine()) != null) {
                 //System.out.println(st);
                 linetot.append("\n");
                 linetot.append(st);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("Something went wrong.");
         }
     }
 
-    private  void addText(String s)
-    {
+    private  void addText(String s) {
         //Log.d("addText ", s);
         linetot.append("<br/>");
         linetot.append(s);
     }
+
     private void read_data() {
         Date d;
 
@@ -1654,8 +1662,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         BufferedReader buffreader = new BufferedReader(inputreader);
         String line;
         String[] separated;
-        try
-        {
+        try {
             while (( line = buffreader.readLine()) != null) {
                 //Log.d("Line",line);
                 separated = line.split(";");
@@ -1687,7 +1694,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     temp = temp.replace("Can", "Feuilles");
                     temp = temp.replace("Sco", "Feuilles");
                     mapJour.put(separated[0], temp);
-                    Log.d("jour", temp);
+                    //Log.d("jour", temp);
                 } else {
                     mapJour.put(separated[0], separated[4]);
                 }
@@ -1710,9 +1717,11 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             Log.e("Lunoid", "exception", e);
         }
     }
+
     public static String getLever() {
         return heurelocale(mapLever.get(dateString), selday, lh);
     }
+
     public static String getCoucher() {
         return heurelocale(mapCoucher.get(dateString), selday, lh);
     }
@@ -1722,6 +1731,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         DatePickerFragment fragment = new DatePickerFragment();
         fragment.show(getSupportFragmentManager(), "date");
     }
+
     public void editNote(View view) {
         SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
         //Map<String, ?> allEntries = sp.getAll();
@@ -1736,69 +1746,56 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             final Switch sw1 = root.findViewById(R.id.switch1);
             e1.setText(str1);
             Log.d("str1notif", str1Notif);
-            if (!str1Notif.equals("0") && !str1Notif.equals("")) {
-                sw1.setChecked(true);
-            } else {
-                sw1.setChecked(false);
-            }
-            if (today.getTime().before(selday.getTime())) {
-                sw1.setEnabled(true);
-            } else {
-                sw1.setEnabled(false);
-            }
+
+            sw1.setChecked(!str1Notif.equals("0") && !str1Notif.equals(""));
+            sw1.setEnabled(today.getTime().before(selday.getTime()));
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(getString(R.string.notedu) + " " + dateString + " :");
             builder.setView(root);
-            builder.setPositiveButton(R.string.sauvegarder, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
-                    UUID uuid;
-                    SharedPreferences.Editor sedt = sp.edit();
-                    sedt.putString(dateString, e1.getText().toString());
-                    sedt.apply();
-                    if (!e1.getText().toString().equals("")) {
-                        imageNote.setAlpha(1.0f);
-                        imageNote.setColorFilter(Color.YELLOW);
-                    } else {
-                        imageNote.setAlpha(0.5f);
-                        imageNote.clearColorFilter();
-                    }
+            builder.setPositiveButton(R.string.sauvegarder, (dialog, which) -> {
+                SharedPreferences sp1 = getSharedPreferences("myNotes", MODE_PRIVATE);
+                UUID uuid;
+                SharedPreferences.Editor sedt = sp1.edit();
+                sedt.putString(dateString, e1.getText().toString());
+                sedt.apply();
+                if (!e1.getText().toString().equals("")) {
+                    imageNote.setAlpha(1.0f);
+                    imageNote.setColorFilter(Color.YELLOW);
+                } else {
+                    imageNote.setAlpha(0.5f);
+                    imageNote.clearColorFilter();
+                }
 
-                    SharedPreferences spNotif = getSharedPreferences("myNotif", MODE_PRIVATE);
-                    SharedPreferences.Editor sedtNotif = spNotif.edit();
-                    if (sw1.isChecked() && sw1.isEnabled() && !e1.getText().toString().equals("")) {
-                        uuid = scheduleNotification(e1.getText().toString());
-                        Log.d("uuid", uuid.toString());
-                        sedtNotif.putString(dateString, uuid.toString());
-                    } else {
-                        if (!str1Notif.equals("0") && !str1Notif.equals("")) {
-                            Log.d("Cancel", str1Notif);
-                            WorkManager.getInstance(getApplicationContext()).cancelWorkById(UUID.fromString(str1Notif));
-                        }
-                        sedtNotif.putString(dateString, "0");
+                SharedPreferences spNotif1 = getSharedPreferences("myNotif", MODE_PRIVATE);
+                SharedPreferences.Editor sedtNotif = spNotif1.edit();
+                if (sw1.isChecked() && sw1.isEnabled() && !e1.getText().toString().equals("")) {
+                    uuid = scheduleNotification(e1.getText().toString());
+                    Log.d("uuid", uuid.toString());
+                    sedtNotif.putString(dateString, uuid.toString());
+                } else {
+                    if (!str1Notif.equals("0") && !str1Notif.equals("")) {
+                        Log.d("Cancel", str1Notif);
+                        WorkManager.getInstance(getApplicationContext()).cancelWorkById(UUID.fromString(str1Notif));
                     }
-                    sedtNotif.apply();
-                    Toast InfosToast;
-                    if (e1.getText().toString().equals("")) {
-                        InfosToast = Toast.makeText(getApplicationContext(), R.string.notesupprimee, Toast.LENGTH_SHORT);
-                    } else {
-                        InfosToast = Toast.makeText(getApplicationContext(), R.string.notesauvegardee, Toast.LENGTH_SHORT);
-                    }
-                    InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
-                    InfosToast.show();
-                    // Do something
+                    sedtNotif.putString(dateString, "0");
                 }
+                sedtNotif.apply();
+                Toast InfosToast;
+                if (e1.getText().toString().equals("")) {
+                    InfosToast = Toast.makeText(getApplicationContext(), R.string.notesupprimee, Toast.LENGTH_SHORT);
+                } else {
+                    InfosToast = Toast.makeText(getApplicationContext(), R.string.notesauvegardee, Toast.LENGTH_SHORT);
+                }
+                InfosToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                InfosToast.show();
+                // Do something
             });
-            builder.setNegativeButton(R.string.annuler, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast InfosToast = Toast.makeText(getApplicationContext(), R.string.notenonsauvegardee, Toast.LENGTH_SHORT);
-                    InfosToast.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL, 0, 0);
-                    InfosToast.show();
-                    // Do something
-                }
+            builder.setNegativeButton(R.string.annuler, (dialog, which) -> {
+                Toast InfosToast = Toast.makeText(getApplicationContext(), R.string.notenonsauvegardee, Toast.LENGTH_SHORT);
+                InfosToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                InfosToast.show();
+                // Do something
             });
             builder.show();
         } catch (Exception e) {
@@ -1814,13 +1811,12 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         onDateChange(year, month, day);
     }
 
-    private Menu getMenu()
-    {
+    private Menu getMenu() {
         //use it like this
         return _menu;
     }
-    private void ShowHideInfosMenu(int y, int mo, Menu me)
-    {
+
+    private void ShowHideInfosMenu(int y, int mo, Menu me) {
         MenuItem item;
         try {
             item = me.findItem(R.id.item8);
@@ -1831,9 +1827,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             } else {
                 item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             Log.e("Lunoid", "exception", e);
         }
     }
@@ -1887,31 +1881,32 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
             try {
+                Log.d("changed : ", key);
                 if (key.equals("nodetime")) {
                     if (!sharedPreferences.getBoolean("nodetime", false)) {
                         textNoeudHour.setVisibility(View.GONE);
-                        textNoeud.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+                        textNoeud.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
                     } else {
                         textNoeudHour.setVisibility(View.VISIBLE);
-                        textNoeud.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                        textNoeud.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
                     }
                 }
                 if (key.equals("apogeetime")) {
                     if (!sharedPreferences.getBoolean("apogeetime", false)) {
                         textApogeeHour.setVisibility(View.GONE);
-                        textApogee.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+                        textApogee.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
                     } else {
                         textApogeeHour.setVisibility(View.VISIBLE);
-                        textApogee.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                        textApogee.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
                     }
                 }
                 if (key.equals("perigeetime")) {
                     if (!sharedPreferences.getBoolean("perigeetime", false)) {
                         textPerigeeHour.setVisibility(View.GONE);
-                        textPerigee.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+                        textPerigee.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
                     } else {
                         textPerigeeHour.setVisibility(View.VISIBLE);
-                        textPerigee.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+                        textPerigee.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
                     }
                 }
             } catch (Exception e) {
@@ -1919,5 +1914,16 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             }
         }
     };
+
+    private AdSize getAdSize() {
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+        float widthPixels = outMetrics.widthPixels;
+        float density = outMetrics.density;
+        int adWidth = (int) (widthPixels / density);
+
+        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+    }
 
 } // Lunoid

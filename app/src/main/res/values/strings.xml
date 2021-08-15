@@ -106,7 +106,7 @@
     <string name="notesupprimee">The note has been deleted</string>
     <string name="hemititle">South hemisphere</string>
     <string name="hemisummary">To invert ascending/descending. (Application needs to be restarted when changed)</string>
-    <string name="listNotes" translatable="false">List of notes</string>
+    <string name="listNotes">List of notes</string>
     <string name="review">Review</string>
     <string name="position">Position</string>
     <string name="latitude">Latitude</string>
@@ -128,4 +128,7 @@
     <string name="icons">Icons</string>
     <string name="texts">Texts</string>
     <string name="informations">Informations</string>
+    <string name="citypref">Position (For the calculation of rise and set time)</string>
+    <string name="saveNotes">Save/Share notes</string>
+    <string name="pleaseUpgrade">Please upgrade to the latest version.</string>
 </resources>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cities>
+    <city>
+        <name>Paris</name>
+        <lat>48.85</lat>
+        <lon>2.35</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Vienne</name>
+        <lat>48.22</lat>
+        <lon>16.36</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Salzburg</name>
+        <lat>47.81</lat>
+        <lon>13.04</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Innsbruck</name>
+        <lat>47.27</lat>
+        <lon>11.40</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Graz</name>
+        <lat>47.07</lat>
+        <lon>15.40</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Zurich</name>
+        <lat>47.39</lat>
+        <lon>8.53</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Berne</name>
+        <lat>46.94</lat>
+        <lon>7.44</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Genève</name>
+        <lat>46.21</lat>
+        <lon>6.12</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Bruxelles</name>
+        <lat>50.84</lat>
+        <lon>4.34</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Lille</name>
+        <lat>50.62</lat>
+        <lon>3.05</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Brest</name>
+        <lat>48.40</lat>
+        <lon>-4.50</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Nantes</name>
+        <lat>47.23</lat>
+        <lon>-1.55</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Bourges</name>
+        <lat>47.07</lat>
+        <lon>2.39</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Strasbourg</name>
+        <lat>48.58</lat>
+        <lon>7.75</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Bordeaux</name>
+        <lat>44.86</lat>
+        <lon>-0.60</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Marseille</name>
+        <lat>43.30</lat>
+        <lon>5.35</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Lyon</name>
+        <lat>45.75</lat>
+        <lon>4.82</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Madrid</name>
+        <lat>40.39</lat>
+        <lon>-3.73</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Lisbonne</name>
+        <lat>38.68</lat>
+        <lon>-9.19</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Londres</name>
+        <lat>51.52</lat>
+        <lon>-0.08</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Rome</name>
+        <lat>41.89</lat>
+        <lon>12.42</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Bastia</name>
+        <lat>42.70</lat>
+        <lon>9.46</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Luxembourg</name>
+        <lat>49.61</lat>
+        <lon>6.10</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Amsterdam</name>
+        <lat>52.36</lat>
+        <lon>4.88</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Berlin</name>
+        <lat>52.55</lat>
+        <lon>13.39</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Casablanca</name>
+        <lat>33.59</lat>
+        <lon>-7.60</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Alger</name>
+        <lat>36.73</lat>
+        <lon>3.06</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Tunis</name>
+        <lat>36.82</lat>
+        <lon>10.18</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Montreal</name>
+        <lat>45.48</lat>
+        <lon>-73.61</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Quebec</name>
+        <lat>46.83</lat>
+        <lon>-71.15</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Ottawa</name>
+        <lat>45.44</lat>
+        <lon>-75.70</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Cayenne</name>
+        <lat>4.93</lat>
+        <lon>-52.31</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Basse-Terre</name>
+        <lat>15.99</lat>
+        <lon>-61.72</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Fort-de-France</name>
+        <lat>14.61</lat>
+        <lon>-61.06</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Saint-Denis</name>
+        <lat>-20.89</lat>
+        <lon>55.45</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Nouméa</name>
+        <lat>-22.24</lat>
+        <lon>166.43</lon>
+        <elv>0</elv>
+    </city>
+
+    <city>
+        <name>Papeete</name>
+        <lat>-17.54</lat>
+        <lon>-149.56</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Vancouver</name>
+        <lat>49.30</lat>
+        <lon>-123.17</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>New-York</name>
+        <lat>40.68</lat>
+        <lon>-74.00</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Los-Angeles</name>
+        <lat>34.05</lat>
+        <lon>-118.25</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Tananarive</name>
+        <lat>-18.85</lat>
+        <lon>47.54</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Abidjan</name>
+        <lat>5.40</lat>
+        <lon>-4.00</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Santiago</name>
+        <lat>-33.43</lat>
+        <lon>-70.65</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Port-au-Prince</name>
+        <lat>18.59</lat>
+        <lon>-72.30</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Besançon</name>
+        <lat>47.23</lat>
+        <lon>6.02</lon>
+        <elv>0</elv>
+    </city>
+</cities>

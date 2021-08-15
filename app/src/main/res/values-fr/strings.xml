@@ -124,4 +124,7 @@
     <string name="icons">Icônes</string>
     <string name="texts">Textes</string>
     <string name="informations">Informations</string>
+    <string name="citypref">Ville (Pour le calcul des heures de lever et coucher)</string>
+    <string name="saveNotes">Sauvegarder/Partager les notes</string>
+    <string name="pleaseUpgrade">Vous devez mettre à jour avec la dernière version.</string>
 </resources>

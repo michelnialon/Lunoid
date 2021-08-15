@@ -119,4 +119,7 @@
     <string name="dispzodiac">Mostrar los signos del zodíaco</string>
     <string name="icons">Iconos</string>
     <string name="texts">Texto</string>
+    <string name="citypref">Posición (Para calcular los tiempos de salida y puesta)</string>
+    <string name="saveNotes">Guardar/Compartir notas</string>
+    <string name="pleaseUpgrade">Debe actualizar a la última versión.</string>
 </resources>

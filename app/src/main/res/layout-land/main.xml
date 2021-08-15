@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayout51"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
     android:baselineAligned="true"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <!-- Gauche -->
     <LinearLayout
@@ -40,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:text="21:43"
-                android:textColor="#FFFF00"
+                android:textColor="#05FA0F"
                 android:textSize="20sp" />
 
             <TextView
@@ -50,7 +51,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
                 android:text="05:29"
-                android:textColor="#FFFF00"
+                android:textColor="#05FA0F"
                 android:textSize="20sp" />
 
             <TextView
@@ -100,14 +101,23 @@
             android:layout_height="50dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
-
-            <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/publisherAdView"
-                android:layout_width="match_parent"
+            <!--
+                        <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/publisherAdView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            ads:adSize="BANNER"
+                            ads:adUnitId="ca-app-pub-4468029712209847/4219671648"></com.google.android.gms.ads.doubleclick.PublisherAdView>
+                            -->
+            <com.google.android.gms.ads.admanager.AdManagerAdView
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-4468029712209847/4219671648"></com.google.android.gms.ads.doubleclick.PublisherAdView>
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adUnitId="ca-app-pub-4468029712209847/4219671648"
+                ads:adSize="BANNER"></com.google.android.gms.ads.admanager.AdManagerAdView>
         </LinearLayout>
     </LinearLayout>
 
@@ -137,7 +147,8 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/croissant"
                 android:textColor="#FFFF00"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/textHCD"
                 android:layout_width="wrap_content"
@@ -146,7 +157,8 @@
                 android:text="00:00"
                 android:textColor="#666666"
                 android:rotation="0"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
+
             <TextView
                 android:id="@+id/textDecroissant"
                 android:layout_width="match_parent"
@@ -155,7 +167,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/decroissant"
                 android:textColor="#666666"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
         </LinearLayout>
 
         <!-- montant/descendant -->
@@ -175,7 +187,8 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/montant"
                 android:textColor="#666666"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/textHMD"
                 android:layout_width="wrap_content"
@@ -184,7 +197,7 @@
                 android:text="00:00"
                 android:textColor="#666666"
                 android:rotation="0"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/textDescendant"
@@ -194,7 +207,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:text="@string/descendant"
                 android:textColor="#FFFF00"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -396,7 +409,7 @@
                     android:gravity="center"
                     android:text="Poi"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textSco"
@@ -406,7 +419,7 @@
                     android:gravity="center"
                     android:text="Sco"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textCan"
@@ -416,7 +429,7 @@
                     android:gravity="center"
                     android:text="Can"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -437,7 +450,7 @@
                     android:gravity="center"
                     android:text="Sag"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textLeo"
@@ -447,7 +460,7 @@
                     android:gravity="center"
                     android:text="Lio"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textBel"
@@ -457,7 +470,7 @@
                     android:gravity="center"
                     android:text="Bel"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -478,7 +491,7 @@
                     android:gravity="center"
                     android:text="Cap"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textVie"
@@ -488,7 +501,7 @@
                     android:gravity="center"
                     android:text="Vie"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textTau"
@@ -498,7 +511,7 @@
                     android:gravity="center"
                     android:text="Tau"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -519,7 +532,7 @@
                     android:gravity="center"
                     android:text="Ver"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textBal"
@@ -529,7 +542,7 @@
                     android:gravity="center"
                     android:text="Bal"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:id="@+id/textGem"
@@ -539,7 +552,7 @@
                     android:gravity="center"
                     android:text="Gem"
                     android:textColor="#666666"
-                    android:textSize="12sp" />
+                    android:textSize="12dp" />
             </LinearLayout>
         </LinearLayout>
         <!-- feuilles/fleurs/fruits/racines images-->
@@ -619,7 +632,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/feuilles"
                 android:textColor="#666666"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/textFruits"
@@ -629,7 +642,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/fruits"
                 android:textColor="#666666"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/textRacines"
@@ -639,7 +652,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/racines"
                 android:textColor="#666666"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/textFleurs"
@@ -649,7 +662,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/fleurs"
                 android:textColor="#666666"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </LinearLayout>
         <!-- feuilles/fleurs/fruits/racines changement -->
         <LinearLayout
@@ -667,7 +680,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="&lt; 15:30"
                 android:textColor="#ffff00"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/textFruitsChg"
@@ -677,7 +690,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text="&gt; 15:30"
                 android:textColor="#ffff00"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/textRacinesChg"
@@ -687,7 +700,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text=""
                 android:textColor="#666666"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/textFleursChg"
@@ -697,7 +710,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:text=""
                 android:textColor="#666666"
-                android:textSize="12sp" />
+                android:textSize="12dp" />
         </LinearLayout>
         <!-- Perigee/Apogee/Noeud -->
         <LinearLayout
@@ -724,7 +737,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="88:88"
                     android:textColor="#666666"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/textPerigee"
@@ -733,7 +746,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="@string/perigee"
                     android:textColor="#666666"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -751,7 +764,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="88:88"
                     android:textColor="#666666"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/textApogee"
@@ -760,7 +773,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="@string/apogee"
                     android:textColor="#666666"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -778,7 +791,7 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:text="88:88"
                     android:textColor="#666666"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/textNoeud"
@@ -787,7 +800,7 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/noeudlunaire"
                     android:textColor="#FF0000"
-                    android:textSize="20sp" />
+                    android:textSize="20dp" />
             </LinearLayout>
         </LinearLayout>
 

@@ -119,4 +119,7 @@
     <string name="dispzodiac">Anzeige der Tierkreiszeichen</string>
     <string name="icons">Ikonen</string>
     <string name="texts">Texte</string>
+    <string name="citypref">Position (Zur Berechnung von Aufgang und Zugang Zeiten)</string>
+    <string name="saveNotes">Speichern/Freigeben von Notizen</string>
+    <string name="pleaseUpgrade">Sie müssen auf die neueste Version aktualisieren.</string>
 </resources>

@@ -9,4 +9,99 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+
+    <string-array name="cities_entries">
+        <item>Vienne (Autriche)</item>
+        <item>Salzburg (Autriche)</item>
+        <item>Innsbruck (Autriche)</item>
+        <item>Graz (Suisse)</item>
+        <item>Zurich (Suisse)</item>
+        <item>Berne (Suisse)</item>
+        <item>Genève (Suisse)</item>
+        <item>Bruxelles (Belgique)</item>
+        <item>Paris (France)</item>
+        <item>Lille (France)</item>
+        <item>Brest (France)</item>
+        <item>Nantes (France)</item>
+        <item>Bourges (France)</item>
+        <item>Strasbourg (France)</item>
+        <item>Besançon (France)</item>
+        <item>Bordeaux (France)</item>
+        <item>Marseille (France)</item>
+        <item>Lyon (France)</item>
+        <item>Madrid (Espagne)</item>
+        <item>Lisbonne (Portugal)</item>
+        <item>Londres (Angleterre)</item>
+        <item>Rome (Italie)</item>
+        <item>Bastia (Corse)</item>
+        <item>Luxembourg</item>
+        <item>Amsterdam (Pays-Bas)</item>
+        <item>Berlin (Allemagne)</item>
+        <item>Casablanca (Maroc)</item>
+        <item>Alger (Algérie)</item>
+        <item>Tunis (Tunisie)</item>
+        <item>Montreal (Canada)</item>
+        <item>Quebec (Canada)</item>
+        <item>Ottawa (Canada)</item>
+        <item>Cayenne (Guyane)</item>
+        <item>Basse terre (Guadeloupe)</item>
+        <item>Fort de france (Martinique)</item>
+        <item>Saint-Denis (La Réunion)</item>
+        <item>Nouméa (Nouvelle-Calédonie)</item>
+        <item>Papeete (Polynésie française)</item>
+        <item>Vancouver (Canada)</item>
+        <item>New-York (USA)</item>
+        <item>Los-Angeles (USA)</item>
+        <item>Tananarive (Madagascar)</item>
+        <item>Abidjan (Côte d\'Ivoire)</item>
+        <item>Santiago (Chili)</item>
+        <item>Port-au-Prince (Haïti)</item>
+    </string-array>
+    <string-array name="cities_values">
+        <item>Vienne</item>
+        <item>Salzburg</item>
+        <item>Innsbruck</item>
+        <item>Graz</item>
+        <item>Zurich</item>
+        <item>Berne</item>
+        <item>Genève</item>
+        <item>Bruxelles</item>
+        <item>Paris</item>
+        <item>Lille</item>
+        <item>Brest</item>
+        <item>Nantes</item>
+        <item>Bourges</item>
+        <item>Strasbourg</item>
+        <item>Besançon</item>
+        <item>Bordeaux</item>
+        <item>Marseille</item>
+        <item>Lyon</item>
+        <item>Madrid</item>
+        <item>Lisbonne</item>
+        <item>Londres</item>
+        <item>Rome</item>
+        <item>Bastia</item>
+        <item>Luxembourg</item>
+        <item>Amsterdam</item>
+        <item>Berlin</item>
+        <item>Casablanca</item>
+        <item>Alger</item>
+        <item>Tunis</item>
+        <item>Montreal</item>
+        <item>Quebec</item>
+        <item>Ottawa</item>
+        <item>Cayenne</item>
+        <item>Basse-Terre</item>
+        <item>Fort-de-France</item>
+        <item>Saint-Denis</item>
+        <item>Nouméa</item>
+        <item>Papeete</item>
+        <item>Vancouver</item>
+        <item>New-York</item>
+        <item>Los-Angeles</item>
+        <item>Tananarive</item>
+        <item>Abidjan</item>
+        <item>Santiago</item>
+        <item>Port-au-Prince</item>
+    </string-array>
 </resources>

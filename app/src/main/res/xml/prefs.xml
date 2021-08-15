@@ -43,4 +43,11 @@
             android:summary="@string/hemisummary"
             android:title="@string/hemititle" />
     </PreferenceCategory>
+    <ListPreference
+        android:defaultValue="Paris"
+        app:useSimpleSummaryProvider="true"
+        android:entries="@array/cities_entries"
+        android:entryValues="@array/cities_values"
+        android:key="ville"
+        android:title="@string/citypref" />
 </PreferenceScreen>
