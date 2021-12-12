@@ -132,7 +132,7 @@
 
         <!-- croissant/decroissant -->
         <LinearLayout
-            android:id="@+id/linearLayout4"
+            android:id="@+id/linearLayoutCroiDec"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/roundcorner_nopadding"

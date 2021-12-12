@@ -24,6 +24,7 @@
         <item>Nantes (Frankreich)</item>
         <item>Bourges (Frankreich)</item>
         <item>Straßburg (Frankreich)</item>
+        <item>Nancy (Frankreich)</item>
         <item>Besançon (Frankreich)</item>
         <item>Bordeaux (Frankreich)</item>
         <item>Marseille (Frankreich)</item>
@@ -71,6 +72,7 @@
         <item>Nantes</item>
         <item>Bourges</item>
         <item>Strasbourg</item>
+        <item>Nancy</item>
         <item>Besançon</item>
         <item>Bordeaux</item>
         <item>Marseille</item>
@@ -102,5 +104,16 @@
         <item>Abidjan</item>
         <item>Santiago</item>
         <item>Port-au-Prince</item>
+    </string-array>
+    <string-array name="hints">
+        <item>Wischen Sie auf dem Bildschirm von rechts nach links, um den nächsten Tag auszuwählen</item>
+        <item>Wischen Sie auf dem Bildschirm von links nach rechts, um den vorherigen Tag auszuwählen</item>
+        <item>Wischen Sie auf dem Bildschirm von oben nach unten, um den aktuellen Tag anzuzeigen</item>
+        <item>Wischen Sie auf dem Bildschirm von unten nach oben, um die Gartenarbeitshinweise für den aktuellen Tag oder Monat anzuzeigen</item>
+        <item>Klicken Sie auf den Bleistift oben in der Mitte, um eine Notiz hinzuzufügen</item>.
+        <item>Klicken Sie auf ein Element, Aufsteigend, Aufgehend, Blätter, Perigäum, um nach dem nächsten passenden Datum zu suchen</item>
+        <item>Klicken Sie auf das freie Datum, um den Kalender anzuzeigen und ein Datum auszuwählen</item>
+        <item>Klicken Sie auf das (i) in der Kopfzeile oder auf den Mond, um die vollständigen Tages- oder Monatsinformationen anzuzeigen</item>
+        <item>In den Einstellungen kann ausgewählt werden, ob die Informationen für den gesamten Monat oder nur für den ausgewählten Tag angezeigt werden</item>
     </string-array>
 </resources>

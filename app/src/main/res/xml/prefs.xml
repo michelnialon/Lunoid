@@ -23,6 +23,14 @@
          android:key="displayzodiactext"
          android:summary="@string/texts"
          android:title="@string/dispzodiac" />
+     <CheckBoxPreference
+         android:key="displaycroidec"
+         android:summary="@string/info4"
+         android:title="@string/dispcroidec" />
+     <CheckBoxPreference
+         android:key="neplusaff"
+         android:summary="@string/neplusaff"
+         android:title="@string/neplusaff" />
  </PreferenceCategory>
     <PreferenceCategory android:title="@string/informations">
         <CheckBoxPreference

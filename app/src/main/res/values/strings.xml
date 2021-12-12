@@ -3,7 +3,7 @@
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
     <string name="app_author" translatable="false">Michel Nialon</string>
-    <string name="app_date" translatable="false">25/12/2020</string>
+    <string name="app_date" translatable="false">16/08/2021</string>
     <string name="app_descr">Moon calendar 2021</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
@@ -131,4 +131,9 @@
     <string name="citypref">Position (For the calculation of rise and set time)</string>
     <string name="saveNotes">Save/Share notes</string>
     <string name="pleaseUpgrade">Please upgrade to the latest version.</string>
+    <string name="neplusaff">Do not display help anymore</string>
+    <string name="prev">Previous</string>
+    <string name="next">Next</string>
+    <string name="finish">End</string>
+    <string name="dispcroidec" />
 </resources>

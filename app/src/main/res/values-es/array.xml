@@ -24,6 +24,7 @@
         <item>Nantes (Francia)</item>
         <item>Bourges (Francia)</item>
         <item>Estrasburgo (Francia)</item>
+        <item>Nancy (Francia)</item>
         <item>Besançon (Francia)</item>
         <item>Burdeos (Francia)</item>
         <item>Marsella (Francia)</item>
@@ -71,6 +72,7 @@
         <item>Nantes</item>
         <item>Bourges</item>
         <item>Strasbourg</item>
+        <item>Nancy</item>
         <item>Besançon</item>
         <item>Bordeaux</item>
         <item>Marseille</item>
@@ -102,5 +104,16 @@
         <item>Abidjan</item>
         <item>Santiago</item>
         <item>Port-au-Prince</item>
+    </string-array>
+    <string-array name="hints">
+        <item>Desliza la pantalla de derecha a izquierda para seleccionar el día siguiente</item>
+        <item>Desliza la pantalla de izquierda a derecha para seleccionar el día anterior</item>
+        <item>Desliza la pantalla de arriba a abajo para mostrar el día actual</item>
+        <item>Desliza la pantalla desde la parte inferior para mostrar los consejos de jardinería del día o del mes en curso</item>
+        <item>Pulsa el lápiz de la parte superior central para añadir una nota</item>.
+        <item>Haga clic en un elemento, Ascendente, Ascendente, Hojas, Perigeo para buscar la siguiente fecha coincidente</item>
+        <item>Pulsa sobre la fecha clara para mostrar el calendario y seleccionar una fecha</item>
+        <item>Pulsa en la (i) de la cabecera o en la luna para mostrar la información del día o del mes completo</item>
+        <item>Es posible seleccionar en los ajustes si la información se muestra para el mes completo o sólo para el día seleccionado</item>
     </string-array>
 </resources>

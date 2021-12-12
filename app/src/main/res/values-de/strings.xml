@@ -122,4 +122,9 @@
     <string name="citypref">Position (Zur Berechnung von Aufgang und Zugang Zeiten)</string>
     <string name="saveNotes">Speichern/Freigeben von Notizen</string>
     <string name="pleaseUpgrade">Sie müssen auf die neueste Version aktualisieren.</string>
+    <string name="neplusaff">Hilfe nicht mehr anzeigen</string>
+    <string name="prev">Vorherige</string>
+    <string name="next">Folgende</string>
+    <string name="finish">Ende</string>
+    <string name="dispcroidec">Anzeige Zunhemender/abnehmender Mond</string>
 </resources>

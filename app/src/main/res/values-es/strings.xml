@@ -85,7 +85,7 @@
     <string name="lng_infos_choice">Elija el idioma</string>
     <string name="noeudascendanta">Nodo ascendente en</string>
     <string name="noeuddescendanta">Nodo descendente en</string>
-    <string name="title_activity_edit_note">Introduzca una nota...</string>
+    <string name="title_activity_edit_note">Introduzca una nota…</string>
     <string name="perigeea">Perigeo en</string>
     <string name="apogeea">Apogeo en</string>
     <string name="sauvegarder">Guardar</string>
@@ -122,4 +122,9 @@
     <string name="citypref">Posición (Para calcular los tiempos de salida y puesta)</string>
     <string name="saveNotes">Guardar/Compartir notas</string>
     <string name="pleaseUpgrade">Debe actualizar a la última versión.</string>
+    <string name="neplusaff">Ya no se muestra la ayuda</string>
+    <string name="prev">Anterior</string>
+    <string name="next">Siguiendo</string>
+    <string name="finish">Detener</string>
+    <string name="dispcroidec">Monstrar luna creciente/menguante</string>
 </resources>

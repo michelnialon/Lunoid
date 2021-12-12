@@ -127,4 +127,9 @@
     <string name="citypref">Ville (Pour le calcul des heures de lever et coucher)</string>
     <string name="saveNotes">Sauvegarder/Partager les notes</string>
     <string name="pleaseUpgrade">Vous devez mettre à jour avec la dernière version.</string>
+    <string name="neplusaff">Ne plus afficher l\'aide</string>
+    <string name="prev">Précédent</string>
+    <string name="next">Suivant</string>
+    <string name="finish">Terminer</string>
+    <string name="dispcroidec">Afficher la lune croissante/décroissante</string>
 </resources>

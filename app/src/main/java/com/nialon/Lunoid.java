@@ -28,6 +28,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,6 +42,7 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.admanager.AdManagerAdRequest;
 import com.google.android.gms.ads.admanager.AdManagerAdView;
 
+import org.shredzone.commons.suncalc.MoonIllumination;
 import org.shredzone.commons.suncalc.MoonTimes;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
@@ -85,10 +87,12 @@ import static java.lang.Math.abs;
 // todo : vérifier nouvelle version : fait
 // todo : prendre des notes : fait
 // todo : partager par sms
-// todo : éditer une note depuis la liste
+// todo : éditer une note depuis la liste : fait
 // todo : option pour enlever la pub
-// todo : choix du lieu pour calcul heure lever/coucher
+// todo : choix du lieu pour calcul heure lever/coucher : fait
 
+// https://www.jardinlunaire.fr/calendrier-lunaire
+// https://www.vercalendario.info/fr/lune/france-mois-janvier-2022.html
 
 @SuppressWarnings("ConstantConditions")
 public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateSetListener {
@@ -119,6 +123,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private AdManagerAdView adManagerAdView;
     private SharedPreferences AppPrefs;
     boolean Cityfound = false;
+    private int currentHelp;
 
     // ads
     //private InterstitialAd mInterstitialAd;
@@ -192,6 +197,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     TextView textPis;
     TextView textCan;
     TextView textSco;
+    RelativeLayout lmain;
+    LinearLayout lcroidec;
 
 
     @SuppressLint("SetTextI18n")
@@ -288,6 +295,14 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                         textCoucher.setText("--:--");
                     }
 
+                    MoonIllumination moonIllumination = MoonIllumination.compute()
+                            .on(year, monthOfYear + 1, dayOfMonth)
+                            .execute();
+                    //double phase = moonIllumination.getPhase();
+                    double percent = moonIllumination.getFraction() * 100;
+                    String moonphase = (int) Math.round(percent) + "%";
+                    textPct.setText(moonphase);
+
 
                 } else {
                     //textCoucher.setText(heurelocale(astro.moonSetTime(48.0, 2.0, year, monthOfYear + 1, dayOfMonth), selday, lh));
@@ -339,10 +354,11 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                             resId = getResources().getIdentifier("nlune100bleue", "drawable", getPackageName());
                             imgLune.setImageResource(resId);
                         }
-
+                        /*
                         if (textPct != null) {
                             textPct.setText(ecl.concat(" %"));
                         }
+                         */
                     }
                 } catch (Exception e) {
                     Log.e("Lunoid", "exception", e);
@@ -760,6 +776,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         textPis.setText(getResources().getString(R.string.Pisces).substring(0, 3));
         textCan.setText(getResources().getString(R.string.Cancer).substring(0, 3));
         textSco.setText(getResources().getString(R.string.Scorpio).substring(0, 3));
+        lmain = findViewById(R.id.linearLayoutHaut);
+        lcroidec = findViewById(R.id.linearLayoutCroiDec);
 
         textLever.setTypeface(m_Typeface);
         textCoucher.setTypeface(m_Typeface);
@@ -792,6 +810,17 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             } catch (Exception e) {
                 Log.e("Lunoid", "exception", e);
             }
+        }
+        try {
+            if (!prefs.getBoolean("displaycroidec", true)) {
+                //textNoeudHour.setHeight(0);
+                lcroidec.setVisibility(View.GONE);
+            } else {
+                //textNoeudHour.setHeight(0);
+                lcroidec.setVisibility(View.VISIBLE);
+            }
+        } catch (Exception e) {
+            Log.e("Lunoid", "exception", e);
         }
 
         if (screenSize > 3) {
@@ -837,7 +866,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         calMax = Calendar.getInstance();
         calMax.set(Calendar.DAY_OF_MONTH, 31);
         calMax.set(Calendar.MONTH, 11);
-        calMax.set(Calendar.YEAR, 2021);
+        calMax.set(Calendar.YEAR, 2022);
         calMax.set(Calendar.HOUR_OF_DAY, 23);
         calMax.set(Calendar.MINUTE, 59);
 
@@ -1002,6 +1031,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 c.set(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
                 c.add(Calendar.DAY_OF_MONTH, 1);
                 datechanged = true;
+
+                currentHelp = 0;
+                DisplayLocalHelp(0);
             }
 
             // left to right : previous day
@@ -1009,11 +1041,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 c.set(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
                 c.add(Calendar.DAY_OF_MONTH, -1);
                 datechanged = true;
+                DisplayLocalHelp(1);
             }
 
             // bottom to top : display info
             if ((f3 > (f4 + 60)) && ((f3 - f4) > abs(f1 - f2))) {
                 DisplayInfosDuMois(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH));
+                DisplayLocalHelp(3);
             }
 
             // top to bottom : restore current day
@@ -1025,6 +1059,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     c.set(Calendar.DAY_OF_MONTH, 1);
                 }
                 datechanged = true;
+                DisplayLocalHelp(2);
             }
             if (datechanged) {
                 onDateChange(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
@@ -1211,6 +1246,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         Date td;
 
         Log.d("nextJType", "Start");
+        DisplayLocalHelp(5);
 
         Calendar c = Calendar.getInstance();
         c.set(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
@@ -1236,6 +1272,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         String ds;
         Date td;
 
+        DisplayLocalHelp(5);
         Log.d("nextjSens", "Start");
 
         Calendar c = Calendar.getInstance();
@@ -1261,6 +1298,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         String ds;
         Date td;
 
+        DisplayLocalHelp(5);
         Log.d("nextjAPN", "Start");
 
         Calendar c = Calendar.getInstance();
@@ -1728,11 +1766,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
 
     public void datePicker(View view) {
         // affichage du calendrier sur click de la date en clair
+        DisplayLocalHelp(6);
         DatePickerFragment fragment = new DatePickerFragment();
         fragment.show(getSupportFragmentManager(), "date");
     }
 
     public void editNote(View view) {
+        DisplayLocalHelp(4);
         SharedPreferences sp = getSharedPreferences("myNotes", MODE_PRIVATE);
         //Map<String, ?> allEntries = sp.getAll();
 
@@ -1909,6 +1949,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                         textPerigee.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
                     }
                 }
+                if (key.equals("displaycroidec")) {
+                    if (!sharedPreferences.getBoolean("displaycroidec", true)) {
+                        lcroidec.setVisibility(View.GONE);
+                    } else {
+                        lcroidec.setVisibility(View.VISIBLE);
+                    }
+                }
             } catch (Exception e) {
                 Log.e("Lunoid", "exception", e);
             }
@@ -1924,6 +1971,60 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         int adWidth = (int) (widthPixels / density);
 
         return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+    }
+
+    private void DisplayLocalHelp(int hitem) {
+        if (!AppPrefs.getBoolean("neplusaff", false)) {
+            View lhelp = RelativeLayout.inflate(getApplicationContext(), R.layout.localhelp, null);
+            final TextView tvhelp = lhelp.findViewById(R.id.txtLocalHelp);
+            final TextView tvhelpNr = lhelp.findViewById(R.id.txtLocalHelpNr);
+            final CheckBox cbhelp = lhelp.findViewById(R.id.checkNoHelp);
+
+            String[] arHints = getResources().getStringArray(R.array.hints);
+            if (hitem != 999) {
+                currentHelp = hitem;
+            }
+            tvhelp.setText(arHints[currentHelp]);
+            tvhelpNr.setText("( " + (currentHelp + 1) + "/" + arHints.length + " )");
+            AlertDialog.Builder builder = new AlertDialog.Builder(Lunoid.this);
+
+            builder.setView(lhelp);
+            builder.setPositiveButton(R.string.next, (dialog, which) -> nextHelp());
+            builder.setNegativeButton(R.string.prev, (dialog, which) -> prevHelp());
+            builder.setNeutralButton(R.string.finish, (dialog, which) -> {
+                if (cbhelp.isChecked()) {
+                    Log.d("cbhelp", "checked");
+                    // désactiver l'affichage de l'aide dans la config
+                    SharedPreferences.Editor edPrefs = AppPrefs.edit();
+                    edPrefs.putBoolean("neplusaff", true);
+                    edPrefs.apply();
+                } else {
+                    Log.d("cbhelp", " not checked");
+                }
+            });
+            builder.show();
+        }
+    }
+
+    public void prevHelp() {
+        Log.d("Help", "prev");
+
+        if (currentHelp > 0) {
+            currentHelp--;
+        } else {
+            currentHelp = getResources().getStringArray(R.array.hints).length - 1;
+        }
+        DisplayLocalHelp(999);
+    }
+
+    public void nextHelp() {
+        Log.d("Help", "next");
+        if (currentHelp < getResources().getStringArray(R.array.hints).length - 1) {
+            currentHelp++;
+        } else {
+            currentHelp = 0;
+        }
+        DisplayLocalHelp(999);
     }
 
 } // Lunoid

@@ -24,6 +24,7 @@
         <item>Nantes (France)</item>
         <item>Bourges (France)</item>
         <item>Strasbourg (France)</item>
+        <item>Nancy (France)</item>
         <item>Besançon (France)</item>
         <item>Bordeaux (France)</item>
         <item>Marseille (France)</item>
@@ -71,6 +72,7 @@
         <item>Nantes</item>
         <item>Bourges</item>
         <item>Strasbourg</item>
+        <item>Nancy</item>
         <item>Besançon</item>
         <item>Bordeaux</item>
         <item>Marseille</item>
@@ -102,5 +104,16 @@
         <item>Abidjan</item>
         <item>Santiago</item>
         <item>Port-au-Prince</item>
+    </string-array>
+    <string-array name="hints">
+        <item>Swipe on the screen from right to left to select next day</item>
+        <item>Swipe on the screen from left to right to select previous day</item>
+        <item>Swipe on the screen from top to bottom to display current day</item>
+        <item>Swipe on the screen from bottom to display gardening advices for the current day or month</item>
+        <item>Click on the pencil in the top middle to add a note</item>.
+        <item>Click on an item, Ascending, Rising, Leaves, Perigee to search for the next matching date</item>
+        <item>Click on the clear date to display the calendar and select a date</item>
+        <item>Click on the (i) in the header or on the moon to display the full day or month information</item>
+        <item>It is possible to select in the settings if the information is displayed for the complete month or just for the selected day</item>
     </string-array>
 </resources>

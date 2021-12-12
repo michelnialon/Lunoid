@@ -25,6 +25,7 @@
         <item>Nantes (France)</item>
         <item>Bourges (France)</item>
         <item>Strasbourg (France)</item>
+        <item>Nancy (France)</item>
         <item>Besançon (France)</item>
         <item>Bordeaux (France)</item>
         <item>Marseille (France)</item>
@@ -72,6 +73,7 @@
         <item>Nantes</item>
         <item>Bourges</item>
         <item>Strasbourg</item>
+        <item>Nancy</item>
         <item>Besançon</item>
         <item>Bordeaux</item>
         <item>Marseille</item>
@@ -103,5 +105,16 @@
         <item>Abidjan</item>
         <item>Santiago</item>
         <item>Port-au-Prince</item>
+    </string-array>
+    <string-array name="hints">
+        <item>Balayer l\'écran de la droite vers la gauche au niveau de la lune pour passer au jour suivant.</item>
+        <item>Balayer l\'écran de la gauche vers la droite au niveau de la lune pour passer au jour précédent.</item>
+        <item>Balayer l\'écran de haut en bas au niveau de la lune pour revenir à la date d\'aujourd\'hui.</item>
+        <item>Balayer l\'écran de bas en haut au niveau de la lune pour afficher les conseils de plantation pour le jour ou mois en cours (en fonction de la configuration).</item>
+        <item>Cliquer sur le crayon en haut au milieu pour ajouter une note.</item>
+        <item>Cliquer sur un élément, \"Croissante\", \"Montante\", \"Feuilles\", \"Périgée\"… pour chercher la prochaine date correspondante.</item>
+        <item>Cliquer sur la date en clair pour afficher le calendrier et sélectionner une date.</item>
+        <item>Cliquer sur le (i) dans l\'entête ou sur la lune pour afficher les informations du jour ou du mois complet.</item>
+        <item>Il est possible de sélectionner dans les paramètre si les informations sont affichées pour le mois complet ou simplement pour le jour sélectionné.</item>
     </string-array>
 </resources>

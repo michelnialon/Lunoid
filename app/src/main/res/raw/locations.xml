@@ -305,4 +305,10 @@
         <lon>6.02</lon>
         <elv>0</elv>
     </city>
+    <city>
+        <name>Nancy</name>
+        <lat>48.70</lat>
+        <lon>6.18</lon>
+        <elv>0</elv>
+    </city>
 </cities>

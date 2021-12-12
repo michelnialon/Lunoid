@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -119,7 +120,7 @@
 
     <!-- croissant/decroissant -->
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/linearLayoutCroiDec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/roundcorner_light"
