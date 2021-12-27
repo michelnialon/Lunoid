@@ -301,7 +301,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     //double phase = moonIllumination.getPhase();
                     double percent = moonIllumination.getFraction() * 100;
                     String moonphase = (int) Math.round(percent) + "%";
-                    textPct.setText(moonphase);
+                    //textPct.setText(moonphase);
 
 
                 } else {
@@ -354,11 +354,11 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                             resId = getResources().getIdentifier("nlune100bleue", "drawable", getPackageName());
                             imgLune.setImageResource(resId);
                         }
-                        /*
+
                         if (textPct != null) {
                             textPct.setText(ecl.concat(" %"));
                         }
-                         */
+
                     }
                 } catch (Exception e) {
                     Log.e("Lunoid", "exception", e);
@@ -518,17 +518,17 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                 if (!mapComment.get(dateString).equals("")) {
                     InfosStr += mapComment.get(dateString);
                     if (mapEclair.get(dateString).equals("100")) {
-                        InfosStr += "\nPleine Lune";
+                        InfosStr += "\n" + this.getResources().getString(R.string.pleinelune);
                     }
                     if (mapEclair.get(dateString).equals("0")) {
-                        InfosStr += "\nNouvelle Lune";
+                        InfosStr += "\n" + this.getResources().getString(R.string.nouvellelune);
                     }
                 } else {
                     if (mapEclair.get(dateString).equals("100")) {
-                        InfosStr = "Pleine Lune";
+                        InfosStr = this.getResources().getString(R.string.pleinelune);
                     }
                     if (mapEclair.get(dateString).equals("0")) {
-                        InfosStr = "Nouvelle Lune";
+                        InfosStr = this.getResources().getString(R.string.nouvellelune);
                     }
                 }
                 if (!InfosStr.equals("")) {

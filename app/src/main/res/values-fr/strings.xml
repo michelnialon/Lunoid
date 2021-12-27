@@ -132,4 +132,6 @@
     <string name="next">Suivant</string>
     <string name="finish">Terminer</string>
     <string name="dispcroidec">Afficher la lune croissante/décroissante</string>
+    <string name="pleinelune">Pleine lune</string>
+    <string name="nouvellelune">Nouvelle lune</string>
 </resources>

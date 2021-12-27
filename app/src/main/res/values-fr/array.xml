@@ -115,6 +115,6 @@
         <item>Cliquer sur un élément, \"Croissante\", \"Montante\", \"Feuilles\", \"Périgée\"… pour chercher la prochaine date correspondante.</item>
         <item>Cliquer sur la date en clair pour afficher le calendrier et sélectionner une date.</item>
         <item>Cliquer sur le (i) dans l\'entête ou sur la lune pour afficher les informations du jour ou du mois complet.</item>
-        <item>Il est possible de sélectionner dans les paramètre si les informations sont affichées pour le mois complet ou simplement pour le jour sélectionné.</item>
+        <item>Il est possible de sélectionner dans les paramètres si les informations sont affichées pour le mois complet ou simplement pour le jour sélectionné.</item>
     </string-array>
 </resources>

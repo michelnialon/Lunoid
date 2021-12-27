@@ -127,4 +127,6 @@
     <string name="next">Siguiendo</string>
     <string name="finish">Detener</string>
     <string name="dispcroidec">Monstrar luna creciente/menguante</string>
+    <string name="pleinelune">Luna llena</string>
+    <string name="nouvellelune">Luna nueva</string>
 </resources>

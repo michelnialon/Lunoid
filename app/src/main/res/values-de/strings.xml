@@ -127,4 +127,6 @@
     <string name="next">Folgende</string>
     <string name="finish">Ende</string>
     <string name="dispcroidec">Anzeige Zunhemender/abnehmender Mond</string>
+    <string name="pleinelune">Vollmond</string>
+    <string name="nouvellelune">Neumond</string>
 </resources>
