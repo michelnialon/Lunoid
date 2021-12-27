@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Mond Kalender 2021</string>
+    <string name="app_descr">Mond Kalender 2022</string>
     <string name="apogee">Erdferne</string>
     <string name="perigee">Erdnähe</string>
     <string name="noeudlunaire">Knoten</string>

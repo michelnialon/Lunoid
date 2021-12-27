@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">¡Hola Mundo, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Calendario lunar 2021</string>
+    <string name="app_descr">Calendario lunar 2022</string>
     <string name="apogee">APOGEO</string>
     <string name="perigee">PERIGEO</string>
     <string name="noeudlunaire">NODO</string>
