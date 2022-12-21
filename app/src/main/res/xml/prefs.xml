@@ -28,6 +28,10 @@
          android:summary="@string/info4"
          android:title="@string/dispcroidec" />
      <CheckBoxPreference
+         android:key="displayjoursynod"
+         android:summary="@string/dispjoursyn"
+         android:title="@string/dispjoursyndesc" />
+     <CheckBoxPreference
          android:key="neplusaff"
          android:summary="@string/neplusaff"
          android:title="@string/neplusaff" />

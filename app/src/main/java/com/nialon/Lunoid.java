@@ -119,6 +119,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     String temp;
     private static AtomicBoolean isRunningTest;
     private Calendar d2021;
+    private Calendar d2023;
     XPath xpath = XPathFactory.newInstance().newXPath();
     private AdManagerAdView adManagerAdView;
     private SharedPreferences AppPrefs;
@@ -356,7 +357,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                         }
 
                         if (textPct != null) {
-                            textPct.setText(ecl.concat(" %"));
+                            if (prefs.getBoolean("displayjoursynod", false) &&
+                                    selday.getTimeInMillis() - d2023.getTimeInMillis() >= -1000) {
+                                textPct.setText(mapPhase.get(dateString));
+                            } else {
+                                textPct.setText(ecl.concat(" %"));
+                            }
+
                         }
 
                     }
@@ -590,7 +597,12 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         super.onCreate(savedInstanceState);
 
         Log.d("OnCreate", "");
+        // Pour enlever la barre de titre :
+        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        // Pour enlever le nom de l'application dans la barre de titre
+        getActionBar().setDisplayShowTitleEnabled(false);
         selday.set(Calendar.HOUR, 0);
         selday.set(Calendar.MINUTE, 0);
         selday.set(Calendar.SECOND, 0);
@@ -601,6 +613,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         d2021.set(Calendar.HOUR, 0);
         d2021.set(Calendar.MINUTE, 0);
         d2021.set(Calendar.SECOND, 0);
+        d2023 = Calendar.getInstance();
+        d2023.set(Calendar.DAY_OF_MONTH, 1);
+        d2023.set(Calendar.MONTH, 0);
+        d2023.set(Calendar.YEAR, 2023);
+        d2023.set(Calendar.HOUR, 0);
+        d2023.set(Calendar.MINUTE, 0);
+        d2023.set(Calendar.SECOND, 0);
 
         /*
          * pour changer le format de date
@@ -866,7 +885,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         calMax = Calendar.getInstance();
         calMax.set(Calendar.DAY_OF_MONTH, 31);
         calMax.set(Calendar.MONTH, 11);
-        calMax.set(Calendar.YEAR, 2022);
+        calMax.set(Calendar.YEAR, 2023);
         calMax.set(Calendar.HOUR_OF_DAY, 23);
         calMax.set(Calendar.MINUTE, 59);
 
@@ -1016,53 +1035,56 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             Calendar c = Calendar.getInstance();
             boolean datechanged = false;
+            try {
+                Log.d("e1", e1.toString());
+                Log.d("e2", e2.toString());
+                float f1 = e1.getX();
+                //Log.d("e1x",f1.toString());
+                float f2 = e2.getX();
+                //Log.d("e2x",f2.toString());
+                float f3 = e1.getY();
+                float f4 = e2.getY();
 
-            Log.d("e1", e1.toString());
-            Log.d("e2", e2.toString());
-            float f1 = e1.getX();
-            //Log.d("e1x",f1.toString());
-            float f2 = e2.getX();
-            //Log.d("e2x",f2.toString());
-            float f3 = e1.getY();
-            float f4 = e2.getY();
+                // right to left : next day
+                if (f1 > f2 + 60 && (f1 - f2) > abs(f3 - f4) && (calMax.getTime().getTime() - selday.getTime().getTime() > 86400000)) {
+                    c.set(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
+                    c.add(Calendar.DAY_OF_MONTH, 1);
+                    datechanged = true;
 
-            // right to left : next day
-            if (f1 > f2 + 60 && (f1 - f2) > abs(f3 - f4) && (calMax.getTime().getTime() - selday.getTime().getTime() > 86400000)) {
-                c.set(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
-                c.add(Calendar.DAY_OF_MONTH, 1);
-                datechanged = true;
-
-                currentHelp = 0;
-                DisplayLocalHelp(0);
-            }
-
-            // left to right : previous day
-            if (f2 > f1 + 60 && (f2 - f1) > abs(f3 - f4) && (selday.getTime().getTime() - calMin.getTime().getTime() > 86400000)) {
-                c.set(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
-                c.add(Calendar.DAY_OF_MONTH, -1);
-                datechanged = true;
-                DisplayLocalHelp(1);
-            }
-
-            // bottom to top : display info
-            if ((f3 > (f4 + 60)) && ((f3 - f4) > abs(f1 - f2))) {
-                DisplayInfosDuMois(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH));
-                DisplayLocalHelp(3);
-            }
-
-            // top to bottom : restore current day
-            if ((f4 > (f3 + 60)) && ((f4 - f3) > abs(f1 - f2))) {
-                Log.d("fling", "top to bottom");
-                if (isRunningTest()) {
-                    c.set(Calendar.YEAR, 2020);
-                    c.set(Calendar.MONTH, 0);
-                    c.set(Calendar.DAY_OF_MONTH, 1);
+                    currentHelp = 0;
+                    DisplayLocalHelp(0);
                 }
-                datechanged = true;
-                DisplayLocalHelp(2);
-            }
-            if (datechanged) {
-                onDateChange(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+
+                // left to right : previous day
+                if (f2 > f1 + 60 && (f2 - f1) > abs(f3 - f4) && (selday.getTime().getTime() - calMin.getTime().getTime() > 86400000)) {
+                    c.set(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
+                    c.add(Calendar.DAY_OF_MONTH, -1);
+                    datechanged = true;
+                    DisplayLocalHelp(1);
+                }
+
+                // bottom to top : display info
+                if ((f3 > (f4 + 60)) && ((f3 - f4) > abs(f1 - f2))) {
+                    DisplayInfosDuMois(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH));
+                    DisplayLocalHelp(3);
+                }
+
+                // top to bottom : restore current day
+                if ((f4 > (f3 + 60)) && ((f4 - f3) > abs(f1 - f2))) {
+                    Log.d("fling", "top to bottom");
+                    if (isRunningTest()) {
+                        c.set(Calendar.YEAR, 2020);
+                        c.set(Calendar.MONTH, 0);
+                        c.set(Calendar.DAY_OF_MONTH, 1);
+                    }
+                    datechanged = true;
+                    DisplayLocalHelp(2);
+                }
+                if (datechanged) {
+                    onDateChange(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
             return true;
         }
@@ -1101,7 +1123,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     }
 
     // creation des menus
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         _menu = menu;
@@ -1863,10 +1885,15 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
 
             if (y >= 2019 && (mo >= 0 && mo <= 11)) {
                 //item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
             } else {
                 item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_NEVER);
             }
+            item = me.findItem(R.id.item2);
+            item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            item = me.findItem(R.id.item1);
+            item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_ALWAYS);
+            //item.setShowAsAction(MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         } catch (Exception e) {
             Log.e("Lunoid", "exception", e);
         }

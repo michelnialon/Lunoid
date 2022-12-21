@@ -1,6 +1,5 @@
 package com.nialon;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
@@ -11,18 +10,29 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
+
+import org.shredzone.commons.suncalc.MoonTimes;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathFactory;
+
 public class WidgetProvider2Cell extends AppWidgetProvider {
+    public static final String WIDGET_IDS_KEY = "mywidgetproviderwidgetids";
     static Map<String, String> mapLever = new HashMap<>();
     static Map<String, String> mapCoucher = new HashMap<>();
     static Map<String, String> mapEclair = new HashMap<>();
@@ -35,7 +45,15 @@ public class WidgetProvider2Cell extends AppWidgetProvider {
     static Map<String, String> mapJour = new HashMap<>();
     static SimpleDateFormat sdf;
     static String dateString;
-    static Boolean lh;
+    // --Commented out by Inspection (17/12/2022 18:48):static Boolean lh;
+    boolean Cityfound = false;
+    double latitude = 47.23, longitude = 6.02;
+    Node node;
+    String xmlexpr;
+    XPath xpath = XPathFactory.newInstance().newXPath();
+    SimpleDateFormat fmt = new SimpleDateFormat("HH:mm", Locale.getDefault());
+    Date mtS;
+    Date mtR;
 
     @Override
     public void onEnabled(Context context) {
@@ -44,17 +62,55 @@ public class WidgetProvider2Cell extends AppWidgetProvider {
     }
 
     @Override
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
-    {
+    public void onDisabled(Context context) {
+        super.onDisabled(context);
+        Log.d("widget1cell", "onDisabled");
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        // Chain up to the super class so the onEnabled, etc callbacks get dispatched
+        super.onReceive(context, intent);
+        // Handle a different Intent
+        Log.d("widget1cell", "onReceive()" + intent.getAction());
+
+    }
+
+    @Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d("widget1cell", "onupdate");
-        try
-        {
+        try {
             sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             dateString = sdf.format(Calendar.getInstance().getTime());
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            lh = prefs.getBoolean("timezone", false);
-            lh = true;
+            //lh = prefs.getBoolean("timezone", false);
+            //lh = true;
             Log.d("datestring", dateString);
+
+            String city = prefs.getString("ville", "Paris");
+            InputSource inputSource = new InputSource(context.getResources().openRawResource(R.raw.locations));
+            xmlexpr = "/cities/city[name=\"" + city + "\"]/lat";
+            Log.d("xmlexpr", xmlexpr);
+            node = (Node) xpath.evaluate(xmlexpr, inputSource, XPathConstants.NODE);
+            Cityfound = false;
+            if (node != null) {
+                latitude = Double.parseDouble(node.getTextContent());
+                xmlexpr = "/cities/city[name=\"" + city + "\"]/lon";
+                InputSource inputSource2 = new InputSource(context.getResources().openRawResource(R.raw.locations));
+                node = (Node) xpath.evaluate(xmlexpr, inputSource2, XPathConstants.NODE);
+                if (node != null) {
+                    longitude = Double.parseDouble(node.getTextContent());
+                    Cityfound = true;
+                }
+            }
+            if (Cityfound) {
+                MoonTimes moonTimes = MoonTimes.compute().at(latitude, longitude).on(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH) + 1, Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).execute();
+                // todo : remove
+                //MoonTimes moonTimes = MoonTimes.compute().at(latitude, longitude).on(year,monthOfYear+1,dayOfMonth).timezone("Africa/Casablanca").execute();
+
+                mtR = moonTimes.getRise();
+                mtS = moonTimes.getSet();
+            }
 
             ReadData(context);
             ComponentName thisWidget = new ComponentName(context, WidgetProvider2Cell.class);
@@ -78,14 +134,43 @@ public class WidgetProvider2Cell extends AppWidgetProvider {
                 // pourcentage
                 remoteViews.setTextViewText(R.id.textPct, ecl.concat(" %"));
                 // heures lever coucher
+                if (mtR != null) {
+                    remoteViews.setTextViewText(R.id.lever, fmt.format(mtR));
+
+                } else {
+                    remoteViews.setTextViewText(R.id.lever, "--:--");
+                }
+                if (mtS != null) {
+                    remoteViews.setTextViewText(R.id.coucher, fmt.format(mtS));
+                } else {
+                    remoteViews.setTextViewText(R.id.coucher, "--:--");
+                }
+
+                /* old version */
+                /*
                 remoteViews.setTextViewText(R.id.lever, heurelocale(mapLever.get(dateString), lh));
                 remoteViews.setTextViewText(R.id.coucher, heurelocale(mapCoucher.get(dateString), lh));
+                 */
 
+                // launch main application on click
+/*
                 // launch activity
                 Intent launchActivity = new Intent(context, Lunoid.class);
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, 0);
                 remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
+*/
+/*
+                // update widget on click
+                Intent updateIntent = new Intent();
+                updateIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+                //updateIntent.putExtra(WidgetProvider1Cell.WIDGET_IDS_KEY, allWidgetIds);
+                updateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
+                // onUpdate is only called when AppWidgetManager.EXTRA_APPWIDGET_IDS is set to a non empty array.
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                        context, 0, updateIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+                remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
+*/
                 appWidgetManager.updateAppWidget(widgetId, remoteViews);
             }
         } catch (Exception e) {Log.d("Exception1 :" , e.toString());}

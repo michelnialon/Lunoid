@@ -1,6 +1,5 @@
 package com.nialon;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
@@ -11,6 +10,7 @@ import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +23,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class WidgetProvider1Cell extends AppWidgetProvider {
+    public static final String WIDGET_IDS_KEY = "mywidgetproviderwidgetids";
     static Map<String, String> mapLever = new HashMap<>();
     static Map<String, String> mapCoucher = new HashMap<>();
     static Map<String, String> mapEclair = new HashMap<>();
@@ -45,11 +46,24 @@ public class WidgetProvider1Cell extends AppWidgetProvider {
     }
 
     @Override
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
-    {
+    public void onDisabled(Context context) {
+        super.onDisabled(context);
+        Log.d("widget1cell", "onDisabled");
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        // Chain up to the super class so the onEnabled, etc callbacks get dispatched
+        super.onReceive(context, intent);
+        // Handle a different Intent
+        Log.d("widget1cell", "onReceive()" + intent.getAction());
+
+    }
+
+    @Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d("widget1cell", "onupdate");
-        try
-        {
+        try {
             sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             date1 = Calendar.getInstance().getTime();
             dateString = sdf.format(date1);
@@ -76,9 +90,25 @@ public class WidgetProvider1Cell extends AppWidgetProvider {
                 Log.d("resid", Integer.toString(resId));
                 remoteViews.setImageViewResource(R.id.imageLuneWidget, resId);
                 remoteViews.setTextViewText(R.id.textPct, ecl.concat(" %"));
+
+                // launch main application on click
+/*
                 Intent launchActivity = new Intent(context, Lunoid.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, 0);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, PendingIntent.FLAG_UPDATE_CURRENT);
                 remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
+*/
+/*
+                // update widget on click
+                Intent updateIntent = new Intent();
+                updateIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+                //updateIntent.putExtra(WidgetProvider1Cell.WIDGET_IDS_KEY, allWidgetIds);
+                updateIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, allWidgetIds);
+                // onUpdate is only called when AppWidgetManager.EXTRA_APPWIDGET_IDS is set to a non empty array.
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                        context, 0, updateIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
+*/
                 appWidgetManager.updateAppWidget(widgetId, remoteViews);
             }
         } catch (Exception e) {Log.d("Exception1 :" , e.toString());}

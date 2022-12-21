@@ -812,6 +812,6 @@
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
             ads:adUnitId="ca-app-pub-4468029712209847/4219671648"
-            ads:adSize="BANNER"></com.google.android.gms.ads.admanager.AdManagerAdView>
+            ads:adSize="BANNER" />
     </LinearLayout>
 </LinearLayout>

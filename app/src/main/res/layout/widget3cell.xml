@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="53%"
+            android:text="23%"
             android:textColor="#ffff00"
             android:textSize="18sp"
             android:textStyle="bold" />

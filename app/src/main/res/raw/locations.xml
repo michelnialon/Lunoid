@@ -311,4 +311,10 @@
         <lon>6.18</lon>
         <elv>0</elv>
     </city>
+    <city>
+        <name>Toulouse</name>
+        <lat>43.60</lat>
+        <lon>1.44</lon>
+        <elv>0</elv>
+    </city>
 </cities>
