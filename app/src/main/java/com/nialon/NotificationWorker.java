@@ -5,10 +5,11 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
-
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
@@ -22,11 +23,14 @@ public class NotificationWorker extends Worker {
     public Result doWork() {
         String txt = getInputData().getString("textNotif");
 
-        showNotification(txt);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            showNotification(txt);
+        }
         //Toast.makeText(getApplicationContext(), txt, Toast.LENGTH_LONG).show();
         return Result.success();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showNotification(String txtNotif) {
         //NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
@@ -34,7 +38,7 @@ public class NotificationWorker extends Worker {
         notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
         notificationIntent.setAction(Intent.ACTION_MAIN);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent resultIntent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, 0);
+        PendingIntent resultIntent = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
 
         //If on Oreo then notification required a notification channel.
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {

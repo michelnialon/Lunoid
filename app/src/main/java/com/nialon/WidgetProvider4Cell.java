@@ -1,12 +1,15 @@
 package com.nialon;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -29,6 +32,8 @@ import java.util.TimeZone;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
+
+import androidx.annotation.RequiresApi;
 
 public class WidgetProvider4Cell extends AppWidgetProvider {
     public static final String WIDGET_IDS_KEY = "mywidgetproviderwidgetids";
@@ -63,6 +68,7 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
         Log.d("widget1cell", "onEnabled");
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d("widget1cell", "onupdate");
@@ -156,48 +162,37 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
 
                 if (mapJour.get(dateString).contains("Fruits")) {
                     remoteViews.setImageViewResource(R.id.imageFruit, R.drawable.apple30_on);
-                }
-                else {
+                } else {
                     remoteViews.setImageViewResource(R.id.imageFruit, R.drawable.apple30_off);
                 }
 
-                if (mapJour.get(dateString).contains("Racines"))
-                {
+                if (mapJour.get(dateString).contains("Racines")) {
                     remoteViews.setImageViewResource(R.id.imageRacine, R.drawable.carrot30_on);
-                }
-                else
-                {
+                } else {
                     remoteViews.setImageViewResource(R.id.imageRacine, R.drawable.carrot30_off);
                 }
-                if (mapJour.get(dateString).contains("Fleurs"))
-                {
+                if (mapJour.get(dateString).contains("Fleurs")) {
                     remoteViews.setImageViewResource(R.id.imageFleur, R.drawable.flower30_on);
-                }
-                else
-                {
+                } else {
                     remoteViews.setImageViewResource(R.id.imageFleur, R.drawable.flower30_off);
                 }
                 // montant / descendant
                 Log.d("montant ", mapMontant.get(dateString));
 
-                if (mapMontant.get(dateString).startsWith("0"))
-                {
+                if (mapMontant.get(dateString).startsWith("0")) {
                     remoteViews.setImageViewResource(R.id.imageSens1, R.drawable.moon_desc_on);
                     remoteViews.setImageViewResource(R.id.imageSens2, R.drawable.moon_asc_off);
                 }
 
-                if (mapMontant.get(dateString).startsWith("1"))
-                {
+                if (mapMontant.get(dateString).startsWith("1")) {
                     remoteViews.setImageViewResource(R.id.imageSens1, R.drawable.moon_desc_off);
                     remoteViews.setImageViewResource(R.id.imageSens2, R.drawable.moon_asc_on);
                 }
-                if ( mapMontant.get(dateString).startsWith("2"))
-                {
+                if ( mapMontant.get(dateString).startsWith("2")) {
                     remoteViews.setImageViewResource(R.id.imageSens1, R.drawable.moon_asc_on);
                     remoteViews.setImageViewResource(R.id.imageSens2, R.drawable.moon_desc_on);
                 }
-                if ( mapMontant.get(dateString).startsWith("3"))
-                {
+                if ( mapMontant.get(dateString).startsWith("3")) {
                     remoteViews.setImageViewResource(R.id.imageSens1, R.drawable.moon_desc_on);
                     remoteViews.setImageViewResource(R.id.imageSens2, R.drawable.moon_asc_on);
                 }
@@ -206,21 +201,17 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
                 Log.d("Périgée",mapPerigee.get(dateString));
                 Log.d("Noeud",mapNoeud.get(dateString));
 
-                if (!mapApogee.get(dateString).equals("0"))
-                {
+                if (!mapApogee.get(dateString).equals("0")) {
                     remoteViews.setTextViewText(R.id.evtdesc, context.getResources().getString(R.string.apogee));
                     remoteViews.setTextViewText(R.id.evthour, heurelocale(mapApogee.get(dateString), lh));
                     remoteViews.setTextColor(R.id.evtdesc, Color.RED);
                     remoteViews.setTextColor(R.id.evthour, Color.RED);
-                }
-                else if (!mapPerigee.get(dateString).equals("0"))
-                {
+                } else if (!mapPerigee.get(dateString).equals("0")) {
                     remoteViews.setTextViewText(R.id.evtdesc, context.getResources().getString(R.string.perigee));
                     remoteViews.setTextViewText(R.id.evthour, heurelocale(mapPerigee.get(dateString), lh));
                     remoteViews.setTextColor(R.id.evtdesc, Color.RED);
                     remoteViews.setTextColor(R.id.evthour, Color.RED);
-                }
-                else if (!mapNoeud.get(dateString).equals("0")) {
+                } else if (!mapNoeud.get(dateString).equals("0")) {
                     Log.d("Noeud", mapNoeud.get(dateString));
                     remoteViews.setTextViewText(R.id.evtdesc, context.getResources().getString(R.string.noeudlunaire));
                     String temp = heurelocale(mapNoeud.get(dateString).substring(0, 5), lh);
@@ -240,13 +231,13 @@ public class WidgetProvider4Cell extends AppWidgetProvider {
                 }
 
                 // launch main application on click
-/*
+
                 // launch activity
                 Intent launchActivity = new Intent(context, Lunoid.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, 0);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, PendingIntent.FLAG_IMMUTABLE);
                 remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
 
- */
+
                /*
 
                 // update widget on click

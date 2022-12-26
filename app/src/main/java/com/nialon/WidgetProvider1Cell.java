@@ -1,5 +1,6 @@
 package com.nialon;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
@@ -21,6 +23,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import androidx.annotation.RequiresApi;
 
 public class WidgetProvider1Cell extends AppWidgetProvider {
     public static final String WIDGET_IDS_KEY = "mywidgetproviderwidgetids";
@@ -60,6 +64,7 @@ public class WidgetProvider1Cell extends AppWidgetProvider {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Log.d("widget1cell", "onupdate");
@@ -92,11 +97,11 @@ public class WidgetProvider1Cell extends AppWidgetProvider {
                 remoteViews.setTextViewText(R.id.textPct, ecl.concat(" %"));
 
                 // launch main application on click
-/*
+
                 Intent launchActivity = new Intent(context, Lunoid.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, PendingIntent.FLAG_UPDATE_CURRENT);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchActivity, PendingIntent.FLAG_IMMUTABLE);
                 remoteViews.setOnClickPendingIntent(R.id.LunoidWidget, pendingIntent);
-*/
+
 /*
                 // update widget on click
                 Intent updateIntent = new Intent();
