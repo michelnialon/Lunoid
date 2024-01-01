@@ -3,7 +3,6 @@
     android:id="@+id/linearLayoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:background="#000000"
     android:orientation="vertical">
 
@@ -789,22 +788,15 @@
     </LinearLayout>
 
     <!-- Pub -->
-    <LinearLayout
-        android:id="@+id/linearLayoutAd"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="1dp"
-        android:gravity="center_horizontal"
-        android:background="#000000"
-        android:orientation="horizontal">
-        <!--
-                <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/publisherAdView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-4468029712209847/4219671648" /> -->
+<!-- todo: ads
+<LinearLayout
+    android:id="@+id/linearLayoutAd"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginTop="1dp"
+    android:gravity="center_horizontal"
+    android:background="#000000"
+    android:orientation="horizontal">
         <com.google.android.gms.ads.admanager.AdManagerAdView
             android:id="@+id/adView"
             android:layout_width="wrap_content"
@@ -814,4 +806,5 @@
             ads:adUnitId="ca-app-pub-4468029712209847/4219671648"
             ads:adSize="BANNER" />
     </LinearLayout>
+-->
 </LinearLayout>

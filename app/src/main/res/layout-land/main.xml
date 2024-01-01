@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayout51"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -95,30 +94,25 @@
         </RelativeLayout>
 
         <!-- Pub -->
-        <LinearLayout
-            android:id="@+id/linearLayoutAd"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
-            <!--
-                        <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/publisherAdView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_horizontal"
-                            ads:adSize="BANNER"
-                            ads:adUnitId="ca-app-pub-4468029712209847/4219671648"></com.google.android.gms.ads.doubleclick.PublisherAdView>
-                            -->
-            <com.google.android.gms.ads.admanager.AdManagerAdView
-                android:id="@+id/adView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                ads:adUnitId="ca-app-pub-4468029712209847/4219671648"
-                ads:adSize="BANNER"></com.google.android.gms.ads.admanager.AdManagerAdView>
+        <!-- todo: ads
+<LinearLayout
+android:id="@+id/linearLayoutAd"
+android:layout_width="match_parent"
+android:layout_height="50dp"
+android:gravity="center_horizontal"
+android:orientation="horizontal">
+
+<com.google.android.gms.ads.admanager.AdManagerAdView
+    android:id="@+id/adView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    ads:adUnitId="ca-app-pub-4468029712209847/4219671648"
+    ads:adSize="BANNER"></com.google.android.gms.ads.admanager.AdManagerAdView>
+
         </LinearLayout>
+-->
     </LinearLayout>
 
     <!-- Droite -->

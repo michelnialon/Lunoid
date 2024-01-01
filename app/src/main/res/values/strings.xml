@@ -3,8 +3,8 @@
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
     <string name="app_author" translatable="false">Michel Nialon</string>
-    <string name="app_date" translatable="false">13/12/2022</string>
-    <string name="app_descr">Moon calendar 2023</string>
+    <string name="app_date" translatable="false">13/12/2023</string>
+    <string name="app_descr">Moon calendar 2024</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
     <string name="noeudlunaire">Node</string>

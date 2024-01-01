@@ -15,11 +15,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.text.Html;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Display;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.Menu;
@@ -37,10 +36,6 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.admanager.AdManagerAdRequest;
-import com.google.android.gms.ads.admanager.AdManagerAdView;
 
 import org.shredzone.commons.suncalc.MoonIllumination;
 import org.shredzone.commons.suncalc.MoonTimes;
@@ -78,6 +73,7 @@ import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
+import static android.provider.Settings.Secure.ANDROID_ID;
 import static java.lang.Math.abs;
 
 // todo : signes du zodiaque : fait
@@ -121,7 +117,10 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private Calendar d2021;
     private Calendar d2023;
     XPath xpath = XPathFactory.newInstance().newXPath();
-    private AdManagerAdView adManagerAdView;
+
+//todo: ads
+//    private AdManagerAdView adManagerAdView;
+
     private SharedPreferences AppPrefs;
     boolean Cityfound = false;
     private int currentHelp;
@@ -229,10 +228,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     Cityfound = true;
                 }
             }
-
+            // todo : remove
             //fmt.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
             //fmt.setTimeZone(TimeZone.getTimeZone("Indian/Antananarivo"));
-            // todo : remove
             //fmt.setTimeZone(TimeZone.getTimeZone("Pacific/Noumea"));
             //fmt.setTimeZone(TimeZone.getTimeZone("America/Guadeloupe"));
             //fmt.setTimeZone(TimeZone.getTimeZone("Africa/Casablanca"));
@@ -621,24 +619,19 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         d2023.set(Calendar.MINUTE, 0);
         d2023.set(Calendar.SECOND, 0);
 
-        /*
-         * pour changer le format de date
-         */
+// todo: remove (pour changer le format de date)
+//        Locale locale = new Locale("fr");
+//        Locale.setDefault(locale);
+//        Configuration config = getBaseContext().getResources().getConfiguration();
+//        config.locale = locale;
 
-        // todo : remove
-        /*
-        Locale locale = new Locale("fr");
-        Locale.setDefault(locale);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        config.locale = locale;
-        */
-        /* **/
+
         sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault());
 
         AppPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        // todo : remove
-        //sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
+// todo: remove
+//  sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
 
         setContentView(R.layout.main);
 
@@ -665,15 +658,16 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         //mPublisherAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111"); // test
         mPublisherAdView.loadAd(adRequest);
          */
-        adManagerAdView = findViewById(R.id.adView);
+// todo: ads
+//        adManagerAdView = findViewById(R.id.adView);
+//        AdSize adSize = getAdSize();
+//        adManagerAdView.setAdSizes(adSize);
+//        adManagerAdView.loadAd(new AdManagerAdRequest.Builder().build());
+
         //adManagerAdView.setAdSizes(AdSize.SMART_BANNER);
-        AdSize adSize = getAdSize();
-        adManagerAdView.setAdSizes(adSize);
         //adManagerAdView.setAdUnitId("ca-app-pub-4468029712209847/4219671648");  // prod
         //adManagerAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");  // test
-
         // Start loading the ad.
-        adManagerAdView.loadAd(new AdManagerAdRequest.Builder().build());
 
         //final Context context = getApplicationContext();
         //SharedPreferences prefs = this.getSharedPreferences("com.nialon",Context.MODE_PRIVATE);
@@ -885,7 +879,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         calMax = Calendar.getInstance();
         calMax.set(Calendar.DAY_OF_MONTH, 31);
         calMax.set(Calendar.MONTH, 11);
-        calMax.set(Calendar.YEAR, 2023);
+        // todo: update last date
+        calMax.set(Calendar.YEAR, 2024);
         calMax.set(Calendar.HOUR_OF_DAY, 23);
         calMax.set(Calendar.MINUTE, 59);
 
@@ -1102,22 +1097,25 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         // afficher la date du jour au (re)démarrage
         onDateChange(selday.get(Calendar.YEAR), selday.get(Calendar.MONTH), selday.get(Calendar.DAY_OF_MONTH));
 
-        // Resume the AdManagerAdView.
-        adManagerAdView.resume();
+//todo : ads
+//  Resume the AdManagerAdView.
+//  adManagerAdView.resume();
     }
 
     @Override
     public void onPause() {
-        // Pause the AdManagerAdView.
-        adManagerAdView.pause();
+//todo: ads
+// Pause the AdManagerAdView.
+//        adManagerAdView.pause();
 
         super.onPause();
     }
 
     @Override
     public void onDestroy() {
-        // Destroy the AdManagerAdView.
-        adManagerAdView.destroy();
+//todo: ads
+// Destroy the AdManagerAdView.
+//  adManagerAdView.destroy();
 
         super.onDestroy();
     }
@@ -1155,12 +1153,10 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             intent = new Intent(this, PrefsActivity.class);
             startActivity(intent);
             return true;
-        /*
-        case R.id.item4:
-            intent = new Intent(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U6CX3ZNDSYFMQ")));
+        } else if (id == R.id.item4) {
+            intent = new Intent(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.paypal.com/donate/?hosted_button_id=3NNUT67K42CEA")));
             startActivity(intent);
             return true;
-         */
         } else if (id == R.id.item5) { // lien sur google play
             intent = new Intent(Intent.ACTION_VIEW);
             //intent.setData(Uri.parse("market://details?id=com.nialon"));
@@ -1183,6 +1179,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
             startActivity(Intent.createChooser(intent, getResources().getString(R.string.app_name)));
             return true;
         } else if (id == R.id.item7) { // contacter le développeur
+            @SuppressLint("HardwareIds") String android_id = Settings.Secure.getString(this.getContentResolver(), ANDROID_ID);
+
             intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/html");
             intent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name));
@@ -1198,6 +1196,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                             "Width : " + getResources().getDisplayMetrics().widthPixels + "<br />" +
                             "City : " + AppPrefs.getString("city", "Paris") + "<br />" +
                             "Timezone : " + TimeZone.getDefault().getID() + "<br />" +
+                            "id : " + android_id + "<br />" +
                             "DST : " + TimeZone.getDefault().getDSTSavings() + "<br />" +
                             "---<br />" +
                             "</body></html>")
@@ -1366,7 +1365,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
 
                     nboffsetCal = TimeZone.getDefault().getOffset(cal1.getTime().getTime()) / 1000 / 3600;
 //                    nboffset = TimeZone.getTimeZone("Europe/Paris").getOffset(d.getTime())/1000/3600;
-                    // nboffsetCal = TimeZone.getTimeZone("Europe/Paris").getOffset(cal1.getTime().getTime())/1000/3600;
+                    // todo: time offset test
+                    //nboffsetCal = TimeZone.getTimeZone("Europe/Paris").getOffset(cal1.getTime().getTime())/1000/3600;
                     //Log.d("d",d.toString());
 //                    Log.d("nb",String.valueOf(nboffset));
                     Log.d("nbcal", String.valueOf(nboffsetCal));
@@ -1989,16 +1989,17 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         }
     };
 
-    private AdSize getAdSize() {
-        Display display = getWindowManager().getDefaultDisplay();
-        DisplayMetrics outMetrics = new DisplayMetrics();
-        display.getMetrics(outMetrics);
-        float widthPixels = outMetrics.widthPixels;
-        float density = outMetrics.density;
-        int adWidth = (int) (widthPixels / density);
-
-        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
-    }
+//todo: ads
+//    private AdSize getAdSize() {
+//        Display display = getWindowManager().getDefaultDisplay();
+//        DisplayMetrics outMetrics = new DisplayMetrics();
+//        display.getMetrics(outMetrics);
+//        float widthPixels = outMetrics.widthPixels;
+//        float density = outMetrics.density;
+//        int adWidth = (int) (widthPixels / density);
+//
+//        return AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth);
+//    }
 
     private void DisplayLocalHelp(int hitem) {
         if (!AppPrefs.getBoolean("neplusaff", false)) {

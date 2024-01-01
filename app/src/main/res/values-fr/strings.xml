@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Calendrier lunaire 2023</string>
+    <string name="app_descr">Calendrier lunaire 2024</string>
     <string name="apogee">APOGEE</string>
     <string name="perigee">PERIGEE</string>
     <string name="noeudlunaire">NŒUD</string>
@@ -53,7 +53,7 @@
     <string name="info26">Lune gibbeuse</string>
     <string name="info27">La lune est gibbeuse lorsque la partie visible est plus importante que la partie non visible. Cela correspond donc, en lune croissante, à la période entre le premier quartier et la pleine lune, et en lune décroissante, à la période entre la pleine lune et le dernier quartier.</string>
     <string name="info28">Lune rousse</string>
-    <string name="info29">La lune rousse est la première lunaison (entre deux nouvelles lunes) après Pâques. Pour 2023, c\'est la période entre le 20 avril et le 19 mai. C\'est une période où les risques de gelée sont importants pour les jeunes pousses non protégées, les nuits sans nuages.</string>
+    <string name="info29">La lune rousse est la première lunaison (entre deux nouvelles lunes) après Pâques. Pour 2024, c\'est la période entre le 8 avril et le 8 mai. C\'est une période où les risques de gelée sont importants pour les jeunes pousses non protégées, les nuits sans nuages.</string>
     <string name="info30">Pour rechercher un type de jour particulier, montant, croissant, fleurs&#8230;, tapoter une fois son libellé.</string>
     <string name="info31">Conseils</string>
     <string name="info32">Semer en lune montante. Tondre et tailler en lune descendante. Greffer en lune montante.</string>
