@@ -276,7 +276,7 @@ public class astro {
         ha[1] = (ha[2] + ha[0]) / 2.0;          // Hour angle at half hour
 
         if (k == 12) {
-            Log.d("ha0 ", Double.toString(ha[0]) + " " + Double.toString(ha[1]) + " " + Double.toString(ha[2]));
+            Log.d("ha0 ", ha[0] + " " + ha[1] + " " + ha[2]);
             Log.d("RAn0", Double.toString(RAn[0]));
             Log.d("RAn1", Double.toString(RAn[1]));
             Log.d("RAn2", Double.toString(RAn[2]));
@@ -331,8 +331,8 @@ public class astro {
         if (az < 0)
             az += 360;
         if (k == 12) {
-            Log.d("k ", Integer.toString(k) + " " + Double.toString(VHz[0]) + " " + Double.toString(VHz[2]));
-            Log.d("t0 ", Double.toString(t0) + " " + Double.toString(lat) + " " + Double.toString(plx));
+            Log.d("k ", k + " " + VHz[0] + " " + VHz[2]);
+            Log.d("t0 ", t0 + " " + lat + " " + plx);
         }
 
         if ((VHz[0] < 0) && (VHz[2] > 0)) {

@@ -136,4 +136,6 @@
     <string name="nouvellelune">Nouvelle lune</string>
     <string name="dispjoursyndesc">Jour de révolution synodique</string>
     <string name="dispjoursyn">Numéro de jour dans le cycle croissant/décroissant. (Remplace le pourcentage d\'illumination)</string>
+    <string name="bgprefs">Fond d\'écran</string>
+    <string name="vuemensuelle">Vue mensuelle</string>
 </resources>

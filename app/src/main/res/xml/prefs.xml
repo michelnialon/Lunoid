@@ -62,4 +62,11 @@
         android:entryValues="@array/cities_values"
         android:key="ville"
         android:title="@string/citypref" />
+    <ListPreference
+        android:defaultValue="ciel0"
+        app:useSimpleSummaryProvider="true"
+        android:entries="@array/bg_entries"
+        android:entryValues="@array/bg_values"
+        android:key="bg"
+        android:title="@string/bgprefs" />
 </PreferenceScreen>

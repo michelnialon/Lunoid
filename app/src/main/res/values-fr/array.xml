@@ -4,12 +4,10 @@
         <item>Français</item>
         <item>Anglais</item>
     </string-array>
-
     <string-array name="lng_values">
         <item>1</item>
         <item>2</item>
     </string-array>
-
     <string-array name="cities_entries">
         <item>Vienne (Autriche)</item>
         <item>Salzburg (Autriche)</item>
@@ -58,6 +56,11 @@
         <item>Abidjan (Côte d\'Ivoire)</item>
         <item>Santiago (Chili)</item>
         <item>Port-au-Prince (Haïti)</item>
+        <item>Perth (Australie)</item>
+        <item>Adelaide (Australie)</item>
+        <item>Melbourne (Australie)</item>
+        <item>Canberra (Australie)</item>
+        <item>Sydney (Australie)</item>
     </string-array>
     <string-array name="cities_values">
         <item>Vienne</item>
@@ -107,6 +110,11 @@
         <item>Abidjan</item>
         <item>Santiago</item>
         <item>Port-au-Prince</item>
+        <item>Perth</item>
+        <item>Adelaide</item>
+        <item>Melbourne</item>
+        <item>Canberra</item>
+        <item>Sydney</item>
     </string-array>
     <string-array name="hints">
         <item>Balayer l\'écran de la droite vers la gauche au niveau de la lune pour passer au jour suivant.</item>

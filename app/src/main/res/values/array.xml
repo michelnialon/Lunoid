@@ -4,7 +4,6 @@
         <item>French</item>
         <item>English</item>
     </string-array>
-
     <string-array name="lng_values">
         <item>1</item>
         <item>2</item>
@@ -57,6 +56,11 @@
         <item>Abidjan (Ivory Coast)</item>
         <item>Santiago (Chile)</item>
         <item>Port-au-Prince (Haïti)</item>
+        <item>Perth (Australia)</item>
+        <item>Adelaide (Australia)</item>
+        <item>Melbourne (Australia)</item>
+        <item>Canberra (Australia)</item>
+        <item>Sydney (Australia)</item>
     </string-array>
     <string-array name="cities_values">
         <item>Vienne</item>
@@ -106,6 +110,11 @@
         <item>Abidjan</item>
         <item>Santiago</item>
         <item>Port-au-Prince</item>
+        <item>Perth</item>
+        <item>Adelaide</item>
+        <item>Melbourne</item>
+        <item>Canberra</item>
+        <item>Sydney</item>
     </string-array>
     <string-array name="hints">
         <item>Swipe on the screen from right to left to select next day</item>
@@ -117,5 +126,36 @@
         <item>Click on the clear date to display the calendar and select a date</item>
         <item>Click on the (i) in the header or on the moon to display the full day or month information</item>
         <item>It is possible to select in the settings if the information is displayed for the complete month or just for the selected day</item>
+    </string-array>
+    <!-- https://www.peakpx.com/ -->
+    <string-array name="bg_entries">
+        <item>Défaut</item>
+        <item>Background 1</item>
+        <item>Background 2</item>
+        <item>Background 3</item>
+        <item>Background 4</item>
+        <item>Background 5</item>
+        <item>Background 6</item>
+        <item>Background 7</item>
+        <item>Background 8</item>
+        <item>Background 9</item>
+        <item>Background 10</item>
+        <item>Background 11</item>
+        <item>Background 12</item>
+    </string-array>
+    <string-array name="bg_values">
+        <item>ciel0</item>
+        <item>ciel1</item>
+        <item>ciel2</item>
+        <item>ciel3</item>
+        <item>ciel4</item>
+        <item>ciel5</item>
+        <item>ciel6</item>
+        <item>ciel7</item>
+        <item>ciel8</item>
+        <item>ciel9</item>
+        <item>ciel10</item>
+        <item>ciel11</item>
+        <item>ciel12</item>
     </string-array>
 </resources>

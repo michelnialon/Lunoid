@@ -4,7 +4,6 @@
         <item>Francés</item>
         <item>Inglés</item>
     </string-array>
-
     <string-array name="lng_values">
         <item>1</item>
         <item>2</item>
@@ -57,6 +56,11 @@
         <item>Abidjan (Ivory Coast)</item>
         <item>Santiago (Chile)</item>
         <item>Port-au-Prince (Haïti)</item>
+        <item>Perth (Australia)</item>
+        <item>Adelaide (Australia)</item>
+        <item>Melbourne (Australia)</item>
+        <item>Canberra (Australia)</item>
+        <item>Sydney (Australia)</item>
     </string-array>
     <string-array name="cities_values">
         <item>Vienne</item>
@@ -106,6 +110,11 @@
         <item>Abidjan</item>
         <item>Santiago</item>
         <item>Port-au-Prince</item>
+        <item>Perth</item>
+        <item>Adelaide</item>
+        <item>Melbourne</item>
+        <item>Canberra</item>
+        <item>Sydney</item>
     </string-array>
     <string-array name="hints">
         <item>Desliza la pantalla de derecha a izquierda para seleccionar el día siguiente</item>

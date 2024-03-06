@@ -26,7 +26,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.TimeZone;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
@@ -35,7 +34,7 @@ import javax.xml.xpath.XPathFactory;
 import androidx.annotation.RequiresApi;
 
 public class WidgetProvider3Cell extends AppWidgetProvider {
-    public static final String WIDGET_IDS_KEY = "mywidgetproviderwidgetids";
+//    public static final String WIDGET_IDS_KEY = "mywidgetproviderwidgetids";
     static Map<String, String> mapLever = new HashMap<>();
     static Map<String, String> mapCoucher = new HashMap<>();
     static Map<String, String> mapEclair = new HashMap<>();
@@ -250,35 +249,5 @@ public class WidgetProvider3Cell extends AppWidgetProvider {
             Log.e("Lunoid", "exception", e);
         }
         Log.d("ReadData", "end");
-    }
-
-    private static String heurelocale(String s, boolean lh) {
-        if (s.equals("--:--")) {
-            return s;
-        } else {
-            if (lh) {
-                int nboffsetCal;
-                Calendar cal1 = Calendar.getInstance();
-                cal1.set(Calendar.HOUR_OF_DAY, Integer.parseInt(s.substring(0, 2)));
-                cal1.set(Calendar.MINUTE, Integer.parseInt(s.substring(3, 5)));
-                nboffsetCal = TimeZone.getDefault().getOffset(cal1.getTime().getTime()) / 1000 / 3600;
-
-                String s1;
-                String s2;
-
-                Calendar cal = Calendar.getInstance();
-                cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(s.substring(0, 2)));
-                cal.set(Calendar.MINUTE, Integer.parseInt(s.substring(3, 5)));
-
-                cal.add(Calendar.HOUR_OF_DAY, nboffsetCal);
-                s1 = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
-                s1 = (s1.length()==1 ? "0" + s1 : s1);
-                s2 = String.valueOf(cal.get(Calendar.MINUTE));
-                s2 = (s2.length()==1 ? "0" + s2 : s2);
-                return s1 + ":" + s2;
-            }
-            else
-                return s;
-        }
     }
 }

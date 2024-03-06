@@ -317,4 +317,34 @@
         <lon>1.44</lon>
         <elv>0</elv>
     </city>
+    <city>
+        <name>Perth</name>
+        <lat>-31.95</lat>
+        <lon>115.86</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Adelaide</name>
+        <lat>-34.90</lat>
+        <lon>138.59</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Melbourne</name>
+        <lat>-37.82</lat>
+        <lon>144.97</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Canberra</name>
+        <lat>-35.28</lat>
+        <lon>149.14</lon>
+        <elv>0</elv>
+    </city>
+    <city>
+        <name>Sydney</name>
+        <lat>-33.87</lat>
+        <lon>151.22</lon>
+        <elv>0</elv>
+    </city>
 </cities>

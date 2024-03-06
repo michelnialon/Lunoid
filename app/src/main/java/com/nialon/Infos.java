@@ -19,7 +19,7 @@ public class Infos extends Activity {
 		Log.d("locale", Locale.getDefault().getISO3Language());
 		switch (Locale.getDefault().getISO3Language()) {
 			case "eng":
-				webView.loadUrl("file:///android_asset/aide_fr.html");
+				webView.loadUrl("file:///android_asset/aide_en.html");
 				break;
 			case "spa":
 				webView.loadUrl("file:///android_asset/aide_es.html");

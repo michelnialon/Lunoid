@@ -3,7 +3,7 @@
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
     <string name="app_author" translatable="false">Michel Nialon</string>
-    <string name="app_date" translatable="false">13/12/2023</string>
+    <string name="app_date" translatable="false">21/02/2024</string>
     <string name="app_descr">Moon calendar 2024</string>
     <string name="apogee">Apogee</string>
     <string name="perigee">Perigee</string>
@@ -140,4 +140,6 @@
     <string name="nouvellelune">New moon</string>
     <string name="dispjoursyn">Day of synodical revolution</string>
     <string name="dispjoursyndesc">Day number in the up/down cycle (Replaces percentage of illumination)</string>
+    <string name="bgprefs">Background</string>
+    <string name="vuemensuelle">Monthly view</string>
 </resources>

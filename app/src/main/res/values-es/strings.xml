@@ -131,4 +131,6 @@
     <string name="nouvellelune">Luna nueva</string>
     <string name="dispjoursyn">Día de la revolución sinodal</string>
     <string name="dispjoursyndesc">Número de día en el ciclo ascendente/descendente (Sustituye al porcentaje de iluminación)</string>
+    <string name="bgprefs">Papel pintado</string>
+    <string name="vuemensuelle">Vista mensual</string>
 </resources>

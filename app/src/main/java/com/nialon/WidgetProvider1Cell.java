@@ -27,7 +27,7 @@ import java.util.Map;
 import androidx.annotation.RequiresApi;
 
 public class WidgetProvider1Cell extends AppWidgetProvider {
-    public static final String WIDGET_IDS_KEY = "mywidgetproviderwidgetids";
+    //public static final String WIDGET_IDS_KEY = "mywidgetproviderwidgetids";
     static Map<String, String> mapLever = new HashMap<>();
     static Map<String, String> mapCoucher = new HashMap<>();
     static Map<String, String> mapEclair = new HashMap<>();

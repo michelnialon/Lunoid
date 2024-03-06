@@ -131,4 +131,6 @@
     <string name="nouvellelune">Neumond</string>
     <string name="dispjoursyn">Tag der synodischen Revolution</string>
     <string name="dispjoursyndesc">Nummer des Tages im aufsteigenden/absteigenden Zyklus (Ersetzt den Beleuchtungsprozentsatz)</string>
+    <string name="bgprefs">Hintergrundbild</string>
+    <string name="vuemensuelle">Monatsansicht</string>
 </resources>
