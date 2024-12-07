@@ -1,11 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/drawable/roundcorner.xml" value="0.278125" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/drawable/roundcorner_light.xml" value="0.278125" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/drawable/roundcorner_nopadding.xml" value="0.278125" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/drawable/roundcorner_white.xml" value="0.278125" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/drawable/roundcornerblack.xml" value="0.278125" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout-land/main.xml" value="0.24739583333333334" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout-xlarge-land/main.xml" value="0.408984375" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout-xlarge/main.xml" value="0.33" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout/about.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout/aboutcommon.xml" value="0.184375" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout/aide.xml" value="0.169375" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout/common.xml" value="0.266015625" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout/editnote.xml" value="0.266015625" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout/localhelp.xml" value="0.44507575757575757" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout/main.xml" value="0.35" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/layout/widget1cell.xml" value="0.13958333333333334" />
+        <entry key="..\:/StudioProjects/Lunoid/app/src/main/res/xml/prefs.xml" value="0.5" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
-    <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
+    <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
     <option name="myNullables">
       <value>
-        <list size="12">
+        <list size="16">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
@@ -18,12 +40,16 @@
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
           <item index="10" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
           <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
+          <item index="12" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.annotations.Nullable" />
+          <item index="14" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.Nullable" />
+          <item index="15" class="java.lang.String" itemvalue="org.jspecify.nullness.Nullable" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="11">
+        <list size="16">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
@@ -35,9 +61,14 @@
           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
           <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
+          <item index="11" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
+          <item index="12" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+          <item index="14" class="java.lang.String" itemvalue="lombok.NonNull" />
+          <item index="15" class="java.lang.String" itemvalue="org.jspecify.nullness.NonNull" />
         </list>
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="JDK" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK" />
 </project>

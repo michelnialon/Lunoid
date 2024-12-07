@@ -2,7 +2,7 @@
 <resources>
     <string name="hello">Hello World, Lunoid!</string>
     <string name="app_name">LUNOID</string>
-    <string name="app_descr">Calendrier lunaire 2024</string>
+    <string name="app_descr">Calendrier lunaire 2025</string>
     <string name="apogee">APOGEE</string>
     <string name="perigee">PERIGEE</string>
     <string name="noeudlunaire">NŒUD</string>
@@ -53,7 +53,7 @@
     <string name="info26">Lune gibbeuse</string>
     <string name="info27">La lune est gibbeuse lorsque la partie visible est plus importante que la partie non visible. Cela correspond donc, en lune croissante, à la période entre le premier quartier et la pleine lune, et en lune décroissante, à la période entre la pleine lune et le dernier quartier.</string>
     <string name="info28">Lune rousse</string>
-    <string name="info29">La lune rousse est la première lunaison (entre deux nouvelles lunes) après Pâques. Pour 2024, c\'est la période entre le 8 avril et le 8 mai. C\'est une période où les risques de gelée sont importants pour les jeunes pousses non protégées, les nuits sans nuages.</string>
+    <string name="info29">La lune rousse est la première lunaison (entre deux nouvelles lunes) après Pâques. Pour 2025, c\'est la période entre le 27 avril et le 27 mai. C\'est une période où les risques de gelée sont importants pour les jeunes pousses non protégées, les nuits sans nuages.</string>
     <string name="info30">Pour rechercher un type de jour particulier, montant, croissant, fleurs&#8230;, tapoter une fois son libellé.</string>
     <string name="info31">Conseils</string>
     <string name="info32">Semer en lune montante. Tondre et tailler en lune descendante. Greffer en lune montante.</string>
@@ -63,7 +63,7 @@
     <string name="info36">Prélever les boutures en lune descendante.</string>
     <string name="info37">Récolter les légumes racines et bulbes en lune descendante. </string>
     <string name="info38">Lune bleue</string>
-    <string name="info39">On appelle lune bleue la deuxième pleine lune survenant dans le même mois. Il y aura une lune bleue le 31 octobre 2020.</string>
+    <string name="info39">On appelle lune bleue la deuxième pleine lune survenant dans le même mois. Il y aura une lune bleue le 31 mai 2026.</string>
     <string name="infos">Infos</string>
     <string name="notfound">Non trouvé</string>
     <string name="params">Paramètres</string>

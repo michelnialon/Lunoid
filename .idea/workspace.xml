@@ -1,25 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
   <component name="AndroidLayouts">
     <shared>
       <config>
-        <device id="2.7in QVGA slider" />
-        <device id="3.7in WVGA (Nexus One)" />
-        <device id="wear_square" />
-        <device id="wear_round" />
-        <device id="pixel_c" />
-        <device id="Nexus 10" />
-        <device id="pixel" />
-        <device id="pixel_3_xl" />
-        <device id="tv_1080p" />
-        <device id="Nexus 7" />
         <locale>fr</locale>
+        <target>android-28</target>
       </config>
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout-land/main.xml">
+        <config>
+          <state>Landscape</state>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/aboutcommon.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/common.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/conseilsdumois.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/editnote.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/infos.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/listnotes.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/vuemensuelle.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/menu.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="widget" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -27,65 +74,46 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dd061ea-d540-4888-9b9d-c2838a8ae24e" name="Default" comment="sauvegarde">
-      <change afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_browser_browser_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_19_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_base_19_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_identifier_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_lite_19_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_gass_19_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_base_17_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_sdk_api_17_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_17_0_0_aar.xml" afterDir="false" />
+    <list default="true" id="6dd061ea-d540-4888-9b9d-c2838a8ae24e" name="Default" comment="- Version 23.0f&#10;- Informations 2024&#10;- Désactivation pub&#10;- Déclaration private policy avec Termsfeed&#10;- minsdk 21, targetsdk 34">
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lunoid.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Lunoid.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/output-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/aide_en.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/aide_en.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/aide_fr.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/aide_fr.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nialon/About.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nialon/About.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nialon/DisplayMensuel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nialon/DisplayMensuel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/nialon/Lunoid.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/nialon/Lunoid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/common.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/common.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/vuemensuelle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/vuemensuelle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/datalune" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/datalune" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-es/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-fr/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-fr/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="HTC_desire_530_API_23" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=F:\.android\avd\Nexus_5_API_28.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -114,16 +142,15 @@
       </state>
     </system>
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Lunoid" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="ASClass" />
-        <option value="valueResourceFile" />
-        <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
+        <option value="JUnit4 Test Class" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="valueResourceFile" />
+        <option value="layoutResourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -135,75 +162,119 @@
     <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Michel Nialon" />
+        <option value="mnialon" />
+        <option value="Michel Nialon &lt;m.nialon@laposte.net&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;michelnialon&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/michelnialon/Lunoid.git&quot;,
+    &quot;accountId&quot;: &quot;c4887bdd-0a82-4cc4-977c-00ac37d1adfc&quot;
+  }
+}</component>
+  <component name="GroovyConsoleState">
+    <option name="list">
+      <list>
+        <Entry>
+          <option name="moduleName" value="app" />
+          <option name="url" value="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy" />
+        </Entry>
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="1ZS3MHnmn97siWhCouZt8E5ZJot" />
-  <component name="PropertiesComponent">
-    <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/app/app-release.apk" />
-    <property name="ExportApk.ApkPath" value="F:\StudioProjects\Lunoid\app" />
-    <property name="ExportApk.BuildType" value="release" />
-    <property name="ExportApk.BuildVariants" value="release" />
-    <property name="ExportApk.Flavors" value="" />
-    <property name="ExportApk.SignV1" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="70" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="142" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="70" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="621" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="70" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="69" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="70" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="694" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
-    <property name="android.project.structure.last.selected" value="Ads" />
-    <property name="android.project.structure.proportion" value="0.15" />
-    <property name="device.picker.selection" value="Nexus_5_API_28" />
-    <property name="external.system.task.project.file.to.start" value="$PROJECT_DIR$/settings.gradle" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ApkExportedModule": "Lunoid.app",
+    "ExportApk.ApkPathForLunoid.app": "F:\\StudioProjects\\Lunoid\\app",
+    "Gradle.Lunoid.executor": "Run",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2"
+  },
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
+    ]
+  }
+}]]></component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Properties" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\drawable" />
-      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\layout-xlarge-land" />
-      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\layout-xlarge" />
-    </key>
     <key name="android.template.packageName">
       <recent name="com.nialon" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\drawable" />
+      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\raw" />
+      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\values-es" />
+      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\values-de" />
+      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\values-fr" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\xml" />
+      <recent name="F:\StudioProjects\Lunoid\app\src\main\res\raw" />
+      <recent name="F:\StudioProjects\Lunoid\app\src\main\assets" />
     </key>
     <key name="android.template.parentActivityClass">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\StudioProjects\Lunoid\app\src\main\assets" />
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.nialon" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nialon" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Android App.app">
+  <component name="RunManager" selected="Gradle.Lunoid">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -248,28 +319,10 @@
       </Profilers>
       <method />
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method>
-        <option name="Make" enabled="false" />
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
@@ -300,31 +353,24 @@
       <listeners />
       <method />
     </configuration>
-    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-    </configuration>
-    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="app" />
+    <configuration name="About" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" temporary="true">
+      <module name="Lunoid.app.main" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
       <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
+      <option name="MODE" value="specific_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
       <option name="DEBUGGER_TYPE" value="Auto" />
@@ -334,6 +380,8 @@
         <option name="WORKING_DIR" value="" />
         <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
         <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
       </Auto>
       <Hybrid>
         <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
@@ -341,30 +389,165 @@
         <option name="WORKING_DIR" value="" />
         <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
         <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
       </Hybrid>
-      <Java />
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
       <Native>
         <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
         <option name="SHOW_STATIC_VARS" value="true" />
         <option name="WORKING_DIR" value="" />
         <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
         <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
       </Native>
       <Profilers>
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
         <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
-        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sampled (Java)" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
+      <option name="ACTIVITY_CLASS" value="com.nialon.About" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet">
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="Lunoid.app.main" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="RESTORE_ENABLED" value="false" />
+      <option name="RESTORE_FILE" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Java/Kotlin Method Sample (legacy)" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
       <method v="2">
-        <option name="Make" enabled="true" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LunoidTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" nameIsGenerated="true">
+      <module name="Lunoid.app" />
+      <option name="TESTING_TYPE" value="2" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="com.nialon.LunoidTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_NAME_REGEX" value="" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="RETENTION_ENABLED" value="No" />
+      <option name="RETENTION_MAX_SNAPSHOTS" value="2" />
+      <option name="RETENTION_COMPRESS_SNAPSHOTS" value="false" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Hybrid>
+      <Java>
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Java>
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+        <option name="ATTACH_ON_WAIT_FOR_DEBUGGER" value="false" />
+        <option name="DEBUG_SANDBOX_SDK" value="false" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -387,8 +570,19 @@
         </option>
         <option name="vmOptions" value="" />
       </ExternalSystemSettings>
-      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="false" />
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
@@ -399,11 +593,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Android App.app" />
+      <item itemvalue="Android App.About" />
+      <item itemvalue="Android Instrumented Tests.LunoidTest" />
       <item itemvalue="Gradle.Lunoid" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Android App.About" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -414,328 +625,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1482583658755</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Calendrier de sélection de date">
-      <created>1551297196590</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297196590</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Version 2019 - 2">
-      <created>1551297302892</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297302892</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Version 2019 - 2">
-      <created>1551297361855</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297361855</updated>
-    </task>
-    <task id="LOCAL-00018" summary="add log exception">
-      <created>1551297408207</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297408207</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Version 2019 - 2">
-      <created>1551297506281</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297506281</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Version 2019 - 2">
-      <created>1551297534066</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297534066</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Version 2019 - 2">
-      <created>1551297584101</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297584101</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Fond ecran lune">
-      <created>1551297711868</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297711868</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Version 2019 - 2">
-      <created>1551297766822</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297766822</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Version 2019 - 2">
-      <created>1551297870391</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297870391</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Version 2019 - 2">
-      <created>1551297881528</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297881528</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Version 2019 - 2">
-      <created>1551297900539</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297900539</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Version 2019 - 2">
-      <created>1551297913656</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297913656</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Version 2019 - 2">
-      <created>1551297942997</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297942997</updated>
-    </task>
-    <task id="LOCAL-00029" summary="rename already used textview">
-      <created>1551297999454</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1551297999454</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Version 2019 - 2">
-      <created>1551298041295</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298041295</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Version 2019 - 2">
-      <created>1551298064095</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298064095</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Version 2019 - 2">
-      <created>1551298079615</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298079615</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Version 2019 - 2">
-      <created>1551298113801</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298113801</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Version 2019 - 2">
-      <created>1551298132945</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298132945</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Version 2019 - 2">
-      <created>1551298144453</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298144453</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Version 2019 - 2">
-      <created>1551298156054</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298156054</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Version 2019 - 2">
-      <created>1551298182439</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298182439</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Version 2019 - 2">
-      <created>1551298233404</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298233404</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Version 2019 - 2">
-      <created>1551298505919</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298505919</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Version 2019 - 2">
-      <created>1551298835050</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1551298835050</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Suppress warnings&#10;Suppress title">
-      <created>1551300599916</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1551300599916</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Suppress warnings&#10;Use StringBuilder to concatenate strings">
-      <created>1551301993655</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1551301993655</updated>
-    </task>
-    <task id="LOCAL-00043" summary="add blank lines">
-      <created>1551302616422</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1551302616422</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Suppress warnings&#10;Suppress title">
-      <created>1551302633560</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1551302633560</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Suppress warnings&#10;Suppress title">
-      <created>1551707825163</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1551707825163</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Suppress warnings&#10;Suppress title">
-      <created>1551707880214</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1551707880214</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Suppress warnings&#10;Suppress title">
-      <created>1551707911035</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1551707911035</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Suppress warnings&#10;Suppress title">
-      <created>1551707935730</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1551707935730</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Suppress warnings&#10;Suppress title">
-      <created>1551707974056</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1551707974056</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Suppress warnings&#10;Suppress title">
-      <created>1551708002735</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1551708002737</updated>
-    </task>
-    <task id="LOCAL-00051" summary="minSdkVersion 15">
-      <created>1551710324561</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1551710324561</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Supress warning">
-      <created>1551710918950</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1551710918950</updated>
-    </task>
-    <task id="LOCAL-00053" summary="minSdkVersion 15">
-      <created>1576420939371</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1576420939372</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Add various menus">
-      <created>1576423776051</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1576423776051</updated>
-    </task>
-    <task id="LOCAL-00055" summary="v20.0g">
-      <created>1577562561544</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1577562561545</updated>
-    </task>
-    <task id="LOCAL-00056" summary="v20.0h">
-      <created>1577628486202</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1577628486203</updated>
-    </task>
-    <task id="LOCAL-00057" summary="ajout des conseils pour janvier, février, octobre, novembre, décembre">
-      <created>1578950453664</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1578950453666</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Ajout prise de note&#10;Modification des images fruits fleurs,racines feuilles&#10;Ajout info dans mail développpeur">
-      <created>1579985273424</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1579985273425</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Ajout prise de note&#10;Modification des images fruits fleurs,racines feuilles&#10;Ajout info dans mail développpeur">
-      <created>1579985464217</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1579985464218</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Ajout prise de note&#10;Modification des images fruits fleurs,racines feuilles&#10;Ajout info dans mail développpeur">
-      <created>1581532127268</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1581532127268</updated>
     </task>
     <task id="LOCAL-00061" summary="4 widgets">
       <created>1584798716661</created>
@@ -758,26 +647,337 @@
       <option name="project" value="LOCAL" />
       <updated>1584813040739</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="upgrad gradle&#10;minsdk 16">
+      <created>1584890596528</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1584890596529</updated>
+    </task>
+    <task id="LOCAL-00065" summary="androidx preference">
+      <created>1584983132665</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1584983132666</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Suppress warnings&#10;Missing translations">
+      <created>1589471957880</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1589471957881</updated>
+    </task>
+    <task id="LOCAL-00067" summary="- Possibilité de programmer une notification sur les notes&#10;- Retour à aujourd'hui en balayant l'écran de haut en bas&#10;- Ajout des informations sur les caractéristiques de l'écran dans le mail au développeur&#10;- Suppression images plus utilisés&#10;- Retour en arrière (après infos, apropos, params) sans remettre la date du jour">
+      <created>1590233484414</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1590233484416</updated>
+    </task>
+    <task id="LOCAL-00068" summary="- Ajout de fichiers">
+      <created>1590234190871</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1590234190871</updated>
+    </task>
+    <task id="LOCAL-00069" summary="- Fichier html et webview pour l'aide en français, anglais, allemand, espagnol">
+      <created>1596975881012</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1596975881012</updated>
+    </task>
+    <task id="LOCAL-00070" summary="- Possibilité de programmer une notification sur les notes&#10;- Retour à aujourd'hui en balayant l'écran de haut en bas&#10;- Ajout des informations sur les caractéristiques de l'écran dans le mail au développeur&#10;- Suppression images plus utilisés&#10;- Retour en arrière (après infos, apropos, params) sans remettre la date du jour">
+      <created>1596975982219</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1596975982219</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Date maximale centralisée">
+      <created>1596976551021</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1596976551021</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Visualisation du fichier d'aide en html">
+      <created>1596976662214</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1596976662214</updated>
+    </task>
+    <task id="LOCAL-00073" summary="- Suppression datepicker1&#10;- Gestion hemisphere sud&#10;- Gestion de la taille des caractères en fonction de l'écran&#10;- Simplification de la gestion des dates, date du jour et date sélectionnée&#10;- retour au 1/1/2020 en balayant de haut en bas en mode test&#10;- Date mini = 1/1/2016">
+      <created>1596977161158</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1596977161158</updated>
+    </task>
+    <task id="LOCAL-00074" summary="- Lancement de l'appli en cliquant sur les widgets 1,2,3,4">
+      <created>1596977372496</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1596977372496</updated>
+    </task>
+    <task id="LOCAL-00075" summary="- Suppress warnings">
+      <created>1596977474695</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1596977474695</updated>
+    </task>
+    <task id="LOCAL-00076" summary="- ajout espresso, junit et testrunner">
+      <created>1596977892545</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1596977892545</updated>
+    </task>
+    <task id="LOCAL-00077" summary="permission internet">
+      <created>1596978224219</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1596978224219</updated>
+    </task>
+    <task id="LOCAL-00078" summary="mise à jour disposition des éléments">
+      <created>1596978387735</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1596978387736</updated>
+    </task>
+    <task id="LOCAL-00079" summary="- mutualisation du layout">
+      <created>1596978505210</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1596978505210</updated>
+    </task>
+    <task id="LOCAL-00080" summary="id LunoidWidget">
+      <created>1596978700899</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1596978700899</updated>
+    </task>
+    <task id="LOCAL-00081" summary="plus utilisé">
+      <created>1596978762270</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1596978762270</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Aide html">
+      <created>1596978811164</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1596978811164</updated>
+    </task>
+    <task id="LOCAL-00083" summary="- mutualisation des layouts">
+      <created>1596978857260</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1596978857260</updated>
+    </task>
+    <task id="LOCAL-00084" summary="- mutualisation des layouts">
+      <created>1596979080753</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1596979080753</updated>
+    </task>
+    <task id="LOCAL-00085" summary="-string pour hemisphere sud&#10;-langue pour les conseils en français et anglais">
+      <created>1596979378308</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1596979378308</updated>
+    </task>
+    <task id="LOCAL-00086" summary="- gestion hémisphère sud&#10;- 4 widgets">
+      <created>1596979499146</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1596979499146</updated>
+    </task>
+    <task id="LOCAL-00087" summary="- gradle 4.0.1">
+      <created>1596979948859</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1596979948860</updated>
+    </task>
+    <task id="LOCAL-00088" summary="- suppress unused files">
+      <created>1597146444081</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1597146444082</updated>
+    </task>
+    <task id="LOCAL-00089" summary="rename to capitalized">
+      <created>1597147886861</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1597147886861</updated>
+    </task>
+    <task id="LOCAL-00090" summary="- Rename infos to Infos">
+      <created>1597147959702</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1597147959702</updated>
+    </task>
+    <task id="LOCAL-00091" summary="- Correction fautes dans le texte d'aide en français&#10;- Affichage de la liste des notes dans un écran séparé&#10;- Affichage de l'heure de changement feuilles/fruit/racine/fleur&#10;- Suppression fichiers plus utilisés&#10;- Rationalisation des layouts&#10;- Fichier de tests espresso&#10;- compilesdkversion et targetsdkversion = 29">
+      <created>1600004481797</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1600004481798</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Version 20.4c&#10;Ajout heure de changement fleur/fruit/racine/feuille avant 2020">
+      <created>1600107303240</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1600107303241</updated>
+    </task>
+    <task id="LOCAL-00093" summary="- Images pour les signes du zodiaque">
+      <created>1607601689157</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1607601689157</updated>
+    </task>
+    <task id="LOCAL-00094" summary="- fontes 7 segments pour affichage de l'heure">
+      <created>1607601749171</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1607601749171</updated>
+    </task>
+    <task id="LOCAL-00095" summary="- Ne pas inclure les notes vides dans la liste">
+      <created>1607601838120</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1607601838120</updated>
+    </task>
+    <task id="LOCAL-00096" summary="- Gestion de l'hémishpère sud dans le widget&#10;- Ne pas afficher les notes vides dans la liste&#10;- Affichage des signes du zodiaque,  textes et/ou icônes (paramétrable, désactivé par défaut)&#10;- Affichage du sens montant/ descendant\ des nœuds dans l'application et le widget&#10;- Affichage des heures de lever et coucher avec fonte 7 segments verte">
+      <created>1609698647366</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1609698647367</updated>
+    </task>
+    <task id="LOCAL-00097" summary="- Correction fautes dans le texte d'aide en français&#10;- Affichage de la liste des notes dans un écran séparé&#10;- Affichage de l'heure de changement feuilles/fruit/racine/fleur&#10;- Suppression fichiers plus utilisés&#10;- Rationalisation des layouts&#10;- Fichier de tests espresso">
+      <created>1618150691622</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1618150691623</updated>
+    </task>
+    <task id="LOCAL-00098" summary="- possibilité d'éditer une note en cliquant dessus&#10;- choix de la ville pour le calcul des heures de lever/coucher (45 villes dans le monde)&#10;- partage/sauvegarde des notes dans google drive ou autre (en beta test)&#10;- ajout retours à la ligne manquant dans les conseils de plantations&#10;- correction affichage incorrect sur le signe du Poisson&#10;- correction affichage sur écran principal quand l'utilisateur a activé une police de grande taille&#10;- ajout d'un message proposant de mettre à jour avec la version de l'année suivante">
+      <created>1629038947033</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1629038947033</updated>
+    </task>
+    <task id="LOCAL-00099" summary="- Calcul du pourcentage de visibilité avec la librairie Moon&#10;- Possibilité de masque la lune croissante / décroissante&#10;- Affichage d'un écran d'aide en cours d'utilisation (désactivable)&#10;- Ajout des données pour 2022&#10;- Ajout Nancy&#10;- Target SDK version 32&#10;- Min SDK version 19 (Android 4.4)">
+      <created>1639302768070</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1639302768071</updated>
+    </task>
+    <task id="LOCAL-00100" summary="- Calcul du pourcentage de visibilité avec la librairie Moon&#10;- Possibilité de masque la lune croissante / décroissante&#10;- Affichage d'un écran d'aide en cours d'utilisation (désactivable)&#10;- Ajout des données pour 2022&#10;- Ajout Nancy&#10;- Target SDK version 32&#10;- Min SDK version 19 (Android 4.4)">
+      <created>1639303870789</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1639303870789</updated>
+    </task>
+    <task id="LOCAL-00101" summary="- Version 22.0a&#10;- Ajout ressources string pour pleine lune, nouvelle lune&#10;- nouveaux fichiers : gardener.jpg, localhelp.xml, roudcorner_white.xml&#10;- correction data 27 et 28 mars&#10;- ajout s parametres dans values_fr&#10;- retour affichage visibilité à partir de datalune, en attendant gestion pleine/nouvelle lune">
+      <created>1640606845078</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1640606845079</updated>
+    </task>
+    <task id="LOCAL-00102" summary="- Calendrier lunaire 2022">
+      <created>1640607541258</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1640607541258</updated>
+    </task>
+    <task id="LOCAL-00103" summary="- Version 23.0b&#10;- Ajout ville Toulouse&#10;- Données pour année 2023&#10;- Correction mise à jour widget&#10;- Suppression lancement appli depuis le widget&#10;- Ajout distance terre-lune dans fenêtre About&#10;- Suppression titre dans barre du haut&#10;- Ajout menus infos et conseils dans barre du haut">
+      <created>1671652752597</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1671652752597</updated>
+    </task>
+    <task id="LOCAL-00104" summary="- Version 22.0a&#10;- Ajout ressources string pour pleine lune, nouvelle lune&#10;- nouveaux fichiers : gardener.jpg, localhelp.xml, roudcorner_white.xml&#10;- correction data 27 et 28 mars&#10;- ajout s parametres dans values_fr&#10;- retour affichage visibilité à partir de datalune, en attendant gestion pleine/nouvelle lune">
+      <created>1672082373372</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1672082373374</updated>
+    </task>
+    <task id="LOCAL-00105" summary="- Version 22.0a&#10;- Ajout ressources string pour pleine lune, nouvelle lune&#10;- nouveaux fichiers : gardener.jpg, localhelp.xml, roudcorner_white.xml&#10;- correction data 27 et 28 mars&#10;- ajout s parametres dans values_fr&#10;- retour affichage visibilité à partir de datalune, en attendant gestion pleine/nouvelle lune">
+      <created>1672165440131</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1672165440132</updated>
+    </task>
+    <task id="LOCAL-00106" summary="- Version 23.0f&#10;- Informations 2024&#10;- Désactivation pub&#10;- Déclaration private policy avec Termsfeed&#10;- minsdk 21, targetsdk 34">
+      <created>1704110961578</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1704110961578</updated>
+    </task>
+    <task id="LOCAL-00107" summary="- Version 24.i&#10;- Affichage mensuel&#10;- Correction erreur affichage aide english en français&#10;- Ajout locations sydney canberra melbourne adelaide perth in Australia&#10;- default backgroun in landscape mode">
+      <created>1709724594798</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1709724594798</updated>
+    </task>
+    <task id="LOCAL-00108" summary="- Version 24.i&#10;- New files">
+      <created>1709724767025</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1709724767025</updated>
+    </task>
+    <task id="LOCAL-00109" summary="- Version 24.0i&#10;-vue mensuelle">
+      <created>1709727806270</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1709727806270</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -792,30 +992,44 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="correction data 2017" />
-    <MESSAGE value="Conseil du mois" />
-    <MESSAGE value="Version 2018" />
-    <MESSAGE value="Conseils 2017" />
-    <MESSAGE value="Conseils 2018" />
-    <MESSAGE value="Spanish translations" />
-    <MESSAGE value="Conseils par mois" />
-    <MESSAGE value="Calendrier de sélection de date" />
-    <MESSAGE value="add log exception" />
-    <MESSAGE value="Fond ecran lune" />
-    <MESSAGE value="rename already used textview" />
-    <MESSAGE value="Version 2019 - 2" />
-    <MESSAGE value="Suppress warnings&#10;Use StringBuilder to concatenate strings" />
-    <MESSAGE value="add blank lines" />
-    <MESSAGE value="Suppress warnings&#10;Suppress title" />
-    <MESSAGE value="Supress warning" />
-    <MESSAGE value="minSdkVersion 15" />
-    <MESSAGE value="Add various menus" />
-    <MESSAGE value="v20.0g" />
-    <MESSAGE value="v20.0h" />
-    <MESSAGE value="ajout des conseils pour janvier, février, octobre, novembre, décembre" />
-    <MESSAGE value="Ajout prise de note&#10;Modification des images fruits fleurs,racines feuilles&#10;Ajout info dans mail développpeur" />
-    <MESSAGE value="4 widgets" />
-    <MESSAGE value="sauvegarde" />
-    <option name="LAST_COMMIT_MESSAGE" value="sauvegarde" />
+    <MESSAGE value="- mutualisation des layouts" />
+    <MESSAGE value="-string pour hemisphere sud&#10;-langue pour les conseils en français et anglais" />
+    <MESSAGE value="- gestion hémisphère sud&#10;- 4 widgets" />
+    <MESSAGE value="- gradle 4.0.1" />
+    <MESSAGE value="- suppress unused files" />
+    <MESSAGE value="rename to capitalized" />
+    <MESSAGE value="- Rename infos to Infos" />
+    <MESSAGE value="- Correction fautes dans le texte d'aide en français&#10;- Affichage de la liste des notes dans un écran séparé&#10;- Affichage de l'heure de changement feuilles/fruit/racine/fleur&#10;- Suppression fichiers plus utilisés&#10;- Rationalisation des layouts&#10;- Fichier de tests espresso&#10;- compilesdkversion et targetsdkversion = 29" />
+    <MESSAGE value="Version 20.4c&#10;Ajout heure de changement fleur/fruit/racine/feuille avant 2020" />
+    <MESSAGE value="- Images pour les signes du zodiaque" />
+    <MESSAGE value="- fontes 7 segments pour affichage de l'heure" />
+    <MESSAGE value="- Ne pas inclure les notes vides dans la liste" />
+    <MESSAGE value="- Gestion de l'hémishpère sud dans le widget&#10;- Ne pas afficher les notes vides dans la liste&#10;- Affichage des signes du zodiaque,  textes et/ou icônes (paramétrable, désactivé par défaut)&#10;- Affichage du sens montant/ descendant\ des nœuds dans l'application et le widget&#10;- Affichage des heures de lever et coucher avec fonte 7 segments verte" />
+    <MESSAGE value="- Correction fautes dans le texte d'aide en français&#10;- Affichage de la liste des notes dans un écran séparé&#10;- Affichage de l'heure de changement feuilles/fruit/racine/fleur&#10;- Suppression fichiers plus utilisés&#10;- Rationalisation des layouts&#10;- Fichier de tests espresso" />
+    <MESSAGE value="- possibilité d'éditer une note en cliquant dessus&#10;- choix de la ville pour le calcul des heures de lever/coucher (45 villes dans le monde)&#10;- partage/sauvegarde des notes dans google drive ou autre (en beta test)&#10;- ajout retours à la ligne manquant dans les conseils de plantations&#10;- correction affichage incorrect sur le signe du Poisson&#10;- correction affichage sur écran principal quand l'utilisateur a activé une police de grande taille&#10;- ajout d'un message proposant de mettre à jour avec la version de l'année suivante" />
+    <MESSAGE value="- Calcul du pourcentage de visibilité avec la librairie Moon&#10;- Possibilité de masque la lune croissante / décroissante&#10;- Affichage d'un écran d'aide en cours d'utilisation (désactivable)&#10;- Ajout des données pour 2022&#10;- Ajout Nancy&#10;- Target SDK version 32&#10;- Min SDK version 19 (Android 4.4)" />
+    <MESSAGE value="- Calendrier lunaire 2022" />
+    <MESSAGE value="- Version 23.0b&#10;- Ajout ville Toulouse&#10;- Données pour année 2023&#10;- Correction mise à jour widget&#10;- Suppression lancement appli depuis le widget&#10;- Ajout distance terre-lune dans fenêtre About&#10;- Suppression titre dans barre du haut&#10;- Ajout menus infos et conseils dans barre du haut" />
+    <MESSAGE value="- Version 22.0a&#10;- Ajout ressources string pour pleine lune, nouvelle lune&#10;- nouveaux fichiers : gardener.jpg, localhelp.xml, roudcorner_white.xml&#10;- correction data 27 et 28 mars&#10;- ajout s parametres dans values_fr&#10;- retour affichage visibilité à partir de datalune, en attendant gestion pleine/nouvelle lune" />
+    <MESSAGE value="- Version 23.0d&#10;- Suppress unused resources&#10;- Widgets transparent&#10;- Widget size 1x1 refresh 1h" />
+    <MESSAGE value="- Version 23.0f&#10;- Informations 2024&#10;- Désactivation pub&#10;- Déclaration private policy avec Termsfeed&#10;- minsdk 21, targetsdk 34" />
+    <MESSAGE value="- Version 24.0g&#10;- Select background&#10;- Display mensuel" />
+    <MESSAGE value="- Version 24.i&#10;- Affichage mensuel&#10;- Correction erreur affichage aide english en français&#10;- Ajout locations sydney canberra melbourne adelaide perth in Australia&#10;- default backgroun in landscape mode" />
+    <MESSAGE value="- Version 24.i&#10;- New files" />
+    <MESSAGE value="- Version 24.0i&#10;-vue mensuelle" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Version 24.0i&#10;-vue mensuelle" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="app">
+        <watch expression="e" />
+      </configuration>
+      <configuration name="AndroidRunConfigurationType">
+        <watch expression="dataNotif" />
+        <watch expression="nbdays" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

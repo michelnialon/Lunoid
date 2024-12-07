@@ -140,10 +140,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical|center_horizontal"
-            android:rotation="0"
             android:text="00:00"
             android:textColor="#666666"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textDecroissant"
@@ -183,7 +182,7 @@
             android:rotation="0"
             android:text="00:00"
             android:textColor="#666666"
-            android:textSize="12sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textDescendant"
@@ -663,7 +662,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="&lt; 15:30"
             android:textColor="#ffff00"
-            android:textSize="12dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textFruitsChg"
@@ -673,7 +672,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="&gt; 15:30"
             android:textColor="#ffff00"
-            android:textSize="12dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textRacinesChg"
@@ -683,7 +682,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:text=""
             android:textColor="#666666"
-            android:textSize="12dp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/textFleursChg"
@@ -693,7 +692,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:text=""
             android:textColor="#666666"
-            android:textSize="12dp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <!-- Perigee/Apogee/Noeud -->
@@ -792,7 +791,7 @@
         android:id="@+id/linearLayoutSpace"
         android:layout_width="match_parent"
         android:layout_height="12dp"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal" />
     <!-- Pub -->
     <!-- todo: ads
 <LinearLayout

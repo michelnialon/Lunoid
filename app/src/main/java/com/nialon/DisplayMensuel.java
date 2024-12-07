@@ -2,10 +2,13 @@ package com.nialon;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +18,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+
+import androidx.print.PrintHelper;
 
 public class DisplayMensuel extends Activity {
     SimpleDateFormat sdfx = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -27,6 +32,8 @@ public class DisplayMensuel extends Activity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.vuemensuelle);
             LinearLayout allJours = findViewById(R.id.layout_mensuel);
+            LinearLayout spaceH = findViewById(R.id.layout_spaceH);
+            LinearLayout spaceB = findViewById(R.id.layout_spaceB);
 
             LinearLayout.LayoutParams wparams1 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
             LinearLayout.LayoutParams wparams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -35,18 +42,45 @@ public class DisplayMensuel extends Activity {
             wparams1.gravity = Gravity.CENTER;
 
             Intent intent = getIntent();
-            int year = intent.getIntExtra("year", 2024);
+            int year = intent.getIntExtra("year", 2025);
             int month = intent.getIntExtra("month", 1);
             Calendar cal = new GregorianCalendar(year, month, 1);
 
             Date d1 = new Date();
             String ds, ds2;
             TextView txtMonth = findViewById(R.id.txtmonth);
+            ImageView printer = findViewById(R.id.imageView1);
 
             cal.set(Calendar.MONTH, month);
             cal.set(Calendar.YEAR, year);
             int nbdays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
             txtMonth.setText(sdfMonthYear.format(cal.getTime()));
+            txtMonth.setTag(0);
+            printer.setOnClickListener(
+                    v -> {
+                        Log.d("txt", "clicked1");
+
+//                            Toast InfosToast = Toast.makeText(getApplicationContext(), v.getTag().toString(), Toast.LENGTH_SHORT);
+//                            InfosToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+//                            InfosToast.show();
+                        // Print view
+                        Bitmap bmp = Bitmap.createBitmap(allJours.getWidth(), allJours.getHeight(), Bitmap.Config.ARGB_8888);
+                        Canvas c = new Canvas(bmp);
+                        printer.setVisibility(View.INVISIBLE);
+                        spaceH.setVisibility(View.VISIBLE);
+                        spaceB.setVisibility(View.VISIBLE);
+                        allJours.draw(c);
+                        printer.setVisibility(View.VISIBLE);
+                        spaceH.setVisibility(View.GONE);
+                        spaceB.setVisibility(View.GONE);
+                        c.scale(0.9f, 1.2f);
+                        c.setDensity(2);
+                        PrintHelper photoPrinter = new PrintHelper(this);
+                        photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
+                        photoPrinter.printBitmap("vuemensuelle.png", bmp);
+                        // ---------------
+                    }
+            );
 
             for (int d = 1; d <= nbdays; d++) {
                 LinearLayout layoutJour = new LinearLayout(this);
@@ -75,18 +109,11 @@ public class DisplayMensuel extends Activity {
                 layoutJour.setTag(d);
                 layoutJour.setOnClickListener(
                         v -> {
-                            // do something when the corky is clicked
                             Log.d("txt", "clicked");
-
-//                            Toast InfosToast = Toast.makeText(getApplicationContext(), v.getTag().toString(), Toast.LENGTH_SHORT);
-//                            InfosToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-//                            InfosToast.show();
-
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("d", (int) (v.getTag()));
                             setResult(Activity.RESULT_OK, resultIntent);
                             finish();
-
                         }
                 );
                 if (Lunoid.mapApogee.get(ds).equalsIgnoreCase("0") &&

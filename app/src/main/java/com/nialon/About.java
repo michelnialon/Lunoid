@@ -9,7 +9,9 @@ import android.widget.TextView;
 
 import org.shredzone.commons.suncalc.MoonPosition;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class About extends Activity {
 	TextView textTitre;
@@ -19,6 +21,7 @@ public class About extends Activity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		Button closeButton;
+		SimpleDateFormat fmt = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
         // Pour enlever la barre de titre :
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -53,7 +56,7 @@ public class About extends Activity {
 					.timezone("Europe/Paris")         // local time
 					.on(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) - 1, calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
 			MoonPosition moon = moonParam.execute();
-			textDist.setText(String.format("%02.0f", moon.getDistance()) + " km");
+			textDist.setText("Distance Lune : " + String.format("%02.0f", moon.getDistance()) + " km \nLever Soleil : " + fmt.format(Lunoid.getSunRise()) + "\nCoucher Soleil : " + fmt.format(Lunoid.getSunSet()));
 
 		} catch (NameNotFoundException e) {
             e.printStackTrace();

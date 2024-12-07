@@ -40,6 +40,7 @@ import android.widget.Toast;
 
 import org.shredzone.commons.suncalc.MoonIllumination;
 import org.shredzone.commons.suncalc.MoonTimes;
+import org.shredzone.commons.suncalc.SunTimes;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 
@@ -77,16 +78,16 @@ import androidx.work.WorkManager;
 import static android.provider.Settings.Secure.ANDROID_ID;
 import static java.lang.Math.abs;
 
-// todo : signes du zodiaque : fait
-// todo : partager : fait
-// todo : envoyer un commentaire : fait
-// todo : évaluer l'application : fait
-// todo : vérifier nouvelle version : fait
-// todo : prendre des notes : fait
-// todo : partager par sms
-// todo : éditer une note depuis la liste : fait
-// todo : option pour enlever la pub
-// todo : choix du lieu pour calcul heure lever/coucher : fait
+// done : signes du zodiaque : fait
+// done : partager : fait
+// done : envoyer un commentaire : fait
+// done : évaluer l'application : fait
+// done : vérifier nouvelle version : fait
+// done : prendre des notes : fait
+// done : partager par sms
+// done : éditer une note depuis la liste : fait
+// done : option pour enlever la pub
+// done : choix du lieu pour calcul heure lever/coucher : fait
 
 // https://www.jardinlunaire.fr/calendrier-lunaire
 // https://www.vercalendario.info/fr/lune/france-mois-janvier-2022.html
@@ -118,6 +119,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
     private Calendar d2021;
     private Calendar d2023;
     XPath xpath = XPathFactory.newInstance().newXPath();
+    static Date sunRise;
+    static Date sunSet;
 
 //todo: ads
 //    private AdManagerAdView adManagerAdView;
@@ -211,7 +214,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         String xmlexpr;
 
         try {
-            // todo: remove
+            // todo: remove changement fond chaque jour
             // int resourceId = getResources().getIdentifier("ciel"+(1+dayOfMonth%12), "drawable", getPackageName());
             // lmain.setBackgroundResource(resourceId);
 
@@ -233,7 +236,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     Cityfound = true;
                 }
             }
-            // todo : remove
+            // todo : remove test location
             //fmt.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
             //fmt.setTimeZone(TimeZone.getTimeZone("Indian/Antananarivo"));
             //fmt.setTimeZone(TimeZone.getTimeZone("Pacific/Noumea"));
@@ -298,6 +301,9 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     } else {
                         textCoucher.setText("--:--");
                     }
+                    SunTimes sunTimes = SunTimes.compute().at(latitude, longitude).on(year, monthOfYear + 1, dayOfMonth).execute();
+                    sunRise = sunTimes.getRise();
+                    sunSet = sunTimes.getSet();
 
                     MoonIllumination moonIllumination = MoonIllumination.compute()
                             .on(year, monthOfYear + 1, dayOfMonth)
@@ -305,7 +311,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
                     //double phase = moonIllumination.getPhase();
                     double percent = moonIllumination.getFraction() * 100;
                     String moonphase = (int) Math.round(percent) + "%";
-                    //todo: moonphase automati
+                    //todo: moonphase automatique
                     //textPct.setText(moonphase);
                 } else {
                     //textCoucher.setText(heurelocale(astro.moonSetTime(48.0, 2.0, year, monthOfYear + 1, dayOfMonth), selday, lh));
@@ -634,7 +640,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         sdf2 = new SimpleDateFormat("EEEE dd MMMM yyyy", Locale.getDefault());
 
         AppPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-// todo: remove
+// todo: remove location paris
 //  sdf.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
 
         setContentView(R.layout.main);
@@ -893,8 +899,8 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         calMax = Calendar.getInstance();
         calMax.set(Calendar.DAY_OF_MONTH, 31);
         calMax.set(Calendar.MONTH, 11);
-        // todo: update last date
-        calMax.set(Calendar.YEAR, 2024);
+        // todo: update last date tous les ans
+        calMax.set(Calendar.YEAR, 2025);
         calMax.set(Calendar.HOUR_OF_DAY, 23);
         calMax.set(Calendar.MINUTE, 59);
 
@@ -1841,6 +1847,14 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
 
     public static String getCoucher() {
         return heurelocale(mapCoucher.get(dateString), selday, lh);
+    }
+
+    public static Date getSunRise() {
+        return sunRise;
+    }
+
+    public static Date getSunSet() {
+        return sunSet;
     }
 
     public void datePicker(View view) {
