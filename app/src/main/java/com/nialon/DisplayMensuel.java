@@ -64,7 +64,8 @@ public class DisplayMensuel extends Activity {
 //                            InfosToast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
 //                            InfosToast.show();
                         // Print view
-                        Bitmap bmp = Bitmap.createBitmap(allJours.getWidth(), allJours.getHeight(), Bitmap.Config.ARGB_8888);
+                        Bitmap bmp = Bitmap.createBitmap(allJours.getWidth(), allJours.getHeight()+100, Bitmap.Config.ARGB_8888);
+
                         Canvas c = new Canvas(bmp);
                         printer.setVisibility(View.INVISIBLE);
                         spaceH.setVisibility(View.VISIBLE);
