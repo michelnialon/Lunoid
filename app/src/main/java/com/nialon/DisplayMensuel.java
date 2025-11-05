@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +20,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.print.PrintHelper;
 
 public class DisplayMensuel extends Activity {
@@ -28,12 +32,22 @@ public class DisplayMensuel extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LinearLayout lmain;
         try {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.vuemensuelle);
             LinearLayout allJours = findViewById(R.id.layout_mensuel);
             LinearLayout spaceH = findViewById(R.id.layout_spaceH);
             LinearLayout spaceB = findViewById(R.id.layout_spaceB);
+            lmain = findViewById(R.id.llmain);
+            ViewCompat.setOnApplyWindowInsetsListener(lmain, (v, windowInsets) -> {
+                Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+                ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+                mlp.topMargin = insets.top;
+                mlp.bottomMargin = insets.bottom;
+                v.setLayoutParams(mlp);
+                return WindowInsetsCompat.CONSUMED;
+            });
 
             LinearLayout.LayoutParams wparams1 = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
             LinearLayout.LayoutParams wparams2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);

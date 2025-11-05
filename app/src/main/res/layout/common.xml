@@ -15,7 +15,6 @@
         android:background="#00000000"
         android:orientation="horizontal"
         android:padding="0sp">
-
         <ImageView
             android:id="@+id/imageLune"
             android:layout_width="wrap_content"
@@ -24,30 +23,25 @@
             android:contentDescription="@string/desc"
             android:paddingTop="0dp"
             android:src="@drawable/nlune13" />
-
         <TextView
             android:id="@+id/textCoucher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:onClick="onClickRiseSet"
             android:text="21:43"
             android:textColor="#05FA0F"
             android:textSize="20sp" />
-
         <TextView
             android:id="@+id/textLever"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:onClick="onClickRiseSet"
             android:text="05:29"
             android:textColor="#05FA0F"
             android:textSize="20sp" />
-
         <TextView
             android:id="@+id/textPct"
             android:layout_width="wrap_content"
@@ -57,7 +51,6 @@
             android:textColor="#ffff00"
             android:textSize="18sp"
             android:textStyle="bold" />
-
         <ImageView
             android:id="@+id/imgNote"
             android:layout_width="wrap_content"
@@ -79,17 +72,16 @@
             android:text="@string/lever"
             android:textColor="#C0C0C0"
             android:textSize="18sp" />
-
         <TextView
             android:id="@+id/TextView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textCoucher"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:text="@string/coucher"
             android:textColor="#C0C0C0"
             android:textSize="18sp" />
+
 
     </RelativeLayout>
 
@@ -553,9 +545,7 @@
             android:id="@+id/imageFeuille"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="0dp"
             android:layout_weight="1"
@@ -567,7 +557,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="0dp"
             android:layout_weight="1"
@@ -579,7 +568,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="0dp"
             android:layout_weight="1"
@@ -591,7 +579,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:layout_weight="1"

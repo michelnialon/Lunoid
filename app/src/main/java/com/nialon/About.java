@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.shredzone.commons.suncalc.MoonPosition;
@@ -12,6 +14,10 @@ import org.shredzone.commons.suncalc.MoonPosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class About extends Activity {
 	TextView textTitre;
@@ -22,6 +28,8 @@ public class About extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		Button closeButton;
 		SimpleDateFormat fmt = new SimpleDateFormat("HH:mm", Locale.getDefault());
+		LinearLayout lmain;
+
 
         // Pour enlever la barre de titre :
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -34,6 +42,7 @@ public class About extends Activity {
 		textAuth = findViewById(R.id.textAuth);
 		textDate = findViewById(R.id.textDate);
 		textDist = findViewById(R.id.textDist);
+		lmain = findViewById(R.id.linearLayoutMain3);
 		textTitre.setText(getString(R.string.app_name));
 		textAuth.setText(getString(R.string.app_author));
 		textDate.setText(getString(R.string.app_date));
@@ -46,7 +55,13 @@ public class About extends Activity {
         title.setTextColor(Color.YELLOW);
         title.setTextSize(20);
         */
-        
+		ViewCompat.setOnApplyWindowInsetsListener(lmain, (v, windowInsets) -> {
+			Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+			ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+			mlp.topMargin = insets.top;
+			v.setLayoutParams(mlp);
+			return WindowInsetsCompat.CONSUMED;
+		});
 		String versionName = "";
 	    PackageInfo packageInfo;
 	    try {

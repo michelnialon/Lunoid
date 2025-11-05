@@ -70,6 +70,9 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
@@ -609,6 +612,7 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         //this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
         // Pour enlever le nom de l'application dans la barre de titre
         getActionBar().setDisplayShowTitleEnabled(false);
         selday.set(Calendar.HOUR, 0);
@@ -814,6 +818,13 @@ public class Lunoid extends FragmentActivity implements DatePickerDialog.OnDateS
         textRacinesChg.setTypeface(m_Typeface);
         textFruitsChg.setTypeface(m_Typeface);
         lmain.setBackgroundResource(R.drawable.ciel2);
+        ViewCompat.setOnApplyWindowInsetsListener(lmain, (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            mlp.topMargin = insets.top;
+            v.setLayoutParams(mlp);
+            return WindowInsetsCompat.CONSUMED;
+        });
 
         // Affichage ou non de l'heure de perigée suivant les parametres
         if (!prefs.getBoolean("perigeetime", false)) {

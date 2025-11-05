@@ -8,12 +8,18 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.text.Html;
 import android.util.Log;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class ConseilsDuMois extends Activity
 {
@@ -25,12 +31,21 @@ public class ConseilsDuMois extends Activity
         String htmltxt;
         StringBuilder linetot = new StringBuilder();
         String message = "";
+        LinearLayout lmain;
 
         try
         {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.conseilsdumois);
             t = findViewById(R.id.infosmois);
+            lmain = findViewById(R.id.linearLayoutMain6);
+            ViewCompat.setOnApplyWindowInsetsListener(lmain, (v, windowInsets) -> {
+                Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+                ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+                mlp.topMargin = insets.top;
+                v.setLayoutParams(mlp);
+                return WindowInsetsCompat.CONSUMED;
+            });
 
             Resources myRes = getResources();
             Intent intent = getIntent();

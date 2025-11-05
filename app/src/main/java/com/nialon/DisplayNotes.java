@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,6 +31,9 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.work.Data;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
@@ -40,10 +44,19 @@ public class DisplayNotes extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LinearLayout lmain;
         try {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.listnotes);
             LinearLayout allNotes = findViewById(R.id.layout_notes);
+            lmain = findViewById(R.id.llmain);
+            ViewCompat.setOnApplyWindowInsetsListener(lmain, (v, windowInsets) -> {
+                Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+                ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+                mlp.topMargin = insets.top;
+                v.setLayoutParams(mlp);
+                return WindowInsetsCompat.CONSUMED;
+            });
             LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
             lparams.setMargins(20, 0, 20, 0);
             //lparams.gravity = Gravity.CENTER_HORIZONTAL;
